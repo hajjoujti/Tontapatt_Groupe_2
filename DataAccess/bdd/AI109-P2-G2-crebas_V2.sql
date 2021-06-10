@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de crÃ©ation :  09/06/2021 15:47:04                      */
+/* Date de création :  09/06/2021 15:47:04                      */
 /*==============================================================*/
 
 
@@ -69,8 +69,8 @@ create table Anomalie
 (
    id_anomalie          int not null auto_increment  comment '',
    id_demande           int not null  comment '',
-   id_utilisateur       int  comment '',
-   Uti_id_utilisateur   int  comment '',
+   id_utilisateur_client       int  comment '',
+   id_utilisateur_eleveur   int  comment '',
    id_type_anomalie     int not null  comment '',
    description_anomalie varchar(254)  comment '',
    date_declenchement_anomalie datetime  comment '',
@@ -150,9 +150,9 @@ create table Espece
 create table EvaluationPrestation
 (
    id_eval_prestation   int not null auto_increment  comment '',
-   id_utilisateur       int  comment '',
+   id_utilisateur_client       int  comment '',
    id_demande           int  comment '',
-   Uti_id_utilisateur   int  comment '',
+   id_utilisateur_eleveur   int  comment '',
    note_prestation      int  comment '',
    remarque_eval        int  comment '',
    primary key (id_eval_prestation)
@@ -421,10 +421,10 @@ create table VilleCP
 alter table Anomalie add constraint FK_ANOMALIE_DEMANDERE_DEMANDED foreign key (id_demande)
       references DemandeDeReservation (id_demande) on delete restrict on update restrict;
 
-alter table Anomalie add constraint FK_ANOMALIE_IDCLIENT_UTILISAT foreign key (id_utilisateur)
+alter table Anomalie add constraint FK_ANOMALIE_IDCLIENT_UTILISAT foreign key (id_utilisateur_client)
       references Utilisateur (id_utilisateur) on delete restrict on update restrict;
 
-alter table Anomalie add constraint FK_ANOMALIE_IDELEVEUR_UTILISAT foreign key (Uti_id_utilisateur)
+alter table Anomalie add constraint FK_ANOMALIE_IDELEVEUR_UTILISAT foreign key (id_utilisateur_eleveur)
       references Utilisateur (id_utilisateur) on delete restrict on update restrict;
 
 alter table Anomalie add constraint FK_ANOMALIE_TYPEANOMA_TYPEANOM foreign key (id_type_anomalie)
@@ -463,10 +463,10 @@ alter table DemandeDeReservation add constraint FK_DEMANDED_TERRAIN_TERRAIN fore
 alter table EvaluationPrestation add constraint FK_EVALUATI_DEMANDEDE_DEMANDED foreign key (id_demande)
       references DemandeDeReservation (id_demande) on delete restrict on update restrict;
 
-alter table EvaluationPrestation add constraint FK_EVALUATI_IDCLIENT_UTILISAT foreign key (id_utilisateur)
+alter table EvaluationPrestation add constraint FK_EVALUATI_IDCLIENT_UTILISAT foreign key (id_utilisateur_client)
       references Utilisateur (id_utilisateur) on delete restrict on update restrict;
 
-alter table EvaluationPrestation add constraint FK_EVALUATI_IDELEVEUR_UTILISAT foreign key (Uti_id_utilisateur)
+alter table EvaluationPrestation add constraint FK_EVALUATI_IDELEVEUR_UTILISAT foreign key (id_utilisateur_eleveur)
       references Utilisateur (id_utilisateur) on delete restrict on update restrict;
 
 alter table HauteurHerbeFavori add constraint FK_HAUTEURH_HAUTEURHE_ESPECE foreign key (id_espece_animal)
