@@ -5,4 +5,9 @@
     <RootNamespace>Fr.EQL.Ai109.Totapatt.WebApplication</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
+  </ItemGroup>
+
 </Project>

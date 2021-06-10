@@ -12,5 +12,6 @@ namespace Fr.EQL.Ai109.Totapatt.Model
         public int idDemande { get; set; }
         public int idUtilisateurClient { get; set; }
         public int idUtilisateurEleveur { get; set; }
+        public int MyProperty { get; set; }
     }
 }
