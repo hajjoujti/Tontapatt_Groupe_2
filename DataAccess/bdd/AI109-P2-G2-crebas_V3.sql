@@ -69,11 +69,11 @@ create table Anomalie
 (
    id_anomalie          int not null auto_increment  comment '',
    id_demande           int not null  comment '',
-   id_utilisateur_client       int  comment '',
-   id_utilisateur_eleveur   int  comment '',
+   id_utilisateur_client       int not null comment '',
+   id_utilisateur_eleveur   int not null comment '',
    id_type_anomalie     int not null  comment '',
-   description_anomalie varchar(254)  comment '',
-   date_declenchement_anomalie datetime  comment '',
+   description_anomalie varchar(254) not null comment '',
+   date_declenchement_anomalie datetime not null comment '',
    date_fin_anomalie    datetime  comment '',
    primary key (id_anomalie)
 );
@@ -85,7 +85,7 @@ create table Composition
 (
    id_type_vegetation   int not null  comment '',
    id_terrain           int not null  comment '',
-   pourcentage_vegetation int  comment '',
+   pourcentage_vegetation int not null comment '',
    primary key (id_type_vegetation, id_terrain)
 );
 
@@ -95,7 +95,7 @@ create table Composition
 create table CompositionTerrain
 (
    id_composition_terrain int not null auto_increment  comment '',
-   composition_terrain  varchar(254)  comment '',
+   composition_terrain  varchar(254) not null comment '',
    primary key (id_composition_terrain)
 );
 
@@ -119,11 +119,11 @@ create table DemandeDeReservation
    id_terrain           int not null  comment '',
    id_raison_annul      int  comment '',
    id_motif_refus       int  comment '',
-   id_moyen_paiement    int  comment '',
+   id_moyen_paiement    int not null comment '',
    id_offre             int not null comment '',
    date_debut_demande   datetime  not null comment '',
    date_fin_demande     datetime not null  comment '',
-   cout_demande         numeric(8,0)  comment '',
+   cout_demande         numeric(8,0) not null comment '',
    date_acceptaion_demande datetime  comment '',
    date_annulation_demande datetime  comment '',
    date_creation_demande datetime  comment '',
@@ -131,6 +131,7 @@ create table DemandeDeReservation
    date_annulation_prematuree datetime  comment '',
    numero_reservation   int not null  comment '',
    date_refus_demande   datetime  comment '',
+   UNIQUE KEY (numero_reservation),
    primary key (id_demande)
 );
 
@@ -140,7 +141,7 @@ create table DemandeDeReservation
 create table Espece
 (
    id_espece_animal     int not null auto_increment  comment '',
-   espece_animal        varchar(254)  comment '',
+   espece_animal        varchar(254) not null comment '',
    primary key (id_espece_animal)
 );
 
@@ -150,11 +151,11 @@ create table Espece
 create table EvaluationPrestation
 (
    id_eval_prestation   int not null auto_increment  comment '',
-   id_utilisateur_client       int  comment '',
+   id_utilisateur_client       int not null comment '',
    id_demande           int  not null  comment '',
-   id_utilisateur_eleveur   int  comment '',
-   note_prestation      int  comment '',
-   remarque_eval        int  comment '',
+   id_utilisateur_eleveur   int not null comment '',
+   note_prestation      int not null comment '',
+   remarque_eval        varchar(254)  comment '',
    primary key (id_eval_prestation)
 );
 
@@ -164,7 +165,7 @@ create table EvaluationPrestation
 create table HauteurHerbe
 (
    id_hauteur_herbe     int not null auto_increment  comment '',
-   hauteur_herbe        varchar(254)  comment '',
+   hauteur_herbe        varchar(254) not null comment '',
    primary key (id_hauteur_herbe)
 );
 
@@ -184,7 +185,7 @@ create table HauteurHerbeFavori
 create table HumiditeTerrain
 (
    id_humidite_terraine int not null auto_increment  comment '',
-   humidite_terrain     varchar(254)  comment '',
+   humidite_terrain     varchar(254) not null comment '',
    primary key (id_humidite_terraine)
 );
 
@@ -204,7 +205,7 @@ create table HumiditeTerrainFavori
 create table MoyenPaiement
 (
    id_moyen_paiement    int not null auto_increment  comment '',
-   type_moyen_paiement  varchar(254)  comment '',
+   type_moyen_paiement  varchar(254) not null comment '',
    primary key (id_moyen_paiement)
 );
 
@@ -217,17 +218,17 @@ create table OffreDeTonte
    id_race_animal       int not null  comment '',
    id_annulation_offre  int  comment '',
    id_utilisateur       int not null  comment '',
-   id_villeCP           int not null  comment '',
-   nom_offre            varchar(254)  comment '',
-   adresse_troupeau     varchar(254)  comment '',
-   date_debut_offre     datetime  comment '',
-   date_fin_offre       datetime  comment '',
-   date_creation_offre  datetime  comment '',
-   Description_offre    varchar(254)  comment '',
-   distance_maximale    int  comment '',
-   cout_anilmal_par_jour numeric(8,0)  comment '',
+   id_villecp           int not null  comment '',
+   nom_offre            varchar(254) not null comment '',
+   adresse_troupeau     varchar(254) not null comment '',
+   date_debut_offre     datetime not null comment '',
+   date_fin_offre       datetime not null comment '',
+   date_creation_offre  datetime not null comment '',
+   description_offre    varchar(254)  comment '',
+   distance_maximale    int not null comment '',
+   cout_anilmal_par_jour numeric(8,0) not null comment '',
    date_annulation_offre datetime  comment '',
-   nombre_animaux       int  comment '',
+   nombre_animaux       int not null comment '',
    primary key (id_offre)
 );
 
@@ -237,7 +238,7 @@ create table OffreDeTonte
 create table PenteTerrain
 (
    id_pente_terrain     int not null auto_increment  comment '',
-   pente_terrain        varchar(254)  comment '',
+   pente_terrain        varchar(254) not null comment '',
    primary key (id_pente_terrain)
 );
 
@@ -344,7 +345,7 @@ create table Terrain
    id_humidite_terraine int not null  comment '',
    id_composition_terrain int not null  comment '',
    id_pente_terrain     int not null  comment '',
-   id_villeCP           int not null  comment '',
+   id_villecp           int not null  comment '',
    id_hauteur_herbe     int not null  comment '',
    id_utilisateur       int not null  comment '',
    nom_terrain          varchar(254)  comment '',
@@ -393,7 +394,7 @@ create table TypeVegetationFavori
 create table Utilisateur
 (
    id_utilisateur       int not null auto_increment  comment '',
-   id_villeCP           int not null  comment '',
+   id_villecp           int not null  comment '',
    id_desinscription    int  comment '',
    nom_utilisateur      varchar(254)  comment '',
    prenom_utilisateur   varchar(254)  comment '',
@@ -412,10 +413,10 @@ create table Utilisateur
 /*==============================================================*/
 create table VilleCP
 (
-   id_villeCP           int not null auto_increment  comment '',
+   id_villecp           int not null auto_increment  comment '',
    nom_ville            varchar(254)  comment '',
    code_postal          varchar(254)  comment '',
-   primary key (id_villeCP)
+   primary key (id_villecp)
 );
 
 alter table Anomalie add constraint FK_ANOMALIE_DEMANDERE_DEMANDED foreign key (id_demande)
@@ -490,8 +491,8 @@ alter table OffreDeTonte add constraint FK_OFFREDET_RAISONANN_RAISONAN foreign k
 alter table OffreDeTonte add constraint FK_OFFREDET_UTILISATE_UTILISAT foreign key (id_utilisateur)
       references Utilisateur (id_utilisateur) on delete restrict on update restrict;
 
-alter table OffreDeTonte add constraint FK_OFFREDET_VILLECP_VILLECP foreign key (id_villeCP)
-      references VilleCP (id_villeCP) on delete restrict on update restrict;
+alter table OffreDeTonte add constraint FK_OFFREDET_VILLECP_VILLECP foreign key (id_villecp)
+      references VilleCP (id_villecp) on delete restrict on update restrict;
 
 alter table PenteTerrainFavori add constraint FK_PENTETER_PENTETERR_ESPECE foreign key (id_espece_animal)
       references Espece (id_espece_animal) on delete restrict on update restrict;
@@ -523,8 +524,8 @@ alter table Terrain add constraint FK_TERRAIN_TERRAIN_P_PENTETER foreign key (id
 alter table Terrain add constraint FK_TERRAIN_UTILISATE_UTILISAT foreign key (id_utilisateur)
       references Utilisateur (id_utilisateur) on delete restrict on update restrict;
 
-alter table Terrain add constraint FK_TERRAIN_VILLECP_VILLECP foreign key (id_villeCP)
-      references VilleCP (id_villeCP) on delete restrict on update restrict;
+alter table Terrain add constraint FK_TERRAIN_VILLECP_VILLECP foreign key (id_villecp)
+      references VilleCP (id_villecp) on delete restrict on update restrict;
 
 alter table TypeVegetationFavori add constraint FK_TYPEVEGE_TYPEVEGET_ESPECE foreign key (id_espece_animal)
       references Espece (id_espece_animal) on delete restrict on update restrict;
@@ -535,5 +536,5 @@ alter table TypeVegetationFavori add constraint FK_TYPEVEGE_TYPEVEGET_TYPEVEGE f
 alter table Utilisateur add constraint FK_UTILISAT_RAISONDES_RAISONDE foreign key (id_desinscription)
       references RaisonDesinscriptionUtilisateur (id_desinscription) on delete restrict on update restrict;
 
-alter table Utilisateur add constraint FK_UTILISAT_VILLECP_VILLECP foreign key (id_villeCP)
-      references VilleCP (id_villeCP) on delete restrict on update restrict;
+alter table Utilisateur add constraint FK_UTILISAT_VILLECP_VILLECP foreign key (id_villecp)
+      references VilleCP (id_villecp) on delete restrict on update restrict;

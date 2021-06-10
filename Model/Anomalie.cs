@@ -8,10 +8,17 @@ namespace Fr.EQL.Ai109.Totapatt.Model
 {
     public class Anomalie
     {
-        public int idAnomalie { get; set; }
-        public int idDemande { get; set; }
-        public int idUtilisateurClient { get; set; }
-        public int idUtilisateurEleveur { get; set; }
-        public int MyProperty { get; set; }
+        public int IdAnomalie { get; set; }
+        public int IdDemande { get; set; }
+        public int IdUtilisateurClient { get; set; }
+        public int IdUtilisateurEleveur { get; set; }
+        public int IdTypeAnomalie { get; set; }
+        public DateTime DateDeclenchementAnomalie { get; set; }
+        public DateTime? DateFinAnomalie { get; set; }
+        public string DescriptionAnomalie { get; set; }
+
+        public Anomalie()
+        {
+        }
     }
 }
