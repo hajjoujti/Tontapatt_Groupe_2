@@ -5,4 +5,8 @@
     <RootNamespace>Fr.EQL.Ai109.Totapatt.WebApplication</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\NewFolder\" />
+  </ItemGroup>
+
 </Project>
