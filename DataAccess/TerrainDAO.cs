@@ -120,7 +120,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             if (!dr.IsDBNull(dr.GetOrdinal("description_utilisateur")))
             {
                 terrainDetails.DescriptionUtilisateur = dr.GetString("description_utilisateur");
-            }
+        }
             terrainDetails.NomVilleTerrain = dr.GetString("nom_ville");
             terrainDetails.CodePostalTerrain = dr.GetString("code_postal");
             terrainDetails.LongitudeTerrain = dr.GetDecimal("longitude_ville");

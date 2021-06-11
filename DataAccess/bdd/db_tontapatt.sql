@@ -629,7 +629,7 @@ DROP TABLE IF EXISTS `raisonretraitterrain`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `raisonretraitterrain` (
-  `id_raison_retrait` int NOT NULL AUTO_INCREMENT = 1,
+  `id_raison_retrait` int NOT NULL AUTO_INCREMENT,
   `libelle_retrait_terrain` int NOT NULL,
   PRIMARY KEY (`id_raison_retrait`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -652,7 +652,7 @@ DROP TABLE IF EXISTS `terrain`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `terrain` (
-  `id_terrain` int NOT NULL AUTO_INCREMENT = 1,
+  `id_terrain` int NOT NULL AUTO_INCREMENT,
   `id_raison_retrait` int DEFAULT NULL,
   `id_humidite_terrain` int NOT NULL,
   `id_composition_terrain` int NOT NULL,
