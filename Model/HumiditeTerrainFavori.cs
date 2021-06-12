@@ -9,6 +9,6 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
     public class HumiditeTerrainFavori
     {
         public int IdHumiditeTerrain { get; set; }
-        public int IdEspeceAnimal { get; set; }
+        public int IdRaceAnimal { get; set; }
     }
 }

@@ -10,9 +10,9 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 {
     public class TerrainBU
     {
-        public Terrain GetTerrain(int id)
+        public Terrain GetTerrain(int idTerrain)
         {
-            return new TerrainDAO().GetById(id);
+            return new TerrainDAO().GetById(idTerrain);
         }
 
         public List<Terrain> GetByIdUtilisateur(int idUtilisateur)

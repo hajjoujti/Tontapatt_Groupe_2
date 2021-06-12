@@ -12,7 +12,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
     {
         public Terrain GetById(int idTerrain)
         {
-            Terrain t = null;
+            Terrain terrain = null;
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT *
                                 FROM terrain
@@ -22,16 +22,16 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             MySqlDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                t = DataReaderTerrain(dr);
+                terrain = DataReaderTerrain(dr);
             }
 
             cmd.Connection.Close();
-            return t;
+            return terrain;
         }
 
         public List<Terrain> GetByIdUtilisateur(int idUtilisateur)
         {
-            List <Terrain> result = new();
+            List <Terrain> terrains = new();
 
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT *
@@ -44,19 +44,18 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
 
             while (dr.Read())
             {
-                Terrain t = DataReaderTerrain(dr);
-                result.Add(t);
+                Terrain terrain = DataReaderTerrain(dr);
+                terrains.Add(terrain);
             }
 
             cmd.Connection.Close();
 
-            return result;
+            return terrains;
         }
 
         public TerrainDetails GetByIdWithDetails(int idTerrain)
         {
-            Terrain t = null;
-            TerrainDetails td = null;
+            TerrainDetails terrainDetails = null;
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT t.*, v.nom_ville, v.code_postal, u.nom_utilisateur, u.prenom_utilisateur, u.description_utilisateur
                                 FROM terrain t
@@ -66,54 +65,61 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             cmd.Parameters.Add(new MySqlParameter("@idTerrain", idTerrain));
             cmd.Connection.Open();
             MySqlDataReader dr = cmd.ExecuteReader();
+
             if (dr.Read())
             {
-                td = (TerrainDetails)DataReaderTerrain(dr);
-                td.NomUtilisateur = dr.GetString("nom_utilisateur");
-                td.PrenomUtilisateur = dr.GetString("prenom_utilisateur");
-                if (!dr.IsDBNull(dr.GetOrdinal("description_utilisateur")))
-                {
-                    td.DescriptionUtilisateur = dr.GetString("description_utilisateur");
-                }
-                td.NomVilleTerrain = dr.GetString("nom_ville");
-                td.CodePostalTerrain = dr.GetString("code_postal");
+                terrainDetails = DataReaderTerrainDetails(dr);
             }
             cmd.Connection.Close();
-            return null;
+            return terrainDetails;
+        }
+
+        private static TerrainDetails DataReaderTerrainDetails(MySqlDataReader dr)
+        {
+            TerrainDetails terrainDetails = new(DataReaderTerrain(dr));
+            terrainDetails.NomUtilisateur = dr.GetString("nom_utilisateur");
+            terrainDetails.PrenomUtilisateur = dr.GetString("prenom_utilisateur");
+            if (!dr.IsDBNull(dr.GetOrdinal("description_utilisateur")))
+            {
+                terrainDetails.DescriptionUtilisateur = dr.GetString("description_utilisateur");
+            }
+            terrainDetails.NomVilleTerrain = dr.GetString("nom_ville");
+            terrainDetails.CodePostalTerrain = dr.GetString("code_postal");
+            return terrainDetails;
         }
 
         private static Terrain DataReaderTerrain(MySqlDataReader dr)
         {
-            Terrain t = new();
-            t.IdTerrain = dr.GetInt32("id_terrain");
+            Terrain terrain = new();
+            terrain.IdTerrain = dr.GetInt32("id_terrain");
             if (!dr.IsDBNull(dr.GetOrdinal("id_raison_retrait")))
             {
-                t.IdRaisonRetrait = dr.GetInt32("id_raison_retrait");
+                terrain.IdRaisonRetrait = dr.GetInt32("id_raison_retrait");
             }
-            t.IdHumiditeTerrain = dr.GetInt32("id_humidite_terrain");
-            t.IdCompositionTerrain = dr.GetInt32("id_composition_terrain");
-            t.IdPenteTerrain = dr.GetInt32("id_pente_terrain");
-            t.IdVilleCP = dr.GetInt32("id_villecp");
-            t.IdHauteurHerbe = dr.GetInt32("id_hauteur_herbe");
-            t.IdUtilisateur = dr.GetInt32("id_utilisateur");
-            t.NomTerrain = dr.GetString("nom_terrain");
-            t.SurfaceTerrain = dr.GetInt32("surface_terrain");
+            terrain.IdHumiditeTerrain = dr.GetInt32("id_humidite_terrain");
+            terrain.IdCompositionTerrain = dr.GetInt32("id_composition_terrain");
+            terrain.IdPenteTerrain = dr.GetInt32("id_pente_terrain");
+            terrain.IdVilleCP = dr.GetInt32("id_villecp");
+            terrain.IdHauteurHerbe = dr.GetInt32("id_hauteur_herbe");
+            terrain.IdUtilisateur = dr.GetInt32("id_utilisateur");
+            terrain.NomTerrain = dr.GetString("nom_terrain");
+            terrain.SurfaceTerrain = dr.GetInt32("surface_terrain");
             if (!dr.IsDBNull(dr.GetOrdinal("description_terrain")))
             {
-                t.DescriptionTerrain = dr.GetString("description_terrain");
+                terrain.DescriptionTerrain = dr.GetString("description_terrain");
             }
-            t.AdresseTerrain = dr.GetString("adresse_terrain");
-            t.DateEnregistrementTerrain = dr.GetDateTime("date_enregistrement_terrain");
+            terrain.AdresseTerrain = dr.GetString("adresse_terrain");
+            terrain.DateEnregistrementTerrain = dr.GetDateTime("date_enregistrement_terrain");
             if (!dr.IsDBNull(dr.GetOrdinal("photo_terrain")))
             {
-                t.PhotoTerrain = dr.GetString("photo_terrain");
+                terrain.PhotoTerrain = dr.GetString("photo_terrain");
             }
             if (!dr.IsDBNull(dr.GetOrdinal("date_retrait_terrain")))
             {
-                t.DateRetraitTerrain = dr.GetDateTime("date_retrait_terrain");
+                terrain.DateRetraitTerrain = dr.GetDateTime("date_retrait_terrain");
             }
 
-            return t;
+            return terrain;
         }
     }
 }
