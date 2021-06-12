@@ -14,5 +14,27 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
         public string NomVilleTerrain { get; set; }
         public string CodePostalTerrain { get; set; }
 
+        public TerrainDetails(Terrain terrain)
+        {
+            IdTerrain = terrain.IdTerrain;
+            IdRaisonRetrait = terrain.IdRaisonRetrait;
+            IdHumiditeTerrain = terrain.IdHumiditeTerrain;
+            IdCompositionTerrain = terrain.IdCompositionTerrain;
+            IdPenteTerrain = terrain.IdPenteTerrain;
+            IdVilleCP = terrain.IdVilleCP;
+            IdHauteurHerbe = terrain.IdHauteurHerbe;
+            IdUtilisateur = terrain.IdUtilisateur;
+            NomTerrain = terrain.NomTerrain;
+            SurfaceTerrain = terrain.SurfaceTerrain;
+            DescriptionTerrain = terrain.DescriptionTerrain;
+            AdresseTerrain = terrain.AdresseTerrain;
+            DateEnregistrementTerrain = terrain.DateEnregistrementTerrain;
+            PhotoTerrain = terrain.PhotoTerrain;
+            DateRetraitTerrain = terrain.DateRetraitTerrain;
+        }
+
+        public TerrainDetails()
+        {
+        }
     }
 }
