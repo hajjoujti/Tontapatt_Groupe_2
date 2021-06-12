@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fr.EQL.Ai109.Tontapatt.Model
 {
-    public class Composition
+    public class CompositionVegetation
     {
         public int IdTypeVegetation { get; set; }
         public int IdTerrain { get; set; }
