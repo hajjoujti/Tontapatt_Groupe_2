@@ -9,6 +9,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
     public class OffreDeTonte
     {
         public int IdOffre { get; set; }
+        public int IdEspeceAnimal { get; set; }
         public int IdRaceAnimal { get; set; }
         public int? IdAnnulationOffre { get; set; }
         public int IdUtilisateur { get; set; }
