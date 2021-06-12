@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Fr.EQL.Ai109.Totapatt.Business</RootNamespace>
+    <RootNamespace>Fr.EQL.Ai109.Tontapatt.Business</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

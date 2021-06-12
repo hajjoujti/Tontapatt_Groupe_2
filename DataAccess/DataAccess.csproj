@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Fr.EQL.Ai109.Totapatt.DataAccess</RootNamespace>
+    <RootNamespace>Fr.EQL.Ai109.Tontapatt.DataAccess</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
