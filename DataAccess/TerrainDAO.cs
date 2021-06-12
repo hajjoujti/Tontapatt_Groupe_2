@@ -134,8 +134,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
 
         public TerrainDetails GetByIdWithDetails(int idTerrain)
         {
-            Terrain t = null;
-            TerrainDetails td = null;
+            TerrainDetails terrainDetails = null;
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT t.*, v.nom_ville, v.code_postal, u.nom_utilisateur, u.prenom_utilisateur, u.description_utilisateur
                                 FROM terrain t
@@ -145,20 +144,27 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             cmd.Parameters.Add(new MySqlParameter("@idTerrain", idTerrain));
             cmd.Connection.Open();
             MySqlDataReader dr = cmd.ExecuteReader();
+
             if (dr.Read())
             {
-                td = (TerrainDetails)DataReaderTerrain(dr);
-                td.NomUtilisateur = dr.GetString("nom_utilisateur");
-                td.PrenomUtilisateur = dr.GetString("prenom_utilisateur");
-                if (!dr.IsDBNull(dr.GetOrdinal("description_utilisateur")))
-                {
-                    td.DescriptionUtilisateur = dr.GetString("description_utilisateur");
-                }
-                td.NomVilleTerrain = dr.GetString("nom_ville");
-                td.CodePostalTerrain = dr.GetString("code_postal");
+                terrainDetails = DataReaderTerrainDetails(dr);
             }
             cmd.Connection.Close();
-            return null;
+            return terrainDetails;
+        }
+
+        private static TerrainDetails DataReaderTerrainDetails(MySqlDataReader dr)
+        {
+            TerrainDetails terrainDetails = new(DataReaderTerrain(dr));
+            terrainDetails.NomUtilisateur = dr.GetString("nom_utilisateur");
+            terrainDetails.PrenomUtilisateur = dr.GetString("prenom_utilisateur");
+            if (!dr.IsDBNull(dr.GetOrdinal("description_utilisateur")))
+            {
+                terrainDetails.DescriptionUtilisateur = dr.GetString("description_utilisateur");
+            }
+            terrainDetails.NomVilleTerrain = dr.GetString("nom_ville");
+            terrainDetails.CodePostalTerrain = dr.GetString("code_postal");
+            return terrainDetails;
         }
 
         private static Terrain DataReaderTerrain(MySqlDataReader dr)
