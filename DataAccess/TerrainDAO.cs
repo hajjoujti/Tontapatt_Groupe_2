@@ -1,4 +1,4 @@
-﻿using Fr.EQL.Ai109.Totapatt.Model;
+﻿using Fr.EQL.Ai109.Tontapatt.Model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fr.EQL.Ai109.Totapatt.DataAccess
+namespace Fr.EQL.Ai109.Tontapatt.DataAccess
 {
     public class TerrainDAO : DAO
     {
@@ -51,6 +51,35 @@ namespace Fr.EQL.Ai109.Totapatt.DataAccess
             cmd.Connection.Close();
 
             return result;
+        }
+
+        public TerrainDetails GetByIdWithDetails(int idTerrain)
+        {
+            Terrain t = null;
+            TerrainDetails td = null;
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT t.*, v.nom_ville, v.code_postal, u.nom_utilisateur, u.prenom_utilisateur, u.description_utilisateur
+                                FROM terrain t
+                                INNER JOIN villecp v ON t.id_villecp = v.id_villecp
+                                INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
+                                WHERE t.id_terrain = @idTerrain";
+            cmd.Parameters.Add(new MySqlParameter("@idTerrain", idTerrain));
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                td = (TerrainDetails)DataReaderTerrain(dr);
+                td.NomUtilisateur = dr.GetString("nom_utilisateur");
+                td.PrenomUtilisateur = dr.GetString("prenom_utilisateur");
+                if (!dr.IsDBNull(dr.GetOrdinal("description_utilisateur")))
+                {
+                    td.DescriptionUtilisateur = dr.GetString("description_utilisateur");
+                }
+                td.NomVilleTerrain = dr.GetString("nom_ville");
+                td.CodePostalTerrain = dr.GetString("code_postal");
+            }
+            cmd.Connection.Close();
+            return null;
         }
 
         private static Terrain DataReaderTerrain(MySqlDataReader dr)
