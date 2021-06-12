@@ -8,8 +8,8 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            //TerrainBU bu = new();
-            //Terrain t = bu.GetTerrain(264);
+            TerrainBU bu = new();
+            Terrain t = bu.GetTerrain(264);
 
             //Console.WriteLine("Nom terrain : " + t.NomTerrain + "\nAdresse : " + t.AdresseTerrain + "\nSurface : "
             //    + t.SurfaceTerrain + "\nDescription : " + t.DescriptionTerrain + "\nDate enregistrement : " + t.DateEnregistrementTerrain.ToString("dd/MM/yyyy"));
