@@ -12,7 +12,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
     {
         public Utilisateur GetUtilisateurAuthentification(string mailUtilisateur, string mdpUtilisateur)
         {
-            Utilisateur u = null;
+            Utilisateur utilisateur = null;
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT *
                                 FROM utilisateur
@@ -24,41 +24,41 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             MySqlDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                u = DataReaderUtilisateur(dr);
+                utilisateur = DataReaderUtilisateur(dr);
             }
 
             cmd.Connection.Close();
-            return u;
+            return utilisateur;
         }
 
         private static Utilisateur DataReaderUtilisateur(MySqlDataReader dr)
         {
-            Utilisateur u = new();
-            u.IdUtilisateur = dr.GetInt32("id_utilisateur");
-            u.IdVilleCP = dr.GetInt32("id_villecp");
+            Utilisateur utilisateur = new();
+            utilisateur.IdUtilisateur = dr.GetInt32("id_utilisateur");
+            utilisateur.IdVilleCP = dr.GetInt32("id_villecp");
             if (!dr.IsDBNull(dr.GetOrdinal("id_desinscription")))
             {
-                u.IdDesinscritpion = dr.GetInt32("id_desinscription");
+                utilisateur.IdDesinscritpion = dr.GetInt32("id_desinscription");
             }
-            u.NomUtilisateur = dr.GetString("nom_utilisateur");
-            u.PrenomUtilisateur = dr.GetString("prenom_utilisateur");
-            u.MailUtilisateur = dr.GetString("mail_utilisateur");
-            u.MdpUtilisateur = dr.GetString("mdp_utilisateur");
-            u.AdresseUtilisateur = dr.GetString("adresse_utilisateur");
-            u.DateInscriptionUtilisateur = dr.GetDateTime("date_inscription_utilisateur");
+            utilisateur.NomUtilisateur = dr.GetString("nom_utilisateur");
+            utilisateur.PrenomUtilisateur = dr.GetString("prenom_utilisateur");
+            utilisateur.MailUtilisateur = dr.GetString("mail_utilisateur");
+            utilisateur.MdpUtilisateur = dr.GetString("mdp_utilisateur");
+            utilisateur.AdresseUtilisateur = dr.GetString("adresse_utilisateur");
+            utilisateur.DateInscriptionUtilisateur = dr.GetDateTime("date_inscription_utilisateur");
             if (!dr.IsDBNull(dr.GetOrdinal("description_utilisateur")))
             {
-                u.DescriptionUtilisateur = dr.GetString("description_utilisateur");
+                utilisateur.DescriptionUtilisateur = dr.GetString("description_utilisateur");
             }
             if (!dr.IsDBNull(dr.GetOrdinal("siret_entreprise")))
             {
-                u.SiretEntreprise = dr.GetInt64("siret_entreprise");
+                utilisateur.SiretEntreprise = dr.GetInt64("siret_entreprise");
             }
             if (!dr.IsDBNull(dr.GetOrdinal("date_desinscription_utilisateur")))
             {
-                u.DateDesinscriptionUtilisateur = dr.GetDateTime("date_desinscription_utilisateur");
+                utilisateur.DateDesinscriptionUtilisateur = dr.GetDateTime("date_desinscription_utilisateur");
             }
-            return u;
+            return utilisateur;
         }
     }
 }
