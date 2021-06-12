@@ -13,6 +13,11 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
         public string DescriptionUtilisateur { get; set; }
         public string NomVilleTerrain { get; set; }
         public string CodePostalTerrain { get; set; }
+        public string HumiditeTerrain { get; set; }
+        public string CompositionTerrain { get; set; }
+        public string PenteTerrain { get; set; }
+        public string HauteurHerbe { get; set; }
+        public List<CompositionVegetationDetails> CompositionsVegetationTerrain { get; set; }
 
         public TerrainDetails(Terrain terrain)
         {
