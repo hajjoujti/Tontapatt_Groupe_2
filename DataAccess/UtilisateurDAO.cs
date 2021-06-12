@@ -1,4 +1,4 @@
-﻿using Fr.EQL.Ai109.Totapatt.Model;
+﻿using Fr.EQL.Ai109.Tontapatt.Model;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fr.EQL.Ai109.Totapatt.DataAccess
+namespace Fr.EQL.Ai109.Tontapatt.DataAccess
 {
     public class UtilisateurDAO : DAO
     {

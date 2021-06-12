@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Fr.EQL.Ai109.Totapatt.WebApplication.Controllers
+namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 {
     public class UtilisateurController : Controller
     {
