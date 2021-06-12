@@ -58,7 +58,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             TerrainDetails terrainDetails = null;
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT t.*, 
-                                v.nom_ville, v.code_postal, 
+                                v.nom_ville, v.code_postal, v.longitude_ville, v.latitude_ville, 
                                 u.nom_utilisateur, u.prenom_utilisateur, u.description_utilisateur, 
                                 hu.humidite_terrain, 
                                 co.composition_terrain,
@@ -123,6 +123,8 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             }
             terrainDetails.NomVilleTerrain = dr.GetString("nom_ville");
             terrainDetails.CodePostalTerrain = dr.GetString("code_postal");
+            terrainDetails.LongitudeTerrain = dr.GetDecimal("longitude_ville");
+            terrainDetails.LatitudeTerrain = dr.GetDecimal("latitude_ville");
             terrainDetails.HumiditeTerrain = dr.GetString("humidite_terrain");
             terrainDetails.CompositionTerrain = dr.GetString("composition_terrain");
             terrainDetails.PenteTerrain = dr.GetString("pente_terrain");

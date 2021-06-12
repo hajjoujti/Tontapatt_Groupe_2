@@ -18,7 +18,7 @@ namespace ConsoleApp
             Console.WriteLine("Nom terrain : " + td.NomTerrain + "\nAdresse : " + td.AdresseTerrain + "\nSurface : "
                 + td.SurfaceTerrain + "\nDescription : " + td.DescriptionTerrain + "\nDate enregistrement : " + td.DateEnregistrementTerrain.ToString("dd/MM/yyyy")
                 + "\nNom proprieteaire : " + td.NomUtilisateur + "\nPrenom proprietaire : " + td.PrenomUtilisateur + "\nDescription proprietaire : " + td.DescriptionTerrain
-                + "\nNom ville : " + td.NomVilleTerrain + "\nCode postal : " + td.CodePostalTerrain + "\nHumidite : " + td.HumiditeTerrain + "\nComposition : " + td.CompositionTerrain + "\nPente : " + td.PenteTerrain + "\nHauteur Herbe : " + td.HauteurHerbe);
+                + "\nNom ville : " + td.NomVilleTerrain + "\nCode postal : " + td.CodePostalTerrain + "\nLongitude : " + td.LongitudeTerrain + "\nLatitude : " + td.LatitudeTerrain + "\nHumidite : " + td.HumiditeTerrain + "\nComposition : " + td.CompositionTerrain + "\nPente : " + td.PenteTerrain + "\nHauteur Herbe : " + td.HauteurHerbe);
             foreach(CompositionVegetationDetails cds in td.CompositionsVegetationTerrain)
             {
                 Console.WriteLine("Type vegetation : " + cds.TypeVegetaion + " --> Pourcentage : " + cds.PourcentageVegetation);
