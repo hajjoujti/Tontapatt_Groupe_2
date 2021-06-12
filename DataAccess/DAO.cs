@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fr.EQL.Ai109.Totapatt.DataAccess
+namespace Fr.EQL.Ai109.Tontapatt.DataAccess
 {
     abstract public class DAO
     {

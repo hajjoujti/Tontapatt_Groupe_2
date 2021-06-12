@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Fr.EQL.Ai109.Totapatt.Model</RootNamespace>
+    <RootNamespace>Fr.EQL.Ai109.Tontapatt.Model</RootNamespace>
   </PropertyGroup>
 
 </Project>

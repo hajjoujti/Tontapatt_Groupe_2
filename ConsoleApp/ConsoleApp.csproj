@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Fr.EQL.Ai109.Totapatt.ConsoleApp</RootNamespace>
+    <RootNamespace>Fr.EQL.Ai109.Tontapatt.ConsoleApp</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
