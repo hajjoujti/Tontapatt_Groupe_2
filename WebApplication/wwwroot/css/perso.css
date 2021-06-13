@@ -238,3 +238,103 @@ choixTerrainDescription_img {
 .choixTerrainDescription_p {
     margin: 1rem;
 }
+
+
+
+
+
+
+.main-connexion {
+    margin-top: 7vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.body-connexion {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1em;
+    background-color: var(--primary);
+    border-radius: 5px;
+}
+
+.left-connexion {
+    width: 50%;
+}
+
+    .left-connexion img {
+        width: 100%;
+    }
+
+.right-connexion {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+}
+
+    .right-connexion h2 {
+        text-align: center;
+        color: var(--light);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .right-connexion form {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        color: var(--light);
+    }
+
+        .right-connexion form p {
+            width: 100%;
+        }
+
+            .right-connexion form p i {
+                margin-right: 10px;
+            }
+
+.css-input {
+    font-size: 16px;
+    width: 70%;
+    align-self: center;
+    background-color: unset;
+    border: none;
+    border-bottom: 1px solid var(--light);
+    color: var(--light) !important;
+    max-width: 300px;
+    font-family: 'Roboto', sans-serif;
+}
+
+    .css-input:focus {
+        outline: none;
+    }
+
+    .css-input::placeholder {
+        color: var(--secondary);
+    }
+
+
+.square_btn {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: var(--light);
+    border: solid 2px var(--light);
+    border-radius: 3px;
+    transition: .4s;
+    background-color: var(--info);
+    cursor: pointer;
+}
+
+    .square_btn:hover {
+        background: #67c5ff;
+        color: white;
+    }
