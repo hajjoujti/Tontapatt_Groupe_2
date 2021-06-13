@@ -13,8 +13,8 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
         public string DescriptionUtilisateur { get; set; }
         public string NomVilleTerrain { get; set; }
         public string CodePostalTerrain { get; set; }
-        public decimal LongitudeTerrain { get; set; }
-        public decimal LatitudeTerrain { get; set; }
+        public double LongitudeTerrain { get; set; }
+        public double LatitudeTerrain { get; set; }
         public string HumiditeTerrain { get; set; }
         public string CompositionTerrain { get; set; }
         public string PenteTerrain { get; set; }

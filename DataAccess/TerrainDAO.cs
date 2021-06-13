@@ -29,7 +29,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             return terrain;
         }
 
-        public List<Terrain> GetByIdUtilisateur(int idUtilisateur)
+        public List<Terrain> GetAllByIdUtilisateur(int idUtilisateur)
         {
             List <Terrain> terrains = new();
 
@@ -123,8 +123,8 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             }
             terrainDetails.NomVilleTerrain = dr.GetString("nom_ville");
             terrainDetails.CodePostalTerrain = dr.GetString("code_postal");
-            terrainDetails.LongitudeTerrain = dr.GetDecimal("longitude_ville");
-            terrainDetails.LatitudeTerrain = dr.GetDecimal("latitude_ville");
+            terrainDetails.LongitudeTerrain = dr.GetDouble("longitude_ville");
+            terrainDetails.LatitudeTerrain = dr.GetDouble("latitude_ville");
             terrainDetails.HumiditeTerrain = dr.GetString("humidite_terrain");
             terrainDetails.CompositionTerrain = dr.GetString("composition_terrain");
             terrainDetails.PenteTerrain = dr.GetString("pente_terrain");

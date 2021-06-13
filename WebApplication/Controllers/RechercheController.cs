@@ -17,7 +17,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         public ActionResult ChoisirTerrain(int id)
         {
             TerrainBU bu = new();
-            List<Terrain> mesTerrains = bu.GetByIdUtilisateur(id);
+            List<Terrain> mesTerrains = bu.GetAllByIdUtilisateur(id);
             return View(mesTerrains);
         }
 
@@ -26,7 +26,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         public ActionResult ChoisirOffre(int id)
         {
             TerrainBU bu = new();
-            Terrain t = bu.GetTerrain(id);
+            Terrain t = bu.GetById(id);
 
             List<OffreDeTonte> offres = new();
 
