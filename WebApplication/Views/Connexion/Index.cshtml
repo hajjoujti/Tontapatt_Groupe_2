@@ -1,6 +1,8 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Fr.EQL.Ai109.Tontapatt.Model
+@model Utilisateur
 @{
 }
 
@@ -14,18 +16,22 @@
 
             <h2>Entrez vos identifiants</h2>
 
-            <form>
+            <form method="post">
 
                 <p>
 
                     <i class="fas fa-at"></i>
-                    <input type="email" id="Name" class="css-input" placeholder="p.cuquemy@eql.com" />
+                    <input asp-for="MailUtilisateur" type="email" id="Name" class="css-input" placeholder="p.cuquemy@eql.com" />
                 </p>
                 <p>
                     <i class="fas fa-unlock-alt"></i>
-                    <input type="password" id="Password" class="css-input" placeholder="Mot de passe" />
+                    <input asp-for="MdpUtilisateur" type="password" id="Password" class="css-input" placeholder="Mot de passe" />
                 </p>
-                <button class="square_btn" action="post">Connexion</button>
+                <button class="square_btn" type="submit">Connexion</button>
+                @if (ViewBag.IsInBDD == false)
+                {
+                    <p>L'adresse mail ou le mot de passe sont incorrectes</p>
+                }
             </form>
         </div>
     </div>
