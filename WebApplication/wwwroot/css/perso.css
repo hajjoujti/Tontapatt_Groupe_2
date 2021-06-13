@@ -1,0 +1,340 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+:root {
+    --Dark: #13070C;
+    --light: #F5F5F5;
+    --primary: #4F6367;
+    --secondary: #C4C4C4;
+    --info: #88CCF1;
+    --refus: #A44A3F;
+    --accept: #97FE48;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background-color: var(--light);
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    font-size: 1.1rem;
+    margin: 0;
+    align-items: center;
+    color: var(--Dark);
+}
+
+    header::after {
+        content: "";
+        position: absolute;
+        top: 5em;
+        display: block;
+        background-color: var(--secondary);
+        height: 1px;
+        width: 90%;
+    }
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    width: 40%;
+    text-decoration: none;
+    margin-right: 5em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-left {
+    justify-content: flex-start;
+    width: 50%;
+    margin: 0;
+    display: flex;
+    margin-left: 5em;
+    font-family: 'Poppins', sans-serif;
+}
+
+    .header-left p {
+        align-self: center;
+        font-size: 25px;
+    }
+
+.icone-header {
+    align-self: center;
+    margin-left: 4em;
+    position: relative;
+    color: var(--light);
+}
+
+    .icone-header::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 1px;
+        height: 50px;
+        background-color: var(--secondary);
+        left: -20px;
+        top: -15px;
+    }
+
+    .icone-header::after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: var(--info);
+        left: 0px;
+        top: -14px;
+        z-index: -99;
+        border-radius: 50px;
+    }
+
+.header-right p {
+    padding: 0em 1em;
+}
+
+.logo {
+    margin-right: 1em;
+    width: 50px;
+    height: 50px;
+    align-self: center;
+}
+
+@media screen and (max-width: 640px) {
+    .header {
+        padding-left: 20em;
+    }
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    height: 6rem;
+    width: 100%;
+    justify-content: center;
+    font-size: 1.5rem;
+    background-color: var(--primary);
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    color: var(--light);
+}
+
+.main {
+    height: 100%;
+    width: 100%
+}
+
+
+/*//////////////////////////  CHOIX TERRAIN    ///////////////////////////////*/
+
+.choixTerrain_terrains {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--Dark);
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: 15px;
+}
+
+i {
+    display: block;
+}
+
+.choixTerrain_h1 {
+    text-align: center;
+}
+
+.choixTerrain_Border {
+    border: solid 1px var(--Dark);
+    border-radius: 5px;
+    margin: 2rem;
+}
+
+.choixTerrain_terrain {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    height: 20rem;
+}
+
+.choixTerrain_img {
+    width: 10rem;
+    height: 10rem;
+    margin: auto;
+    justify-content: center;
+}
+
+.choixTerrain_description {
+    margin: auto;
+    text-align: center;
+}
+
+.choixTerrain_h3 {
+    margin: 0;
+    justify-content: center;
+}
+
+.choixTerrain_p {
+    overflow: hidden;
+}
+
+.choixTerrain_h2 {
+    text-align: center;
+    margin: 1rem;
+}
+
+.icons-ajoutTerrain {
+    margin: auto;
+}
+
+/*//////////////////////// AFFICHAGE TERRAIN   /////////////////////////*/
+
+.choixTerrainDescription_h1 {
+    text-align: center;
+}
+
+.choixTerrainDescription_terrain {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 3rem 20rem;
+    border-radius: 3px;
+}
+
+choixTerrainDescription_img {
+    width: 40rem;
+    height: 20rem;
+    margin: auto;
+    margin-bottom: 5rem;
+}
+
+.choixTerrainDescription_description {
+    display: flex;
+    flex-direction: row;
+}
+
+.choixTerrainDescription_h2 {
+    margin: 1rem;
+}
+
+.choixTerrainDescription_p {
+    margin: 1rem;
+}
+
+
+
+
+
+
+.main-connexion {
+    margin-top: 7vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.body-connexion {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1em;
+    background-color: var(--primary);
+    border-radius: 5px;
+}
+
+.left-connexion {
+    width: 50%;
+}
+
+    .left-connexion img {
+        width: 100%;
+    }
+
+.right-connexion {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+}
+
+    .right-connexion h2 {
+        text-align: center;
+        color: var(--light);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .right-connexion form {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        color: var(--light);
+    }
+
+        .right-connexion form p {
+            width: 100%;
+        }
+
+            .right-connexion form p i {
+                margin-right: 10px;
+            }
+
+.css-input {
+    font-size: 16px;
+    width: 70%;
+    align-self: center;
+    background-color: unset;
+    border: none;
+    border-bottom: 1px solid var(--light);
+    color: var(--light) !important;
+    max-width: 300px;
+    font-family: 'Roboto', sans-serif;
+}
+
+    .css-input:focus {
+        outline: none;
+    }
+
+    .css-input::placeholder {
+        color: var(--secondary);
+    }
+
+
+.square_btn {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: var(--light);
+    border: solid 2px var(--light);
+    border-radius: 3px;
+    transition: .4s;
+    background-color: var(--info);
+    cursor: pointer;
+}
+
+    .square_btn:hover {
+        background: #67c5ff;
+        color: white;
+    }
