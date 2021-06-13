@@ -10,19 +10,24 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 {
     public class TerrainBU
     {
-        public Terrain GetTerrain(int idTerrain)
+        public Terrain GetById(int idTerrain)
         {
             return new TerrainDAO().GetById(idTerrain);
         }
 
-        public List<Terrain> GetByIdUtilisateur(int idUtilisateur)
+        public List<Terrain> GetAllByIdUtilisateur(int idUtilisateur)
         {
-            return new TerrainDAO().GetByIdUtilisateur(idUtilisateur);
+            return new TerrainDAO().GetAllByIdUtilisateur(idUtilisateur);
         }
         
         public TerrainDetails GetByIdWithDetails(int idTerrain)
         {
             return new TerrainDAO().GetByIdWithDetails(idTerrain);
+        }
+
+        public List<TerrainDetails> GetAllDetailsByIdUtilisateur(int idUtilisateur)
+        {
+            return new TerrainDAO().GetAllDetailsByIdUtilisateur(idUtilisateur);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
         public int IdVilleCP { get; set; }
         public string NomVille { get; set; }
         public string CodePostal { get; set; }
-        public decimal LongitudeVille { get; set; }
-        public decimal LatitudeVille { get; set; }
+        public double LongitudeVille { get; set; }
+        public double LatitudeVille { get; set; }
     }
 }

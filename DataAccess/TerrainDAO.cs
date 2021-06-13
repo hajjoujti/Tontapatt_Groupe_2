@@ -29,9 +29,9 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             return terrain;
         }
 
-        public List<Terrain> GetByIdUtilisateur(int idUtilisateur)
+        public List<Terrain> GetAllByIdUtilisateur(int idUtilisateur)
         {
-            List <Terrain> terrains = new();
+            List<Terrain> terrains = new();
 
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT *
@@ -51,6 +51,71 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             cmd.Connection.Close();
 
             return terrains;
+        }
+
+        public List<TerrainDetails> GetAllDetailsByIdUtilisateur(int idUtilisateur)
+        {
+            List<TerrainDetails> terrainsDetails = new();
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT t.*, 
+                                v.nom_ville, v.code_postal, v.longitude_ville, v.latitude_ville, 
+                                u.nom_utilisateur, u.prenom_utilisateur, u.description_utilisateur, 
+                                hu.humidite_terrain, 
+                                co.composition_terrain,
+                                p.pente_terrain,
+                                ha.hauteur_herbe
+                                FROM terrain t
+                                INNER JOIN villecp v ON t.id_villecp = v.id_villecp
+                                INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
+                                INNER JOIN humiditeterrain hu ON t.id_humidite_terrain = hu.id_humidite_terrain
+                                INNER JOIN compositionterrain co ON t.id_composition_terrain = co.id_composition_terrain
+                                INNER JOIN penteterrain p ON t.id_pente_terrain = p.id_pente_terrain
+                                INNER JOIN hauteurherbe ha ON t.id_hauteur_herbe = ha.id_hauteur_herbe
+                                WHERE t.id_utilisateur = @idUtilisateur";
+            cmd.Parameters.Add(new MySqlParameter("@idUtilisateur", idUtilisateur));
+
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                TerrainDetails terrainDetails = DataReaderTerrainDetails(dr);
+                terrainsDetails.Add(terrainDetails);
+            }
+            cmd.Connection.Close();
+
+            foreach (TerrainDetails t in terrainsDetails)
+            {
+                MySqlCommand cmd2 = CreerCommand();
+                cmd2.CommandText = @"SELECT
+                                    t.id_terrain, 
+                                    vege.id_type_vegetation,
+                                    vege.type_vegetation,
+                                    compo.pourcentage_vegetation
+                                    FROM terrain t
+                                    INNER JOIN compositionvegetation compo ON t.id_terrain = compo.id_terrain
+                                    INNER JOIN typevegetation vege ON compo.id_type_vegetation = vege.id_type_vegetation
+                                    WHERE t.id_terrain = @idTerrain";
+
+                cmd2.Parameters.Add(new MySqlParameter("@idTerrain", t.IdTerrain));
+                cmd2.Connection.Open();
+                MySqlDataReader dr2 = cmd2.ExecuteReader();
+                List<CompositionVegetationDetails> compositionsVegetationDetails = new();
+                while (dr2.Read())
+                {
+                    CompositionVegetationDetails compositionvegetationDetails = new();
+                    compositionvegetationDetails.IdTerrain = dr2.GetInt32("id_terrain");
+                    compositionvegetationDetails.IdTypeVegetation = dr2.GetInt32("id_type_vegetation");
+                    compositionvegetationDetails.TypeVegetaion = dr2.GetString("type_vegetation");
+                    compositionvegetationDetails.PourcentageVegetation = dr2.GetInt32("pourcentage_vegetation");
+                    compositionsVegetationDetails.Add(compositionvegetationDetails);
+                }
+                t.CompositionsVegetationTerrain = compositionsVegetationDetails;
+
+                cmd2.Connection.Close();
+            }
+
+            
+            return terrainsDetails;
         }
 
         public TerrainDetails GetByIdWithDetails(int idTerrain)
@@ -123,8 +188,8 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             }
             terrainDetails.NomVilleTerrain = dr.GetString("nom_ville");
             terrainDetails.CodePostalTerrain = dr.GetString("code_postal");
-            terrainDetails.LongitudeTerrain = dr.GetDecimal("longitude_ville");
-            terrainDetails.LatitudeTerrain = dr.GetDecimal("latitude_ville");
+            terrainDetails.LongitudeTerrain = dr.GetDouble("longitude_ville");
+            terrainDetails.LatitudeTerrain = dr.GetDouble("latitude_ville");
             terrainDetails.HumiditeTerrain = dr.GetString("humidite_terrain");
             terrainDetails.CompositionTerrain = dr.GetString("composition_terrain");
             terrainDetails.PenteTerrain = dr.GetString("pente_terrain");

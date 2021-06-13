@@ -10,14 +10,15 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
     {
         public string EspeceAnimal { get; set; }
         public string RaceAnimal { get; set; }
-        public int MyProperty { get; set; }
         public string NomUtilisateur { get; set; }
         public string PrenomUtilisateur { get; set; }
-        public int DescriptionUtilisateur { get; set; }
+        public string DescriptionUtilisateur { get; set; }
         public string NomVilleOfrreDeTonte { get; set; }
         public string CodePostaleOffreDeTonte { get; set; }
-        public decimal LatitudeOffreDeTonte { get; set; }
-        public decimal LongitudeOffreDetonte { get; set; }
+        public double LatitudeOffreDeTonte { get; set; }
+        public double LongitudeOffreDetonte { get; set; }
+        public double DistanceOffreDeTonteTerrain { get; set; }
+
         public OffreDeTonteDetails()
         {
         }
