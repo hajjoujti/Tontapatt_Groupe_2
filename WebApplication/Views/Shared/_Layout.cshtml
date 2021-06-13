@@ -18,7 +18,7 @@
         </div>
         <div class="header-right">
             <p>
-                <a class=" " href="#Acceuil">Acceuil</a>
+                <a class=""  href="#Acceuil">Acceuil</a>
             </p>
             <p>
                 <a class="" href="#Offre">Offre</a>
@@ -30,12 +30,12 @@
                 <i class="far fa-user"></i>
             </p>
             <p>
-                <a class="" href="#APropos">Connexion</a>
+                <a class="" asp-controller="Connexion" asp-action="Index">Connexion</a>
             </p>
             <p>
                 <a class="" href="#APropos">Inscription</a>
             </p>
-        </div>
+            </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -43,9 +43,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="">
         <div class="container">
-            &copy; 2021 - WebApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <p>
+                2021 - Tontapatt <i class="far fa-copyright"></i>
+            </p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
