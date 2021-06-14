@@ -43,7 +43,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 INNER JOIN espece e ON o.id_race_animal = r.id_race_animal AND r.id_espece_animal = e.id_espece_animal
                                 INNER JOIN villecp v ON o.id_villecp = v.id_villecp
                                 INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
-                                where o.id_offre = @idOffreDeTonte AND o.date_annulation_offre IS NULL";
+                                where o.id_offre = @idOffreDeTonte";
             cmd.Parameters.Add(new MySqlParameter("@idOffreDeTonte", idOffreDeTonte));
             cmd.Connection.Open();
             MySqlDataReader dr = cmd.ExecuteReader();

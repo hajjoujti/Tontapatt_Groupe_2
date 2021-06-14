@@ -34,6 +34,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
             DateAnnulationPrematuree = demandeDeReservation.DateAnnulationPrematuree;
             NumeroReservation = demandeDeReservation.NumeroReservation;
             DateRefusDemande = demandeDeReservation.DateRefusDemande;
+            NombreAnimal = demandeDeReservation.NombreAnimal;
         }
     }
 }

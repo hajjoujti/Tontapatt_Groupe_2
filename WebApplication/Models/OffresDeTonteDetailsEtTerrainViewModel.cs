@@ -10,6 +10,5 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
     {
         public List<OffreDeTonteDetails> OffresDeTonteDetails { get; set; }
         public TerrainDetails TerrainDetails { get; set; }
-        public Utilisateur Utilisateur { get; set; }
     }
 }
