@@ -10,6 +10,11 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 {
     public class UtilisateurBU
     {
+        public Utilisateur GetById(int idUtilisateur)
+        {
+            return new UtilisateurDAO().GetById(idUtilisateur);
+        }
+
         public Utilisateur GetUtilisateurAuthentification(string mail, string mdp)
         {
             return new UtilisateurDAO().GetUtilisateurAuthentification(mail, mdp);

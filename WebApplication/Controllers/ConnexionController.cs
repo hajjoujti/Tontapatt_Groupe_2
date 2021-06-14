@@ -29,7 +29,9 @@ namespace Fr.EQL.Ai109.Totapatt.WebApplication.Controllers
                 ViewBag.IsInBDD = false;
                 return View();
             }
-            return View("/Home", utilisateur);
+            ViewBag.Utilisateur = utilisateur;
+            ViewBag.IdUtilisateur = utilisateur.IdUtilisateur;
+            return View("~/Views/Home/Index.cshtml", utilisateur);
         }
 
         public IActionResult Echec()
