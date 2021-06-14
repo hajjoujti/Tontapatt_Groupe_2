@@ -16,7 +16,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT *
                                 FROM utilisateur
-                                WHERE id_utilisateur = @idUtilisateur";
+                                WHERE id_utilisateur = @idUtilisateur And date_desinscription_utilisateur IS NULL";
             cmd.Parameters.Add(new MySqlParameter("@idUtilisateur", idUtilisateur));
             cmd.Connection.Open();
             MySqlDataReader dr = cmd.ExecuteReader();
@@ -36,7 +36,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             cmd.CommandText = @"SELECT *
                                 FROM utilisateur
                                 WHERE mail_utilisateur = @mailUtilisateur
-                                AND mdp_utilisateur = @mdpUtilisateur";
+                                AND mdp_utilisateur = @mdpUtilisateur And date_desinscription_utilisateur IS NULL";
             cmd.Parameters.Add(new MySqlParameter("@mailUtilisateur", mailUtilisateur));
             cmd.Parameters.Add(new MySqlParameter("@mdpUtilisateur", mdpUtilisateur));
             cmd.Connection.Open();

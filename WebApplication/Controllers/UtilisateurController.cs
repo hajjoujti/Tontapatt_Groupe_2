@@ -17,21 +17,29 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View();
         }
 
-        [Route("Rechercher/ChoisirTerrain/{idUtilisateur:int}")]
+        [HttpGet]
+        [Route("Utilisateur/ChoixTerrainRecherche/{idUtilisateur:int}")]
         public IActionResult ChoixTerrainRecherche(int idUtilisateur)
         {
             TerrainBU buTerrain = new();
-            List<Terrain> mesTerrains = buTerrain.GetAllByIdUtilisateur(idUtilisateur);
+            List<TerrainDetails> terrainsDetails = buTerrain.GetAllDetailsByIdUtilisateur(idUtilisateur);
             UtilisateurBU buUtilisateur = new();
-            ViewBag.Utilisateur = buUtilisateur.GetById(idUtilisateur);
-            return View(mesTerrains);
+            Utilisateur utilisateur = buUtilisateur.GetById(idUtilisateur);
+            ViewBag.Utilisateur = idUtilisateur;
+            return View(terrainsDetails);
         }
 
-        [Route("Rechercher/ChoisirOffre/{idTerrain:int}")]
+        [Route("Utilisateur/ChoixOffreRecherche/{idTerrain:int}")]
         public IActionResult ChoixOffreRecherche(int idTerrain)
         {
             OffreDeTonteBU buOffreDeTonte = new();
             List<OffreDeTonteDetails> offresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
+
+            TerrainBU buTerrain = new();
+            Terrain terrain = buTerrain.GetById(idTerrain);
+
+            UtilisateurBU buUtilisateur = new();
+            ViewBag.Utilisateur = buUtilisateur.GetById(terrain.IdUtilisateur);
 
             return View(offresDeTonteDetails);
         }
