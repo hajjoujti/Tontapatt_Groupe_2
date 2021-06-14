@@ -2,21 +2,22 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @using Fr.EQL.Ai109.Tontapatt.Model
-@model List<OffreDeTonteDetails>
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@model OffresDeTonteDetailsEtTerrainViewModel
 @{
-    int nbOffreDeTonteDetails = Model.Count;
+    int nbOffreDeTonteDetails = Model.OffresDeTonteDetails.Count;
 }
 
 <div class="main-list-offres">
     <div class="header-liste-offres">
         <div>
-            <h3>Terrain : </h3><p> @ViewBag.TerrainDetails.NomTerrain <!-- nom terrain --></p>
+            <h3>Terrain : </h3><p> @Model.TerrainDetails.NomTerrain <!-- nom terrain --></p>
         </div>
         <div>
             <h3>Nombre de résultat : </h3><p> @nbOffreDeTonteDetails <!-- nombre de resultat de recherche --></p>
         </div>
     </div>
-    @foreach (OffreDeTonteDetails offreDeTonteDetails in Model)
+    @foreach (OffreDeTonteDetails offreDeTonteDetails in Model.OffresDeTonteDetails)
     {
 
         <div class="body-card-list-offre">
@@ -26,7 +27,7 @@
                     <h3>@offreDeTonteDetails.NomUtilisateur<!-- nom de l'eleveur --></h3>
                     <p> @offreDeTonteDetails.NomOffre <!-- nom de l'offre --></p>
                     <!-- je vais appeller l'api pour la vue a ce moment et j'aurais besoin d'object avec longitude lattitude terrain et offre -->
-                    <!-- TU PEUX UTILISER @ViewBag.TerrainDetails.LongitudeTerrain ET @ViewBag.TerrainDetails.LatitudeTerrain + @offreDeTonteDetails.LatitudeOffreDeTonte ET
+                    <!-- TU PEUX UTILISER @Model.TerrainDetails.LongitudeTerrain ET @Model.TerrainDetails.LatitudeTerrain + @offreDeTonteDetails.LatitudeOffreDeTonte ET
                         @offreDeTonteDetails.LongitudeOffreDetonte-->
                     <p>Distance : @offreDeTonteDetails.DistanceOffreDeTonteTerrain km<!-- distance avec l'offre --></p>
                 </div>

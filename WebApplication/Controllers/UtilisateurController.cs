@@ -1,5 +1,6 @@
 ﻿using Fr.EQL.Ai109.Tontapatt.Business;
 using Fr.EQL.Ai109.Tontapatt.Model;
+using Fr.EQL.Ai109.Tontapatt.WebApplication.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -33,16 +34,17 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         public IActionResult ChoixOffreRecherche(int idTerrain)
         {
             OffreDeTonteBU buOffreDeTonte = new();
-            List<OffreDeTonteDetails> offresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
 
             TerrainBU buTerrain = new();
-            TerrainDetails terrainDetails = buTerrain.GetByIdWithDetails(idTerrain);
-            ViewBag.TerrainDetails = terrainDetails;
 
             UtilisateurBU buUtilisateur = new();
-            ViewBag.Utilisateur = buUtilisateur.GetById(terrainDetails.IdUtilisateur);
 
-            return View(offresDeTonteDetails);
+            OffresDeTonteDetailsEtTerrainViewModel offresDeTonteDetailsEtTerrainViewModel = new();
+            offresDeTonteDetailsEtTerrainViewModel.OffresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
+            offresDeTonteDetailsEtTerrainViewModel.TerrainDetails = buTerrain.GetByIdWithDetails(idTerrain); ;
+            offresDeTonteDetailsEtTerrainViewModel.Utilisateur = buUtilisateur.GetById(offresDeTonteDetailsEtTerrainViewModel.TerrainDetails.IdUtilisateur);
+
+            return View(offresDeTonteDetailsEtTerrainViewModel);
         }
 
     }
