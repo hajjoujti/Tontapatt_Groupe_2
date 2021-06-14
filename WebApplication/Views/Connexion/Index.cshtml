@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@model ConnexionViewModel
+@{
+}
+
+
+<div class="main-connexion">
+    <div class="body-connexion">
+        <div class="left-connexion">
+            <img src="https://cdn.pixabay.com/photo/2017/01/16/19/54/ireland-1985088_960_720.jpg" />
+        </div>
+        <div class="right-connexion">
+
+            <h2>Entrez vos identifiants</h2>
+
+            <form method="post">
+
+                <p>
+
+                    <i class="fas fa-at"></i>
+                    <input asp-for="MailUtilisateur" type="email" id="Name" class="css-input" placeholder="p.cuquemy@eql.com" />
+                </p>
+                <p>
+                    <i class="fas fa-unlock-alt"></i>
+                    <input asp-for="MdpUtilisateur" type="password" id="Password" class="css-input" placeholder="Mot de passe" />
+                </p>
+                <button class="square_btn" type="submit">Connexion</button>
+                @if (ViewBag.IsInBDD == false)
+                {
+                    <p>L'adresse mail ou le mot de passe sont incorrectes</p>
+                }
+            </form>
+        </div>
+    </div>
+</div>

@@ -4,30 +4,50 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebApplication</title>
-    <!-- CSS du site -->
     <link rel="stylesheet" href="~/css/site.css" />
-    <!-- CSS personnalisée -->
     <link rel="stylesheet" href="~/css/perso.css" />
-    <!-- Fontawesome icons -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 </head>
 <body>
     <header>
-        <div class="header-left">TONTAPATT</div>
-        <div class="header-right">
-            <a class="" href="#Acceuil">Acceuil</a>
-            <a class="" href="#Offre">Offre</a>
-            <a class="" href="#APropos">A Propos</a>
-            <i class="fas fa-portrait fa-2x"></i>
+        <div class="header-left">
+            <img class="logo" src="~/assets/Logo.png" />
+            <p>Tontapatt</p>
         </div>
+        <div class="header-right">
+            <p>
+                <a class=""  href="#Acceuil">Acceuil</a>
+            </p>
+            <p>
+                <a class="" href="#Offre">Offre</a>
+            </p>
+            <p>
+                <a class="" href="#APropos">A Propos</a>
+            </p>
+            <p class="icone-header">
+                <i class="far fa-user"></i>
+            </p>
+            <p>
+                <a class="" asp-controller="Connexion" asp-action="Index">Connexion</a>
+            </p>
+            <p>
+                <a class="" href="#APropos">Inscription</a>
+            </p>
+            </div>
     </header>
-    <main>
-        @RenderBody()
-    </main>
-    <footer>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="">
         <div class="container">
-            &copy; 2021 - WebApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <p>
+                2021 - Tontapatt <i class="far fa-copyright"></i>
+            </p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
