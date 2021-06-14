@@ -4,12 +4,13 @@
 @using Fr.EQL.Ai109.Tontapatt.Model
 @model List<TerrainDetails>
 @{
+    int increment = 1;
 }
 
 <div class="main-terrain">
     @foreach (TerrainDetails terraindetails in Model)
     {
-        int increment = 1;
+        
         <div class="body-card-terrain">
             <div class="terrain-left">
                 <img src="https://cdn.pixabay.com/photo/2016/11/27/21/49/girl-1863906__340.jpg" alt="">
