@@ -1,5 +1,6 @@
 ﻿using Fr.EQL.Ai109.Tontapatt.Business;
 using Fr.EQL.Ai109.Tontapatt.Model;
+using Fr.EQL.Ai109.Tontapatt.WebApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,10 @@ namespace Fr.EQL.Ai109.Totapatt.WebApplication.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(Utilisateur utilisateur)
+        public IActionResult Index(ConnexionViewModel connexionViewModel)
         {
             UtilisateurBU bu = new();
-            utilisateur = bu.GetUtilisateurAuthentification(utilisateur.MailUtilisateur, utilisateur.MdpUtilisateur);
+            Utilisateur utilisateur = bu.GetUtilisateurAuthentification(connexionViewModel.MailUtilisateur, connexionViewModel.MdpUtilisateur);
 
             if(utilisateur is null)
             {
