@@ -417,3 +417,59 @@ choixTerrainDescription_img {
 .icone-terrain:hover {
     color: var(--info);
 }
+
+
+/*///////////////////////////  AFFICHAGE DE LA DESCRIPTION DE L'OFFRE ////////////////// */
+
+
+.infosOffre_main {
+    margin: 2rem;
+}
+
+.infosOffre_h1 {
+    text-align: center;
+}
+
+.infosOffre_div {
+    display: flex;
+    flex-direction: row;
+    background-color: #4F6367;
+    border-radius: 5px;
+    box-shadow: 12px 12px 2px 1px #8c989b;
+}
+
+.infosOffre_img {
+    margin: 2rem;
+    border-radius: 5px;
+}
+
+.infosOffre_infos {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.infosOffre_infosNomEleveur a {
+    font-size: 1.2rem;
+}
+
+.infosOffre_infos p {
+    margin-left: 1rem;
+    width: 80%;
+}
+
+.infosOffre_date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem;
+    color: #ffffff;
+}
+
+    .infosOffre_date input {
+        margin: 1rem;
+    }

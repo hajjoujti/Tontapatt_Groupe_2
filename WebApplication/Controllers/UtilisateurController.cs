@@ -35,6 +35,14 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
             return View(offresDeTonteDetails);
         }
+        [Route("Rechercher/ChoisirOffre/Description/{idOffreDeTonte:int}")]
+        public IActionResult ChoixOffreDescription(int idOffreDeTonte)
+        {
+            OffreDeTonteBU buOffreDeTonte = new();
+            OffreDeTonteDetails offresDeTonteDetails = buOffreDeTonte.GetByIdWithDetails(idOffreDeTonte);
+
+            return View(offresDeTonteDetails);
+        }
 
     }
 }

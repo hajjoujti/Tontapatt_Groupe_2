@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Fr.EQL.Ai109.Tontapatt.Model
+@model OffreDeTonteDetails
+@{
+}
+<div class="infosOffre_main">
+    <h1 class="infosOffre_h1">@Model.NomOffre</h1>
+    <div class="infosOffre_div">
+        <div class="infosOffre_imgbackground">
+            <img class="infosOffre_img" src="assets/terrain_image_default.jpg"><!-- Image à récupérer !-->
+        </div>
+        <div class="infosOffre_infos">
+            <p class="infosOffre_infosNomEleveur"><strong>Nom de l'éleveur : @Model.NomUtilisateur @Model.PrenomUtilisateur</strong><a href="#">Sorhaindo Marc</a></p>
+            <p class="infosOffre_infosDescription"><strong>Description : </strong>@Model.DescriptionUtilisateur</p>
+            <!-- Possible ? -->
+            <p class="infosOffre_infosDateDebut"><strong>Date de début de l'offre : </strong>@Model.DateDebutOffre</p>
+            <!-- Possible ? -->
+            <p class="infosOffre_infosDateFin"><strong>Date de fin de l'offre : </strong>@Model.DateFinOffre</p>
+            <!-- Possible ? -->
+            <p class="infosOffre_infosDateCreation"><strong>Date de création de l'offre : </strong>@Model.DateCreationOffre</p>
+            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.DistanceOffreDeTonteTerrain</p>
+            <p class="infosOffre_infosNomVille"><strong>Ville : </strong>@Model.NomVilleOfrreDeTonte @Model.CodePostaleOffreDeTonte</p>
+            <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.EspeceAnimal</p>
+            <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.RaceAnimal</p>
+            <!-- Possible ? -->
+            <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.NombreAnimaux</p>
+            <!-- Possible ? -->
+            <p class="infosOffre_infosPrix"><strong>Coût par jour : </strong>@Model.CoutAnimalParJour</p>
+        </div>
+
+
+        <div class="infosOffre_date">
+            <p>Choisissez vos dates :</p>
+            <label for="dateOffer">Date de début :</label>
+            <input type="date" name="dateOfferStart" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
+            <label for="dateOffer">Date de fin : </label>
+            <input type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
+        </div>
+    </div>
+</div>
