@@ -8,7 +8,8 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
 {
     public class DemandeDeReservationDetails : DemandeDeReservation
     {
-
+        public OffreDeTonteDetails OffreDeTonteDetails { get; set; }
+        public TerrainDetails TerrainDetails { get; set; }
 
         public DemandeDeReservationDetails()
         {
