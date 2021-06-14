@@ -340,3 +340,80 @@ choixTerrainDescription_img {
         background: #67c5ff;
         color: white;
     }
+
+
+
+/* Terrain card */
+
+.main-terrain {
+    margin: 2em 5em;
+    display: flex;
+    font-family: 'Roboto';
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.body-card-terrain {
+    position: relative;
+    margin: 2em;
+    display: flex;
+    width: 462px;
+    height: 176px;
+    border-radius: 5px;
+    align-items: center;
+    font-family: 'Roboto';
+    overflow: hidden;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.terrain-left img {
+    width: 300px;
+}
+
+.terrain-right {
+    padding: 1em;
+    font-size: 13px;
+    flex-grow: 1;
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+    color: var(--Dark);
+}
+
+.circle-icone-card-terrain {
+    height: 50px;
+    width: 50px;
+    background-color: var(--light);
+    position: absolute;
+    top: 6px;
+    right: 139Px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+}
+
+.footer-card-terrain {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+    .footer-card-terrain p {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        font-size: 23px;
+        margin-block: 0;
+    }
+
+    .footer-card-terrain i {
+        cursor: pointer;
+    }
+
+.icone-terrain:hover {
+    color: var(--info);
+}
