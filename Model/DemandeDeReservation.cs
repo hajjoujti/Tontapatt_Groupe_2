@@ -17,7 +17,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
         public int IdOffre { get; set; }
         public DateTime DateDebutDemande { get; set; }
         public DateTime DateFinDemande { get; set; }
-        public double DoutDemadne { get; set; }
+        public double CoutDemande { get; set; }
         public DateTime? DateAcceptationDemande { get; set; }
         public DateTime? DateAnnulationDemande { get; set; }
         public DateTime DateCreationDemande { get; set; }
