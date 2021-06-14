@@ -1,5 +1,6 @@
 ﻿using Fr.EQL.Ai109.Tontapatt.Business;
 using Fr.EQL.Ai109.Tontapatt.Model;
+using Fr.EQL.Ai109.Tontapatt.WebApplication.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,26 +23,30 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         public IActionResult ChoixTerrainRecherche(int idUtilisateur)
         {
             TerrainBU buTerrain = new();
-            List<TerrainDetails> terrainsDetails = buTerrain.GetAllDetailsByIdUtilisateur(idUtilisateur);
+
             UtilisateurBU buUtilisateur = new();
-            Utilisateur utilisateur = buUtilisateur.GetById(idUtilisateur);
-            ViewBag.Utilisateur = idUtilisateur;
-            return View(terrainsDetails);
+
+            UtilisateurEtTerrainsDetailsViewModel utilisateurEtTerrainsDetailsViewModel = new();
+            utilisateurEtTerrainsDetailsViewModel.TerrainsDetails = buTerrain.GetAllDetailsByIdUtilisateur(idUtilisateur);
+            utilisateurEtTerrainsDetailsViewModel.Utilisateur = buUtilisateur.GetById(idUtilisateur);
+
+            return View(utilisateurEtTerrainsDetailsViewModel);
         }
 
         [Route("Utilisateur/ChoixOffreRecherche/{idTerrain:int}")]
         public IActionResult ChoixOffreRecherche(int idTerrain)
         {
             OffreDeTonteBU buOffreDeTonte = new();
-            List<OffreDeTonteDetails> offresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
 
             TerrainBU buTerrain = new();
-            Terrain terrain = buTerrain.GetById(idTerrain);
 
             UtilisateurBU buUtilisateur = new();
-            ViewBag.Utilisateur = buUtilisateur.GetById(terrain.IdUtilisateur);
 
-            return View(offresDeTonteDetails);
+            OffresDeTonteDetailsEtTerrainViewModel offresDeTonteDetailsEtTerrainViewModel = new();
+            offresDeTonteDetailsEtTerrainViewModel.OffresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
+            offresDeTonteDetailsEtTerrainViewModel.TerrainDetails = buTerrain.GetByIdWithDetails(idTerrain); ;
+
+            return View(offresDeTonteDetailsEtTerrainViewModel);
         }
 
         [Route("Rechercher/ChoisirOffre/Description/{idOffreDeTonte:int}")]

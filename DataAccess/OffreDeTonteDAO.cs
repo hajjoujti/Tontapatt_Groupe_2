@@ -81,7 +81,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             while (dr.Read())
             {
                 OffreDeTonteDetails offreDeTonteDetails = DataReaderOffreDeTonteDetals(dr);
-                offreDeTonteDetails.DistanceOffreDeTonteTerrain = dr.GetDouble("Distance");
+                offreDeTonteDetails.DistanceOffreDeTonteTerrain = Math.Round(dr.GetDouble("Distance"), 2);
                 offresDeTonteDetails.Add(offreDeTonteDetails);
             }
 

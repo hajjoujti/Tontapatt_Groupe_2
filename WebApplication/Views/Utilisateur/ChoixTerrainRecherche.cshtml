@@ -2,13 +2,14 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @using Fr.EQL.Ai109.Tontapatt.Model
-@model List<TerrainDetails>
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@model UtilisateurEtTerrainsDetailsViewModel
 @{
     int increment = 1;
 }
 
 <div class="main-terrain">
-    @foreach (TerrainDetails terraindetails in Model)
+    @foreach (TerrainDetails terraindetails in Model.TerrainsDetails)
     {
 
         <div class="body-card-terrain">
