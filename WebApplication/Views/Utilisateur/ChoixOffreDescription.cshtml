@@ -22,13 +22,18 @@
             <p class="infosOffre_infosPrix"><strong>Coût par jour : </strong>@Model.CoutAnimalParJour</p>
         </div>
 
-
-        <div class="infosOffre_date">
-            <p>Choisissez vos dates :</p>
-            <label for="dateOffer">Date de début :</label>
-            <input type="date" name="dateOfferStart" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
-            <label for="dateOffer">Date de fin : </label>
-            <input type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
+        <div class="infosOffre_selection">
+            <div class="infosOffre_date">
+                <p>Choisissez vos dates :</p>
+                <label for="dateOffer">Date de début :</label>
+                <input type="date" name="dateOfferStart" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
+                <label for="dateOffer">Date de fin : </label>
+                <input type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
+            </div>
+            <div class="infosOffre_button">
+                <a class="infosOffre_buttonSelection" href="#">Choisir ce terrain</a>
+                <a class="infosOffre_buttonChange" href="#">Changer de terrain</a>
+            </div>
         </div>
     </div>
 </div>

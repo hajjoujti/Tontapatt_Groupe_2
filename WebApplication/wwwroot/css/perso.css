@@ -574,6 +574,128 @@ choixTerrainDescription_img {
     height: 15rem;
 }
 
-    .infosOffre_date input {
-        margin: 1rem;
-    }
+.infosOffre_date input {
+    margin: 1rem;
+}
+
+.infosOffre_selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    margin-right: 1.7rem;
+    color: #ffffff;
+}
+.infosOffre_button a {
+    width: 15rem;
+    height: 4rem;
+    background-color: #dddddd;
+    border-radius: 5px;
+    border: 2px solid black;
+    transition: color 5s;
+    margin: auto;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+}
+
+.infosOffre_buttonSelection {
+    align-items: center;
+}
+
+.infosOffre_buttonChange {
+    align-items: center;
+    justify-content: center;
+}
+.infosOffre_buttonSelection:hover {
+    background-color: #135d25;
+}
+
+.infosOffre_buttonChange:hover {
+    background-color: #c82626;
+}
+
+/*///////////////////   CHOIX TERRAIN DESCRIPTION  ///////////////////*/
+
+.infosTerrrain_main {
+    margin: 2rem;
+    margin-bottom: 10rem;
+}
+
+.infosTerrrain_h1 {
+    text-align: center;
+}
+
+.infosTerrrain_div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #4F6367;
+    border-radius: 5px;
+    box-shadow: 12px 12px 2px 1px #8c989b;
+    height: 80%;
+    width: 80%;
+    margin: auto;
+}
+
+.infosTerrrain_imgbackground {
+    text-align: center;
+    margin: 1rem;
+}
+
+.infosTerrrain_imgbackground img {
+    border-radius: 5px;
+}
+
+.infosTerrrain_imgbackground a {
+    width: 15rem;
+    height: 4rem;
+    background-color: #dddddd;
+    border-radius: 5px;
+    border: 2px solid black;
+    transition: color 5s;
+    margin: auto;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+}
+
+.infosTerrrain_buttonSelection {
+    align-items: center;
+}
+
+.infosTerrrain_buttonChange {
+    align-items: center;
+    justify-content: center;
+}
+
+.infosTerrrain_buttonSelection:hover {
+    background-color: #135d25;
+}
+
+.infosTerrrain_buttonChange:hover {
+    background-color: #c82626;
+}
+
+.infosTerrrain_infos {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #dddddd;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.infosTerrrain_infosNomEleveur a {
+    font-size: 1.5rem;
+    transition: font-size 2s;
+    transition: color 2s;
+}
+
+.infosTerrrain_infosNomEleveur a:hover {
+    color: #4F6367;
+    font-size: 1.8rem;
+}
+
+.infosTerrrain_infos p {
+    margin-left: 1rem;
+    width: 80%;
+}

@@ -1,5 +1,38 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Fr.EQL.Ai109.Tontapatt.Model
+@model TerrainDetails
 @{
 }
+<div class="infosTerrrain_main">
+    <h1 class="infosTerrrain_h1">@Model.NomTerrain</h1>
+    <div class="infosTerrrain_div">
+        <div class="infosTerrrain_imgbackground">
+            <img class="infosTerrrain_img" src="@Model.PhotoTerrain">
+            <a class="infosTerrrain_buttonSelection" href="#">Choisir ce terrain</a>
+            <a class="infosTerrrain_buttonChange" href="#">Changer de terrain</a>
+        </div>
+        <div class="infosTerrrain_infos">
+            <p class="infosTerrrain_infosNomUtilisateur"><strong>Nom de l'éleveur : </strong><a href="#">@Model.NomUtilisateur @Model.PrenomUtilisateur</a></p>
+            <p class="infosTerrrain_infosDate"><strong>Date d'enregistrement du terrain : </strong>@Model.DateEnregistrementTerrain</p>
+            <p class="infosTerrrain_infosDescription"><strong>Description : </strong>@Model.DescriptionTerrain</p>
+            <p class="infosTerrrain_infosVille"><strong>Adresse du terrain : </strong>@Model.AdresseTerrain</p>
+            <p class="infosTerrrain_infosVille"><strong>Ville / Code Postal : </strong>@Model.NomVilleTerrain / @Model.CodePostalTerrain</p>
+            <p class="infosTerrrain_infosHumidite"><strong>Humidité du terrain : </strong>@Model.HumiditeTerrain</p>
+            <p class="infosTerrrain_infosComposition"><strong>Composition du terrain : </strong>@Model.CompositionTerrain</p>
+            <p class="infosTerrrain_infosPente"><strong>Pente du terrain : </strong>@Model.PenteTerrain</p>
+            <p class="infosTerrrain_infosHauteurHerbe"><strong>Hauteur de l'herbe : </strong>@Model.HauteurHerbe</p>
+            <p class="infosTerrrain_infosSurface"><strong>Surface du terrain : </strong>@Model.SurfaceTerrain</p>
+            <!--
+                <p class="infosTerrrain_infosCompositionVegetation">
+                    <strong>Composition de la végétation : </strong>
+                    <ul>
+                            <li> Model.CompositionsVegetationTerrain</li>
+                        }
+                    </ul>
+                </p>
+             -->
+        </div>
+    </div>
+</div>
