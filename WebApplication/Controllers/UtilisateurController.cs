@@ -23,11 +23,14 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         public IActionResult ChoixTerrainRecherche(int idUtilisateur)
         {
             TerrainBU buTerrain = new();
-            List<TerrainDetails> terrainsDetails = buTerrain.GetAllDetailsByIdUtilisateur(idUtilisateur);
+
             UtilisateurBU buUtilisateur = new();
-            Utilisateur utilisateur = buUtilisateur.GetById(idUtilisateur);
-            ViewBag.Utilisateur = idUtilisateur;
-            return View(terrainsDetails);
+
+            UtilisateurEtTerrainsDetailsViewModel utilisateurEtTerrainsDetailsViewModel = new();
+            utilisateurEtTerrainsDetailsViewModel.TerrainsDetails = buTerrain.GetAllDetailsByIdUtilisateur(idUtilisateur);
+            utilisateurEtTerrainsDetailsViewModel.Utilisateur = buUtilisateur.GetById(idUtilisateur);
+
+            return View(utilisateurEtTerrainsDetailsViewModel);
         }
 
         [Route("Utilisateur/ChoixOffreRecherche/{idTerrain:int}")]
@@ -42,7 +45,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             OffresDeTonteDetailsEtTerrainViewModel offresDeTonteDetailsEtTerrainViewModel = new();
             offresDeTonteDetailsEtTerrainViewModel.OffresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
             offresDeTonteDetailsEtTerrainViewModel.TerrainDetails = buTerrain.GetByIdWithDetails(idTerrain); ;
-            offresDeTonteDetailsEtTerrainViewModel.Utilisateur = buUtilisateur.GetById(offresDeTonteDetailsEtTerrainViewModel.TerrainDetails.IdUtilisateur);
 
             return View(offresDeTonteDetailsEtTerrainViewModel);
         }
