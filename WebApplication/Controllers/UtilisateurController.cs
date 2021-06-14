@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Fr.EQL.Ai109.Tontapatt.Business;
+using Fr.EQL.Ai109.Tontapatt.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,73 +17,24 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View();
         }
 
-        // GET: UtilisateurController/Details/5
-        public ActionResult Details(int id)
+        [Route("Rechercher/ChoisirTerrain/{idUtilisateur:int}")]
+        public IActionResult ChoixTerrainRecherche(int idUtilisateur)
         {
-            return View();
+            TerrainBU buTerrain = new();
+            List<Terrain> mesTerrains = buTerrain.GetAllByIdUtilisateur(idUtilisateur);
+            UtilisateurBU buUtilisateur = new();
+            ViewBag.Utilisateur = buUtilisateur.GetById(idUtilisateur);
+            return View(mesTerrains);
         }
 
-        // GET: UtilisateurController/Create
-        public ActionResult Create()
+        [Route("Rechercher/ChoisirOffre/{idTerrain:int}")]
+        public IActionResult ChoixOffreRecherche(int idTerrain)
         {
-            return View();
+            OffreDeTonteBU buOffreDeTonte = new();
+            List<OffreDeTonteDetails> offresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
+
+            return View(offresDeTonteDetails);
         }
 
-        // POST: UtilisateurController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UtilisateurController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: UtilisateurController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UtilisateurController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UtilisateurController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

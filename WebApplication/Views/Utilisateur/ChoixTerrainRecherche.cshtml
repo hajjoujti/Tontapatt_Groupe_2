@@ -10,7 +10,7 @@
 <div class="main-terrain">
     @foreach (TerrainDetails terraindetails in Model)
     {
-        
+
         <div class="body-card-terrain">
             <div class="terrain-left">
                 <img src="https://cdn.pixabay.com/photo/2016/11/27/21/49/girl-1863906__340.jpg" alt="">
@@ -43,7 +43,11 @@
                     <P>
                         <span class="icone-terrain"><i class="far fa-flag"></i></span>
                         <!-- inclure plus tard des terrains favoris  -->
-                        <span class="icone-terrain"><i class="far fa-plus-square"></i></span>
+                        <span class="icone-terrain">
+                            <a asp-controller="Utilisateur" asp-action="ChoixOffreRecherche" asp-route-id="@ViewBag.IdUtilisateur">
+                                <i class="far fa-plus-square"></i>
+                            </a>
+                        </span>
                         <!-- a entourer d'un lien <a> pour rediriger vers la page de recherche  -->
                     </P>
                 </div>
