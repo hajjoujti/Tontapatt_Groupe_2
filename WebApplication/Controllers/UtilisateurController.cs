@@ -43,6 +43,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
             return View(offresDeTonteDetails);
         }
+
         [Route("Rechercher/ChoisirOffre/Description/{idOffreDeTonte:int}")]
         public IActionResult ChoixOffreDescription(int idOffreDeTonte)
         {
