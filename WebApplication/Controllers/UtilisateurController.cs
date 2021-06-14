@@ -36,10 +36,11 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             List<OffreDeTonteDetails> offresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
 
             TerrainBU buTerrain = new();
-            Terrain terrain = buTerrain.GetById(idTerrain);
+            TerrainDetails terrainDetails = buTerrain.GetByIdWithDetails(idTerrain);
+            ViewBag.TerrainDetails = terrainDetails;
 
             UtilisateurBU buUtilisateur = new();
-            ViewBag.Utilisateur = buUtilisateur.GetById(terrain.IdUtilisateur);
+            ViewBag.Utilisateur = buUtilisateur.GetById(terrainDetails.IdUtilisateur);
 
             return View(offresDeTonteDetails);
         }

@@ -1,30 +1,39 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Fr.EQL.Ai109.Tontapatt.Model
+@model List<OffreDeTonteDetails>
 @{
+    int nbOffreDeTonteDetails = Model.Count;
 }
 
 <div class="main-list-offres">
     <div class="header-liste-offres">
         <div>
-            <h3>Terrain : </h3><p> Les magnolia <!-- nom terrain --></p>
+            <h3>Terrain : </h3><p> @ViewBag.TerrainDetails.NomTerrain <!-- nom terrain --></p>
         </div>
         <div>
-            <h3>Nombre de résultat : </h3><p> 6 <!-- nombre de resultat de recherche --></p>
+            <h3>Nombre de résultat : </h3><p> @nbOffreDeTonteDetails <!-- nombre de resultat de recherche --></p>
         </div>
     </div>
-    <div class="body-card-list-offre">
-        <div class="img-profile-list-offre"> </div>
-        <div class="liste-offres-right">
-            <div class="liste-detail-offres-text">
-                <h3>Jean Michel<!-- nom de l'eleveur --></h3>
-                <p> Troupeaux du sud <!-- nom de l'offre --></p>
-                <!-- je vais appeller l'api pour la vue a ce moment et j'aurais besoin d'object avec longitude lattitude terrain et offre -->
-                <p>Distance : 125km <!-- distance avec l'offre --></p>
-            </div>
-            <div class="liste-detail-offres-button">
-                <a><!-- lien vers la vue détailler --><i class="far fa-eye"></i></a>
+    @foreach (OffreDeTonteDetails offreDeTonteDetails in Model)
+    {
+
+        <div class="body-card-list-offre">
+            <div class="img-profile-list-offre"> </div>
+            <div class="liste-offres-right">
+                <div class="liste-detail-offres-text">
+                    <h3>@offreDeTonteDetails.NomUtilisateur<!-- nom de l'eleveur --></h3>
+                    <p> @offreDeTonteDetails.NomOffre <!-- nom de l'offre --></p>
+                    <!-- je vais appeller l'api pour la vue a ce moment et j'aurais besoin d'object avec longitude lattitude terrain et offre -->
+                    <!-- TU PEUX UTILISER @ViewBag.TerrainDetails.LongitudeTerrain ET @ViewBag.TerrainDetails.LatitudeTerrain + @offreDeTonteDetails.LatitudeOffreDeTonte ET
+                        @offreDeTonteDetails.LongitudeOffreDetonte-->
+                    <p>Distance : @offreDeTonteDetails.DistanceOffreDeTonteTerrain km<!-- distance avec l'offre --></p>
+                </div>
+                <div class="liste-detail-offres-button">
+                    <a><!-- lien vers la vue détailler --><i class="far fa-eye"></i></a>
+                </div>
             </div>
         </div>
-    </div>
+    }
 </div>
