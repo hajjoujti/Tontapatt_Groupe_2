@@ -15,7 +15,7 @@
         </div>
         <div class="infosTerrrain_infos">
             <p class="infosTerrrain_infosNomUtilisateur"><strong>Nom de l'éleveur : </strong><a href="#">@Model.NomUtilisateur @Model.PrenomUtilisateur</a></p>
-            <p class="infosTerrrain_infosDate"><strong>Date d'enregistrement du terrain : </strong>@Model.DateEnregistrementTerrain</p>
+            <p class="infosTerrrain_infosDate"><strong>Date d'enregistrement du terrain : </strong>@Model.DateEnregistrementTerrain.ToString("MM/dd/yyyy")</p>
             <p class="infosTerrrain_infosDescription"><strong>Description : </strong>@Model.DescriptionTerrain</p>
             <p class="infosTerrrain_infosVille"><strong>Adresse du terrain : </strong>@Model.AdresseTerrain</p>
             <p class="infosTerrrain_infosVille"><strong>Ville / Code Postal : </strong>@Model.NomVilleTerrain / @Model.CodePostalTerrain</p>

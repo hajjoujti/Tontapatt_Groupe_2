@@ -58,18 +58,13 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(offresDeTonteDetails);
         }
 
-        [Route("Utilisateur/ChoixTerrainRecherche/Description/{idUtilisateur:int}")]
-        public IActionResult ChoixTerrainDescription(int idUtilisateur)
+        [Route("Utilisateur/ChoixTerrainRecherche/Description/{idTerrain:int}")]
+        public IActionResult ChoixTerrainDescription(int idTerrain)
         {
             TerrainBU buTerrain = new();
+            TerrainDetails TerrainsDetails = buTerrain.GetByIdWithDetails(idTerrain);
 
-            UtilisateurBU buUtilisateur = new();
-
-            UtilisateurEtTerrainsDetailsViewModel utilisateurEtTerrainsDetailsViewModel = new();
-            utilisateurEtTerrainsDetailsViewModel.TerrainsDetails = buTerrain.GetAllDetailsByIdUtilisateur(idUtilisateur);
-            utilisateurEtTerrainsDetailsViewModel.Utilisateur = buUtilisateur.GetById(idUtilisateur);
-
-            return View(utilisateurEtTerrainsDetailsViewModel);
+            return View(TerrainsDetails);
         }
 
     }
