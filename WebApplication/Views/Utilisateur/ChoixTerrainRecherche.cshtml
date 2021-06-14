@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Fr.EQL.Ai109.Tontapatt.Model
+@model List<TerrainDetails>
+@{
+    int increment = 1;
+}
+
+<div class="main-terrain">
+    @foreach (TerrainDetails terraindetails in Model)
+    {
+
+        <div class="body-card-terrain">
+            <div class="terrain-left">
+                <img src="https://cdn.pixabay.com/photo/2016/11/27/21/49/girl-1863906__340.jpg" alt="">
+            </div>
+            <span class="circle-icone-card-terrain">
+                @increment
+                <!-- inclure increment  -->
+            </span>
+            <div class="terrain-right">
+
+                <h2>
+                    @terraindetails.NomTerrain
+                    <!-- nom du terrain  -->
+                </h2>
+                <p>
+                    <span class="ville">
+                        @terraindetails.NomVilleTerrain
+                        <!-- ville terrain  -->
+                    </span>
+                    <span class="code-postal">
+                        @terraindetails.CodePostalTerrain
+                        <!-- code postal terrain  -->
+                    </span>
+                </p>
+                <p>
+                    @terraindetails.AdresseTerrain
+                    <!-- adresse terrain  -->
+                </p>
+                <div class="footer-card-terrain">
+                    <P>
+                        <span class="icone-terrain"><i class="far fa-flag"></i></span>
+                        <!-- inclure plus tard des terrains favoris  -->
+                        <span class="icone-terrain">
+                            <a asp-controller="Utilisateur" asp-action="ChoixOffreRecherche" asp-route-id="@ViewBag.IdUtilisateur">
+                                <i class="far fa-plus-square"></i>
+                            </a>
+                        </span>
+                        <!-- a entourer d'un lien <a> pour rediriger vers la page de recherche  -->
+                    </P>
+                </div>
+            </div>
+        </div>
+        increment++;
+    }
+</div>

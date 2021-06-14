@@ -17,25 +17,46 @@
             <p>Tontapatt</p>
         </div>
         <div class="header-right">
-            <p>
-                <a class=""  href="#Acceuil">Acceuil</a>
-            </p>
-            <p>
-                <a class=""  asp-controller="TerrainChoix" asp-action="Index">Offre</a>
-            </p>
-            <p>
-                <a class="" href="#APropos">A Propos</a>
-            </p>
-            <p class="icone-header">
-                <i class="far fa-user"></i>
-            </p>
-            <p>
-                <a class="" asp-controller="Connexion" asp-action="Index">Connexion</a>
-            </p>
-            <p>
-                <a class="" href="#APropos">Inscription</a>
-            </p>
-            </div>
+            @if (@ViewBag.Utilisateur is not null)
+            {
+                <p>
+                    <a class="" asp-controller="Home" asp-action="Index">Acceuil</a>
+                </p>
+                <p>
+                    <a class="" asp-controller="Utilisateur" asp-action="ChoixTerrainRecherche" asp-route-id="@ViewBag.IdUtilisateur">Offre</a>
+                </p>
+                <p>
+                    <a class="" href="#APropos">A Propos</a>
+                </p>
+                <p class="icone-header">
+                    <i class="far fa-user"></i>
+                </p>
+                <p>
+                    <a class="" asp-controller="Connexion" asp-action="Index">Deconnexion</a>
+                </p>
+            }
+            else
+            {
+                <p>
+                    <a class="" asp-controller="Home" asp-action="Index">Acceuil</a>
+                </p>
+                <p>
+                    <a class="" asp-controller="Home" asp-action="Index">Offre</a>
+                </p>
+                <p>
+                    <a class="" href="#APropos">A Propos</a>
+                </p>
+                <p class="icone-header">
+                    <i class="far fa-user"></i>
+                </p>
+                <p>
+                    <a class="" asp-controller="Connexion" asp-action="Index">Connexion</a>
+                </p>
+                <p>
+                    <a class="" href="#APropos">Inscription</a>
+                </p>
+            }
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">

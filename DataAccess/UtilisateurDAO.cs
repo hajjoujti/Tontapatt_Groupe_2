@@ -10,6 +10,25 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
 {
     public class UtilisateurDAO : DAO
     {
+        public Utilisateur GetById(int idUtilisateur)
+        {
+            Utilisateur utilisateur = null;
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT *
+                                FROM utilisateur
+                                WHERE id_utilisateur = @idUtilisateur";
+            cmd.Parameters.Add(new MySqlParameter("@idUtilisateur", idUtilisateur));
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                utilisateur = DataReaderUtilisateur(dr);
+            }
+
+            cmd.Connection.Close();
+            return utilisateur;
+        }
+
         public Utilisateur GetUtilisateurAuthentification(string mailUtilisateur, string mdpUtilisateur)
         {
             Utilisateur utilisateur = null;
