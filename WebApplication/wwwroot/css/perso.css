@@ -418,6 +418,100 @@ choixTerrainDescription_img {
     color: var(--info);
 }
 
+/*listes offres*/
+
+.main-list-offres {
+    margin: 2em 5em;
+    display: flex;
+    font-family: 'Roboto';
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.body-card-list-offre {
+    display: flex;
+    background-color: var(--light);
+    width: 100%;
+    position: relative;
+    margin-bottom: 3em;
+    max-width: 650px;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+    .body-card-list-offre::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        top: 0px;
+        left: 0;
+        background-color: var(--secondary);
+    }
+
+.liste-offres-right {
+    flex-grow: 1;
+    padding-left: 4em;
+    display: flex;
+}
+
+.img-profile-list-offre {
+    height: 110px;
+    width: 110px;
+    margin-left: 1em;
+    align-self: center;
+    background-image: url("https://cdn.pixabay.com/photo/2016/11/27/21/49/girl-1863906__340.jpg");
+    border-radius: 50%;
+    background-size: cover;
+}
+
+.liste-detail-offres-text {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: end;
+    margin-left: 1em;
+}
+
+.liste-detail-offres-button {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .liste-detail-offres-button i {
+        font-size: 30px;
+        color: var(--primary);
+        cursor: pointer;
+    }
+
+
+        .liste-detail-offres-button i:hover {
+            font-size: 35px;
+            color: var(--info);
+        }
+
+.header-liste-offres {
+    display: flex;
+    width: 100%;
+}
+
+    .header-liste-offres div {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .header-liste-offres div p {
+            margin-left: 5px;
+        }
+
+
+
 
 /*///////////////////////////  AFFICHAGE DE LA DESCRIPTION DE L'OFFRE ////////////////// */
 
