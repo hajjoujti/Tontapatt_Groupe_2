@@ -16,7 +16,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT *
                                 FROM terrain
-                                WHERE id_terrain = @idTerrain AND date_retrait_terrain IS NULL";
+                                WHERE id_terrain = @idTerrain";
             cmd.Parameters.Add(new MySqlParameter("@idTerrain", idTerrain));
             cmd.Connection.Open();
             MySqlDataReader dr = cmd.ExecuteReader();
@@ -36,7 +36,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT *
                                 FROM terrain
-                                WHERE id_utilisateur = @idUtilisateur AND date_retrait_terrain IS NULL";
+                                WHERE id_utilisateur = @idUtilisateur";
             cmd.Parameters.Add(new MySqlParameter("@idUtilisateur", idUtilisateur));
 
             cmd.Connection.Open();
@@ -136,7 +136,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 INNER JOIN compositionterrain co ON t.id_composition_terrain = co.id_composition_terrain
                                 INNER JOIN penteterrain p ON t.id_pente_terrain = p.id_pente_terrain
                                 INNER JOIN hauteurherbe ha ON t.id_hauteur_herbe = ha.id_hauteur_herbe
-                                WHERE t.id_terrain = @idTerrain AND t.date_retrait_terrain IS NULL";
+                                WHERE t.id_terrain = @idTerrain";
             cmd.Parameters.Add(new MySqlParameter("@idTerrain", idTerrain));
             cmd.Connection.Open();
             MySqlDataReader dr = cmd.ExecuteReader();
@@ -155,7 +155,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 FROM terrain t
                                 INNER JOIN compositionvegetation compo ON t.id_terrain = compo.id_terrain
                                 INNER JOIN typevegetation vege ON compo.id_type_vegetation = vege.id_type_vegetation
-                                WHERE t.id_terrain = @idTerrain AND t.date_retrait_terrain IS NULL";
+                                WHERE t.id_terrain = @idTerrain";
 
             cmd.Connection.Open();
             MySqlDataReader dr2 = cmd.ExecuteReader();
