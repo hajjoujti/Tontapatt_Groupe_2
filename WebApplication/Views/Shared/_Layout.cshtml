@@ -21,7 +21,7 @@
             <p>Tontapatt</p>
         </div>
         <div class="header-right">
-            @if (@ViewBag.Utilisateur is not null)
+            @if (@ViewBag.IsInBDD == true)
             {
                 <p>
                     <a class="" asp-controller="Home" asp-action="Index">Acceuil</a>
@@ -39,7 +39,7 @@
                     <i class="far fa-user"></i>
                 </p>
                 <p>
-                    <a class="" asp-controller="Connexion" asp-action="Index">Deconnexion</a>
+                    <a class="" asp-controller="Connexion" asp-action="Deconnexion">Deconnexion</a>
                 </p>
             }
             else

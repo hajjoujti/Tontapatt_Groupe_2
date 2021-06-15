@@ -29,15 +29,15 @@ namespace Fr.EQL.Ai109.Totapatt.WebApplication.Controllers
                 ViewBag.IsInBDD = false;
                 return View();
             }
-            ViewBag.Utilisateur = utilisateur;
+            ViewBag.IsInBDD = true;
             ViewBag.IdUtilisateur = utilisateur.IdUtilisateur;
             return View("~/Views/Home/Index.cshtml", utilisateur);
         }
 
-        public IActionResult Echec()
+        public IActionResult Deconnexion()
         {
-            
-            return View();
+            ViewBag.IsInBDD = false;
+            return View("~/Views/Home/Index.cshtml");
         }
     }
 }

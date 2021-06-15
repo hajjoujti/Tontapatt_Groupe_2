@@ -12,6 +12,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 {
     public class UtilisateurController : Controller
     {
+        Boolean isInBDD;
         // GET: UtilisateurController
         public ActionResult Index()
         {
@@ -30,6 +31,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             utilisateurEtTerrainsDetailsViewModel.TerrainsDetails = buTerrain.GetAllDetailsByIdUtilisateur(idUtilisateur);
             utilisateurEtTerrainsDetailsViewModel.Utilisateur = buUtilisateur.GetById(idUtilisateur);
 
+            ViewBag.IsInBDD = true;
             return View(utilisateurEtTerrainsDetailsViewModel);
         }
 
@@ -46,6 +48,8 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             offresDeTonteDetailsEtTerrainViewModel.OffresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
             offresDeTonteDetailsEtTerrainViewModel.TerrainDetails = buTerrain.GetByIdWithDetails(idTerrain); ;
 
+            ViewBag.IsInBDD = true;
+
             return View(offresDeTonteDetailsEtTerrainViewModel);
         }
 
@@ -56,6 +60,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             OffreDeTonteDetails offresDeTonteDetails = buOffreDeTonte.GetWithDetailsByIdOffreEtPositionTerrain(idOffreDeTonte, idTerrain);
 
             ViewBag.IdTerrain = idTerrain;
+            ViewBag.IsInBDD = true;
 
             return View(offresDeTonteDetails);
         }
@@ -66,12 +71,16 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             TerrainBU buTerrain = new();
             TerrainDetails TerrainsDetails = buTerrain.GetByIdWithDetails(idTerrain);
 
+            ViewBag.IsInBDD = true;
+
             return View(TerrainsDetails);
         }
 
         [Route("Utilisateur/liste/Prestation")]
         public IActionResult ListePrestation()
         {
+            ViewBag.IsInBDD = true;
+
             return View();
         }
     }
