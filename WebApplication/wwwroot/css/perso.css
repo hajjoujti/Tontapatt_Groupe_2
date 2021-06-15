@@ -50,6 +50,7 @@ header {
     font-family: 'Roboto', sans-serif;
 }
 
+
 .header-left {
     justify-content: flex-start;
     width: 50%;
@@ -97,6 +98,7 @@ header {
 
 .header-right p {
     padding: 0em 1em;
+
 }
 
 .logo {
@@ -705,28 +707,27 @@ choixTerrainDescription_img {
 .container-top {
     width: 100%;
     height: 600px;
-    background-image: url("/assets/Slide1.png");
-    background-color: #cccccc;
+    background-image: url(/assets/Slide1.png);
+    background-color: #d8e8c8;
+    background-position: right;
+    background-repeat: no-repeat;
+    display:flex;
 }
 
 .container-top-h1 {
     position: absolute;
-    top: 20%;
+    top: 8%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    padding: 50px;
-    margin: 30px;
+    font-family: 'Roboto';
+    text-align: center;
 }
 
 .container-top-p {
-    position: absolute;
-    top: 23%;
-    left: 24%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    padding: 60px;
-    margin: 30px;
+    margin: 7%;
+    align-self: center;
+    width: 36%;
 }
 /* Feature */
 
@@ -956,7 +957,7 @@ choixTerrainDescription_img {
 
 .button-choose-cat-prestration {
     display: flex;
-    background-color: var(--Dark);
+    background-color: var(--primary);
     color: var(--light);
     align-items: center;
     cursor: pointer;

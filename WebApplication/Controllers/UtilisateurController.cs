@@ -79,11 +79,49 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         [Route("Utilisateur/listePrestation/{idUtilisateur:int}")]
         public IActionResult ListePrestation(int idUtilisateur)
         {
-            ViewBag.IsInBDD = true;
+            
+            DemandeDeReservationBU bu = new();
+            UtilisateurPrestationModel prestationList = new();
+            prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
+            ViewBag.classe = 0;
+            ViewBag.idUtilisateur = idUtilisateur;
+            return View(prestationList);
+        }
+
+        [Route("Utilisateur/listePrestationEnCour/{idUtilisateur:int}")]
+        public IActionResult ListePrestationEncour(int idUtilisateur)
+        {
 
             DemandeDeReservationBU bu = new();
-            List<DemandeDeReservationDetails> demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
-            return View(demandeDeReservationDetails);
+            UtilisateurPrestationModel prestationList = new();
+            prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
+            ViewBag.classe = 1;
+            ViewBag.idUtilisateur = idUtilisateur;
+            return View("ListePrestation",prestationList);
+        }
+
+        [Route("Utilisateur/listePrestationEnCour/{idUtilisateur:int}")]
+        public IActionResult ListePrestationTerminer(int idUtilisateur)
+        {
+
+            DemandeDeReservationBU bu = new();
+            UtilisateurPrestationModel prestationList = new();
+            prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
+            ViewBag.classe = 2;
+            ViewBag.idUtilisateur = idUtilisateur;
+            return View("ListePrestation", prestationList);
+        }
+
+        [Route("Utilisateur/listePrestationEnCour/{idUtilisateur:int}")]
+        public IActionResult ListePrestationAnnuler(int idUtilisateur)
+        {
+
+            DemandeDeReservationBU bu = new();
+            UtilisateurPrestationModel prestationList = new();
+            prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
+            ViewBag.classe = 3;
+            ViewBag.idUtilisateur = idUtilisateur;
+            return View("ListePrestation", prestationList);
         }
     }
 }
