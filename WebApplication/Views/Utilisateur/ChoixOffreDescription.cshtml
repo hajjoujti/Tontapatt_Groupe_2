@@ -3,62 +3,61 @@
 *@
 @using Fr.EQL.Ai109.Tontapatt.Model
 @using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
-@model OffreDeTonteDetails
+@model DemandeDeReservationViewModel
 @{
-    DemandeDeReservationViewModel demandeDeReservationViewModel = new();
 }
 <div class="infosOffre_main">
-    <h1 class="infosOffre_h1">@Model.NomOffre</h1>
+    <h1 class="infosOffre_h1">@Model.offreDeTonteDetails.NomOffre</h1>
     <div class="infosOffre_div">
         <div class="infosOffre_infos">
-            <p class="infosOffre_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">@Model.NomUtilisateur @Model.PrenomUtilisateur</a></strong></p>
-            <p class="infosOffre_infosDescription"><strong>Description : </strong>@Model.DescriptionUtilisateur</p>
-            <p class="infosOffre_infosDateDebut"><strong>Date de début de l'offre : </strong>@Model.DateDebutOffre.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDateFin"><strong>Date de fin de l'offre : </strong>@Model.DateFinOffre.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDateCreation"><strong>Date de création de l'offre : </strong>@Model.DateCreationOffre.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.DistanceOffreDeTonteTerrain Km</p>
-            <p class="infosOffre_infosNomVille"><strong>Ville / Code Postal : </strong>@Model.NomVilleOfrreDeTonte / @Model.CodePostaleOffreDeTonte</p>
-            <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.EspeceAnimal</p>
-            <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.RaceAnimal</p>
-            <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.NombreAnimaux</p>
-            <p class="infosOffre_infosPrix"><strong>Coût par jour par mouton : </strong>@Model.CoutAnimalParJour</p>
+            <p class="infosOffre_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">@Model.offreDeTonteDetails.NomUtilisateur @Model.offreDeTonteDetails.PrenomUtilisateur</a></strong></p>
+            <p class="infosOffre_infosDescription"><strong>Description : </strong>@Model.offreDeTonteDetails.DescriptionUtilisateur</p>
+            <p class="infosOffre_infosDateDebut"><strong>Date de début de l'offre : </strong>@Model.offreDeTonteDetails.DateDebutOffre.ToString("MM/dd/yyyy")</p>
+            <p class="infosOffre_infosDateFin"><strong>Date de fin de l'offre : </strong>@Model.offreDeTonteDetails.DateFinOffre.ToString("MM/dd/yyyy")</p>
+            <p class="infosOffre_infosDateCreation"><strong>Date de création de l'offre : </strong>@Model.offreDeTonteDetails.DateCreationOffre.ToString("MM/dd/yyyy")</p>
+            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.offreDeTonteDetails.DistanceOffreDeTonteTerrain Km</p>
+            <p class="infosOffre_infosNomVille"><strong>Ville / Code Postal : </strong>@Model.offreDeTonteDetails.NomVilleOfrreDeTonte / @Model.offreDeTonteDetails.CodePostaleOffreDeTonte</p>
+            <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.offreDeTonteDetails.EspeceAnimal</p>
+            <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.offreDeTonteDetails.RaceAnimal</p>
+            <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.offreDeTonteDetails.NombreAnimaux</p>
+            <p class="infosOffre_infosPrix"><strong>Coût par jour par mouton : </strong>@Model.offreDeTonteDetails.CoutAnimalParJour</p>
             <a class="infosOffre_buttonChange" href="#">Revenir aux offres précédentes</a>
         </div>
 
         <form method="post" class="infosOffre_selection">
             <div class="infosOffre_date">
                 <p>Choisissez vos dates :</p>
-                <label asp-for="@demandeDeReservationViewModel.DateDebutDemande">Date de début :</label>
-                <input asp-for="@demandeDeReservationViewModel.DateDebutDemande" type="date" name="DateDebutDemande" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre" placeholder="@Model.DateDebutOffre" />
+                <label asp-for="DateDebutDemande">Date de début :</label>
+                <input asp-for="DateDebutDemande" type="date" id="dateOfferStart" min="@Model.offreDeTonteDetails.DateDebutOffre" max="@Model.offreDeTonteDetails.DateFinOffre" value="@Model.offreDeTonteDetails.DateDebutOffre" />
                 @Html.ValidationMessage("DateDebutDemande")
-                <label asp-for="@demandeDeReservationViewModel.DateFinDemande">Date de fin : </label>
-                <input asp-for="@demandeDeReservationViewModel.DateFinDemande" type="date" name="DateFinDemande" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre" placeholder="@Model.DateFinOffre" />
+                <label asp-for="DateFinDemande">Date de fin : </label>
+                <input asp-for="DateFinDemande" type="date" id="dateOfferStart" min="@Model.offreDeTonteDetails.DateDebutOffre" max="@Model.offreDeTonteDetails.DateFinOffre" value="@Model.offreDeTonteDetails.DateFinOffre" />
                 @Html.ValidationMessage("DateFinDemande")
             </div>
             <div class="infosOffre_date">
                 <p>Choisissez votre moyen de paiement : </p>
                 <div>
-                    <input type="radio" asp-for="@demandeDeReservationViewModel.IdMoyenPaiement" id="moyen1" name="IdMoyenPaiement" value="1" />
+                    <input type="radio" asp-for="IdMoyenPaiement" id="moyen1" value="1" />
                     <label for="Visa">Visa</label>
                 </div>
                 <div>
-                    <input type="radio" asp-for="@demandeDeReservationViewModel.IdMoyenPaiement" id="moyen1" name="IdMoyenPaiement" value="2" />
+                    <input type="radio" asp-for="IdMoyenPaiement" id="moyen1" value="2" />
                     <label for="Mastercard">Mastercard</label>
                 </div>
                 <div>
-                    <input type="radio" asp-for="@demandeDeReservationViewModel.IdMoyenPaiement" id="moyen1" name="IdMoyenPaiement" value="3" />
+                    <input type="radio" asp-for="IdMoyenPaiement" id="moyen1" value="3" />
                     <label for="Paypal">Paypal</label>
                 </div>
                 <div>
-                    <input type="radio" asp-for="@demandeDeReservationViewModel.IdMoyenPaiement" id="moyen1" name="IdMoyenPaiement" value="4" />
+                    <input type="radio" asp-for="IdMoyenPaiement" id="moyen1" value="4" />
                     <label for="RIB">RIB</label>
                 </div>
             </div>
             <div class="infosOffre_button">
-                <input type="hidden" asp-for="@demandeDeReservationViewModel.IdTerrain" name="IdTerrain" value="@ViewBag.IdTerrain"/>
-                <input type="hidden" asp-for="@demandeDeReservationViewModel.IdOffre" name="IdOffre" value="@Model.IdOffre"/>
-                <input type="hidden" asp-for="@demandeDeReservationViewModel.NombreAnimaux" name="NombreAnimaux" value="@Model.NombreAnimaux"/>
-                <input type="number" asp-for="@demandeDeReservationViewModel.CoutDemande" name="CoutDemande" />
+                <input type="hidden" asp-for="IdTerrain" value="@ViewBag.IdTerrain"/>
+                <input type="hidden" asp-for="IdOffre" value="@Model.offreDeTonteDetails.IdOffre"/>
+                <input type="hidden" asp-for="NombreAnimaux" value="@Model.offreDeTonteDetails.NombreAnimaux"/>
+                <input type="number" asp-for="CoutDemande" />
             </div>
             <button class="infosOffre_buttonSelection" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider cette offre</button>
         </form>

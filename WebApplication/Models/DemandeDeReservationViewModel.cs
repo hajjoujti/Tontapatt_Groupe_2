@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fr.EQL.Ai109.Tontapatt.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,5 +23,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
         public double CoutDemande { get; set; }
         [Required]
         public int NombreAnimaux { get; set; }
+        public OffreDeTonteDetails offreDeTonteDetails { get; set; }
     }
 }
