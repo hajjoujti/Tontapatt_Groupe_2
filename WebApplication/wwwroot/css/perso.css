@@ -876,7 +876,7 @@ choixTerrainDescription_img {
             background: #bdd5b9;
         }
 
-@media screen and (max-width 950px) {
+@media screen and (max-width :950px) {
     .contact-section {
         flex-direction: column;
     }
