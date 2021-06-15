@@ -212,10 +212,34 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             return demandesDeReservationDetails;
         }
 
-        public void AccepterDemandeReservationById(int idDemandeDeReservation)
+        public void AccepterDemandeDeReservationById(int idDemandeDeReservation, DateTime dateAcceptationDemande)
         {
             MySqlCommand cmd = CreerCommand();
-            //cmd.CommandText=@"UPDATE"
+            cmd.CommandText = @"UPDATE demandedereservation SET
+                                date_acceptaion_demande = @dateAcceptationDemande
+                                WHERE id_demande = @idDemandeDeReservation";
+            cmd.Parameters.Add(new MySqlParameter("@idDemandeDeReservation", idDemandeDeReservation));
+            cmd.Parameters.Add(new MySqlParameter("@dateAcceptationDemande", dateAcceptationDemande));
+
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
+        public void RefuserDemandeDeReservationById(int idDemandeDeReservation, int idMotifRefus, DateTime dateRefusDemande)
+        {
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"UPDATE demandedereservation SET
+                                id_motif_refus = @idMotifRefus,
+                                date_refus_demande = @dateRefusDemande
+                                WHERE id_demande = @idDemandeDeReservation";
+            cmd.Parameters.Add(new MySqlParameter("@idDemandeDeReservation", idDemandeDeReservation));
+            cmd.Parameters.Add(new MySqlParameter("@dateRefusDemande", dateRefusDemande));
+            cmd.Parameters.Add(new MySqlParameter("@idMotifRefus", idMotifRefus));
+
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
         }
 
         private static DemandeDeReservation DataReaderDemandeDeReservation(MySqlDataReader dr)

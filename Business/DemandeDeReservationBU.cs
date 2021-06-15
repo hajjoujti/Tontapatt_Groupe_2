@@ -83,5 +83,17 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 
             return demandesDeReservationDetails;
         }
+
+        public void AccepterDemandeReservationById(int idDemandeDeReservation)
+        {
+            DateTime dateAcceptationDemande = DateTime.Now;
+            new DemandeDeReservationDAO().AccepterDemandeDeReservationById(idDemandeDeReservation, dateAcceptationDemande);
+        }
+
+        public void RefuserDemandeDeReservation(int idDemandeDeReservation, int idMotifRefus)
+        {
+            DateTime dateRefusDemande = DateTime.Now;
+            new DemandeDeReservationDAO().RefuserDemandeDeReservationById(idDemandeDeReservation, idMotifRefus, dateRefusDemande);
+        }
     }
 }
