@@ -100,7 +100,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View("ListePrestation",prestationList);
         }
 
-        [Route("Utilisateur/listePrestationEnCour/{idUtilisateur:int}")]
+        [Route("Utilisateur/listePrestationTerminer/{idUtilisateur:int}")]
         public IActionResult ListePrestationTerminer(int idUtilisateur)
         {
 
@@ -112,7 +112,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View("ListePrestation", prestationList);
         }
 
-        [Route("Utilisateur/listePrestationEnCour/{idUtilisateur:int}")]
+        [Route("Utilisateur/listePrestationAnnuler/{idUtilisateur:int}")]
         public IActionResult ListePrestationAnnuler(int idUtilisateur)
         {
 

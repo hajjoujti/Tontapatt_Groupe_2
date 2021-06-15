@@ -98,7 +98,7 @@ header {
 
 .header-right p {
     padding: 0em 1em;
-
+    min-inline-size: max-content;
 }
 
 .logo {
@@ -146,7 +146,7 @@ footer {
     text-decoration: none;
 }
 
-a {
+.header-right a {
     text-decoration: none;
     color: var(--Dark);
     display: block;
@@ -974,13 +974,19 @@ choixTerrainDescription_img {
     .button-choose-cat-prestration h3 {
         flex-grow: 1;
     }
-
+    .button-choose-cat-prestration a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .button-choose-cat-prestration a:hover{
+        color: var(--Dark);
+    }
     .button-choose-cat-prestration::before {
         content: "";
         display: block;
         height: 5px;
         width: 60px;
-        background: linear-gradient(45deg, var(--Dark)42%, transparent 66%);
+        background: linear-gradient(45deg, var(--light)42%, transparent 66%);
     }
 
 
