@@ -67,5 +67,10 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(TerrainsDetails);
         }
 
+        [Route("Utilisateur/liste/Prestation")]
+        public IActionResult ListePrestation()
+        {
+            return View();
+        }
     }
 }
