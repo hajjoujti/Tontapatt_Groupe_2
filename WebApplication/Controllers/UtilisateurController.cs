@@ -76,11 +76,12 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(TerrainsDetails);
         }
 
-        [Route("Utilisateur/liste/Prestation")]
-        public IActionResult ListePrestation()
+        [Route("Utilisateur/liste/Prestation{idUtilisateur:int}")]
+        public IActionResult ListePrestation(int idUtilisateur)
         {
             ViewBag.IsInBDD = true;
 
+            DemandeDeReservationBU 
             return View();
         }
     }
