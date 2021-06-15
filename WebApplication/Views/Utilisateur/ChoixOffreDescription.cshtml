@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @using Fr.EQL.Ai109.Tontapatt.Model
-@model OffreDeTonteDetails
+@model OffreDeTonteDetails 
 @{
 }
 <div class="infosOffre_main">
@@ -14,12 +14,12 @@
             <p class="infosOffre_infosDateDebut"><strong>Date de début de l'offre : </strong>@Model.DateDebutOffre.ToString("MM/dd/yyyy")</p>
             <p class="infosOffre_infosDateFin"><strong>Date de fin de l'offre : </strong>@Model.DateFinOffre.ToString("MM/dd/yyyy")</p>
             <p class="infosOffre_infosDateCreation"><strong>Date de création de l'offre : </strong>@Model.DateCreationOffre.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.DistanceOffreDeTonteTerrain</p>
+            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.DistanceOffreDeTonteTerrain Km</p>
             <p class="infosOffre_infosNomVille"><strong>Ville / Code Postal : </strong>@Model.NomVilleOfrreDeTonte / @Model.CodePostaleOffreDeTonte</p>
             <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.EspeceAnimal</p>
             <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.RaceAnimal</p>
             <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.NombreAnimaux</p>
-            <p class="infosOffre_infosPrix"><strong>Coût par jour : </strong>@Model.CoutAnimalParJour</p>
+            <p class="infosOffre_infosPrix"><strong>Coût par jour par mouton : </strong>@Model.CoutAnimalParJour</p>
         </div>
 
         <div class="infosOffre_selection">
@@ -31,8 +31,9 @@
                 <input type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
             </div>
             <div class="infosOffre_button">
+                <!-- Formulaire POST pour valider une offre  -->
                 <a class="infosOffre_buttonSelection" href="#">Valider cette offre</a>
-                <a class="infosOffre_buttonChange" href="#">Annuler cette offre</a>
+                <!-- a entourer d'un lien <a> pour rediriger vers la page de recherche  -->
                 <a class="infosOffre_buttonChange" href="#">Revenir aux offres</a>
             </div>
         </div>

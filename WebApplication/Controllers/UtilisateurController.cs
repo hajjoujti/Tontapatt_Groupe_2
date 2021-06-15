@@ -33,6 +33,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(utilisateurEtTerrainsDetailsViewModel);
         }
 
+        [HttpGet]
         [Route("Utilisateur/ChoixOffreRecherche/{idTerrain:int}")]
         public IActionResult ChoixOffreRecherche(int idTerrain)
         {
@@ -49,6 +50,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(offresDeTonteDetailsEtTerrainViewModel);
         }
 
+        [HttpGet]
         [Route("Utilisateur/ChoixOffreDescription/{idOffreDeTonte:int}")]
         public IActionResult ChoixOffreDescription(int idOffreDeTonte)
         {
@@ -58,6 +60,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(offresDeTonteDetails);
         }
 
+        [HttpGet]
         [Route("Utilisateur/ChoixTerrainDescription{idTerrain:int}")]
         public IActionResult ChoixTerrainDescription(int idTerrain)
         {
@@ -66,6 +69,15 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
             return View(TerrainsDetails);
         }
+
+        [HttpGet]
+        [Route("Utilisateur/DeclarationAnomalie{idAnomalie:int}")]
+        public IActionResult DeclarationAnomalie(int idAnomalie)
+        {
+            return View("DeclarationAnomalie");
+        }
+
+
 
     }
 }
