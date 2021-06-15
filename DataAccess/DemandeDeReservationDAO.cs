@@ -53,6 +53,25 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             return demandeDeReservation;
         }
 
+        public DemandeDeReservation GetById(int idDemandeDeReservation)
+        {
+            DemandeDeReservation demandeDeReservation = null;
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT *
+                                FROM terrain
+                                WHERE id_demande = @idDemandeDeReservation";
+            cmd.Parameters.Add(new MySqlParameter("@idDemandeDeReservation", idDemandeDeReservation));
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                demandeDeReservation = DataReaderDemandeDeReservation(dr);
+            }
+
+            cmd.Connection.Close();
+            return demandeDeReservation;
+        }
+
         public DemandeDeReservationDetails GetByIdWithDetails(int idDemandeDeReservation)
         {
             DemandeDeReservationDetails demandeDeReservationDetails = null;
@@ -214,7 +233,8 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
 
         public void AccepterDemandeReservationById(int idDemandeDeReservation)
         {
-
+            MySqlCommand cmd = CreerCommand();
+            //cmd.CommandText=@"UPDATE"
         }
 
         private static DemandeDeReservation DataReaderDemandeDeReservation(MySqlDataReader dr)
