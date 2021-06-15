@@ -89,6 +89,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.classe = 0;
             ViewBag.idUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
             return View(prestationList);
         }
 
@@ -101,6 +102,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.classe = 1;
             ViewBag.idUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
             return View("ListePrestation",prestationList);
         }
 
@@ -113,6 +115,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.classe = 2;
             ViewBag.idUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
             return View("ListePrestation", prestationList);
         }
 
@@ -125,6 +128,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.classe = 3;
             ViewBag.idUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
             return View("ListePrestation", prestationList);
         }
 
