@@ -11,7 +11,7 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             DemandeTest c = new();
-            c.CreationDemande();
+            c.AccepterDemande(1);
 
             //Random random = new Random(DateTime.Now.Millisecond);
             //Console.WriteLine(DateTime.Now.ToString("yyMMddHHmmssffff"));

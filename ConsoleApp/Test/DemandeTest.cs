@@ -10,10 +10,11 @@ namespace Fr.EQL.Ai109.Tontapatt.ConsoleApp.Test
 {
     public class DemandeTest
     {
+        DemandeDeReservationBU bu = new();
+        DemandeDeReservation demandeDeReservation = new();
         public void CreationDemande()
         {
-            DemandeDeReservationBU bu = new();
-            DemandeDeReservation demandeDeReservation = new();
+            
             demandeDeReservation.IdTerrain = 78;
             demandeDeReservation.IdMoyenPaiement = 2;
             demandeDeReservation.IdOffre = 3;
@@ -22,6 +23,11 @@ namespace Fr.EQL.Ai109.Tontapatt.ConsoleApp.Test
             demandeDeReservation.CoutDemande = 1500;
             demandeDeReservation.NombreAnimaux = 10;
             bu.InsererUneDemandeDeReservation(demandeDeReservation);
+        }
+
+        public void AccepterDemande(int idDemande)
+        {
+            bu.AccepterDemandeReservationById(idDemande);
         }
     }
 }
