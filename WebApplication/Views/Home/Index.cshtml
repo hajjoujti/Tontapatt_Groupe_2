@@ -1,8 +1,75 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "TONTAPATT";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-top">
+    <h1 class="container-top-h1">UN SAVOIR FAIRE, D’ÉCÔPATURAGE.</h1>
+    <p class="container-top-p">
+        Une offre d’entretien d’espace vert dans le respect de la nature par le partage.
+        Rechercher à ammener la nature plus proche des populations urbaine. Ammenez!
+    </p>
 </div>
+<section class="features">
+    <div class="row-1">
+        <h1> À PROPOS DE NOUS </h1>
+        <P>
+            Tontapatt est un nouvel acteur qui souhaite rendre plus accessible la pratique de l'éco-pâturage.
+            L'objectif est de mettre en relation des éleveurs et des entreprises afin de proposer une alternative par l'éco pâturage à un entretien mecanique des espaces vert.
+            Tontapatte souhaite mettre en avant l’effort des entreprises qui cherche à améliorer le cadre social et environnemental de leurs lieu de travail, ainsi que les bergers en leur permettant de diversifier les revenue lié à leur activité.
+        </P>
+    </div>
+    <div class="row-2">
+        <div class="features-col">
+            <h3>SERVICE</h3>
+            <p>
+                Les activités de mise à disposition de services tendent à trouver une forme très usuelle dans notre manière de consommer ces derniers.
+                La location de voiture, d'appartement, ainsi que les sites de vente on sue améliorer cette formule et la formaliser.
+            </p>
+        </div>
+        <div class="features-col">
+            <h3>ÉCOSYSTÈME</h3>
+            <p>
+                l'utilisation de notre service vous permet d'avoir plus de visibilité sur les éléveurs ou/et espaces verts mis à dispotion.
+                Créons un écosystème d'écopaturage en France
+            </p>
+        </div>
+        <div class="features-col">
+            <h3>AVANTAGES</h3>
+            <p>
+                Les avantages de cette technique est qu’elle ne produit aucun déchets vert, elle participe à un épanouissement social des personnes en contact avec les animaux et améliore par ce fait la qualité de vie.
+                Elle permet aussi l’accès à des zones accessible par les moyens mecaniques.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<!-- contact form-->
+<!--message d'alert
+<div class="alert-success">
+    <span> Merc! Votre message a été bien envoyé! </span>
+</div>
+
+message error
+<div class="alert-error">
+    <span> Erreur! veuillez ré-essayer à nouveau!</span>
+</div> -->
+
+<section class="section-contact-form">
+    <div class="contact-section">
+        <div class="contact-info">
+            <div><i class="fas fa-map-marker-alt"></i>  75000, Paris  France</div>
+            <div><i class="fas fa-envelope"></i>  contact@tontapatt.com</div>
+            <div><i class="fas fa-phone"></i>  +33600000000</div>
+        </div>
+        <div class="contact-form">
+            <h2>Contacter nous</h2>
+            <form class="contact" action="" method="post">
+                <input type="text" name="name" class="text-box" placeholder="Votre nom" required>
+                <input type="email" name="email" class="text-box" placeholder="Votre mail" required>
+                <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+                <input type="submit" name="submit" class="send-btn" value="Envoyer">
+            </form>
+        </div>
+    </div>
+</section>
