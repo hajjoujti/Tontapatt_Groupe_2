@@ -214,7 +214,8 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
 
         public void AccepterDemandeReservationById(int idDemandeDeReservation)
         {
-
+            MySqlCommand cmd = CreerCommand();
+            //cmd.CommandText=@"UPDATE"
         }
 
         private static DemandeDeReservation DataReaderDemandeDeReservation(MySqlDataReader dr)
