@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @using Fr.EQL.Ai109.Tontapatt.Model
-@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models 
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 @model OffreDeTonteDetails
 @{
     DemandeDeReservationViewModel demandeDeReservationViewModel = new();
@@ -28,11 +28,11 @@
         <form method="post" class="infosOffre_selection">
             <div class="infosOffre_date">
                 <p>Choisissez vos dates :</p>
-                <label for="dateOffer">Date de début :</label>
-                <input asp-for="@demandeDeReservationViewModel.DateDebutDemande" type="date" name="dateOfferStart" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre" placeholder="@Model.DateDebutOffre"/>
+                <label asp-for="@demandeDeReservationViewModel.DateDebutDemande">Date de début :</label>
+                <input asp-for="@demandeDeReservationViewModel.DateDebutDemande" type="date" name="DateDebutDemande" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre" placeholder="@Model.DateDebutOffre" />
                 @Html.ValidationMessage("DateDebutDemande")
-                <label for="dateOffer">Date de fin : </label>
-                <input asp-for="@demandeDeReservationViewModel.DateFinDemande" type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre" placeholder="@Model.DateFinOffre"/>
+                <label asp-for="@demandeDeReservationViewModel.DateFinDemande">Date de fin : </label>
+                <input asp-for="@demandeDeReservationViewModel.DateFinDemande" type="date" name="DateFinDemande" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre" placeholder="@Model.DateFinOffre" />
                 @Html.ValidationMessage("DateFinDemande")
             </div>
             <div class="infosOffre_date">
@@ -55,17 +55,12 @@
                 </div>
             </div>
             <div class="infosOffre_button">
-                <input type="hidden" asp-for="@demandeDeReservationViewModel.IdTerrain" />
-                <input type="hidden" asp-for="@demandeDeReservationViewModel.IdOffre" />
-                <input type="hidden" asp-for="@demandeDeReservationViewModel.NombreAnimaux" />
-                <input type="text" asp-for="@demandeDeReservationViewModel.CoutDemande"/>
-
-                <button class="infosOffre_buttonSelection" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider cette offre</button>
-                @if (ViewContext.RouteData.Values["action"].ToString() == "NouvelleDemandeDeReservation")
-                {
-
-                }
+                <input type="hidden" asp-for="@demandeDeReservationViewModel.IdTerrain" name="IdTerrain" value="@ViewBag.IdTerrain"/>
+                <input type="hidden" asp-for="@demandeDeReservationViewModel.IdOffre" name="IdOffre" value="@Model.IdOffre"/>
+                <input type="hidden" asp-for="@demandeDeReservationViewModel.NombreAnimaux" name="NombreAnimaux" value="@Model.NombreAnimaux"/>
+                <input type="number" asp-for="@demandeDeReservationViewModel.CoutDemande" name="CoutDemande" />
             </div>
-        </form> 
+            <button class="infosOffre_buttonSelection" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider cette offre</button>
+        </form>
     </div>
 </div>
