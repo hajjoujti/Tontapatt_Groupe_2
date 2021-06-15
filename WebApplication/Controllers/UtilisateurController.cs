@@ -82,5 +82,29 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult NouvelleDemandeDeReservation(DemandeDeReservationViewModel d)
+        {
+            if (ModelState.IsValid)
+            {
+                DemandeDeReservation demandeDeReservation = new();
+                demandeDeReservation.IdTerrain = d.IdTerrain;
+                demandeDeReservation.IdMoyenPaiement = d.IdMoyenPaiement;
+                demandeDeReservation.IdOffre = d.IdOffre;
+                demandeDeReservation.DateDebutDemande = d.DateDebutDemande;
+                demandeDeReservation.DateFinDemande = d.DateFinDemande;
+                demandeDeReservation.NombreAnimaux = d.NombreAnimaux;
+                demandeDeReservation.CoutDemande = d.CoutDemande;
+
+                DemandeDeReservationBU bu = new DemandeDeReservationBU();
+                bu.InsererUneDemandeDeReservation(demandeDeReservation);
+                return View("");
+            }
+            else
+            {
+                return View("");
+            }
+        }
     }
 }

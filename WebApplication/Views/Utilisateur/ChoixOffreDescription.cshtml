@@ -22,22 +22,50 @@
             <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.RaceAnimal</p>
             <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.NombreAnimaux</p>
             <p class="infosOffre_infosPrix"><strong>Coût par jour par mouton : </strong>@Model.CoutAnimalParJour</p>
+            <a class="infosOffre_buttonChange" href="#">Revenir aux offres précédentes</a>
         </div>
 
-        <div class="infosOffre_selection">
+        <form method="post" class="infosOffre_selection">
             <div class="infosOffre_date">
                 <p>Choisissez vos dates :</p>
                 <label for="dateOffer">Date de début :</label>
-                <input type="date" name="dateOfferStart" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
+                <input asp-for="@demandeDeReservationViewModel.DateDebutDemande" type="date" name="dateOfferStart" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre" placeholder="@Model.DateDebutOffre"/>
+                @Html.ValidationMessage("DateDebutDemande")
                 <label for="dateOffer">Date de fin : </label>
-                <input type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
+                <input asp-for="@demandeDeReservationViewModel.DateFinDemande" type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre" placeholder="@Model.DateFinOffre"/>
+                @Html.ValidationMessage("DateFinDemande")
+            </div>
+            <div class="infosOffre_date">
+                <p>Choisissez votre moyen de paiement : </p>
+                <div>
+                    <input type="radio" asp-for="@demandeDeReservationViewModel.IdMoyenPaiement" id="moyen1" name="IdMoyenPaiement" value="1" />
+                    <label for="Visa">Visa</label>
+                </div>
+                <div>
+                    <input type="radio" asp-for="@demandeDeReservationViewModel.IdMoyenPaiement" id="moyen1" name="IdMoyenPaiement" value="2" />
+                    <label for="Mastercard">Mastercard</label>
+                </div>
+                <div>
+                    <input type="radio" asp-for="@demandeDeReservationViewModel.IdMoyenPaiement" id="moyen1" name="IdMoyenPaiement" value="3" />
+                    <label for="Paypal">Paypal</label>
+                </div>
+                <div>
+                    <input type="radio" asp-for="@demandeDeReservationViewModel.IdMoyenPaiement" id="moyen1" name="IdMoyenPaiement" value="4" />
+                    <label for="RIB">RIB</label>
+                </div>
             </div>
             <div class="infosOffre_button">
-                <!-- Formulaire POST pour valider une offre  -->
-                <a class="infosOffre_buttonSelection" href="#">Valider cette offre</a>
-                <!-- a entourer d'un lien <a> pour rediriger vers la page de recherche  -->
-                <a class="infosOffre_buttonChange" href="#">Revenir aux offres</a>
+                <input type="hidden" asp-for="@demandeDeReservationViewModel.IdTerrain" />
+                <input type="hidden" asp-for="@demandeDeReservationViewModel.IdOffre" />
+                <input type="hidden" asp-for="@demandeDeReservationViewModel.CoutDemande" />
+                <input type="hidden" asp-for="@demandeDeReservationViewModel.NombreAnimaux" />
+
+                <button class="infosOffre_buttonSelection" type="submit" asp-controller="Utilisateur" asp-action="ListePrestation">Valider cette offre</button>
+                @if (ViewContext.RouteData.Values["action"].ToString() == "DemandeDeReservation")
+                {
+
+                }
             </div>
-        </div>
+        </form> 
     </div>
 </div>
