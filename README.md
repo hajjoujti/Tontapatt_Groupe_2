@@ -38,3 +38,4 @@ Suivez les differentes phases du projet sur notre Trello
 ### Participants au projet
 
 ![css version](https://github-readme-stats.vercel.app/api?username=hajjoujti&theme=blue-white) ![css version](https://github-readme-stats.vercel.app/api?username=filouDeNesque&theme=blue-white) ![css version](https://github-readme-stats.vercel.app/api?username=Soufyane&theme=blue-white) 
+![css version](https://github-readme-stats.vercel.app/api?username=kobedesigno&theme=blue-white) ![css version](https://github-readme-stats.vercel.app/api?username=filouDeNesque&theme=blue-white) 
