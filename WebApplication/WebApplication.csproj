@@ -5,6 +5,7 @@
     <RootNamespace>Fr.EQL.Ai109.Tontapatt.WebApplication</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'WebApplication' " />
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
