@@ -242,6 +242,58 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             cmd.Connection.Close();
         }
 
+        public void AnnulationDemandeDeReservationByIdAvantAcceptation(int idDemandeDeReservation, int idRaisonAnnulClient, DateTime dateAnnulationDemande)
+        {
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"UPDATE demandedereservation SET
+                                id_raison_annul = @idRaisonAnnulClient,
+                                date_annulation_demande = @dateAnnulationDemande
+                                WHERE id_demande = @idDemandeDeReservation 
+                                AND date_acceptaion_demande IS NULL";
+            cmd.Parameters.Add(new MySqlParameter("@idDemandeDeReservation", idDemandeDeReservation));
+            cmd.Parameters.Add(new MySqlParameter("@dateAnnulationDemande", dateAnnulationDemande));
+            cmd.Parameters.Add(new MySqlParameter("@idRaisonAnnulClient", idRaisonAnnulClient));
+
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+        
+        public void AnnulationPrematureeDemandeDeReservationById(int idDemandeDeReservation, int idRaisonAnnulationPrem, DateTime dateAnnulationPrematuree)
+        {
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"UPDATE demandedereservation SET
+                                id_raison_annul_prem = @idRaisonAnnulationPrem,
+                                date_annulation_prematuree = @dateAnnulationPrematuree
+                                WHERE id_demande = @idDemandeDeReservation 
+                                AND date_acceptaion_demande IS NOT NULL";
+            cmd.Parameters.Add(new MySqlParameter("@idDemandeDeReservation", idDemandeDeReservation));
+            cmd.Parameters.Add(new MySqlParameter("@dateAnnulationPrematuree", dateAnnulationPrematuree));
+            cmd.Parameters.Add(new MySqlParameter("@idRaisonAnnulationPrem", idRaisonAnnulationPrem));
+
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
+        public void TroupeauInstalleByIdDemandeDeReservation(int idDemandeDeReservation, DateTime dateInstallationTroupeau)
+        {
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"UPDATE demandedereservation SET
+                                date_installation_troupeau = @dateInstallationTroupeau
+                                WHERE id_demande = @idDemandeDeReservation 
+                                AND date_acceptaion_demande IS NOT NULL 
+                                AND d.date_annulation_demande IS NULL 
+                                AND d.date_refus_demande IS NULL 
+                                AND d.date_annulation_prematuree is NULL";
+            cmd.Parameters.Add(new MySqlParameter("@idDemandeDeReservation", idDemandeDeReservation));
+            cmd.Parameters.Add(new MySqlParameter("@dateInstallationTroupeau", dateInstallationTroupeau));
+
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
         private static DemandeDeReservation DataReaderDemandeDeReservation(MySqlDataReader dr)
         {
             DemandeDeReservation demandeDeReservation = new();
