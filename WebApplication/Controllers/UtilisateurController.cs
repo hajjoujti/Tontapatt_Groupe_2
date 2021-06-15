@@ -49,7 +49,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(offresDeTonteDetailsEtTerrainViewModel);
         }
 
-        [Route("Rechercher/ChoisirOffre/Description/{idOffreDeTonte:int}")]
+        [Route("Utilisateur/ChoixOffreDescription/{idOffreDeTonte:int}")]
         public IActionResult ChoixOffreDescription(int idOffreDeTonte)
         {
             OffreDeTonteBU buOffreDeTonte = new();
@@ -58,7 +58,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(offresDeTonteDetails);
         }
 
-        [Route("Utilisateur/ChoixTerrainRecherche/Description/{idTerrain:int}")]
+        [Route("Utilisateur/ChoixTerrainDescription{idTerrain:int}")]
         public IActionResult ChoixTerrainDescription(int idTerrain)
         {
             TerrainBU buTerrain = new();

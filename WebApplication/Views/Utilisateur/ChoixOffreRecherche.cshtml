@@ -32,7 +32,7 @@
                     <p>Distance : @offreDeTonteDetails.DistanceOffreDeTonteTerrain km<!-- distance avec l'offre --></p>
                 </div>
                 <div class="liste-detail-offres-button">
-                    <a><!-- lien vers la vue détailler --><i class="far fa-eye"></i></a>
+                    <a class="" asp-controller="Utilisateur" asp-action="ChoixOffreDescription" asp-route-id="@offreDeTonteDetails.IdOffre"><i class="far fa-eye"></i></a>
                 </div>
             </div>
         </div>
