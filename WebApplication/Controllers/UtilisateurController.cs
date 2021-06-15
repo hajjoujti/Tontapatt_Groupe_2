@@ -88,6 +88,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         [HttpPost]
         public IActionResult NouvelleDemandeDeReservation(DemandeDeReservationViewModel d)
         {
+            ViewBag.IsInBDD = true;
             if (ModelState.IsValid)
             {
                 DemandeDeReservation demandeDeReservation = new();
