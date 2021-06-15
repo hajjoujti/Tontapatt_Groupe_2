@@ -15,7 +15,8 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
         public int IdTerrain { get; set; }
         public int? IdRaisonAnnulClient { get; set; }
         public int? IdMotifRefus { get; set; }
-        public int? IdMoyenPaiement { get; set; }
+        [Required]
+        public int IdMoyenPaiement { get; set; }
         [Required]
         public int IdOffre { get; set; }
         [Required]

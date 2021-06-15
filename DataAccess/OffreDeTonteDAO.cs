@@ -89,6 +89,39 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             return offresDeTonteDetails;
         }
 
+        public OffreDeTonteDetails GetWithDetailsByIdOffreEtPositionTerrain(int idOffreDeTonte, double latitudeTerrain, double longitudeTerrain)
+        {
+            OffreDeTonteDetails offreDeTonteDetails = null;
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT o.*,
+                                r.race_animal, 
+                                e.espece_animal,
+                                v.nom_ville, v.code_postal, v.longitude_ville, v.latitude_ville,
+                                u.nom_utilisateur, u.prenom_utilisateur, u.description_utilisateur,
+                                CalcDistance(@latitudeTerrain, @longitudeTerrain, v.latitude_ville, v.longitude_ville) 'Distance'
+                                from offredetonte o
+                                INNER JOIN raceanimal r ON o.id_race_animal = r.id_race_animal
+                                INNER JOIN espece e ON o.id_race_animal = r.id_race_animal AND r.id_espece_animal = e.id_espece_animal
+                                INNER JOIN villecp v ON o.id_villecp = v.id_villecp
+                                INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
+                                where o.id_offre = @idOffreDeTonte";
+
+            cmd.Parameters.Add(new MySqlParameter("@latitudeTerrain", latitudeTerrain));
+            cmd.Parameters.Add(new MySqlParameter("@longitudeTerrain", longitudeTerrain));
+            cmd.Parameters.Add(new MySqlParameter("@idOffreDeTonte", idOffreDeTonte));
+
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                offreDeTonteDetails = DataReaderOffreDeTonteDetals(dr);
+                offreDeTonteDetails.DistanceOffreDeTonteTerrain = Math.Round(dr.GetDouble("Distance"), 2);
+            }
+
+            cmd.Connection.Close();
+            return offreDeTonteDetails;
+        }
+
         private OffreDeTonteDetails DataReaderOffreDeTonteDetals(MySqlDataReader dr)
         {
             OffreDeTonteDetails offreDeTonteDetails = new(DataReaderOffreDeTonte(dr));

@@ -46,72 +46,239 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             MySqlDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                demandeDeReservation.IdDemande = dr.GetInt32("id_demande");
-
-                if (!dr.IsDBNull(dr.GetOrdinal("id_raison_annul_prem")))
-                {
-                    demandeDeReservation.IdRaisonAnnulationPrem = dr.GetInt32("id_raison_annul_prem");
-                }
-                demandeDeReservation.IdTerrain = dr.GetInt32("id_terrain");
-
-                if (!dr.IsDBNull(dr.GetOrdinal("id_raison_annul")))
-                {
-                    demandeDeReservation.IdRaisonAnnulClient = dr.GetInt32("id_raison_annul");
-                }
-
-                if (!dr.IsDBNull(dr.GetOrdinal("id_motif_refus")))
-                {
-                    demandeDeReservation.IdMotifRefus = dr.GetInt32("id_motif_refus");
-                }
-
-                demandeDeReservation.IdMoyenPaiement = dr.GetInt32("id_moyen_paiement");
-
-                demandeDeReservation.IdOffre = dr.GetInt32("id_offre");
-
-                demandeDeReservation.DateDebutDemande = dr.GetDateTime("date_debut_demande");
-
-                demandeDeReservation.DateFinDemande = dr.GetDateTime("date_fin_demande");
-
-                demandeDeReservation.CoutDemande = dr.GetInt32("cout_demande");
-
-                if (!dr.IsDBNull(dr.GetOrdinal("date_acceptaion_demande")))
-                {
-                    demandeDeReservation.DateAcceptationDemande = dr.GetDateTime("date_acceptaion_demande");
-                }
-
-                if (!dr.IsDBNull(dr.GetOrdinal("date_annulation_demande")))
-                {
-                    demandeDeReservation.DateAnnulationDemande = dr.GetDateTime("date_annulation_demande");
-                }
-
-                demandeDeReservation.DateCreationDemande = dr.GetDateTime("date_creation_demande");
-
-                if (!dr.IsDBNull(dr.GetOrdinal("date_installation_troupeau")))
-                {
-                    demandeDeReservation.DateInstallationTroupeau = dr.GetDateTime("date_installation_troupeau");
-                }
-
-                if (!dr.IsDBNull(dr.GetOrdinal("date_annulation_prematuree")))
-                {
-                    demandeDeReservation.DateAnnulationPrematuree = dr.GetDateTime("date_annulation_prematuree");
-                }
-
-                demandeDeReservation.NumeroReservation = dr.GetString("numero_reservation");
-
-                if (!dr.IsDBNull(dr.GetOrdinal("date_refus_demande")))
-                {
-                    demandeDeReservation.DateRefusDemande = dr.GetDateTime("date_refus_demande");
-                }
-
-                demandeDeReservation.NombreAnimaux = dr.GetInt32("nombre_animaux");
+                demandeDeReservation = DataReaderDemandeDeReservation(dr);
             }
 
+            cmd.Connection.Close();
             return demandeDeReservation;
         }
 
         public DemandeDeReservationDetails GetByIdWithDetails(int idDemandeDeReservation)
         {
-            throw new NotImplementedException();
+            DemandeDeReservationDetails demandeDeReservationDetails = null;
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT *
+                                FROM demandedereservation
+                                WHERE id_demande = @idDemandeDeReservation";
+            cmd.Parameters.Add(new MySqlParameter("@idDemandeDeReservation", idDemandeDeReservation));
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                demandeDeReservationDetails = new(DataReaderDemandeDeReservation(dr));
+            }
+
+            cmd.Connection.Close();
+            return demandeDeReservationDetails;
+        }
+
+        public List<DemandeDeReservationDetails> GetAllEnAttentesWithDetailsByIdUtilisateur(int idUtilisateur)
+        {
+            List<DemandeDeReservationDetails> demandesDeReservationDetails = new();
+
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT d.*
+                                FROM demandedereservation d
+                                INNER JOIN offredetonte o ON d.id_offre = o.id_offre
+                                INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
+                                WHERE u.id_utilisateur = @idUtilisateur
+                                AND d.date_acceptaion_demande IS NULL 
+                                AND d.date_annulation_demande IS NULL 
+                                AND d.date_refus_demande IS NULL 
+                                AND d.date_annulation_prematuree is NULL
+                                UNION SELECT d.*
+                                FROM demandedereservation d
+                                INNER JOIN terrain t ON d.id_terrain = t.id_terrain
+                                INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
+                                WHERE u.id_utilisateur = @idUtilisateur
+                                AND d.date_acceptaion_demande IS NULL 
+                                AND d.date_annulation_demande IS NULL 
+                                AND d.date_refus_demande IS NULL 
+                                AND d.date_annulation_prematuree is NULL";
+            cmd.Parameters.Add(new MySqlParameter("@idUtilisateur", idUtilisateur));
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                DemandeDeReservationDetails demandeDeReservationDetails = new(DataReaderDemandeDeReservation(dr));
+                demandesDeReservationDetails.Add(demandeDeReservationDetails);
+            }
+
+            return demandesDeReservationDetails;
+        }
+
+        public List<DemandeDeReservationDetails> GetAllEnCoursWithDetailsByIdUtilisateur(int idUtilisateur)
+        {
+            List<DemandeDeReservationDetails> demandesDeReservationDetails = new();
+
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT d.*
+                                FROM demandedereservation d
+                                INNER JOIN offredetonte o ON d.id_offre = o.id_offre
+                                INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
+                                WHERE u.id_utilisateur = @idUtilisateur
+                                AND d.date_acceptaion_demande IS NOT NULL 
+                                AND d.date_annulation_demande IS NULL 
+                                AND d.date_refus_demande IS NULL 
+                                AND d.date_annulation_prematuree is NULL
+                                UNION SELECT d.*
+                                FROM demandedereservation d
+                                INNER JOIN terrain t ON d.id_terrain = t.id_terrain
+                                INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
+                                WHERE u.id_utilisateur = @idUtilisateur
+                                AND d.date_acceptaion_demande IS NOT NULL 
+                                AND d.date_annulation_demande IS NULL 
+                                AND d.date_refus_demande IS NULL 
+                                AND d.date_annulation_prematuree is NULL";
+            cmd.Parameters.Add(new MySqlParameter("@idUtilisateur", idUtilisateur));
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                DemandeDeReservationDetails demandeDeReservationDetails = new(DataReaderDemandeDeReservation(dr));
+                demandesDeReservationDetails.Add(demandeDeReservationDetails);
+            }
+
+            return demandesDeReservationDetails;
+        }
+
+        public List<DemandeDeReservationDetails> GetAllTermineesWithDetailsByIdUtilisateur(int idUtilisateur)
+        {
+            List<DemandeDeReservationDetails> demandesDeReservationDetails = new();
+
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT d.*
+                                FROM demandedereservation d
+                                INNER JOIN offredetonte o ON d.id_offre = o.id_offre
+                                INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
+                                INNER JOIN evaluationprestation e ON e.id_utilisateur_eleveur = u.id_utilisateur
+                                WHERE u.id_utilisateur = @idUtilisateur 
+                                AND d.date_acceptaion_demande IS NOT NULL 
+                                AND d.date_annulation_demande IS NULL 
+                                AND d.date_refus_demande IS NULL 
+                                AND d.date_annulation_prematuree is NULL
+                                UNION SELECT d.*
+                                FROM demandedereservation d
+                                INNER JOIN terrain t ON d.id_terrain = t.id_terrain
+                                INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
+                                INNER JOIN evaluationprestation e ON e.id_utilisateur_client = u.id_utilisateur
+                                WHERE u.id_utilisateur = @idUtilisateur 
+                                AND d.date_acceptaion_demande IS NOT NULL 
+                                AND d.date_annulation_demande IS NULL 
+                                AND d.date_refus_demande IS NULL 
+                                AND d.date_annulation_prematuree is NULL";
+            cmd.Parameters.Add(new MySqlParameter("@idUtilisateur", idUtilisateur));
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                DemandeDeReservationDetails demandeDeReservationDetails = new(DataReaderDemandeDeReservation(dr));
+                demandesDeReservationDetails.Add(demandeDeReservationDetails);
+            }
+
+            return demandesDeReservationDetails;
+        }
+
+        public List<DemandeDeReservationDetails> GetAllAnnuleesWithDetailsByIdUtilisateur(int idUtilisateur)
+        {
+            List<DemandeDeReservationDetails> demandesDeReservationDetails = new();
+
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT d.*
+                                FROM demandedereservation d
+                                INNER JOIN offredetonte o ON d.id_offre = o.id_offre
+                                INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
+                                WHERE u.id_utilisateur = @idUtilisateur 
+                                AND( d.date_annulation_demande IS NOT NULL 
+                                OR d.date_refus_demande IS NOT NULL 
+                                OR d.date_annulation_prematuree is NOT NULL)
+                                UNION SELECT d.*
+                                FROM demandedereservation d
+                                INNER JOIN terrain t ON d.id_terrain = t.id_terrain
+                                INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
+                                WHERE u.id_utilisateur = @idUtilisateur 
+                                AND( d.date_annulation_demande IS NOT NULL 
+                                OR d.date_refus_demande IS NOT NULL 
+                                OR d.date_annulation_prematuree is NOT NULL)";
+            cmd.Parameters.Add(new MySqlParameter("@idUtilisateur", idUtilisateur));
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                DemandeDeReservationDetails demandeDeReservationDetails = new(DataReaderDemandeDeReservation(dr));
+                demandesDeReservationDetails.Add(demandeDeReservationDetails);
+            }
+
+            return demandesDeReservationDetails;
+        }
+
+        public void AccepterDemandeReservationById(int idDemandeDeReservation)
+        {
+
+        }
+
+        private static DemandeDeReservation DataReaderDemandeDeReservation(MySqlDataReader dr)
+        {
+            DemandeDeReservation demandeDeReservation = new();
+            demandeDeReservation.IdDemande = dr.GetInt32("id_demande");
+
+            if (!dr.IsDBNull(dr.GetOrdinal("id_raison_annul_prem")))
+            {
+                demandeDeReservation.IdRaisonAnnulationPrem = dr.GetInt32("id_raison_annul_prem");
+            }
+            demandeDeReservation.IdTerrain = dr.GetInt32("id_terrain");
+
+            if (!dr.IsDBNull(dr.GetOrdinal("id_raison_annul")))
+            {
+                demandeDeReservation.IdRaisonAnnulClient = dr.GetInt32("id_raison_annul");
+            }
+
+            if (!dr.IsDBNull(dr.GetOrdinal("id_motif_refus")))
+            {
+                demandeDeReservation.IdMotifRefus = dr.GetInt32("id_motif_refus");
+            }
+
+            demandeDeReservation.IdMoyenPaiement = dr.GetInt32("id_moyen_paiement");
+
+            demandeDeReservation.IdOffre = dr.GetInt32("id_offre");
+
+            demandeDeReservation.DateDebutDemande = dr.GetDateTime("date_debut_demande");
+
+            demandeDeReservation.DateFinDemande = dr.GetDateTime("date_fin_demande");
+
+            demandeDeReservation.CoutDemande = dr.GetInt32("cout_demande");
+
+            if (!dr.IsDBNull(dr.GetOrdinal("date_acceptaion_demande")))
+            {
+                demandeDeReservation.DateAcceptationDemande = dr.GetDateTime("date_acceptaion_demande");
+            }
+
+            if (!dr.IsDBNull(dr.GetOrdinal("date_annulation_demande")))
+            {
+                demandeDeReservation.DateAnnulationDemande = dr.GetDateTime("date_annulation_demande");
+            }
+
+            demandeDeReservation.DateCreationDemande = dr.GetDateTime("date_creation_demande");
+
+            if (!dr.IsDBNull(dr.GetOrdinal("date_installation_troupeau")))
+            {
+                demandeDeReservation.DateInstallationTroupeau = dr.GetDateTime("date_installation_troupeau");
+            }
+
+            if (!dr.IsDBNull(dr.GetOrdinal("date_annulation_prematuree")))
+            {
+                demandeDeReservation.DateAnnulationPrematuree = dr.GetDateTime("date_annulation_prematuree");
+            }
+
+            demandeDeReservation.NumeroReservation = dr.GetString("numero_reservation");
+
+            if (!dr.IsDBNull(dr.GetOrdinal("date_refus_demande")))
+            {
+                demandeDeReservation.DateRefusDemande = dr.GetDateTime("date_refus_demande");
+            }
+
+            demandeDeReservation.NombreAnimaux = dr.GetInt32("nombre_animaux");
+            return demandeDeReservation;
         }
     }
 }
