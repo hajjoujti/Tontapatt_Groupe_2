@@ -1,37 +1,63 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Fr.EQL.Ai109.Tontapatt.Model
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@model UtilisateurPrestationModel
 @{
-}
+    
+    string attente = "";
+    string encour = "";
+    string terminer = "";
+    string annuler = "";
 
+    if (ViewBag.classe == 0)
+    {
+        attente = "active";
+    }
+    else if (ViewBag.classe == 1)
+    {
+        encour = "active";
+    }
+    else if (ViewBag.classe == 2){
+        terminer = "active";
+    }
+    else if (ViewBag.classe == 3)
+    {
+        annuler = "active";
+    }
+
+}
 <div class="body-demande-Prestation">
 
     <div class="main-terrain main-demande-Prestation">
 
+        @foreach (DemandeDeReservationDetails prestation in @Model.demandeDeReservationDetails)
+        {
+            <div class="body-card-terrain terrain-card-prestation">
+                <div class="terrain-left terrain-left-prestation">
+                    <img src="https://cdn.pixabay.com/photo/2020/11/11/21/20/lamb-5733685_960_720.jpg" alt="">
+                </div>
+                <div class="terrain-right">
 
-        <div class="body-card-terrain terrain-card-prestation">
-            <div class="terrain-left terrain-left-prestation">
-                <img src="assets/terrain_image_default.jpg" alt="">
-            </div>
-            <div class="terrain-right">
-
-                <h2>Terrain: Les magnolia</h2>
-                <p>
-                    <span class="ville">Animaux: 30</span>
-                </p>
-                <p>
-                    <span class="code-postal">Surface: 2000</span>
-                </p>
-                <p>11/07/2020 <i class="fas fa-long-arrow-alt-right"></i> 23/07/2020</p>
-                <div class="footer-card-terrain">
-                    <P>
-                        <span class="icone-terrain"><i class="fas fa-times refuse"></i></i></span>
-                        <span class="icone-terrain"><i class="fas fa-check valid"></i></i></span>
-                        <span class="icone-terrain"><i class="far fa-eye"></i></i></span>
-                    </P>
+                    <h2>Terrain: @prestation.TerrainDetails.NomTerrain</h2>
+                    <p>
+                        <span class="ville">Animaux: @prestation.NombreAnimaux</span>
+                    </p>
+                    <p>
+                        <span class="code-postal">Surface: @prestation.TerrainDetails.SurfaceTerrain</span>
+                    </p>
+                    <p>@prestation.DateDebutDemande.ToShortDateString() <i class="fas fa-long-arrow-alt-right"></i> @prestation.DateFinDemande.ToShortDateString() </p>
+                    <div class="footer-card-terrain">
+                        <P>
+                            <span class="icone-terrain"><i class="fas fa-times refuse"></i></span>
+                            <span class="icone-terrain"><i class="fas fa-check valid"></i></span>
+                            <span class="icone-terrain"><i class="far fa-eye"></i></span>
+                        </P>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
 
 
 
@@ -41,17 +67,17 @@
     <div class="demande-presation-right">
         <h2>Demande de prestation</h2>
         <div class="body-button-prestaton">
-            <div class="button-choose-cat-prestration active">
-                <h3>En Attente</h3>
+            <div class="button-choose-cat-prestration @attente">
+                <h3><a asp-controller="Utilisateur" asp-action="ListePrestation" asp-route-id="@ViewBag.idUtilisateur">En Attente </a></h3>
             </div>
-            <div class="button-choose-cat-prestration">
-                <h3>En cours</h3>
+            <div class="button-choose-cat-prestration @encour">
+                <h3><a asp-controller="Utilisateur" asp-action="ListePrestationEncour" asp-route-id="@ViewBag.idUtilisateur">En cours</a></h3>
             </div>
-            <div class="button-choose-cat-prestration">
-                <h3>Terminer</h3>
+            <div class="button-choose-cat-prestration @terminer">
+                <h3><a asp-controller="Utilisateur" asp-action="ListePrestationTerminer" asp-route-id="@ViewBag.idUtilisateur">Terminer</a></h3>
             </div>
-            <div class="button-choose-cat-prestration">
-                <h3>Annuler</h3>
+            <div class="button-choose-cat-prestration @annuler">
+                <h3><a asp-controller="Utilisateur" asp-action="listePrestationAnnuler" asp-route-id="@ViewBag.idUtilisateur">Annuler</a></h3>
             </div>
 
         </div>
