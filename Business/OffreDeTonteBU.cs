@@ -25,5 +25,11 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
             TerrainDetails terrainDetails = new TerrainDAO().GetByIdWithDetails(idTerrain);
             return new OffreDeTonteDAO().GetAllDetailsByPositionTerrain(terrainDetails.LatitudeTerrain, terrainDetails.LongitudeTerrain);
         }
+
+        public OffreDeTonteDetails GetWithDetailsByIdOffreEtPositionTerrain(int idOffreDeTonte, int idTerrain)
+        {
+            TerrainDetails terrainDetails = new TerrainDAO().GetByIdWithDetails(idTerrain);
+            return new OffreDeTonteDAO().GetWithDetailsByIdOffreEtPositionTerrain(idOffreDeTonte, terrainDetails.LatitudeTerrain, terrainDetails.LongitudeTerrain);
+        }
     }
 }

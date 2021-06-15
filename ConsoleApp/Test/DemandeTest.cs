@@ -14,7 +14,7 @@ namespace Fr.EQL.Ai109.Tontapatt.ConsoleApp.Test
         {
             DemandeDeReservationBU bu = new();
             DemandeDeReservation demandeDeReservation = new();
-            demandeDeReservation.IdTerrain = 1;
+            demandeDeReservation.IdTerrain = 78;
             demandeDeReservation.IdMoyenPaiement = 2;
             demandeDeReservation.IdOffre = 3;
             demandeDeReservation.DateDebutDemande = DateTime.Today;

@@ -51,16 +51,16 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         }
 
         [HttpGet]
-        [Route("Utilisateur/ChoixOffreDescription/{idOffreDeTonte:int}")]
-        public IActionResult ChoixOffreDescription(int idOffreDeTonte)
+        public IActionResult ChoixOffreDescription(int idOffreDeTonte, int idTerrain)
         {
             OffreDeTonteBU buOffreDeTonte = new();
-            OffreDeTonteDetails offresDeTonteDetails = buOffreDeTonte.GetByIdWithDetails(idOffreDeTonte);
+            OffreDeTonteDetails offresDeTonteDetails = buOffreDeTonte.GetWithDetailsByIdOffreEtPositionTerrain(idOffreDeTonte, idTerrain);
+
+            ViewBag.IdTerrain = idTerrain;
 
             return View(offresDeTonteDetails);
         }
 
-        [HttpGet]
         [Route("Utilisateur/ChoixTerrainDescription{idTerrain:int}")]
         public IActionResult ChoixTerrainDescription(int idTerrain)
         {
