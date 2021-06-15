@@ -27,5 +27,61 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 
             return demandeDeReservationDetails;
         }
+
+        public List<DemandeDeReservationDetails> GetAllEnAttenteWithDetailsByIdUtilisateur(int idUtilisateur)
+        {
+            DemandeDeReservationDAO demandeDeReservationDAO = new();
+            List<DemandeDeReservationDetails> demandesDeReservationDetails = demandeDeReservationDAO.GetAllEnAttentesWithDetailsByIdUtilisateur(idUtilisateur);
+
+            foreach(DemandeDeReservationDetails d in demandesDeReservationDetails)
+            {
+                d.OffreDeTonteDetails = new OffreDeTonteDAO().GetByIdWithDetails(d.IdOffre);
+                d.TerrainDetails = new TerrainDAO().GetByIdWithDetails(d.IdTerrain);
+            }
+
+            return demandesDeReservationDetails;
+        }
+
+        public List<DemandeDeReservationDetails> GetAllEnCoursWithDetailsByIdUtilisateur(int idUtilisateur)
+        {
+            DemandeDeReservationDAO demandeDeReservationDAO = new();
+            List<DemandeDeReservationDetails> demandesDeReservationDetails = demandeDeReservationDAO.GetAllEnCoursWithDetailsByIdUtilisateur(idUtilisateur);
+
+            foreach (DemandeDeReservationDetails d in demandesDeReservationDetails)
+            {
+                d.OffreDeTonteDetails = new OffreDeTonteDAO().GetByIdWithDetails(d.IdOffre);
+                d.TerrainDetails = new TerrainDAO().GetByIdWithDetails(d.IdTerrain);
+            }
+
+            return demandesDeReservationDetails;
+        }
+
+        public List<DemandeDeReservationDetails> GetAllTermineesWithDetailsByIdUtilisateur(int idUtilisateur)
+        {
+            DemandeDeReservationDAO demandeDeReservationDAO = new();
+            List<DemandeDeReservationDetails> demandesDeReservationDetails = demandeDeReservationDAO.GetAllTermineesWithDetailsByIdUtilisateur(idUtilisateur);
+
+            foreach (DemandeDeReservationDetails d in demandesDeReservationDetails)
+            {
+                d.OffreDeTonteDetails = new OffreDeTonteDAO().GetByIdWithDetails(d.IdOffre);
+                d.TerrainDetails = new TerrainDAO().GetByIdWithDetails(d.IdTerrain);
+            }
+
+            return demandesDeReservationDetails;
+        }
+
+        public List<DemandeDeReservationDetails> GetAllAnnuleesWithDetailsByIdUtilisateur(int idUtilisateur)
+        {
+            DemandeDeReservationDAO demandeDeReservationDAO = new();
+            List<DemandeDeReservationDetails> demandesDeReservationDetails = demandeDeReservationDAO.GetAllAnnuleesWithDetailsByIdUtilisateur(idUtilisateur);
+
+            foreach (DemandeDeReservationDetails d in demandesDeReservationDetails)
+            {
+                d.OffreDeTonteDetails = new OffreDeTonteDAO().GetByIdWithDetails(d.IdOffre);
+                d.TerrainDetails = new TerrainDAO().GetByIdWithDetails(d.IdTerrain);
+            }
+
+            return demandesDeReservationDetails;
+        }
     }
 }
