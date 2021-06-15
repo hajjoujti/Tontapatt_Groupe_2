@@ -10,7 +10,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
     public class DemandeDeReservation
     {
         public int IdDemande { get; set; }
-        public int? IdRaisaonAnnulationPrem { get; set; }
+        public int? IdRaisonAnnulationPrem { get; set; }
         [Required]
         public int IdTerrain { get; set; }
         public int? IdRaisonAnnulClient { get; set; }
@@ -34,6 +34,6 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
         public string NumeroReservation { get; set; }
         public DateTime? DateRefusDemande { get; set; }
         [Required]
-        public int NombreAnimal { get; set; }
+        public int NombreAnimaux { get; set; }
     }
 }

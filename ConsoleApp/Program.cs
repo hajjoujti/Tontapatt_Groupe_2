@@ -1,4 +1,5 @@
 ﻿using Fr.EQL.Ai109.Tontapatt.Business;
+using Fr.EQL.Ai109.Tontapatt.ConsoleApp.Test;
 using Fr.EQL.Ai109.Tontapatt.Model;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+            DemandeTest c = new();
+            c.CreationDemande();
 
             //Random random = new Random(DateTime.Now.Millisecond);
             //Console.WriteLine(DateTime.Now.ToString("yyMMddHHmmssffff"));
