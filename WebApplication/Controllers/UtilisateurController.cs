@@ -67,8 +67,9 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IsInBDD = true;
 
             DemandeDeReservationViewModel demandeDeReservationViewModel = new();
-            demandeDeReservationViewModel.offreDeTonteDetails = offresDeTonteDetails;
+            demandeDeReservationViewModel.OffreDeTonteDetails = offresDeTonteDetails;
 
+            demandeDeReservationViewModel.TerrainDetails = new TerrainBU().GetByIdWithDetails(idTerrain);
             return View(demandeDeReservationViewModel);
         }
 
