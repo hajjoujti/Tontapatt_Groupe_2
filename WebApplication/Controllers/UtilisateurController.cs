@@ -1,6 +1,7 @@
 ﻿using Fr.EQL.Ai109.Tontapatt.Business;
 using Fr.EQL.Ai109.Tontapatt.Model;
 using Fr.EQL.Ai109.Tontapatt.WebApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -109,8 +110,9 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View("ListePrestation",prestationList);
         }
 
-        [Route("Utilisateur/listePrestationTerminer/{idUtilisateur:int}")]
-        public IActionResult ListePrestationTerminer(int idUtilisateur)
+        /*[Authorize] ----- FONCTIONNE AVEC LES COOKIE */
+        [Route("Utilisateur/liste/Prestation")]
+        public IActionResult ListePrestation()
         {
 
             DemandeDeReservationBU bu = new();
