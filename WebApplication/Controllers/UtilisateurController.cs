@@ -84,10 +84,12 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(terrainsDetails);
         }
 
+       
+        /*[Authorize] ----- FONCTIONNE AVEC LES COOKIE */
         [Route("Utilisateur/listePrestation/{idUtilisateur:int}")]
         public IActionResult ListePrestation(int idUtilisateur)
         {
-            
+
             DemandeDeReservationBU bu = new();
             UtilisateurPrestationModel prestationList = new();
             prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
@@ -107,12 +109,11 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.classe = 1;
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
-            return View("ListePrestation",prestationList);
+            return View("ListePrestation", prestationList);
         }
 
-        /*[Authorize] ----- FONCTIONNE AVEC LES COOKIE */
-        [Route("Utilisateur/liste/Prestation")]
-        public IActionResult ListePrestation()
+        [Route("Utilisateur/listePrestationTerminer/{idUtilisateur:int}")]
+        public IActionResult ListePrestationTerminer(int idUtilisateur)
         {
 
             DemandeDeReservationBU bu = new();
