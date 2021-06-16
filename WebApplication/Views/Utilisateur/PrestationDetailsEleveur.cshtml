@@ -58,7 +58,7 @@
                     <input type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
                 </div> *@
             <div class="infosOffre_button">
-                <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-for-idDemandeDeReservation="@Model.IdDemande" asp-for-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Pointage Journalier</a>
+                <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Pointage Journalier</a>
             </div>
         </div>
     </div>
