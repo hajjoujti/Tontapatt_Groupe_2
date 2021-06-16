@@ -184,5 +184,33 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
             return View(demandeDeReservationDetails);
         }
+
+        [HttpGet]
+        public IActionResult PointageJournalierEleveur(int idDemandeDeReservation, int idUtilisateur)
+        {
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
+            ViewBag.IsInBDD = true;
+
+            PointageJournalierDetailsViewModel pointageJournalierDetailsViewModel = new();
+            pointageJournalierDetailsViewModel.PointagesJournalier = new PointageJournalierBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
+            pointageJournalierDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+
+            return View(pointageJournalierDetailsViewModel);
+        }
+
+        [HttpGet]
+        public IActionResult PointageJournalierClient(int idDemandeDeReservation, int idUtilisateur)
+        {
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
+            ViewBag.IsInBDD = true;
+
+            PointageJournalierDetailsViewModel pointageJournalierDetailsViewModel = new();
+            pointageJournalierDetailsViewModel.PointagesJournalier = new PointageJournalierBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
+            pointageJournalierDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+
+            return View(pointageJournalierDetailsViewModel);
+        }
     }
 }

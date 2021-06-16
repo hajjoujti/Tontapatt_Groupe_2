@@ -6,7 +6,7 @@
 @{
 }
 <div class="infosOffre_main">
-    <h1 class="infosOffre_h1">Votre prestation Actuelle</h1>
+    <h1 class="infosOffre_h1">Votre prestation Actuelle numéro @Model.NumeroReservation</h1>
 
     <h1 class="infosOffre_h1"> Offre : @Model.OffreDeTonteDetails.NomOffre</h1>
     <div class="infosOffre_div">
@@ -58,7 +58,7 @@
                     <input type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
                 </div> *@
             <div class="infosOffre_button">
-                <a class="infosOffre_buttonSelection" href="#">Pointage Journalier</a>
+                <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-for-idDemandeDeReservation="@Model.IdDemande" asp-for-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Pointage Journalier</a>
             </div>
         </div>
     </div>
