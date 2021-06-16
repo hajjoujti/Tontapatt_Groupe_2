@@ -232,7 +232,6 @@ choixTerrainDescription_img {
 .choixTerrainDescription_description {
     display: flex;
     flex-direction: row;
-
 }
 
 .choixTerrainDescription_h2 {
@@ -381,7 +380,6 @@ choixTerrainDescription_img {
     display: flex;
     flex-direction: column;
     color: var(--Dark);
-    position: relative;
 }
 
 .circle-icone-card-terrain {
@@ -520,8 +518,8 @@ choixTerrainDescription_img {
 
 
 .infosOffre_main {
-    margin: 2rem;
-    margin-bottom: 10rem;
+    margin: 2em;
+    font-family: font-family: 'Roboto';
 }
 
 .infosOffre_h1 {
@@ -535,57 +533,51 @@ choixTerrainDescription_img {
     background-color: #4F6367;
     border-radius: 5px;
     box-shadow: 12px 12px 2px 1px #8c989b;
-    height: 80%;
-    width: 60%;
-    margin: auto;
+    padding: 2em;
 }
 
 .infosOffre_infos {
-    margin: 2rem;
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
-    width: 80%;
-    border-radius: 5px;
+    font-family: 'Roboto';
+    font-size: 15px;
+    width:50%;
 }
 
-.infosOffre_infosNomEleveur a {
-    font-size: 1.5rem;
-    transition: color 1s;
-}
+    .infosOffre_infos p{
+        margin-left: 1em
+    }
 
-.infosOffre_infosNomEleveur a:hover {
-    color: #514db1;
-}
 
-.infosOffre_infos p {
-    margin-left: 1rem;
-    width: 80%;
-}
+
+    .infosOffre_infosNomEleveur a {
+        font-size: 1.5rem;
+        transition: color 1s;
+    }
+
+    .infosOffre_infosNomEleveur a:hover {
+        color: #514db1;
+    }
+
 
 .infosOffre_date {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: auto;
-    margin-right: 1.7rem;
-    margin-top: 2rem;
     color: #ffffff;
     border: solid 2px white;
-    padding: 1rem;
-    height: 15rem;
 }
 
-.infosOffre_date input {
-    margin: 1rem;
-}
+    .infosOffre_date input {
+        margin: 1rem;
+    }
 
 .infosOffre_selection {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: auto;
-    margin-right: 1.7rem;
     color: #ffffff;
 }
 
@@ -617,6 +609,7 @@ choixTerrainDescription_img {
     font-size: 1.2rem;
     margin-left: 1rem;
 }
+
 .infosOffre_buttonSelection:hover {
     background-color: #135d25;
 }
@@ -653,21 +646,21 @@ choixTerrainDescription_img {
     margin: 1rem;
 }
 
-.infosTerrrain_imgbackground img {
-    border-radius: 5px;
-}
+    .infosTerrrain_imgbackground img {
+        border-radius: 5px;
+    }
 
-.infosTerrrain_imgbackground a {
-    width: 15rem;
-    height: 4rem;
-    background-color: #dddddd;
-    border-radius: 5px;
-    border: 2px solid black;
-    transition: color 5s;
-    margin: auto;
-    margin-top: 2rem;
-    font-size: 1.5rem;
-}
+    .infosTerrrain_imgbackground a {
+        width: 15rem;
+        height: 4rem;
+        background-color: #dddddd;
+        border-radius: 5px;
+        border: 2px solid black;
+        transition: color 5s;
+        margin: auto;
+        margin-top: 2rem;
+        font-size: 1.5rem;
+    }
 
 .infosTerrrain_buttonSelection {
     align-items: center;
@@ -701,10 +694,10 @@ choixTerrainDescription_img {
     transition: color 2s;
 }
 
-.infosTerrrain_infosNomEleveur a:hover {
-    color: #4F6367;
-    font-size: 1.8rem;
-}
+    .infosTerrrain_infosNomEleveur a:hover {
+        color: #4F6367;
+        font-size: 1.8rem;
+    }
 
 .infosTerrrain_infos p {
     margin-left: 1rem;
@@ -720,7 +713,7 @@ choixTerrainDescription_img {
     background-color: #d8e8c8;
     background-position: right;
     background-repeat: no-repeat;
-    display:flex;
+    display: flex;
 }
 
 .container-top-h1 {
@@ -983,13 +976,16 @@ choixTerrainDescription_img {
     .button-choose-cat-prestration h3 {
         flex-grow: 1;
     }
+
     .button-choose-cat-prestration a {
         text-decoration: none;
         color: inherit;
     }
-    .button-choose-cat-prestration a:hover{
-        color: var(--Dark);
-    }
+
+        .button-choose-cat-prestration a:hover {
+            color: var(--Dark);
+        }
+
     .button-choose-cat-prestration::before {
         content: "";
         display: block;
@@ -1025,20 +1021,4 @@ choixTerrainDescription_img {
 
 .active::before {
     background: linear-gradient(45deg, var(--info)42%, transparent 66%);
-}
-
-.client-prestation-tag {
-    color: var(--light);
-    position: absolute;
-    right: 0;
-    top: 10px;
-    background-color: var(--accept);
-}
-
-.eleveur-prestation-tag {
-    color: var(--light);
-    position: absolute;
-    right: 0;
-    top: 10px;
-    background-color: var(--refus);
 }
