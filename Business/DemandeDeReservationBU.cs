@@ -78,8 +78,8 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 
             foreach (DemandeDeReservationDetails d in demandesDeReservationDetails)
             {
-                d.OffreDeTonteDetails = new OffreDeTonteDAO().GetByIdWithDetails(d.IdOffre);
                 d.TerrainDetails = new TerrainDAO().GetByIdWithDetails(d.IdTerrain);
+                d.OffreDeTonteDetails = new OffreDeTonteDAO().GetWithDetailsByIdOffreEtPositionTerrain(d.IdOffre, d.TerrainDetails.LatitudeTerrain, d.TerrainDetails.LongitudeTerrain);
             }
 
             return demandesDeReservationDetails;

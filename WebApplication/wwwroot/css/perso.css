@@ -1043,6 +1043,10 @@ choixTerrainDescription_img {
     background-color: var(--refus);
 }
 
-.infosOffre_infosDateCreation span{
+.infosOffre_infosDateInstallationTroupeau span {
+    color: var(--refus);
+}
+
+.infosOffre_infosDateAcceptation span {
     color: var(--refus);
 }

@@ -11,11 +11,22 @@
     <h1 class="infosOffre_h1"> Offre : @Model.OffreDeTonteDetails.NomOffre</h1>
     <div class="infosOffre_div">
         <div class="infosOffre_infos">
-            <p class="infosOffre_infosNomEleveur"><strong>Nom du client : <a href="#">@Model.TerrainDetails.NomUtilisateur @Model.TerrainDetails.PrenomUtilisateur</a></strong></p>
+            <p class="infosOffre_infosNomUtilisateur"><strong>Nom du client : <a href="#">@Model.TerrainDetails.NomUtilisateur @Model.TerrainDetails.PrenomUtilisateur</a></strong></p>
             <p class="infosOffre_infosDescription"><strong>Description du client: </strong>@Model.TerrainDetails.DescriptionUtilisateur</p>
             <p class="infosOffre_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DateDebutDemande.ToString("dd/MM/yyyy")</p>
             <p class="infosOffre_infosDateFin"><strong>Date de fin de la prestation : </strong> @Model.DateFinDemande.ToString("dd/MM/yyyy")</p>
-            <p class="infosOffre_infosDateCreation">
+            <p class="infosOffre_infosDateAcceptation">
+                <strong>Date de l'acceptation : </strong>
+                @if (Model.DateAcceptationDemande.HasValue)
+                {
+                    @Model.DateAcceptationDemande.Value.ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    <span>La demande nest pas encore acceptée</span>
+                }
+            </p>
+            <p class="infosOffre_infosDateInstallationTroupeau">
                 <strong>Date de l'installation du tropeau : </strong>
                 @if (Model.DateInstallationTroupeau.HasValue)
                 {
@@ -23,7 +34,7 @@
                 }
                 else if (!Model.DateAcceptationDemande.HasValue)
                 {
-                    <span>Le demande nest pas encore acceptée</span>
+                    <span>Le demande n'est pas encore acceptée</span>
                 }
                 else
                 {
