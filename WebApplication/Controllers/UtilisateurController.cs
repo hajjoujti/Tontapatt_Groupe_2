@@ -1,6 +1,7 @@
 ﻿using Fr.EQL.Ai109.Tontapatt.Business;
 using Fr.EQL.Ai109.Tontapatt.Model;
 using Fr.EQL.Ai109.Tontapatt.WebApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -77,6 +78,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(TerrainsDetails);
         }
 
+        /*[Authorize] ----- FONCTIONNE AVEC LES COOKIE */
         [Route("Utilisateur/liste/Prestation")]
         public IActionResult ListePrestation()
         {

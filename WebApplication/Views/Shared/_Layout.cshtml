@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@{
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,7 +23,7 @@
             <p>Tontapatt</p>
         </div>
         <div class="header-right">
-            @if (@ViewBag.IsInBDD == true)
+            @if (ViewBag.IsInBDD == true)
             {
                 <p>
                     <a class="" asp-controller="Home" asp-action="Index">Acceuil</a>
@@ -47,7 +49,7 @@
                 <p>
                     <a class="" asp-controller="Home" asp-action="Index">Acceuil</a>
                 </p>
-         
+
                 <p>
                     <a class="" href="#APropos">A Propos</a>
                 </p>
