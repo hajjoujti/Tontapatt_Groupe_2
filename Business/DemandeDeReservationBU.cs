@@ -20,11 +20,9 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 
         public DemandeDeReservationDetails GetByIdWithDetails(int idDemandeDeReservation)
         {
-            DemandeDeReservationDAO demandeDeReservationDAO = new();
-            DemandeDeReservationDetails demandeDeReservationDetails = demandeDeReservationDAO.GetByIdWithDetails(idDemandeDeReservation);
-            demandeDeReservationDetails.OffreDeTonteDetails = new OffreDeTonteDAO().GetByIdWithDetails(demandeDeReservationDetails.IdOffre);
-            demandeDeReservationDetails.TerrainDetails = new TerrainDAO().GetByIdWithDetails(demandeDeReservationDetails.IdTerrain);
-            demandeDeReservationDetails.OffreDeTonteDetails = new OffreDeTonteDAO().GetWithDetailsByIdOffreEtPositionTerrain(demandeDeReservationDetails.IdOffre, demandeDeReservationDetails.TerrainDetails.LatitudeTerrain, demandeDeReservationDetails.TerrainDetails.LongitudeTerrain);
+            DemandeDeReservationDetails demandeDeReservationDetails = new DemandeDeReservationDAO().GetByIdWithDetails(idDemandeDeReservation);
+            demandeDeReservationDetails.TerrainDetails = new TerrainBU().GetByIdWithDetails(demandeDeReservationDetails.IdTerrain);
+            demandeDeReservationDetails.OffreDeTonteDetails = new OffreDeTonteBU().GetWithDetailsByIdOffreEtPositionTerrain(demandeDeReservationDetails.IdOffre, demandeDeReservationDetails.IdTerrain);
 
             return demandeDeReservationDetails;
         }
@@ -36,8 +34,8 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 
             foreach(DemandeDeReservationDetails d in demandesDeReservationDetails)
             {
-                d.OffreDeTonteDetails = new OffreDeTonteDAO().GetByIdWithDetails(d.IdOffre);
-                d.TerrainDetails = new TerrainDAO().GetByIdWithDetails(d.IdTerrain);
+                d.TerrainDetails = new TerrainBU().GetByIdWithDetails(d.IdTerrain);
+                d.OffreDeTonteDetails = new OffreDeTonteBU().GetWithDetailsByIdOffreEtPositionTerrain(d.IdOffre, d.IdTerrain);
             }
 
             return demandesDeReservationDetails;
@@ -50,8 +48,8 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 
             foreach (DemandeDeReservationDetails d in demandesDeReservationDetails)
             {
-                d.OffreDeTonteDetails = new OffreDeTonteDAO().GetByIdWithDetails(d.IdOffre);
-                d.TerrainDetails = new TerrainDAO().GetByIdWithDetails(d.IdTerrain);
+                d.TerrainDetails = new TerrainBU().GetByIdWithDetails(d.IdTerrain);
+                d.OffreDeTonteDetails = new OffreDeTonteBU().GetWithDetailsByIdOffreEtPositionTerrain(d.IdOffre, d.IdTerrain);
             }
 
             return demandesDeReservationDetails;
@@ -64,8 +62,8 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 
             foreach (DemandeDeReservationDetails d in demandesDeReservationDetails)
             {
-                d.OffreDeTonteDetails = new OffreDeTonteDAO().GetByIdWithDetails(d.IdOffre);
-                d.TerrainDetails = new TerrainDAO().GetByIdWithDetails(d.IdTerrain);
+                d.TerrainDetails = new TerrainBU().GetByIdWithDetails(d.IdTerrain);
+                d.OffreDeTonteDetails = new OffreDeTonteBU().GetWithDetailsByIdOffreEtPositionTerrain(d.IdOffre, d.IdTerrain);
             }
 
             return demandesDeReservationDetails;
@@ -78,8 +76,8 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 
             foreach (DemandeDeReservationDetails d in demandesDeReservationDetails)
             {
-                d.TerrainDetails = new TerrainDAO().GetByIdWithDetails(d.IdTerrain);
-                d.OffreDeTonteDetails = new OffreDeTonteDAO().GetWithDetailsByIdOffreEtPositionTerrain(d.IdOffre, d.TerrainDetails.LatitudeTerrain, d.TerrainDetails.LongitudeTerrain);
+                d.TerrainDetails = new TerrainBU().GetByIdWithDetails(d.IdTerrain);
+                d.OffreDeTonteDetails = new OffreDeTonteBU().GetWithDetailsByIdOffreEtPositionTerrain(d.IdOffre, d.IdTerrain);
             }
 
             return demandesDeReservationDetails;
@@ -88,7 +86,10 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
         public void AccepterDemandeReservationById(int idDemandeDeReservation)
         {
             DateTime dateAcceptationDemande = DateTime.Now;
+            DemandeDeReservation demandeDeReservation = new DemandeDeReservationDAO().GetById(idDemandeDeReservation);
             new DemandeDeReservationDAO().AccepterDemandeDeReservationById(idDemandeDeReservation, dateAcceptationDemande);
+            // annulation de l'offre apres acceptation de demande
+            new OffreDeTonteBU().AnnulerOffreDeTonteById(demandeDeReservation.IdOffre, 5); // 5 est l'id de l'annulation offre base sur l'acceptation de la demande
         }
 
         public void RefuserDemandeDeReservation(int idDemandeDeReservation, int idMotifRefus)
