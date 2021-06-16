@@ -11,14 +11,28 @@
     <h1 class="infosOffre_h1"> Offre : @Model.OffreDeTonteDetails.NomOffre</h1>
     <div class="infosOffre_div">
         <div class="infosOffre_infos">
-            <p class="infosOffre_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">@Model.OffreDeTonteDetails.NomUtilisateur @Model.OffreDeTonteDetails.PrenomUtilisateur</a></strong></p>
-            <p class="infosOffre_infosDescription"><strong>Description : </strong>@Model.OffreDeTonteDetails.DescriptionUtilisateur</p>
-            <p class="infosOffre_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DateDebutDemande.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDateFin"><strong>Date de fin de la prestation : </strong> @Model.DateFinDemande.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDateCreation"><strong>Date de l'installation du tropeau : </strong> (a)Model.DateCreationOffre.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.OffreDeTonteDetails.DistanceOffreDeTonteTerrain </p>
+            <p class="infosOffre_infosNomEleveur"><strong>Nom du client : <a href="#">@Model.TerrainDetails.NomUtilisateur @Model.TerrainDetails.PrenomUtilisateur</a></strong></p>
+            <p class="infosOffre_infosDescription"><strong>Description du client: </strong>@Model.TerrainDetails.DescriptionUtilisateur</p>
+            <p class="infosOffre_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DateDebutDemande.ToString("dd/MM/yyyy")</p>
+            <p class="infosOffre_infosDateFin"><strong>Date de fin de la prestation : </strong> @Model.DateFinDemande.ToString("dd/MM/yyyy")</p>
+            <p class="infosOffre_infosDateCreation">
+                <strong>Date de l'installation du tropeau : </strong>
+                @if (Model.DateInstallationTroupeau.HasValue)
+                {
+                    Model.DateInstallationTroupeau.Value.ToString("dd/MM/yyyy");
+                }
+                else if (!Model.DateAcceptationDemande.HasValue)
+                {
+                    <span>Le demande nest pas encore acceptée</span>
+                }
+                else
+                {
+                    <span>Le troupeau n'est pas encore installé</span>
+                }
+            </p>
+            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.OffreDeTonteDetails.DistanceOffreDeTonteTerrain km </p>
             <p class="infosOffre_infosNomVille"><strong>Ville / Code Postal : </strong>@Model.OffreDeTonteDetails.NomVilleOfrreDeTonte. / @Model.OffreDeTonteDetails.CodePostaleOffreDeTonte</p>
-            <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model..EspeceAnimal</p>
+            <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.OffreDeTonteDetails.EspeceAnimal</p>
             <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.OffreDeTonteDetails.RaceAnimal</p>
             <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.OffreDeTonteDetails.NombreAnimaux</p>
             <p class="infosOffre_infosPrix"><strong>Coût par jour par animal: </strong>@Model.OffreDeTonteDetails.CoutAnimalParJour</p>

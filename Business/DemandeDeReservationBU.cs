@@ -24,6 +24,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
             DemandeDeReservationDetails demandeDeReservationDetails = demandeDeReservationDAO.GetByIdWithDetails(idDemandeDeReservation);
             demandeDeReservationDetails.OffreDeTonteDetails = new OffreDeTonteDAO().GetByIdWithDetails(demandeDeReservationDetails.IdOffre);
             demandeDeReservationDetails.TerrainDetails = new TerrainDAO().GetByIdWithDetails(demandeDeReservationDetails.IdTerrain);
+            demandeDeReservationDetails.OffreDeTonteDetails = new OffreDeTonteDAO().GetWithDetailsByIdOffreEtPositionTerrain(demandeDeReservationDetails.IdOffre, demandeDeReservationDetails.TerrainDetails.LatitudeTerrain, demandeDeReservationDetails.TerrainDetails.LongitudeTerrain);
 
             return demandeDeReservationDetails;
         }

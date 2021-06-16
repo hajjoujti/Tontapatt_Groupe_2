@@ -1042,3 +1042,7 @@ choixTerrainDescription_img {
     top: 10px;
     background-color: var(--refus);
 }
+
+.infosOffre_infosDateCreation span{
+    color: var(--refus);
+}
