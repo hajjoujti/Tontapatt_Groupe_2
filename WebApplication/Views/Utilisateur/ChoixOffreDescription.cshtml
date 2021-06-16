@@ -5,22 +5,23 @@
 @using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 @model DemandeDeReservationViewModel
 @{
+    DateTime today = DateTime.Now;
 }
+<input id="tailleTerrain" value="@Model.TerrainDetails.SurfaceTerrain" type="hidden"/>
 <div class="infosOffre_main">
-    <h1 class="infosOffre_h1">@Model.offreDeTonteDetails.NomOffre</h1>
+    <h1 class="infosOffre_h1">@Model.OffreDeTonteDetails.NomOffre</h1>
     <div class="infosOffre_div">
         <div class="infosOffre_infos">
-            <p class="infosOffre_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">@Model.offreDeTonteDetails.NomUtilisateur @Model.offreDeTonteDetails.PrenomUtilisateur</a></strong></p>
-            <p class="infosOffre_infosDescription"><strong>Description : </strong>@Model.offreDeTonteDetails.DescriptionUtilisateur</p>
-            <p class="infosOffre_infosDateDebut"><strong>Date de début de l'offre : </strong>@Model.offreDeTonteDetails.DateDebutOffre.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDateFin"><strong>Date de fin de l'offre : </strong>@Model.offreDeTonteDetails.DateFinOffre.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDateCreation"><strong>Date de création de l'offre : </strong>@Model.offreDeTonteDetails.DateCreationOffre.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.offreDeTonteDetails.DistanceOffreDeTonteTerrain Km</p>
-            <p class="infosOffre_infosNomVille"><strong>Ville / Code Postal : </strong>@Model.offreDeTonteDetails.NomVilleOfrreDeTonte / @Model.offreDeTonteDetails.CodePostaleOffreDeTonte</p>
-            <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.offreDeTonteDetails.EspeceAnimal</p>
-            <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.offreDeTonteDetails.RaceAnimal</p>
-            <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.offreDeTonteDetails.NombreAnimaux</p>
-            <p class="infosOffre_infosPrix"><strong>Coût par jour par mouton : </strong>@Model.offreDeTonteDetails.CoutAnimalParJour</p>
+            <p class="infosOffre_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">@Model.OffreDeTonteDetails.NomUtilisateur @Model.OffreDeTonteDetails.PrenomUtilisateur</a></strong></p>
+            <p class="infosOffre_infosDescription"><strong>Description de l'offre : </strong>@Model.OffreDeTonteDetails.DescriptionOffre</p>
+            <p class="infosOffre_infosDateDebut"><strong>Date de début de l'offre : </strong>@Model.OffreDeTonteDetails.DateDebutOffre.ToString("MM/dd/yyyy")</p>
+            <p class="infosOffre_infosDateFin"><strong>Date de fin de l'offre : </strong>@Model.OffreDeTonteDetails.DateFinOffre.ToString("MM/dd/yyyy")</p>
+            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.OffreDeTonteDetails.DistanceOffreDeTonteTerrain Km</p>
+            <p class="infosOffre_infosNomVille"><strong>Ville / Code Postal : </strong>@Model.OffreDeTonteDetails.NomVilleOfrreDeTonte / @Model.OffreDeTonteDetails.CodePostaleOffreDeTonte</p>
+            <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.OffreDeTonteDetails.EspeceAnimal</p>
+            <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.OffreDeTonteDetails.RaceAnimal</p>
+            <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.OffreDeTonteDetails.NombreAnimaux</p>
+            <p class="infosOffre_infosPrix"><strong>Coût par jour par mouton : </strong>@Model.OffreDeTonteDetails.CoutAnimalParJour</p>
             <a class="infosOffre_buttonChange" href="#"><i class="fas fa-arrow-left"></i></a>
         </div>
 
@@ -28,17 +29,17 @@
             <div class="infosOffre_date">
                 <p>Choisissez vos dates :</p>
                 <label asp-for="DateDebutDemande">Date de début :</label>
-                <input asp-for="DateDebutDemande" type="date" id="dateOfferStart" min="@Model.offreDeTonteDetails.DateDebutOffre" max="@Model.offreDeTonteDetails.DateFinOffre" value="@Model.offreDeTonteDetails.DateDebutOffre" />
+                <input asp-for="DateDebutDemande" type="date" id="dateOffreStart" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="@Model.OffreDeTonteDetails.DateDebutOffre" onchange="handlerstart(event);" />
                 @Html.ValidationMessage("DateDebutDemande")
                 <label asp-for="DateFinDemande">Date de fin : </label>
-                <input asp-for="DateFinDemande" type="date" id="dateOfferStart" min="@Model.offreDeTonteDetails.DateDebutOffre" max="@Model.offreDeTonteDetails.DateFinOffre" value="@Model.offreDeTonteDetails.DateFinOffre" />
+                <input asp-for="DateFinDemande" type="date" id="dateOffreEnd" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="@Model.OffreDeTonteDetails.DateFinOffre" onchange="handlerend(event);"/>
                 @Html.ValidationMessage("DateFinDemande")
             </div>
             <div class="eval-demande-container">
                 <h3>Evaluation de la demande</h3>
-                <p><i class="far fa-calendar-alt"></i>Nombre de jours: <span id="nmbJour">12</span></p>
-                <p><i class="fas fa-paw"></i>Taille du troupeau: <span id="nmbAnim">30</span></p>
-                <p><i class="fas fa-euro-sign"></i>Cout de la prestation: <span id="coutPresta">2000€</span></p>
+                <p><i class="far fa-calendar-alt"></i>Nombre de jours: <span id="nmbJour">Selectionner Date</span></p>
+                <p><i class="fas fa-paw"></i>Taille du troupeau: <span id="nmbAnim">0</span></p>
+                <p><i class="fas fa-euro-sign"></i>Cout de la prestation: <span id="coutPresta">0€</span></p>
             </div>
             <div class="infosOffre_date">
                 <p>Choisissez votre moyen de paiement : </p>
@@ -70,9 +71,9 @@
             </div>
             <div class="infosOffre_button">
                 <input type="hidden" asp-for="IdTerrain" value="@ViewBag.IdTerrain"/>
-                <input type="hidden" asp-for="IdOffre" value="@Model.offreDeTonteDetails.IdOffre"/>
-                <input type="hidden" asp-for="NombreAnimaux" value="@Model.offreDeTonteDetails.NombreAnimaux"/>
-                <input type="number" asp-for="CoutDemande" />
+                <input type="hidden" asp-for="IdTerrain" value="@ViewBag.IdTerrain"/>
+                <input type="hidden" id="nmbAnimTotal" asp-for="IdOffre" value="@Model.OffreDeTonteDetails.IdOffre"/>
+                <input type="number" asp-for="NombreAnimaux" />
             </div>
             <button class="infosOffre_buttonSelection" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider cette offre</button>
         </form>

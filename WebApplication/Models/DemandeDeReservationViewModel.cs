@@ -23,6 +23,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
         public double CoutDemande { get; set; }
         [Required]
         public int NombreAnimaux { get; set; }
-        public OffreDeTonteDetails offreDeTonteDetails { get; set; }
+        public OffreDeTonteDetails OffreDeTonteDetails { get; set; }
+        public TerrainDetails TerrainDetails { get; set; }
     }
 }
