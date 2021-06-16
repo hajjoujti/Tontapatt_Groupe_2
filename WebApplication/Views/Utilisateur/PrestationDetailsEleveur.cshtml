@@ -1,0 +1,65 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Fr.EQL.Ai109.Tontapatt.Model
+@model DemandeDeReservationDetails
+@{
+}
+<div class="infosOffre_main">
+    <h1 class="infosOffre_h1">Votre prestation Actuelle</h1>
+
+    <h1 class="infosOffre_h1"> Offre : @Model.OffreDeTonteDetails.NomOffre</h1>
+    <div class="infosOffre_div">
+        <div class="infosOffre_infos">
+            <p class="infosOffre_infosNomUtilisateur"><strong>Nom du client : <a href="#">@Model.TerrainDetails.NomUtilisateur @Model.TerrainDetails.PrenomUtilisateur</a></strong></p>
+            <p class="infosOffre_infosDescription"><strong>Description du client: </strong>@Model.TerrainDetails.DescriptionUtilisateur</p>
+            <p class="infosOffre_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DateDebutDemande.ToString("dd/MM/yyyy")</p>
+            <p class="infosOffre_infosDateFin"><strong>Date de fin de la prestation : </strong> @Model.DateFinDemande.ToString("dd/MM/yyyy")</p>
+            <p class="infosOffre_infosDateAcceptation">
+                <strong>Date de l'acceptation : </strong>
+                @if (Model.DateAcceptationDemande.HasValue)
+                {
+                    @Model.DateAcceptationDemande.Value.ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    <span>La demande nest pas encore acceptée</span>
+                }
+            </p>
+            <p class="infosOffre_infosDateInstallationTroupeau">
+                <strong>Date de l'installation du tropeau : </strong>
+                @if (Model.DateInstallationTroupeau.HasValue)
+                {
+                    Model.DateInstallationTroupeau.Value.ToString("dd/MM/yyyy");
+                }
+                else if (!Model.DateAcceptationDemande.HasValue)
+                {
+                    <span>Le demande n'est pas encore acceptée</span>
+                }
+                else
+                {
+                    <span>Le troupeau n'est pas encore installé</span>
+                }
+            </p>
+            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.OffreDeTonteDetails.DistanceOffreDeTonteTerrain km </p>
+            <p class="infosOffre_infosNomVille"><strong>Ville / Code Postal : </strong>@Model.OffreDeTonteDetails.NomVilleOfrreDeTonte. / @Model.OffreDeTonteDetails.CodePostaleOffreDeTonte</p>
+            <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.OffreDeTonteDetails.EspeceAnimal</p>
+            <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.OffreDeTonteDetails.RaceAnimal</p>
+            <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.OffreDeTonteDetails.NombreAnimaux</p>
+            <p class="infosOffre_infosPrix"><strong>Coût par jour par animal: </strong>@Model.OffreDeTonteDetails.CoutAnimalParJour</p>
+        </div>
+
+        <div class="infosOffre_selection">
+            @* <div class="infosOffre_date">
+                    <p>Choisissez vos dates :</p>
+                    <label for="dateOffer">Date de début :</label>
+                    <input type="date" name="dateOfferStart" id="dateOfferStart" min="@Model.DateDebutOff" max="@Model.DateFinOffre">
+                    <label for="dateOffer">Date de fin : </label>
+                    <input type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
+                </div> *@
+            <div class="infosOffre_button">
+                <a class="infosOffre_buttonSelection" href="#">Pointage Journalier</a>
+            </div>
+        </div>
+    </div>
+</div>

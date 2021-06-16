@@ -1022,3 +1022,27 @@ choixTerrainDescription_img {
 .active::before {
     background: linear-gradient(45deg, var(--info)42%, transparent 66%);
 }
+
+.client-prestation-tag {
+    color: var(--light);
+    position: absolute;
+    right: 0;
+    top: 10px;
+    background-color: var(--accept);
+}
+
+.eleveur-prestation-tag {
+    color: var(--light);
+    position: absolute;
+    right: 0;
+    top: 10px;
+    background-color: var(--refus);
+}
+
+.infosOffre_infosDateInstallationTroupeau span {
+    color: var(--refus);
+}
+
+.infosOffre_infosDateAcceptation span {
+    color: var(--refus);
+}

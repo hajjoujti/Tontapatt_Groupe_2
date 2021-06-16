@@ -160,5 +160,25 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
                 return View("");
             }
         }
+
+        [HttpGet]
+        public IActionResult PrestationDetailsClient(int idDemandeDeReservation)
+        {
+            ViewBag.IsInBDD = true;
+            DemandeDeReservationDetails demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+            ViewBag.IdUtilisateur = demandeDeReservationDetails.TerrainDetails.IdUtilisateur;
+
+            return View(demandeDeReservationDetails);
+        }
+
+        [HttpGet]
+        public IActionResult PrestationDetailsEleveur(int idDemandeDeReservation)
+        {
+            ViewBag.IsInBDD = true;
+            DemandeDeReservationDetails demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+            ViewBag.IdUtilisateur = demandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur;
+
+            return View(demandeDeReservationDetails);
+        }
     }
 }
