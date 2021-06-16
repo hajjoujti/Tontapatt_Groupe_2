@@ -5,11 +5,12 @@
 @using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 @model UtilisateurPrestationModel
 @{
-    
+
     string attente = "";
     string encour = "";
     string terminer = "";
     string annuler = "";
+    string action = "";
 
     if (ViewBag.classe == 0)
     {
@@ -19,7 +20,8 @@
     {
         encour = "active";
     }
-    else if (ViewBag.classe == 2){
+    else if (ViewBag.classe == 2)
+    {
         terminer = "active";
     }
     else if (ViewBag.classe == 3)
@@ -39,7 +41,16 @@
                     <img src="https://cdn.pixabay.com/photo/2020/11/11/21/20/lamb-5733685_960_720.jpg" alt="">
                 </div>
                 <div class="terrain-right">
-
+                    @if (prestation.TerrainDetails.IdUtilisateur == ViewBag.IdUtilisateur)
+                    {
+                        <span class="client-prestation-tag">Client</span>
+                        action = "PrestationDetailsClient";
+                    }
+                    else
+                    {
+                        <span class="eleveur-prestation-tag">Eleveur</span>
+                        action = "PrestationDetailsEleveur";
+                    }
                     <h2>Terrain: @prestation.TerrainDetails.NomTerrain</h2>
                     <p>
                         <span class="ville">Animaux: @prestation.NombreAnimaux</span>
@@ -50,9 +61,9 @@
                     <p>@prestation.DateDebutDemande.ToShortDateString() <i class="fas fa-long-arrow-alt-right"></i> @prestation.DateFinDemande.ToShortDateString() </p>
                     <div class="footer-card-terrain">
                         <P>
-                            <span class="icone-terrain"><i class="fas fa-times refuse"></i></span>
-                            <span class="icone-terrain"><i class="fas fa-check valid"></i></span>
-                            <span class="icone-terrain"><i class="far fa-eye"></i></span>
+                            <span class="icone-terrain">
+                                <a asp-action="@action" asp-controller="Utilisateur"><i class="far fa-eye"></i></a>
+                            </span>
                         </P>
                     </div>
                 </div>
@@ -68,16 +79,16 @@
         <h2>Demande de prestation</h2>
         <div class="body-button-prestaton">
             <div class="button-choose-cat-prestration @attente">
-                <h3><a asp-controller="Utilisateur" asp-action="ListePrestation" asp-route-id="@ViewBag.idUtilisateur">En Attente </a></h3>
+                <h3><a asp-controller="Utilisateur" asp-action="ListePrestation" asp-route-id="@ViewBag.IdUtilisateur">En Attente </a></h3>
             </div>
             <div class="button-choose-cat-prestration @encour">
-                <h3><a asp-controller="Utilisateur" asp-action="ListePrestationEncour" asp-route-id="@ViewBag.idUtilisateur">En cours</a></h3>
+                <h3><a asp-controller="Utilisateur" asp-action="ListePrestationEncour" asp-route-id="@ViewBag.IdUtilisateur">En cours</a></h3>
             </div>
             <div class="button-choose-cat-prestration @terminer">
-                <h3><a asp-controller="Utilisateur" asp-action="ListePrestationTerminer" asp-route-id="@ViewBag.idUtilisateur">Terminer</a></h3>
+                <h3><a asp-controller="Utilisateur" asp-action="ListePrestationTerminer" asp-route-id="@ViewBag.IdUtilisateur">Terminer</a></h3>
             </div>
             <div class="button-choose-cat-prestration @annuler">
-                <h3><a asp-controller="Utilisateur" asp-action="listePrestationAnnuler" asp-route-id="@ViewBag.idUtilisateur">Annuler</a></h3>
+                <h3><a asp-controller="Utilisateur" asp-action="listePrestationAnnuler" asp-route-id="@ViewBag.IdUtilisateur">Annuler</a></h3>
             </div>
 
         </div>

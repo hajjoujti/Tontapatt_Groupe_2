@@ -30,6 +30,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             UtilisateurEtTerrainsDetailsViewModel utilisateurEtTerrainsDetailsViewModel = new();
             utilisateurEtTerrainsDetailsViewModel.TerrainsDetails = buTerrain.GetAllDetailsByIdUtilisateur(idUtilisateur);
             utilisateurEtTerrainsDetailsViewModel.Utilisateur = buUtilisateur.GetById(idUtilisateur);
+            ViewBag.IdUtilisateur = idUtilisateur;
 
             ViewBag.IsInBDD = true;
             return View(utilisateurEtTerrainsDetailsViewModel);
@@ -49,6 +50,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             offresDeTonteDetailsEtTerrainViewModel.OffresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
             offresDeTonteDetailsEtTerrainViewModel.TerrainDetails = buTerrain.GetByIdWithDetails(idTerrain); ;
 
+            ViewBag.IdUtilisateur = offresDeTonteDetailsEtTerrainViewModel.TerrainDetails.IdUtilisateur;
             ViewBag.IsInBDD = true;
 
             return View(offresDeTonteDetailsEtTerrainViewModel);
@@ -60,6 +62,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             OffreDeTonteBU buOffreDeTonte = new();
             OffreDeTonteDetails offresDeTonteDetails = buOffreDeTonte.GetWithDetailsByIdOffreEtPositionTerrain(idOffreDeTonte, idTerrain);
 
+            ViewBag.IdUtilisateur = new TerrainBU().GetById(idTerrain).IdUtilisateur;
             ViewBag.IdTerrain = idTerrain;
             ViewBag.IsInBDD = true;
 
@@ -73,11 +76,11 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         public IActionResult ChoixTerrainDescription(int idTerrain)
         {
             TerrainBU buTerrain = new();
-            TerrainDetails TerrainsDetails = buTerrain.GetByIdWithDetails(idTerrain);
-
+            TerrainDetails terrainsDetails = buTerrain.GetByIdWithDetails(idTerrain);
+            ViewBag.IdUtilisateur = terrainsDetails.IdUtilisateur;
             ViewBag.IsInBDD = true;
 
-            return View(TerrainsDetails);
+            return View(terrainsDetails);
         }
 
         [Route("Utilisateur/listePrestation/{idUtilisateur:int}")]
@@ -88,7 +91,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             UtilisateurPrestationModel prestationList = new();
             prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.classe = 0;
-            ViewBag.idUtilisateur = idUtilisateur;
+            ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View(prestationList);
         }
@@ -99,9 +102,9 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
             DemandeDeReservationBU bu = new();
             UtilisateurPrestationModel prestationList = new();
-            prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
+            prestationList.demandeDeReservationDetails = bu.GetAllEnCoursWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.classe = 1;
-            ViewBag.idUtilisateur = idUtilisateur;
+            ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View("ListePrestation",prestationList);
         }
@@ -112,9 +115,9 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
             DemandeDeReservationBU bu = new();
             UtilisateurPrestationModel prestationList = new();
-            prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
+            prestationList.demandeDeReservationDetails = bu.GetAllTermineesWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.classe = 2;
-            ViewBag.idUtilisateur = idUtilisateur;
+            ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View("ListePrestation", prestationList);
         }
@@ -125,9 +128,9 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
             DemandeDeReservationBU bu = new();
             UtilisateurPrestationModel prestationList = new();
-            prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
+            prestationList.demandeDeReservationDetails = bu.GetAllAnnuleesWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.classe = 3;
-            ViewBag.idUtilisateur = idUtilisateur;
+            ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View("ListePrestation", prestationList);
         }
@@ -136,6 +139,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         public IActionResult NouvelleDemandeDeReservation(DemandeDeReservationViewModel d)
         {
             ViewBag.IsInBDD = true;
+            ViewBag.IdUtilisateur = new TerrainBU().GetById(d.IdTerrain).IdUtilisateur;
             if (ModelState.IsValid)
             {
                 DemandeDeReservation demandeDeReservation = new();

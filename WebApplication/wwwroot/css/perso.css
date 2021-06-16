@@ -381,6 +381,7 @@ choixTerrainDescription_img {
     display: flex;
     flex-direction: column;
     color: var(--Dark);
+    position: relative;
 }
 
 .circle-icone-card-terrain {
@@ -1024,4 +1025,20 @@ choixTerrainDescription_img {
 
 .active::before {
     background: linear-gradient(45deg, var(--info)42%, transparent 66%);
+}
+
+.client-prestation-tag {
+    color: var(--light);
+    position: absolute;
+    right: 0;
+    top: 10px;
+    background-color: var(--accept);
+}
+
+.eleveur-prestation-tag {
+    color: var(--light);
+    position: absolute;
+    right: 0;
+    top: 10px;
+    background-color: var(--refus);
 }
