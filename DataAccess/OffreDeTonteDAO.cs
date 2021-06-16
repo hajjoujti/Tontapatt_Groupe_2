@@ -122,6 +122,22 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             return offreDeTonteDetails;
         }
 
+        public void AnnulerOffreDeTonteById(int idOffredeTonte, int idAnnulationOffre, DateTime dateAnnulationOffre)
+        {
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"UPDATE offredetonte SET
+                                id_annulation_offre = @idAnnulationOffre,
+                                date_annulation_offre = @dateAnnulationOffre
+                                WHERE id_demande = @idOffredeTonte";
+            cmd.Parameters.Add(new MySqlParameter("@idOffredeTonte", idOffredeTonte));
+            cmd.Parameters.Add(new MySqlParameter("@dateAnnulationOffre", dateAnnulationOffre));
+            cmd.Parameters.Add(new MySqlParameter("@idAnnulationOffre", idAnnulationOffre));
+
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+        }
+
         private OffreDeTonteDetails DataReaderOffreDeTonteDetals(MySqlDataReader dr)
         {
             OffreDeTonteDetails offreDeTonteDetails = new(DataReaderOffreDeTonte(dr));
