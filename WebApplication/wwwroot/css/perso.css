@@ -18,6 +18,10 @@ body {
     background-color: var(--light);
 }
 
+a {
+    text-decoration:none;
+}
+
 header {
     display: flex;
     flex-direction: row;
@@ -554,6 +558,7 @@ choixTerrainDescription_img {
     .infosOffre_infosNomEleveur a {
         font-size: 1.5rem;
         transition: color 1s;
+        color:inherit;
     }
 
     .infosOffre_infosNomEleveur a:hover {
@@ -567,6 +572,7 @@ choixTerrainDescription_img {
     justify-content: center;
     color: #ffffff;
     border: solid 2px white;
+    padding:1em;
 }
 
     .infosOffre_date input {
@@ -579,6 +585,11 @@ choixTerrainDescription_img {
     justify-content: center;
     margin: auto;
     color: #ffffff;
+    font-family: 'Roboto';
+}
+
+    .infosOffre_date div{
+    text-align: center;
 }
 
 .infosOffre_button button {
@@ -587,7 +598,7 @@ choixTerrainDescription_img {
     background-color: #dddddd;
     border-radius: 5px;
     border: 2px solid black;
-    transition: color 5s;
+    transition: color 0.5s;
     margin: auto;
     margin-top: 2rem;
     font-size: 1.5rem;
@@ -595,31 +606,40 @@ choixTerrainDescription_img {
 
 .infosOffre_buttonSelection {
     align-items: center;
+    font-family: 'Roboto';
 }
 
 .infosOffre_buttonChange {
     align-items: center;
-    justify-content: center;
-    width: 17rem;
-    height: 2rem;
-    background-color: #dddddd;
-    border-radius: 5px;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
     border: 2px solid black;
     transition: color 5s;
     font-size: 1.2rem;
-    margin-left: 1rem;
+    align-self: center;
+    text-align: center;
+    display: flex;
+    place-content: center;
+    margin-bottom: 1em;
+    color: var(--info);
 }
 
 .infosOffre_buttonSelection:hover {
-    background-color: #135d25;
+    background-color: var(--Dark);
+    color: var(--light);
 }
 
 .infosOffre_buttonChange:hover {
-    background-color: #c82626;
+    background-color: var(--info);
+    color:var(--light);
 }
 
-/*///////////////////   CHOIX TERRAIN DESCRIPTION  ///////////////////*/
-
+.eval-demande-container i{
+    color:var(--secondary);
+    margin-right: 1em;
+}
+/*/ ////////////////// CHOIX TERRAIN DESCRIPTION ////////////////// /*/
 .infosTerrrain_main {
     margin: 2rem;
     margin-bottom: 10rem;
@@ -704,7 +724,7 @@ choixTerrainDescription_img {
     width: 80%;
 }
 
-/*//////////////////////////  HOME PAGE    ///////////////////////////////*/
+/*/ ///////////////////////// HOME PAGE ////////////////////////////// /*/
 
 .container-top {
     width: 100%;
@@ -732,8 +752,7 @@ choixTerrainDescription_img {
     width: 36%;
 }
 /* Feature */
-
-.features {
+    .features {
     width: 80%;
     margin: auto;
     text-align: center;

@@ -21,7 +21,7 @@
             <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.offreDeTonteDetails.RaceAnimal</p>
             <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.offreDeTonteDetails.NombreAnimaux</p>
             <p class="infosOffre_infosPrix"><strong>Coût par jour par mouton : </strong>@Model.offreDeTonteDetails.CoutAnimalParJour</p>
-            <a class="infosOffre_buttonChange" href="#">Revenir aux offres précédentes</a>
+            <a class="infosOffre_buttonChange" href="#"><i class="fas fa-arrow-left"></i></a>
         </div>
 
         <form method="post" class="infosOffre_selection">
@@ -34,9 +34,23 @@
                 <input asp-for="DateFinDemande" type="date" id="dateOfferStart" min="@Model.offreDeTonteDetails.DateDebutOffre" max="@Model.offreDeTonteDetails.DateFinOffre" value="@Model.offreDeTonteDetails.DateFinOffre" />
                 @Html.ValidationMessage("DateFinDemande")
             </div>
+            <div class="eval-demande-container">
+                <h3>Evaluation de la demande</h3>
+                <p><i class="far fa-calendar-alt"></i>Nombre de jours: <span id="nmbJour">12</span></p>
+                <p><i class="fas fa-paw"></i>Taille du troupeau: <span id="nmbAnim">30</span></p>
+                <p><i class="fas fa-euro-sign"></i>Cout de la prestation: <span id="coutPresta">2000€</span></p>
+            </div>
             <div class="infosOffre_date">
                 <p>Choisissez votre moyen de paiement : </p>
                 <div>
+                    <select name="IdMoyenPayement" id="moyen1" asp-for="IdMoyenPaiement">
+                        <option value="">Choisir moyen de payement</option>
+                        <option value="1">Visa</option>
+                        <option value="2">Mastercard</option>
+                        <option value="3">Paypal</option>
+                        <option value="4">R.I.B</option>
+                    </select>
+@*
                     <input type="radio" asp-for="IdMoyenPaiement" id="moyen1" value="1" />
                     <label for="Visa">Visa</label>
                 </div>
@@ -52,6 +66,7 @@
                     <input type="radio" asp-for="IdMoyenPaiement" id="moyen1" value="4" />
                     <label for="RIB">RIB</label>
                 </div>
+            *@
             </div>
             <div class="infosOffre_button">
                 <input type="hidden" asp-for="IdTerrain" value="@ViewBag.IdTerrain"/>
