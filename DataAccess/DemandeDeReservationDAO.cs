@@ -10,7 +10,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
 {
     public class DemandeDeReservationDAO : DAO
     {
-        public void CreateDemandeDeReservation(DemandeDeReservation demandeDeReservation)
+        public void InsererUneDemandeDeReservation(DemandeDeReservation demandeDeReservation)
         {
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"INSERT INTO demandedereservation (id_terrain, id_moyen_paiement, id_offre,

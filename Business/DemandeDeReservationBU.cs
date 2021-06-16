@@ -15,7 +15,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
             demandeDeReservation.DateCreationDemande = DateTime.Now;
             demandeDeReservation.NumeroReservation = DateTime.Now.ToString("yyMMddHHmmssffff");
 
-            new DemandeDeReservationDAO().CreateDemandeDeReservation(demandeDeReservation);
+            new DemandeDeReservationDAO().InsererUneDemandeDeReservation(demandeDeReservation);
         }
 
         public DemandeDeReservationDetails GetByIdWithDetails(int idDemandeDeReservation)
