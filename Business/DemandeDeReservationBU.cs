@@ -89,7 +89,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
             DemandeDeReservation demandeDeReservation = new DemandeDeReservationDAO().GetById(idDemandeDeReservation);
             new DemandeDeReservationDAO().AccepterDemandeDeReservationById(idDemandeDeReservation, dateAcceptationDemande);
             // annulation de l'offre apres acceptation de demande
-            new OffreDeTonteBU().AnnulerOffreDeTonteById(demandeDeReservation.IdOffre, 5); // 5 est l'id de l'annulation offre base sur l'acceptation de la demande
+            new OffreDeTonteBU().AnnulerOffreDeTonteById(demandeDeReservation.IdOffre, new RaisonAnnulationOffreBU().GetByLibelleAnnulationAutoApresAcceptation().IdAnnulationOffre);
         }
 
         public void RefuserDemandeDeReservation(int idDemandeDeReservation, int idMotifRefus)
