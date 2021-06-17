@@ -230,5 +230,17 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.Message = "Pointage reussit";
             return View("Reussite");
         }
+        [HttpGet]
+        public IActionResult ValiderPrestation(int idDemandeDeReservation, int idUtilisateur)
+        {
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
+
+            DemandeDeReservationBU demandeDeReservationBU = new();
+            demandeDeReservationBU.AccepterDemandeReservationById(idDemandeDeReservation);
+            /*test de reussite*/
+            ViewBag.Message = "validation reussit";
+            return View("Reussite");
+        }
     }
 }

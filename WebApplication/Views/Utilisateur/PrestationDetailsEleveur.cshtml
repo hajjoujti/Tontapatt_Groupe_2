@@ -51,8 +51,16 @@
 
         <div class="infosOffre_selection">
             <div class="infosOffre_button">
-                <a class="btn-infos"  asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Pointage Journalier</a>
-            </div>
+                @if (Model.DateAcceptationDemande.HasValue)
+                {
+            }
+            else
+            {
+                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="ValiderPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">validation</a>
+
+            }
+                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Pointage Journalier</a>
+                </div>
         </div>
     </div>
 </div>
