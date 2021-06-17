@@ -354,6 +354,14 @@ choixTerrainDescription_img {
 
 /* Terrain card */
 
+.h4-liste-terrain {
+    margin: 2em 5em;
+    display: flex;
+    font-family: 'Roboto';
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .main-terrain {
     margin: 2em 5em;
     display: flex;
@@ -428,6 +436,14 @@ choixTerrainDescription_img {
 }
 
 /*listes offres*/
+
+.h4-liste-offre {
+    margin: 2em 5em;
+    display: flex;
+    font-family: 'Roboto';
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 .main-list-offres {
     margin: 2em 5em;

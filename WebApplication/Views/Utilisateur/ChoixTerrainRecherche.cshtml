@@ -8,52 +8,101 @@
     int increment = 1;
 }
 
-<div class="main-terrain">
-    @foreach (TerrainDetails terraindetails in Model.TerrainsDetails)
-    {
 
+@if (@Model.TerrainsDetails.Count == 0)
+{
+    <div class="h4-liste-terrain">
+        <h4>Vous n'avez aucun aucun terrain enregistré. Veuillez enregistrer un nouveau terrain pour pouvoir continer la recherche.</h4>
+    </div>
+}
+else
+{
+    <div class="h4-liste-terrain">
+        <h4>Veuillez choisir le terrain que vous voulez tondre</h4>
+    </div>
+    <div class="main-terrain">
+        @foreach (TerrainDetails terraindetails in Model.TerrainsDetails)
+        {
+
+            <div class="body-card-terrain">
+                <div class="terrain-left">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/27/21/49/girl-1863906__340.jpg" alt="">
+                </div>
+                <span class="circle-icone-card-terrain">
+                    @increment
+                    <!-- inclure increment  -->
+        </span>
+                <div class="terrain-right">
+
+                    <h2>
+                        @terraindetails.NomTerrain
+                        <!-- nom du terrain  -->
+            </h2>
+                    <p>
+                        <span class="ville">
+                            @terraindetails.NomVilleTerrain
+                            <!-- ville terrain  -->
+                </span>
+                        <span class="code-postal">
+                            @terraindetails.CodePostalTerrain
+                            <!-- code postal terrain  -->
+                </span>
+                    </p>
+                    <p>
+                        @terraindetails.AdresseTerrain
+                        <!-- adresse terrain  -->
+            </p>
+                    <div class="footer-card-terrain">
+                        <P>
+                            <span class="icone-terrain"><i class="far fa-flag"></i></span>
+                            <!-- inclure plus tard des terrains favoris  -->
+                    <span class="icone-terrain">
+                                <a asp-controller="Utilisateur" asp-action="ChoixOffreRecherche" asp-route-id="@terraindetails.IdTerrain">
+                                    <i class="far fa-plus-square"></i>
+                                </a>
+                            </span>
+                            <!-- a entourer d'un lien <a> pour rediriger vers la page de recherche  -->
+                </P>
+                    </div>
+                </div>
+            </div>
+            increment++;
+        }
         <div class="body-card-terrain">
             <div class="terrain-left">
                 <img src="https://cdn.pixabay.com/photo/2016/11/27/21/49/girl-1863906__340.jpg" alt="">
             </div>
             <span class="circle-icone-card-terrain">
-                @increment
                 <!-- inclure increment  -->
-            </span>
+        </span>
             <div class="terrain-right">
 
                 <h2>
-                    @terraindetails.NomTerrain
+                    Ajouter un nouveau Terrain
                     <!-- nom du terrain  -->
-                </h2>
+            </h2>
                 <p>
                     <span class="ville">
-                        @terraindetails.NomVilleTerrain
                         <!-- ville terrain  -->
-                    </span>
+                </span>
                     <span class="code-postal">
-                        @terraindetails.CodePostalTerrain
                         <!-- code postal terrain  -->
-                    </span>
+                </span>
                 </p>
                 <p>
-                    @terraindetails.AdresseTerrain
                     <!-- adresse terrain  -->
-                </p>
+            </p>
                 <div class="footer-card-terrain">
                     <P>
-                        <span class="icone-terrain"><i class="far fa-flag"></i></span>
-                        <!-- inclure plus tard des terrains favoris  -->
                         <span class="icone-terrain">
-                            <a asp-controller="Utilisateur" asp-action="ChoixOffreRecherche" asp-route-id="@terraindetails.IdTerrain">
+                            <a asp-controller="" asp-action="" asp-route-id="">
                                 <i class="far fa-plus-square"></i>
                             </a>
                         </span>
                         <!-- a entourer d'un lien <a> pour rediriger vers la page de recherche  -->
-                    </P>
+                </P>
                 </div>
             </div>
         </div>
-        increment++;
-    }
-</div>
+    </div>
+}

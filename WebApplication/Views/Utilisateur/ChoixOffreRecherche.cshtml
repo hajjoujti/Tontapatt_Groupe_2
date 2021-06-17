@@ -8,33 +8,43 @@
     int nbOffreDeTonteDetails = Model.OffresDeTonteDetails.Count;
 }
 
-<div class="main-list-offres">
-    <div class="header-liste-offres">
-        <div>
-            <h3>Terrain : </h3><p> @Model.TerrainDetails.NomTerrain <!-- nom terrain --></p>
-        </div>
-        <div>
-            <h3>Nombre de résultat : </h3><p> @nbOffreDeTonteDetails <!-- nombre de resultat de recherche --></p>
-        </div>
+@if (@nbOffreDeTonteDetails == 0)
+{
+    <div class="h4-liste-offre">
+        <h4>Aucune offre est compatible avec votre recherche</h4>
     </div>
-    @foreach (OffreDeTonteDetails offreDeTonteDetails in Model.OffresDeTonteDetails)
-    {
-
-        <div class="body-card-list-offre">
-            <div class="img-profile-list-offre"> </div>
-            <div class="liste-offres-right">
-                <div class="liste-detail-offres-text">
-                    <h3>@offreDeTonteDetails.NomUtilisateur<!-- nom de l'eleveur --></h3>
-                    <p> @offreDeTonteDetails.NomOffre <!-- nom de l'offre --></p>
-                    <!-- je vais appeller l'api pour la vue a ce moment et j'aurais besoin d'object avec longitude lattitude terrain et offre -->
-                    <!-- TU PEUX UTILISER @Model.TerrainDetails.LongitudeTerrain ET @Model.TerrainDetails.LatitudeTerrain + @offreDeTonteDetails.LatitudeOffreDeTonte ET
-                        @offreDeTonteDetails.LongitudeOffreDetonte-->
-                    <p>Distance : @offreDeTonteDetails.DistanceOffreDeTonteTerrain km<!-- distance avec l'offre --></p>
-                </div>
-                <div class="liste-detail-offres-button">
-                    <a class="" asp-controller="Utilisateur" asp-action="ChoixOffreDescription" asp-route-idOffreDeTonte="@offreDeTonteDetails.IdOffre" asp-route-idTerrain="@Model.TerrainDetails.IdTerrain"><i class="far fa-eye"></i></a>
-                </div>
+}
+else
+{
+    <div class="main-list-offres">
+        <div class="header-liste-offres">
+            <div>
+                <h3>Terrain : </h3><p> @Model.TerrainDetails.NomTerrain <!-- nom terrain --></p>
+            </div>
+            <div>
+                <h3>Nombre de résultat : </h3><p> @nbOffreDeTonteDetails <!-- nombre de resultat de recherche --></p>
             </div>
         </div>
-    }
-</div>
+
+        @foreach (OffreDeTonteDetails offreDeTonteDetails in Model.OffresDeTonteDetails)
+        {
+
+            <div class="body-card-list-offre">
+                <div class="img-profile-list-offre"> </div>
+                <div class="liste-offres-right">
+                    <div class="liste-detail-offres-text">
+                        <h3>@offreDeTonteDetails.NomUtilisateur<!-- nom de l'eleveur --></h3>
+                        <p> @offreDeTonteDetails.NomOffre <!-- nom de l'offre --></p>
+                            <!-- je vais appeller l'api pour la vue a ce moment et j'aurais besoin d'object avec longitude lattitude terrain et offre -->
+                            <!-- TU PEUX UTILISER @Model.TerrainDetails.LongitudeTerrain ET @Model.TerrainDetails.LatitudeTerrain + @offreDeTonteDetails.LatitudeOffreDeTonte ET
+                        @offreDeTonteDetails.LongitudeOffreDetonte-->
+                        <p>Distance : @offreDeTonteDetails.DistanceOffreDeTonteTerrain km<!-- distance avec l'offre --></p>
+                    </div>
+                    <div class="liste-detail-offres-button">
+                        <a class="" asp-controller="Utilisateur" asp-action="ChoixOffreDescription" asp-route-idOffreDeTonte="@offreDeTonteDetails.IdOffre" asp-route-idTerrain="@Model.TerrainDetails.IdTerrain"><i class="far fa-eye"></i></a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
