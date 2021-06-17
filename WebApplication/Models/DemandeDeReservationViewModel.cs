@@ -33,6 +33,8 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 
         public OffreDeTonteDetails OffreDeTonteDetails { get; set; }
         public TerrainDetails TerrainDetails { get; set; }
+
+        public Anomalie Anomalie { get; set; }
         public List<MoyenPaiement> MoyensPaiements { get; set; }
 
         public DemandeDeReservationViewModel()
