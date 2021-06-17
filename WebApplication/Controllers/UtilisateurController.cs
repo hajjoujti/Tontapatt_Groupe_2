@@ -161,7 +161,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             }
             else
             {
-                return View("");
+                return View("ChoixOffreDescription", d);
             }
         }
 

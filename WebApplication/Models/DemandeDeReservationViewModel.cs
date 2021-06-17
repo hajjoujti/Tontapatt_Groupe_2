@@ -11,13 +11,13 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
     {
         [Required]
         public int IdTerrain { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Vous devez choisir un moyen de paiement")]
         public int IdMoyenPaiement { get; set; }
         [Required]
         public int IdOffre { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Vous devez choisir une date de début")]
         public DateTime DateDebutDemande { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Vous devez choisir une date de fin")]
         public DateTime DateFinDemande { get; set; }
         [Required]
         public double CoutDemande { get; set; }
