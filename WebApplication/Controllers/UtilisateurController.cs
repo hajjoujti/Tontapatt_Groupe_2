@@ -223,7 +223,10 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
             ViewBag.IsInBDD = true;
 
-            
+    
+             PointageJournalierBU pointageJournalierBU = new();
+            pointageJournalierBU.InsererPointageJournalier(idDemandeDeReservation);
+            /*test de reussite*/
             ViewBag.Message = "Pointage reussit";
             return View("Reussite");
         }
