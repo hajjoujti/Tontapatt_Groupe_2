@@ -233,31 +233,29 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         }
 
         /*----------------------------- Anomalie */
-        public IActionResult DeclarationAnomalieEleveur(int idDemandeDeReservation, int idUtilisateurEleveur)
+        public IActionResult DeclarationAnomalieEleveur(AnomalieDetailsViewModel a)
         {
-            ViewBag.IdUtilisateur = idUtilisateurEleveur;
-            ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
             ViewBag.IsInBDD = true;
+            a.DeamandeDeReservation = new AnomalieBU().GetById(a.IdDemande);
+            a.
 
-            DeclarationAnomalieDetailsViewModel declarationAnomalieDetailsViewModel = new();
-            declarationAnomalieDetailsViewModel.Anomalie = new DeclarationAnomalieBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
-            declarationAnomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+            if (ModelState.IsValid)
+            {
+                Anomalie anomalie = new();
+                anomalie.IdDemande = a.IdDemande;
+                anomalie.IdUtilisateurClient = a.IdUtilisateurClient.Value;
+                anomalie.IdUtilisateurEleveur = a.IdUtilisateurEleveur.Value;
+                anomalie.IdTypeAnomalie = a.IdTypeAnomalie.Value;
+                anomalie.DescriptionAnomalie = a.DescriptionAnomalie.Value;
 
-            return View(declarationAnomalieDetailsViewModel);
-        }
-
-        [HttpGet]
-        public IActionResult DeclarationAnomalieClient(int idDemandeDeReservation, int idUtilisateurClient)
-        {
-            ViewBag.IdUtilisateur = idUtilisateurClient;
-            ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
-            ViewBag.IsInBDD = true;
-
-            DeclarationAnomalieDetailsViewModel declarationAnomalieDetailsViewModel = new();
-            declarationAnomalieDetailsViewModel.Anomalie = new DeclarationAnomalieBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
-            declarationAnomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
-
-            return View(declarationAnomalieDetailsViewModel);
+                AnomalieBU bu = new AnomalieBU();
+                bu.InsererAnomalie(anomalie);
+                return View("");
+            }
+            else
+            {
+                return View("ChoixOffreDescription", d);
+            }
         }
     }
 }
