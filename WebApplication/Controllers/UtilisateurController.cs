@@ -196,7 +196,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IsInBDD = true;
 
             PointageJournalierDetailsViewModel pointageJournalierDetailsViewModel = new();
-            pointageJournalierDetailsViewModel.PointagesJournalier = new PointageJournalierBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
+            pointageJournalierDetailsViewModel.ListPointagesJournalier = new PointageJournalierBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
             pointageJournalierDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
 
             return View(pointageJournalierDetailsViewModel);
@@ -210,7 +210,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IsInBDD = true;
 
             PointageJournalierDetailsViewModel pointageJournalierDetailsViewModel = new();
-            pointageJournalierDetailsViewModel.PointagesJournalier = new PointageJournalierBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
+            pointageJournalierDetailsViewModel.ListPointagesJournalier = new PointageJournalierBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
             pointageJournalierDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
 
             return View(pointageJournalierDetailsViewModel);
