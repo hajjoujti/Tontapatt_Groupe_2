@@ -21,7 +21,7 @@
                 <label >Heure de Pointage: </label>
                 <input asp-for="@Model.PointageJournalier.HeurePointage" type="time" min="08:00" max="20:00"value="" required/>
 
-                <button class="btn-infos" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Pointer</button>
+                <a class="btn-infos"  asp-controller="Utilisateur" asp-action="PointageJournalier" asp-route-idDemandeDeReservation="@ViewBag.IdDemandeDeReservation" asp-route-idUtilisateur="@ViewBag.idUtilisateur">Pointer</a>
             </div>
         </div>
     </div>

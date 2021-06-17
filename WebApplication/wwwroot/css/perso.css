@@ -1145,4 +1145,14 @@ choixTerrainDescription_img {
         top: 1px;
     }
 
-        
+
+.succes-body {
+    flex-direction: column;
+    background: white;
+    align-items: center;
+    text-align:center;
+}
+
+.succes-body img{
+    max-height:500px;
+}

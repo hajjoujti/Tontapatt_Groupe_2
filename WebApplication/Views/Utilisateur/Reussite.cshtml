@@ -7,15 +7,15 @@
 
 <div class="infosOffre_main">
 
-    <div class="infosOffre_div">
+    <div class="infosOffre_div succes-body">
         <div class="success-add">
             <img src="~/images/sheep-succes.png"/>
         </div>
 
         <div class="success-footer">
             <h2>Felicitation</h2>
-            @*viewbag avec message*@
-            <p></p>
+            <p>@ViewBag.Message</p>
+            <a class="btn-infos"  asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.idUtilisateur"><h2>Home</h2></a>
         </div>
     </div>
 </div>
