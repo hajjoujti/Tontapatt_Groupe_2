@@ -7,10 +7,14 @@
 @{
     DateTime today = DateTime.Now;
 }
-<input id="tailleTerrain" value="@Model.TerrainDetails.SurfaceTerrain" type="hidden"/>
+
+<input id="tailleTerrain" value="@Model.TerrainDetails.SurfaceTerrain" type="hidden" />
+<input id="nmbAnimTotalOffre" value="@Model.OffreDeTonteDetails.NombreAnimaux" type="hidden" />
+
 <div class="infosOffre_main">
     <h1 class="infosOffre_h1">@Model.OffreDeTonteDetails.NomOffre</h1>
     <div class="infosOffre_div">
+
         <div class="infosOffre_infos">
             <p class="infosOffre_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">@Model.OffreDeTonteDetails.NomUtilisateur @Model.OffreDeTonteDetails.PrenomUtilisateur</a></strong></p>
             <p class="infosOffre_infosDescription"><strong>Description de l'offre : </strong>@Model.OffreDeTonteDetails.DescriptionOffre</p>
@@ -29,53 +33,42 @@
             <div class="infosOffre_date">
                 <p>Choisissez vos dates :</p>
                 <label asp-for="DateDebutDemande">Date de début :</label>
-                <input asp-for="DateDebutDemande" type="date" id="dateOffreStart" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="@Model.OffreDeTonteDetails.DateDebutOffre" onchange="handlerstart(event);" />
+                <input asp-for="DateDebutDemande" type="date" id="dateOffreStart" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="" onchange="handlerstart(event);" />
                 @Html.ValidationMessage("DateDebutDemande")
                 <label asp-for="DateFinDemande">Date de fin : </label>
-                <input asp-for="DateFinDemande" type="date" id="dateOffreEnd" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="@Model.OffreDeTonteDetails.DateFinOffre" onchange="handlerend(event);"/>
+                <input asp-for="DateFinDemande" type="date" id="dateOffreEnd" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="" onchange="handlerend(event);" />
                 @Html.ValidationMessage("DateFinDemande")
             </div>
+
             <div class="eval-demande-container">
                 <h3>Evaluation de la demande</h3>
                 <p><i class="far fa-calendar-alt"></i>Nombre de jours: <span id="nmbJour">Selectionner Date</span></p>
-                <p><i class="fas fa-paw"></i>Taille du troupeau: <span id="nmbAnim">0</span></p>
+                <p><i class="fas fa-paw"></i>Taille du troupeau: <span id="nmbAnim" value="12">0</span></p>
                 <p><i class="fas fa-euro-sign"></i>Cout de la prestation: <span id="coutPresta">0€</span></p>
             </div>
+
             <div class="infosOffre_date">
                 <p>Choisissez votre moyen de paiement : </p>
                 <div>
-                    <select name="IdMoyenPayement" id="moyen1" asp-for="IdMoyenPaiement">
+                    <select name="IdMoyenPaiement" id="moyen1" asp-for="IdMoyenPaiement">
                         <option value="">Choisir moyen de payement</option>
                         <option value="1">Visa</option>
                         <option value="2">Mastercard</option>
                         <option value="3">Paypal</option>
                         <option value="4">R.I.B</option>
                     </select>
-@*
-                    <input type="radio" asp-for="IdMoyenPaiement" id="moyen1" value="1" />
-                    <label for="Visa">Visa</label>
                 </div>
-                <div>
-                    <input type="radio" asp-for="IdMoyenPaiement" id="moyen1" value="2" />
-                    <label for="Mastercard">Mastercard</label>
+
+                <div class="infosOffre_button">
+                    <input type="hidden" asp-for="IdTerrain" value="@ViewBag.IdTerrain" />
+                    <input type="hidden"  id="prix" asp-for="CoutDemande" value="" />
+                    <input type="hidden" name="NombreAnimaux" id="nmbAnimTotal" asp-for="NombreAnimaux" value="" />
+                    <input type="hidden" asp-for="IdOffre" value="@Model.OffreDeTonteDetails.IdOffre" />
+                    
                 </div>
-                <div>
-                    <input type="radio" asp-for="IdMoyenPaiement" id="moyen1" value="3" />
-                    <label for="Paypal">Paypal</label>
-                </div>
-                <div>
-                    <input type="radio" asp-for="IdMoyenPaiement" id="moyen1" value="4" />
-                    <label for="RIB">RIB</label>
-                </div>
-            *@
-            </div>
-            <div class="infosOffre_button">
-                <input type="hidden" asp-for="IdTerrain" value="@ViewBag.IdTerrain"/>
-                <input type="hidden" asp-for="IdTerrain" value="@ViewBag.IdTerrain"/>
-                <input type="hidden" id="nmbAnimTotal" asp-for="IdOffre" value="@Model.OffreDeTonteDetails.IdOffre"/>
-                <input type="hidden" asp-for="NombreAnimaux" />
-            </div>
-            <button class="infosOffre_buttonSelection" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider cette offre</button>
+
+                <button class="infosOffre_buttonSelection" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider cette offre</button>
         </form>
+
     </div>
 </div>
