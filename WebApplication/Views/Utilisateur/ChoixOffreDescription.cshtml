@@ -52,9 +52,9 @@
                 <div>
                     <select name="IdMoyenPaiement" id="moyen1" asp-for="IdMoyenPaiement" required>
                         <option value="">Choisir moyen de payement</option>
-                        @foreach (TypeAnomalie moyenPaiement in @Model.MoyensPaiements)
+                        @foreach (MoyenPaiement moyenPaiement in @Model.MoyensPaiements)
                         {
-                            <option value="@moyenPaiement.IdMoyenPaiment">@moyenPaiement.TypeMoyenPaiement</option>
+                            <option value="@moyenPaiement.IdMoyenPaiement">@moyenPaiement.TypeMoyenPaiement</option>
                         }
                     </select>
                 </div>

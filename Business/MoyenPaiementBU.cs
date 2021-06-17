@@ -10,7 +10,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
 {
     public class MoyenPaiementBU
     {
-        public List<TypeAnomalie> GetAll()
+        public List<MoyenPaiement> GetAll()
         {
             return new MoyenPaiementDAO().GetAll();
         }
