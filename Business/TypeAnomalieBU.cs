@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Fr.EQL.Ai109.Tontapatt.Business
 {
-    public class MoyenPaiementBU
+    public class TypeAnomalieBU
     {
         public List<TypeAnomalie> GetAll()
         {
-            return new MoyenPaiementDAO().GetAll();
+            return new TypeAnomalieDAO().GetAll();
         }
     }
 }
