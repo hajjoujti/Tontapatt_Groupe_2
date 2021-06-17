@@ -215,5 +215,17 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
             return View(pointageJournalierDetailsViewModel);
         }
+
+        [HttpGet]
+        public IActionResult PointageJournalier(int idDemandeDeReservation, int idUtilisateur)
+        {
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
+            ViewBag.IsInBDD = true;
+
+            
+            ViewBag.Message = "Pointage reussit";
+            return View("Reussite");
+        }
     }
 }

@@ -24,9 +24,17 @@ namespace WebApplication.Controllers
             return View();
         }
 
+
+        public IActionResult Indexreturn(int idUtilisateur)
+        {
+
+            ViewBag.IsInBDD = true;
+            ViewBag.IdUtilisateur = idUtilisateur;
+            return View("index");
+        }
         public IActionResult Privacy()
         {
-            return View();
+            return View("index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
