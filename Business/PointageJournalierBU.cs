@@ -13,7 +13,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
         public void InsererPointageJournalier(int idDemandeDeReservation)
         {
             DateTime heurePointage = DateTime.Now;
-            DateTime heurePrevu = new DateTime(heurePointage.Year, heurePointage.Month, heurePointage.Day, 9, 0, 0);
+            DateTime heurePrevu = new DateTime(heurePointage.Year, heurePointage.Month, heurePointage.Day, 8, 0, 0);
             new PointageJournalierDAO().InsererPointageJournalier(idDemandeDeReservation, heurePointage, heurePrevu);
         }
 
