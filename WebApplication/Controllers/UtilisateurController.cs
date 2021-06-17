@@ -139,6 +139,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View("ListePrestation", prestationList);
         }
 
+
         [HttpPost]
         public IActionResult NouvelleDemandeDeReservation(DemandeDeReservationViewModel d)
         {
@@ -166,11 +167,12 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         }
 
         [HttpGet]
-        public IActionResult PrestationDetailsClient(int idDemandeDeReservation)
+        public IActionResult PrestationDetailsClient(int idDemandeDeReservation, int idClasse)
         {
             ViewBag.IsInBDD = true;
             DemandeDeReservationDetails demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
             ViewBag.IdUtilisateur = demandeDeReservationDetails.TerrainDetails.IdUtilisateur;
+            ViewBag.classe = idClasse;
 
             return View(demandeDeReservationDetails);
         }

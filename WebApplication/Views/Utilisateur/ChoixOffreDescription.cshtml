@@ -33,10 +33,10 @@
             <div class="infosOffre_date">
                 <p>Choisissez vos dates :</p>
                 <label asp-for="DateDebutDemande">Date de début :</label>
-                <input asp-for="DateDebutDemande" type="date" id="dateOffreStart" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="" onchange="handlerstart(event);" />
+                <input asp-for="DateDebutDemande" type="date" id="dateOffreStart" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="" onchange="handlerstart(event);" required/>
                 @Html.ValidationMessage("DateDebutDemande")
                 <label asp-for="DateFinDemande">Date de fin : </label>
-                <input asp-for="DateFinDemande" type="date" id="dateOffreEnd" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="" onchange="handlerend(event);" />
+                <input asp-for="DateFinDemande" type="date" id="dateOffreEnd" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="" onchange="handlerend(event);" required/>
                 @Html.ValidationMessage("DateFinDemande")
             </div>
 
@@ -50,7 +50,7 @@
             <div class="infosOffre_date">
                 <p>Choisissez votre moyen de paiement : </p>
                 <div>
-                    <select name="IdMoyenPaiement" id="moyen1" asp-for="IdMoyenPaiement">
+                    <select name="IdMoyenPaiement" id="moyen1" asp-for="IdMoyenPaiement" required>
                         <option value="">Choisir moyen de payement</option>
                         <option value="1">Visa</option>
                         <option value="2">Mastercard</option>
