@@ -1,4 +1,5 @@
-﻿using Fr.EQL.Ai109.Tontapatt.Model;
+﻿using Fr.EQL.Ai109.Tontapatt.Business;
+using Fr.EQL.Ai109.Tontapatt.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -32,5 +33,11 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 
         public OffreDeTonteDetails OffreDeTonteDetails { get; set; }
         public TerrainDetails TerrainDetails { get; set; }
+        public List<MoyenPaiement> MoyensPaiements { get; set; }
+
+        public DemandeDeReservationViewModel()
+        {
+            MoyensPaiements = new MoyenPaiementBU().GetAll();
+        }
     }
 }

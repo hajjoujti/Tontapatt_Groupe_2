@@ -33,10 +33,10 @@
             <div class="infosOffre_date">
                 <p>Choisissez vos dates :</p>
                 <label asp-for="DateDebutDemande">Date de début :</label>
-                <input asp-for="DateDebutDemande" type="date" id="dateOffreStart" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="" onchange="handlerstart(event);" required/>
+                <input asp-for="DateDebutDemande" type="date" id="dateOffreStart" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="" onchange="handlerstart(event);" required />
                 @Html.ValidationMessage("DateDebutDemande")
                 <label asp-for="DateFinDemande">Date de fin : </label>
-                <input asp-for="DateFinDemande" type="date" id="dateOffreEnd" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="" onchange="handlerend(event);" required/>
+                <input asp-for="DateFinDemande" type="date" id="dateOffreEnd" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@Model.OffreDeTonteDetails.DateFinOffre.ToString("yyyy-MM-dd")" value="" onchange="handlerend(event);" required />
                 @Html.ValidationMessage("DateFinDemande")
             </div>
 
@@ -52,20 +52,20 @@
                 <div>
                     <select name="IdMoyenPaiement" id="moyen1" asp-for="IdMoyenPaiement" required>
                         <option value="">Choisir moyen de payement</option>
-                        <option value="1">Visa</option>
-                        <option value="2">Mastercard</option>
-                        <option value="3">Paypal</option>
-                        <option value="4">R.I.B</option>
+                        @foreach (MoyenPaiement moyenPaiement in @Model.MoyensPaiements)
+                        {
+                            <option value="@moyenPaiement.IdMoyenPaiment">@moyenPaiement.TypeMoyenPaiement</option>
+                        }
                     </select>
                 </div>
                 @Html.ValidationMessage("IdMoyenPaiement")
 
                 <div class="infosOffre_button">
                     <input type="hidden" asp-for="IdTerrain" value="@Model.TerrainDetails.IdTerrain" />
-                    <input type="hidden"  id="prix" asp-for="CoutDemande" value="" />
+                    <input type="hidden" id="prix" asp-for="CoutDemande" value="" />
                     <input type="hidden" name="NombreAnimaux" id="nmbAnimTotal" asp-for="NombreAnimaux" value="" />
                     <input type="hidden" asp-for="IdOffre" value="@Model.OffreDeTonteDetails.IdOffre" />
-                    
+
                 </div>
 
                 <button class="infosOffre_buttonSelection" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider cette offre</button>
