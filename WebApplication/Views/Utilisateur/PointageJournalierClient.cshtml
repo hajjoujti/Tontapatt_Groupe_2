@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@model PointageJournalierDetailsViewModel
+@{ ViewData["Title"] = "TONTAPATT - Pointage Journalier"; }
+<div class="infosOffre_main">
+    <h1 class="infosOffre_h1">Pointage Journalier</h1>
+    @*@Model.DemandeDeReservationDetails.*@
+    <div class="infosOffre_div">
+        <div class="infosOffre_infos">
+            <p class="infosOffre_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">nom de l'eleveur</a></strong></p>
+        </div>
+
+        <div class="infosOffre_selection">
+            <div class="infosOffre_date">
+                <p>Choisissez vos dates :</p>
+                <label >Heure Prevue :</label>
+                <input asp-for="@Model.PointageJournalier.HeurePrevu" type="time"  min="08:00" max="20:00" value="08:00" disabled/>
+
+                <label >Heure de Pointage: </label>
+                <input asp-for="@Model.PointageJournalier.HeurePointage" type="time" min="08:00" max="20:00"value="" required/>
+
+                <button class="btn-infos" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Pointer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
