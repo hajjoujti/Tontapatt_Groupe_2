@@ -78,17 +78,21 @@
     <div class="demande-presation-right">
         <h2>Demande de prestation</h2>
         <div class="body-button-prestaton">
+            
             <div class="button-choose-cat-prestration @attente">
-                <h3><a asp-controller="Utilisateur" asp-action="ListePrestation" asp-route-id="@ViewBag.IdUtilisateur">En Attente </a></h3>
+                <a asp-controller="Utilisateur" asp-action="ListePrestation" asp-route-id="@ViewBag.IdUtilisateur"><h3>En Attente</h3></a>
             </div>
+            
             <div class="button-choose-cat-prestration @encour">
-                <h3><a asp-controller="Utilisateur" asp-action="ListePrestationEncour" asp-route-id="@ViewBag.IdUtilisateur">En cours</a></h3>
+                <a asp-controller="Utilisateur" asp-action="ListePrestationEncour" asp-route-id="@ViewBag.IdUtilisateur"><h3>En cours</h3></a>
             </div>
+            
             <div class="button-choose-cat-prestration @terminer">
-                <h3><a asp-controller="Utilisateur" asp-action="ListePrestationTerminer" asp-route-id="@ViewBag.IdUtilisateur">Terminer</a></h3>
+                <a asp-controller="Utilisateur" asp-action="ListePrestationTerminer" asp-route-id="@ViewBag.IdUtilisateur"><h3>Terminer</h3></a>
             </div>
+            
             <div class="button-choose-cat-prestration @annuler">
-                <h3><a asp-controller="Utilisateur" asp-action="listePrestationAnnuler" asp-route-id="@ViewBag.IdUtilisateur">Annuler</a></h3>
+                <a asp-controller="Utilisateur" asp-action="listePrestationAnnuler" asp-route-id="@ViewBag.IdUtilisateur"><h3>Annuler</h3></a>
             </div>
 
         </div>
