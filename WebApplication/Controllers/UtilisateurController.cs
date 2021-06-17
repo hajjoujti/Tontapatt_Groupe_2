@@ -227,5 +227,49 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.Message = "Pointage reussit";
             return View("Reussite");
         }
+
+        public IActionResult ValidationDemandeReservation(int idOffreDeTonte, int idTerrain)
+        {
+            OffreDeTonteBU buOffreDeTonte = new();
+            OffreDeTonteDetails offresDeTonteDetails = buOffreDeTonte.GetWithDetailsByIdOffreEtPositionTerrain(idOffreDeTonte, idTerrain);
+
+            ViewBag.IdUtilisateur = new TerrainBU().GetById(idTerrain).IdUtilisateur;
+            ViewBag.IdTerrain = idTerrain;
+            ViewBag.IsInBDD = true;
+
+            DemandeDeReservationViewModel demandeDeReservationViewModel = new();
+            demandeDeReservationViewModel.OffreDeTonteDetails = offresDeTonteDetails;
+
+            demandeDeReservationViewModel.TerrainDetails = new TerrainBU().GetByIdWithDetails(idTerrain);
+            return View(demandeDeReservationViewModel);
+        }
+
+        /*----------------------------- Anomalie */
+        public IActionResult DeclarationAnomalieEleveur(int idDemandeDeReservation, int idUtilisateurEleveur)
+        {
+            ViewBag.IdUtilisateur = idUtilisateurEleveur;
+            ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
+            ViewBag.IsInBDD = true;
+
+            DeclarationAnomalieDetailsViewModel declarationAnomalieDetailsViewModel = new();
+            declarationAnomalieDetailsViewModel.Anomalie = new DeclarationAnomalieBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
+            declarationAnomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+
+            return View(declarationAnomalieDetailsViewModel);
+        }
+
+        [HttpGet]
+        public IActionResult DeclarationAnomalieClient(int idDemandeDeReservation, int idUtilisateurClient)
+        {
+            ViewBag.IdUtilisateur = idUtilisateurClient;
+            ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
+            ViewBag.IsInBDD = true;
+
+            DeclarationAnomalieDetailsViewModel declarationAnomalieDetailsViewModel = new();
+            declarationAnomalieDetailsViewModel.Anomalie = new DeclarationAnomalieBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
+            declarationAnomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+
+            return View(declarationAnomalieDetailsViewModel);
+        }
     }
 }
