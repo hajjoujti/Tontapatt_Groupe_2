@@ -14,8 +14,8 @@
             <h2>Récapitulatif de la prestation : </h2>
             <p class="declarationAnomalie_infosPrestation_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">@Model.OffreDeTonteDetails.NomUtilisateur @Model.OffreDeTonteDetails.PrenomUtilisateur</a></strong></p>
             <p class="declarationAnomalie_infosPrestation_infosNomEleveur"><strong>Nom du Client : <a href="#">@Model.TerrainDetails.NomUtilisateur @Model.TerrainDetails.PrenomUtilisateur</a></strong></p>
-            <p class="declarationAnomalie_infosPrestation_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.OffreDeTonteDetails.DateDebutOffre.ToString("MM/dd/yyyy")</p>
-            <p class="declarationAnomalie_infosPrestation_infosDateFin"><strong>Date de fin de la prestation : </strong>@Model.OffreDeTonteDetails.DateFinOffre.ToString("MM/dd/yyyy")</p>
+            <p class="declarationAnomalie_infosPrestation_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DateDebutOffre.ToString("MM/dd/yyyy")</p>
+            <p class="declarationAnomalie_infosPrestation_infosDateFin"><strong>Date de fin de la prestation : </strong>@Model.DateFinOffre.ToString("MM/dd/yyyy")</p>
             <p class="declarationAnomalie_infosPrestation_infosNomVille"><strong>Adresse du terrain : </strong>@Model.TerrainDetails.NomVilleTerrain / @Model.TerrainDetails.CodePostalTerrain</p>
             <p class="declarationAnomalie_infosPrestation_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.OffreDeTonteDetails.EspeceAnimal</p>
             <p class="declarationAnomalie_infosPrestation_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.OffreDeTonteDetails.RaceAnimal</p>
@@ -32,33 +32,49 @@
                         <input asp-for="nomUtilisateur" type="text" id="name">
                     </div>
                     <div>
-                        <label asp-for="mailUtilisateur">Email :</label>
-                        <input asp-for="mailUtilisateur" type="email" id="mail">
+                        <label  asp-for="mailUtilisateur">Email :</label>
+                        <input asp-for="mailUtilisateur" type="email" id="mail" >
                     </div>
                     <div>
-                        <label asp-for="DescriptionAnomalie">Description de l'anomalie:</label>
-                        <textarea asp-for="DescriptionAnomalie" id="msg"></textarea>
+                        <label asp-for="messageUtilisateur">Description de l'anomalie:</label>
+                        <textarea asp-for="messageUtilisateur" id="msg" ></textarea>
                     </div>
                 </div>
 
                 <div class="declarationAnomalie_formRaison">
                     <p>Quelle la raison de votre déclaration d'anomalie : </p>
-                    <select name="IdTypeAnomalie" id="pet-select">
-                        <option value="1">Animal bloqué</option>
-                        <option value="2">Animal perdu</option>
-                        <option value="3">Animal blessé</option>
-                        <option value="4">Terrain abimé</option>
-                        <option value="5">Impossiblité de se déplacer</option>
-                        <option value="6">Restriction sanitaire</option>
-                        <option value="7">Clôture abimé</option>
-                        <option value="8">Problème de gestion de troupeau</option>
-                    </select>
-                </div>
-                <div>
-                    <input type="hidden" asp-for="IdDemande" value="@Model.OffreDeTonteDetails.IdOffre" />
-                    <input type="hidden" asp-for="IdUtilisateurClient" value="@Model.TerrainDetails.IdUtilisateur" />
-                    <input type="hidden" asp-for="IdUtilisateurEleveur" value="@Model.OffreDeTonteDetails.IdUtilisateur" />
-                    <input type="hidden" asp-for="IdTypeAnomalie" value="@Model.Anomalie.IdTypeAnomalie" />
+                    <div>
+                        <input type="radio" id="raison1" asp-for="IdAnomalie" value="1" />
+                        <label for="animalBloque">Animal bloqué</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="raison2" asp-for="IdAnomalie" value="2" />
+                        <label for="animalPerdu">Animal perdu</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="raison3" asp-for="IdAnomalie" value="3" />
+                        <label for="animalBlesse">Animal blessé</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="raison4" asp-for="IdAnomalie" value="4" />
+                        <label for="terrainAbime">Terrain abimé</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="raison5" asp-for="IdAnomalie" value="5" />
+                        <label for="impossibleDeplacement">Impossiblité de se déplacer</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="raison6" asp-for="IdAnomalie" value="6" />
+                        <label for="restrictionSanitaire">Restriction sanitaire</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="raison7" asp-for="IdAnomalie" value="7" />
+                        <label for="clotureAbime">Clôture abimé</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="raison8" asp-for="IdAnomalie" value="8" />
+                        <label for="pbGestionTroupeau">Problème de gestion de troupeau</label>
+                    </div>
                 </div>
             </div>
             <button class="declarationAnomalie_ValidateButton" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider la déclaration</button>
