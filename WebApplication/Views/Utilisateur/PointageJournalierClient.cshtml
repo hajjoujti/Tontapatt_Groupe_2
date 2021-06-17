@@ -4,7 +4,12 @@
 @using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 @using Fr.EQL.Ai109.Tontapatt.Model
 @model PointageJournalierDetailsViewModel
-@{ ViewData["Title"] = "TONTAPATT - Pointage Journalier"; }
+@{
+    ViewData["Title"] = "TONTAPATT - Pointage Journalier";
+    
+}
+
+
 <div class="infosOffre_main">
     <h1 class="infosOffre_h1">Pointage Journalier</h1>
     @*@Model.DemandeDeReservationDetails.*@
@@ -14,8 +19,6 @@
 
             @*tableau des pointages*@
             <table>
-
-
                 <tr>
                     <td>
                         Date
@@ -24,10 +27,8 @@
                         Heure
                     </td>
                 </tr>
-
                 @foreach (PointageJournalier p in Model.ListPointagesJournalier)
                 {
-
                     <tr>
                         <td>
                             @p.HeurePointage.ToString("yyyy-MM-dd")
@@ -37,8 +38,6 @@
                         </td>
                     </tr>
                 }
-
-
             </table>
         </div>
 
@@ -48,9 +47,7 @@
                 <input asp-for="@Model.PointageJournalier.HeurePrevu" type="time" min="08:00" max="20:00" value="08:00" disabled />
 
                 @*verification si eleveur a deja pointer*@
-
-
-            <a class="btn-infos" asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.idUtilisateur">Home</a>
+                <a class="btn-infos" asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.IdUtilisateur">Home</a>
             </div>
         </div>
     </div>

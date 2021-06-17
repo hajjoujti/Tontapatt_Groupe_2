@@ -224,7 +224,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IsInBDD = true;
 
     
-             PointageJournalierBU pointageJournalierBU = new();
+            PointageJournalierBU pointageJournalierBU = new();
             pointageJournalierBU.InsererPointageJournalier(idDemandeDeReservation);
             /*test de reussite*/
             ViewBag.Message = "Pointage reussit";

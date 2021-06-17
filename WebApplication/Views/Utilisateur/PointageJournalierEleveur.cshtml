@@ -4,9 +4,35 @@
 @using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 @using Fr.EQL.Ai109.Tontapatt.Model
 @model PointageJournalierDetailsViewModel
-@{ ViewData["Title"] = "TONTAPATT - Pointage Journalier";
+@{
+    ViewData["Title"] = "TONTAPATT - Pointage Journalier";
+    #region verification si eleveur a deja pointer
     DateTime dateDernierPointage = new();
+    DateTime heurePrevu = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0);
+    DateTime heureActuelle = DateTime.Now;
+    bool estDansIntervalDeTemps = Math.Abs((heurePrevu - heureActuelle).TotalHours) <= 1;
+    bool dejaPointer;
+    if(Model.ListPointagesJournalier.Count == 0)
+    {
+        dejaPointer = false;
+    }
+    else
+    {
+        dejaPointer = Model.ListPointagesJournalier[Model.ListPointagesJournalier.Count].HeurePointage.Date == DateTime.Today;
+    }
+    bool apresDateDebut = DateTime.Compare(Model.DemandeDeReservationDetails.DateDebutDemande, heureActuelle) < 0;
+    bool disabled = true;
+    if(estDansIntervalDeTemps && !dejaPointer && apresDateDebut)
+    {
+        disabled = false;
+    }
+    else
+    {
+        disabled = true;
+    }
+    #endregion
 }
+
 <div class="infosOffre_main">
     <h1 class="infosOffre_h1">Pointage Journalier</h1>
     @*@Model.DemandeDeReservationDetails.*@
@@ -48,15 +74,10 @@
                 <label>Heure Prevue :</label>
                 <input asp-for="@Model.PointageJournalier.HeurePrevu" type="time" min="08:00" max="20:00" value="08:00" disabled />
 
-                @*verification si eleveur a deja pointer*@
-                @if (Model.DemandeDeReservationDetails.DateDebutDemande <= DateTime.Today && dateDernierPointage.ToString("yyyy-MM-dd") != DateTime.Today.ToString("yyyy-MM-dd"))
-                {
-                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalier" asp-route-idDemandeDeReservation="@ViewBag.IdDemandeDeReservation" asp-route-idUtilisateur="@ViewBag.idUtilisateur">Pointer</a>
-                }
-                else
-                {
-                    <a class="btn-infos" asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.idUtilisateur">Home</a>
-                }
+                <input class="btn-infos" type="button" value="Pointer" onclick="location.href='@Url.Action("PointageJournalier", "Utilisateur", new {idDemandeDeReservation=@ViewBag.IdDemandeDeReservation, idUtilisateur=@ViewBag.IdUtilisateur})'" disabled="@disabled" />
+
+                <a class="btn-infos" asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.IdUtilisateur">Home</a>
+
             </div>
         </div>
     </div>
