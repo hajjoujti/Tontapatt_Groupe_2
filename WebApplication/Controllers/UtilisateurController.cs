@@ -51,7 +51,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             offresDeTonteDetailsEtTerrainViewModel.OffresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
             offresDeTonteDetailsEtTerrainViewModel.TerrainDetails = buTerrain.GetByIdWithDetails(idTerrain); ;
 
-            ViewBag.IdUtilisateur = offresDeTonteDetailsEtTerrainViewModel.TerrainDetails.IdUtilisateur;
             ViewBag.IsInBDD = true;
 
             return View(offresDeTonteDetailsEtTerrainViewModel);
@@ -143,15 +142,17 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         public IActionResult NouvelleDemandeDeReservation(DemandeDeReservationViewModel d)
         {
             ViewBag.IsInBDD = true;
-            ViewBag.IdUtilisateur = new TerrainBU().GetById(d.IdTerrain).IdUtilisateur;
+            d.TerrainDetails = new TerrainBU().GetByIdWithDetails(d.IdTerrain);
+            d.OffreDeTonteDetails = new OffreDeTonteBU().GetWithDetailsByIdOffreEtPositionTerrain(d.IdOffre, d.IdTerrain);
+            ViewBag.IdUtilisateur = new TerrainBU().GetById(d.TerrainDetails.IdUtilisateur);
             if (ModelState.IsValid)
             {
                 DemandeDeReservation demandeDeReservation = new();
                 demandeDeReservation.IdTerrain = d.IdTerrain;
-                demandeDeReservation.IdMoyenPaiement = d.IdMoyenPaiement;
+                demandeDeReservation.IdMoyenPaiement = d.IdMoyenPaiement.Value;
                 demandeDeReservation.IdOffre = d.IdOffre;
-                demandeDeReservation.DateDebutDemande = d.DateDebutDemande;
-                demandeDeReservation.DateFinDemande = d.DateFinDemande;
+                demandeDeReservation.DateDebutDemande = d.DateDebutDemande.Value;
+                demandeDeReservation.DateFinDemande = d.DateFinDemande.Value;
                 demandeDeReservation.NombreAnimaux = d.NombreAnimaux;
                 demandeDeReservation.CoutDemande = d.CoutDemande;
 

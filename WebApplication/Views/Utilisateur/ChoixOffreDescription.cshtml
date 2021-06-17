@@ -57,11 +57,11 @@
                         <option value="3">Paypal</option>
                         <option value="4">R.I.B</option>
                     </select>
-                    @Html.ValidationMessage("IdMoyenPaiement")
                 </div>
+                @Html.ValidationMessage("IdMoyenPaiement")
 
                 <div class="infosOffre_button">
-                    <input type="hidden" asp-for="IdTerrain" value="@ViewBag.IdTerrain" />
+                    <input type="hidden" asp-for="IdTerrain" value="@Model.TerrainDetails.IdTerrain" />
                     <input type="hidden"  id="prix" asp-for="CoutDemande" value="" />
                     <input type="hidden" name="NombreAnimaux" id="nmbAnimTotal" asp-for="NombreAnimaux" value="" />
                     <input type="hidden" asp-for="IdOffre" value="@Model.OffreDeTonteDetails.IdOffre" />
