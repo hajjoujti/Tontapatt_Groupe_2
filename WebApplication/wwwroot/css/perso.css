@@ -354,6 +354,25 @@ choixTerrainDescription_img {
 
 /* Terrain card */
 
+.carte-ajout-terrain-lien{
+    color: var(--Dark);
+    cursor: pointer;
+}
+
+.carte-ajout-terrain-lien:hover {
+    color: var(--info);
+}
+
+.ajout-terrain-carte {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ajout-terrain-carte:hover {
+    background-color: var(--primary);
+}
+
+
 .h4-liste-terrain {
     margin: 2em 5em;
     display: flex;
