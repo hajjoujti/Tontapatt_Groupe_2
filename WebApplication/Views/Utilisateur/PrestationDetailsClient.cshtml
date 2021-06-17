@@ -60,12 +60,13 @@
             @if (ViewBag.classe == 1)
             {
                 <div class="infosOffre_button">
-                    <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Pointage Journalier</a>
-                </div>
-                <div class="infosOffre_button">
                     <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="DeclarationAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Déclaration d'une anomalie</a>
                 </div>
-            } else if (ViewBag.classe == 0)
+                <div class="infosOffre_button">
+                    <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="AnnulationPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Annulation de la Prestation en cours</a>
+                </div>
+            }
+            else if (ViewBag.classe == 0)
             {
                 <div class="infosOffre_button">
                     <button>Annuler la demande de réservation</button>
