@@ -1,10 +1,12 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 *@
 @using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 @using Fr.EQL.Ai109.Tontapatt.Model
 @model PointageJournalierDetailsViewModel
-@{ ViewData["Title"] = "TONTAPATT - Pointage Journalier"; }
+@{ ViewData["Title"] = "TONTAPATT - Pointage Journalier";
+    DateTime dateDernierPointage = new();
+}
 <div class="infosOffre_main">
     <h1 class="infosOffre_h1">Pointage Journalier</h1>
     @*@Model.DemandeDeReservationDetails.*@
@@ -14,8 +16,6 @@
 
             @*tableau des pointages*@
             <table>
-
-
                 <tr>
                     <td>
                         Date
@@ -31,6 +31,7 @@
                     <tr>
                         <td>
                             @p.HeurePointage.ToString("yyyy-MM-dd")
+                            @{dateDernierPointage = p.HeurePointage; }
                         </td>
                         <td>
                             @p.HeurePointage.TimeOfDay
@@ -48,9 +49,14 @@
                 <input asp-for="@Model.PointageJournalier.HeurePrevu" type="time" min="08:00" max="20:00" value="08:00" disabled />
 
                 @*verification si eleveur a deja pointer*@
-
-
-                <a class="btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalier" asp-route-idDemandeDeReservation="@ViewBag.IdDemandeDeReservation" asp-route-idUtilisateur="@ViewBag.idUtilisateur">Pointer</a>
+                @if (Model.DemandeDeReservationDetails.DateDebutDemande <= DateTime.Today && dateDernierPointage.ToString("yyyy-MM-dd") != DateTime.Today.ToString("yyyy-MM-dd"))
+                {
+                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalier" asp-route-idDemandeDeReservation="@ViewBag.IdDemandeDeReservation" asp-route-idUtilisateur="@ViewBag.idUtilisateur">Pointer</a>
+                }
+                else
+                {
+                    <a class="btn-infos" asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.idUtilisateur">Home</a>
+                }
             </div>
         </div>
     </div>
