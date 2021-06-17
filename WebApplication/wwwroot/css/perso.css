@@ -122,7 +122,7 @@ header {
 footer {
     /*display: flex;*/
     /* flex-direction: row; */
-    /* height: 2em; */
+     height: 3em; 
     width: 100%;
     /* justify-content: center; */
     font-size: 18px;
@@ -137,7 +137,8 @@ footer {
 
 .main {
     height: 100%;
-    width: 100%
+    width: 100%;
+    margin-bottom:6em;
 }
 
 
@@ -545,7 +546,7 @@ choixTerrainDescription_img {
     border-radius: 5px;
     box-shadow: 12px 12px 2px 1px #8c989b;
     padding: 2em;
-    max-width: 750px;
+    max-width: 950px;
 }
 
 .infosOffre_infos {
@@ -595,10 +596,15 @@ choixTerrainDescription_img {
     margin: auto;
     color: #ffffff;
     font-family: 'Roboto';
+    align-items:center;
 }
 
     .infosOffre_date div{
     text-align: center;
+}
+
+.infosOffre_button{
+    margin-bottom:1em;
 }
 
 .infosOffre_button button {
@@ -1008,6 +1014,7 @@ choixTerrainDescription_img {
     .button-choose-cat-prestration a {
         text-decoration: none;
         color: inherit;
+        width:100%;
     }
 
         .button-choose-cat-prestration a:hover {
@@ -1074,3 +1081,33 @@ choixTerrainDescription_img {
 .infosOffre_infosDateAcceptation span {
     color: var(--refus);
 }
+
+
+
+.btn-infos {
+    box-shadow: inset 0px 1px 0px 0px #54a3f7;
+    background: linear-gradient(to bottom, var(--infos) 5%, var(--infos)100%);
+    background-color: #007dc1;
+    border-radius: 3px;
+    border: 1px solid #124d77;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #154682;
+}
+
+    .btn-infos:hover {
+        background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+        background-color: #0061a7;
+    }
+
+    .btn-infos:active {
+        position: relative;
+        top: 1px;
+    }
+
+        

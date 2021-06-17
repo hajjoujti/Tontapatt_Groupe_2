@@ -50,25 +50,19 @@
         </div>
 
         <div class="infosOffre_selection">
-            @* <div class="infosOffre_date">
-            <p>Choisissez vos dates :</p>
-            <label for="dateOffer">Date de début :</label>
-            <input type="date" name="dateOfferStart" id="dateOfferStart" min="@Model.DateDebutOff" max="@Model.DateFinOffre">
-            <label for="dateOffer">Date de fin : </label>
-            <input type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
-        </div> *@
+           
             @if (ViewBag.classe == 1)
             {
                 <div class="infosOffre_button">
-                    <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Pointage Journalier</a>
+                    <a class="infosOffre_buttonSelection btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur"><p> Pointage Journalier</p></a>
                 </div>
                 <div class="infosOffre_button">
-                    <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="DeclarationAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Déclaration d'une anomalie</a>
+                    <a class="infosOffre_buttonSelection btn-infos" asp-controller="Utilisateur" asp-action="DeclarationAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur"><p>Déclaration d'une anomalie</p></a>
                 </div>
             } else if (ViewBag.classe == 0)
             {
                 <div class="infosOffre_button">
-                    <button>Annuler la demande de réservation</button>
+                    <a class="btn-infos"><p>Annuler la demande de réservation</p></a>
                 </div>
             }
         </div>
