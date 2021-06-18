@@ -53,6 +53,40 @@ header {
     font-family: 'Roboto', sans-serif;
 }
 
+@media screen and (max-width: 900px) {
+    .header-right {
+        display: flow-root;
+        flex-direction: column;
+        background-color: transparent;
+        z-index: 999;
+        color: var(--light);
+        margin-right: 0;
+        font-family: 'Poppins';
+        align-items: center;
+        align-self: flex-end;
+    }
+
+        .header-right:hover {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--info);
+            z-index: 999;
+            color: var(--light);
+            margin-right: 0;
+            font-family: 'Poppins';
+            align-items: center;
+            align-self: start;
+        }
+
+        .header-right p {
+            min-inline-size: max-content;
+            width: 100%;
+        }
+
+            .header-right p:hover {
+                background-color: var(--primary);
+            }
+}
 
 .header-left {
     justify-content: flex-start;
@@ -98,6 +132,29 @@ header {
         z-index: -99;
         border-radius: 50px;
     }
+
+
+@media screen and (max-width: 900px) {
+    .icone-header::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100px;
+        height: 0px;
+        background-color: var(--primary);
+        left: 77px;
+        top: -15px;
+    }
+
+    .icone-header {
+        margin: 0;
+        align-self: center;
+        position: relative;
+        color: var(--light);
+        text-align: center;
+    }
+}
+
 
 .header-right p {
     padding: 0em 1em;
@@ -233,7 +290,7 @@ footer {
 .main {
     height: 100%;
     width: 100%;
-    margin-bottom: 6em;
+    /*   margin-bottom: 6em;*/
 }
 
 
@@ -257,7 +314,15 @@ footer {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-size: 15px;
+    font-family: 'Poppins';
+    border-bottom:1px solid transparent;
 }
+
+    .header-right a:hover {
+        border-color: black;
+        color: var(--secondary);
+        border-bottom: 1px solid var(--info);
+    }
 
 i {
     display: block;
@@ -383,6 +448,24 @@ choixTerrainDescription_img {
     width: 50%;
 }
 
+    .right-connexion button {
+        margin-top: 1em;
+    }
+
+    .right-connexion .css-input {
+        padding: 18px 40px;
+        font-size: 16px;
+        color: #f1f1f1;
+        background: #4F6367;
+        border: none;
+        font-weight: 700;
+        outline: none;
+        border-radius: 30px;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: opacity .3s linear;
+    }
+
     .right-connexion h2 {
         text-align: center;
         color: var(--light);
@@ -423,9 +506,9 @@ choixTerrainDescription_img {
         outline: none;
     }
 
-    .css-input::placeholder {
+/*.css-input::placeholder {
         color: var(--secondary);
-    }
+    }*/
 
 
 .square_btn {
@@ -557,11 +640,45 @@ choixTerrainDescription_img {
 
     .footer-card-terrain i {
         cursor: pointer;
+        display: block;
+        line-height: 0;
+        position: absolute;
+        top: 24px;
+        left: 7px;
+        font-size: 33px;
     }
 
 .icone-terrain:hover {
     color: var(--info);
 }
+
+.icone-terrain a {
+    box-shadow: inset 0px 1px 0px 0px #54a3f7;
+    background: linear-gradient(to bottom, var(--info) 5%, var(--info)100%);
+    background-color: var(--info);
+    border-radius: 3px;
+    border: 1px solid #124d77;
+    /* display: inline-block; */
+    cursor: pointer;
+    color: var(--primary);
+    font-family: 'Poppins';
+    font-size: 15px;
+    /* padding: 6px 24px; */
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #154682;
+    border-radius: 72%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    position: relative;
+    border: none;
+}
+
+    .icone-terrain a:hover {
+        background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+        background-color: #0061a7;
+        color: var(--light);
+    }
 
 /*listes offres*/
 
@@ -671,7 +788,7 @@ choixTerrainDescription_img {
 
 
 .infosOffre_main {
-    margin: 2em;
+    margin: 0;
     font-family: 'Roboto';
     display: flex;
     flex-direction: column;
@@ -681,6 +798,9 @@ choixTerrainDescription_img {
 
 .infosOffre_h1 {
     text-align: center;
+    font-family: Poppins;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 .infosOffre_div {
@@ -690,22 +810,25 @@ choixTerrainDescription_img {
     background-color: #4F6367;
     border-radius: 5px;
     box-shadow: 12px 12px 2px 1px #8c989b;
-    padding: 2em;
-    max-width: 950px;
+    padding: 1px;
 }
 
 .infosOffre_infos {
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: var(--light);
     font-family: 'Roboto';
     font-size: 15px;
-    width: 50%;
+    width: 75%;
+    letter-spacing: 1.5px;
+    line-height: 3;
 }
 
     .infosOffre_infos p {
         margin-left: 1em;
         margin-right: 1em;
+        margin-block-start: 0;
+        margin-block-end: 0;
     }
 
 
@@ -1121,44 +1244,44 @@ choixTerrainDescription_img {
 /* demande de prestation */
 .body-demande-Prestation {
     display: flex;
+    flex-direction: column;
 }
 
 .demande-presation-right {
     color: var(--primary);
-    min-width: 130px;
-    flex-grow: 1;
-    width: 20%;
-    position: fixed;
     text-align: CENTER;
-    right: 0;
-    min-height: 100%;
-    box-shadow: -13px 0px 13px -8px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
+    box-shadow: -3px 0px -5px -14px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
+    align-self: center;
+    order: -1;
+    display: flex;
+    font-family: 'Poppins';
 }
 
 .main-demande-Prestation {
     margin: 0;
-    margin-left: 1em;
-    justify-content: flex-start;
-    margin-right: 20%;
 }
 
 @media screen and (max-width: 900px) {
 
     .demande-presation-right {
-        display: none;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Poppins', sans-serif;
     }
 }
 
 .button-choose-cat-prestration {
     display: flex;
-    background-color: var(--primary);
-    color: var(--light);
+    height: 30px;
+    background-color: var(--secondary);
+    color: var(--primary);
     align-items: center;
     cursor: pointer;
     margin-bottom: 1em;
+    border-radius: 21px;
+    margin-left: 19px;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
+    align-self: center;
+    text-shadow: 2px 8px 6px rgb(0 0 0 / 20%), 0px -5px 35px rgb(255 255 255 / 30%);
 }
 
     .button-choose-cat-prestration:hover {
@@ -1168,6 +1291,7 @@ choixTerrainDescription_img {
 
     .button-choose-cat-prestration h3 {
         flex-grow: 1;
+        inline-size: max-content;
     }
 
     .button-choose-cat-prestration a {
@@ -1189,8 +1313,15 @@ choixTerrainDescription_img {
     }
 
 
+.body-button-prestaton {
+    display: flex;
+    font-size: 13px;
+}
+
 .demande-presation-right h2 {
-    margin-bottom: 2em;
+    margin-top: auto;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 .terrain-left-prestation {
@@ -1432,7 +1563,7 @@ choixTerrainDescription_img {
         max-height: 500px;
     }
 
-    
+
 
 
 /* ------------- LISTE DES ANOMALIES --------------------*/
@@ -1697,7 +1828,7 @@ choixTerrainDescription_img {
     line-height: 2;
     font-family: 'Poppins';
     max-width: 1000px;
-    width:100%;
+    width: 100%;
 }
 
 * {
@@ -1873,4 +2004,18 @@ choixTerrainDescription_img {
 
 .feedback p {
     text-align: center;
+}
+
+.btn-primary {
+    padding: 18px 40px;
+    font-size: 16px;
+    color: #f1f1f1;
+    background: var(--Dark);
+    border: none;
+    font-weight: 700;
+    outline: none;
+    border-radius: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: opacity .3s linear;
 }

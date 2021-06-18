@@ -27,7 +27,7 @@
                     <i class="fas fa-unlock-alt"></i>
                     <input asp-for="MdpUtilisateur" type="password" id="Password" class="css-input" placeholder="Mot de passe" />
                 </p>
-                <button class="square_btn" type="submit">Connexion</button>
+                <button class="btn-primary" type="submit">Connexion</button>
                 @if (ViewBag.IsInBDD == false)
                 {
                     <p>L'adresse mail ou le mot de passe sont incorrectes</p>
