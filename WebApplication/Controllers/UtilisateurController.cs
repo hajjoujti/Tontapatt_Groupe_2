@@ -342,5 +342,15 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.Message = "validation reussit";
             return View("Reussite");
         }
+
+        [Route("Utilisateur/listeAnomalie/{idUtilisateur:int}")]
+        public IActionResult ListeAnomalie(int idDemandeDeReservation, int idUtilisateur)
+        {
+            AnomalieDetailsViewModel anomalieDetailsViewModel  = new();
+            anomalieDetailsViewModel.DemandeDeReservationDetails = bu.GetByIdWithDetails(idDemandeDeReservation);
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
+            return View(anomalieDetailsViewModel);
+        }
     }
 }

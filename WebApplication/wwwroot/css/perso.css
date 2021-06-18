@@ -1301,3 +1301,69 @@ choixTerrainDescription_img {
     .succes-body img {
         max-height: 500px;
     }
+
+
+/* ------------- LISTE DES ANOMALIES --------------------*/
+
+.listeAnomalie_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.listeAnomalie_h1 {
+    align-items: center;
+    text-align: center;
+}
+
+.listeAnomalies {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    margin: 2rem;
+    flex-wrap: wrap;
+}
+
+.listeAnomalie {
+    background-color: #135d25;
+    margin: 2rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 12px 12px 2px 1px #88CCF1;
+    width: 30rem;
+}
+
+.listeAnomalie_infoStatus {
+    width: 8rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.listeAnomalie_infoStatusNom {
+    background-color: #29b14b;
+    margin: auto;
+    width: 5rem;
+    height: 5rem;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.listeAnomalie_infoStatusDetails {
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.listeAnomalie_infosaAnomalie {
+    background-color: #ffffff;
+    padding: 1rem;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+}
