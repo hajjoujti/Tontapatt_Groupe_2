@@ -342,5 +342,14 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.Message = "validation reussit";
             return View("Reussite");
         }
+        [HttpGet]
+        public IActionResult FinPrestation(int idDemandeDeReservation, int idUtilisateur)
+        {
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
+            
+            ViewBag.Message = "validation reussit";
+            return View("FinPrestation");
+        }
     }
 }

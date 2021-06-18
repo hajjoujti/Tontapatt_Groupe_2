@@ -61,6 +61,9 @@
                 <div class="btn-prestation-details-right">
                     <a class="btn-infos" asp-controller="Utilisateur" asp-action="AnnulationPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Annulation de la Prestation en cours</a>
                 </div>
+                <div class="btn-prestation-details-right">
+                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="FinPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Terminer</a>
+                </div>
             }
             else if (ViewBag.Classe == 0)
             {
