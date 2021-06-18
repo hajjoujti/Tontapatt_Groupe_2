@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Fr.EQL.Ai109.Tontapatt.Model
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@model AnomalieDetailsViewModel
+@{
+    DateTime today = DateTime.Now;
+}
+<main class="declarationAnomalie_main">
+    <h1 class="declarationAnomalie_h1">Declaration d'une anomalie</h1>
+    <div class="declarationAnomalie">
+        <div class="declarationAnomalie_infosPrestation">
+            <h2>Récapitulatif de la prestation : </h2>
+            <p class="declarationAnomalie_infosPrestation_infosNumeroReservation"><strong>Numéro réservation : <a asp-controller="Utilisateur" asp-action="PrestationDetailsEleveur" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">@Model.DemandeDeReservationDetails.NumeroReservation</a></strong></p>
+            <p class="declarationAnomalie_infosPrestation_infosNomClient"><strong>Nom du Client : <a href="#">@Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.TerrainDetails.PrenomUtilisateur</a></strong></p>
+            <p class="declarationAnomalie_infosPrestation_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DemandeDeReservationDetails.DateDebutDemande.ToString("dd/MM/yyyy")</p>
+            <p class="declarationAnomalie_infosPrestation_infosDateFin"><strong>Date de fin de la prestation : </strong>@Model.DemandeDeReservationDetails.DateFinDemande.ToString("dd/MM/yyyy")</p>
+            <p class="declarationAnomalie_infosPrestation_infosAdresseTerrain"><strong>Adresse terrain : </strong>@Model.DemandeDeReservationDetails.TerrainDetails.AdresseTerrain</p>
+            <p class="declarationAnomalie_infosPrestation_infosNomVille"><strong>Code polstal / Ville : </strong>@Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain</p>
+            <p class="declarationAnomalie_infosPrestation_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.EspeceAnimal</p>
+            <p class="declarationAnomalie_infosPrestation_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.RaceAnimal</p>
+            <p class="declarationAnomalie_infosPrestation_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.NombreAnimaux</p>
+            <a class="declarationAnomalie_infosPrestation_buttonChange" href="#">Revenir aux offres précédentes</a>
+        </div>
+        <form class="declarationAnomalie_form" method="post">
+        <h2>Remplir le formulaire de déclaration d'anomalie :</h2>
+        <div class="declarationAnomalie_formInput">
+            <div class="declarationAnomalie_formInfos">
+
+                <div class="declarationAnomalie_formRaison">
+                    <select name="IdTypeAnomalie" id="type-anomalie" asp-for="IdTypeAnomalie" required>
+                        <option value="">Choisir le type d'anomalie</option>
+                            @foreach(TypeAnomalie typeAnomalie in @Model.TypesAnomalie)
+                            {
+                                <option value="@typeAnomalie.IdTypeAnomalie">@typeAnomalie.TypeAnomalieString</option>
+                            }
+                    </select>
+                </div>
+                <div>
+                    <label name="DescriptionAnomalie">Description de l'anomalie:</label>
+                    <textarea name="DescriptionAnomalie" id="msg"></textarea>
+                </div>
+            </div>
+
+        <div>
+            <input type="hidden" name="IdDemande" value="@Model.DemandeDeReservationDetails.IdDemande" />
+            <input type="hidden" name="IdUtilisateurClient" value="@Model.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur" />
+            <input type="hidden" name="IdUtilisateurEleveur" value="@Model.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur" />
+            <input type="hidden" name="IdTypeAnomalie" value="@Model.IdTypeAnomalie" />
+        </div>
+    </div>
+            <button class="declarationAnomalie_ValidateButton" type="submit" asp-controller="Utilisateur" asp-action="NouvelleAnomalieEleveur">Valider la déclaration</button>
+        </form>
+    </div>
+</main>

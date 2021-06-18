@@ -54,7 +54,7 @@
             @if (ViewBag.Classe == 1)
             {
                 <div class="infosOffre_button">
-                    <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="DeclarationAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Déclaration d'une anomalie</a>
+                    <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="DeclarationAnomalieClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Déclaration d'une anomalie</a>
                     <a class="infosOffre_buttonSelection btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe"><p> Pointage Journalier</p></a>
                 </div>
             }

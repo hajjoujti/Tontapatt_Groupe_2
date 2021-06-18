@@ -84,7 +84,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(terrainsDetails);
         }
 
-       
+
         /*[Authorize] ----- FONCTIONNE AVEC LES COOKIE */
         [Route("Utilisateur/listePrestation/{idUtilisateur:int}")]
         public IActionResult ListePrestation(int idUtilisateur)
@@ -226,7 +226,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
             ViewBag.IsInBDD = true;
 
-    
+
             PointageJournalierBU pointageJournalierBU = new();
             pointageJournalierBU.InsererPointageJournalier(idDemandeDeReservation);
             /*test de reussite*/
@@ -250,30 +250,80 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(demandeDeReservationViewModel);
         }
 
-        /*----------------------------- Anomalie 
-        public IActionResult DeclarationAnomalieEleveur(AnomalieDetailsViewModel)
+        [HttpGet]
+        public IActionResult DeclarationAnomalieEleveur(int idDemandeDeReservation, int idUtilisateur, int idClasse)
         {
             ViewBag.IsInBDD = true;
-            a.DeamandeDeReservation = new AnomalieBU().GetById(a.IdDemande);
-            a.
+            ViewBag.Classe = idClasse;
+            ViewBag.IdUtilisateur = idUtilisateur;
 
+            AnomalieDetailsViewModel anomalieDetailsViewModel = new();
+            anomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+            anomalieDetailsViewModel.TypesAnomalie = new TypeAnomalieBU().GetAll();
+
+            return View(anomalieDetailsViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult NouvelleAnomalieEleveur(AnomalieDetailsViewModel anomalieDetailsViewModel)
+        {
+            ViewBag.IsInBDD = true;
+            ViewBag.IdUtilisateur = anomalieDetailsViewModel.IdUtilisateurEleveur;
             if (ModelState.IsValid)
             {
                 Anomalie anomalie = new();
-                anomalie.IdDemande = a.IdDemande;
-                anomalie.IdUtilisateurClient = a.IdUtilisateurClient.Value;
-                anomalie.IdUtilisateurEleveur = a.IdUtilisateurEleveur.Value;
-                anomalie.IdTypeAnomalie = a.IdTypeAnomalie.Value;
-                anomalie.DescriptionAnomalie = a.DescriptionAnomalie.Value;
+                anomalie.IdDemande = anomalieDetailsViewModel.IdDemande;
+                anomalie.IdUtilisateurClient = anomalieDetailsViewModel.IdUtilisateurClient;
+                anomalie.IdUtilisateurEleveur = anomalieDetailsViewModel.IdUtilisateurEleveur;
+                anomalie.IdTypeAnomalie = anomalieDetailsViewModel.IdTypeAnomalie;
+                anomalie.DescriptionAnomalie = anomalieDetailsViewModel.DescriptionAnomalie;
 
-                AnomalieBU bu = new AnomalieBU();
-                bu.InsererAnomalie(anomalie);
-                return View("");
+                new AnomalieBU().InsererAnomalie(anomalie);
+
+                return View();
             }
             else
             {
-                return View("ChoixOffreDescription", d);
+                return View("DeclarationAnomalieEleveur", anomalieDetailsViewModel);
             }
-    }*/
+        }
+
+        [HttpGet]
+        public IActionResult DeclarationAnomalieClient(int idDemandeDeReservation, int idUtilisateur, int idClasse)
+        {
+            ViewBag.IsInBDD = true;
+            ViewBag.Classe = idClasse;
+            ViewBag.IdUtilisateur = idUtilisateur;
+
+            AnomalieDetailsViewModel anomalieDetailsViewModel = new();
+            anomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+            anomalieDetailsViewModel.TypesAnomalie = new TypeAnomalieBU().GetAll();
+
+            return View(anomalieDetailsViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult NouvelleAnomalieClient(AnomalieDetailsViewModel anomalieDetailsViewModel)
+        {
+            ViewBag.IsInBDD = true;
+            ViewBag.IdUtilisateur = anomalieDetailsViewModel.IdUtilisateurClient;
+            if (ModelState.IsValid)
+            {
+                Anomalie anomalie = new();
+                anomalie.IdDemande = anomalieDetailsViewModel.IdDemande;
+                anomalie.IdUtilisateurClient = anomalieDetailsViewModel.IdUtilisateurClient;
+                anomalie.IdUtilisateurEleveur = anomalieDetailsViewModel.IdUtilisateurEleveur;
+                anomalie.IdTypeAnomalie = anomalieDetailsViewModel.IdTypeAnomalie;
+                anomalie.DescriptionAnomalie = anomalieDetailsViewModel.DescriptionAnomalie;
+
+                new AnomalieBU().InsererAnomalie(anomalie);
+
+                return View();
+            }
+            else
+            {
+                return View("DeclarationAnomalieClient", anomalieDetailsViewModel);
+            }
+        }
     }
 }

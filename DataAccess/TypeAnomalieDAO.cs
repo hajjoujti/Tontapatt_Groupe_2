@@ -22,7 +22,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             {
                 TypeAnomalie typeAnomalie = new();
                 typeAnomalie.IdTypeAnomalie = dr.GetInt32("id_type_anomalie");
-                typeAnomalie.TypeAnomalieString = dr.GetString("id_type_anomalie");
+                typeAnomalie.TypeAnomalieString = dr.GetString("type_anomalie");
                 typesAnomalie.Add(typeAnomalie);
             }
 
