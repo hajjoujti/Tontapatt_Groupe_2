@@ -145,7 +145,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IsInBDD = true;
             d.TerrainDetails = new TerrainBU().GetByIdWithDetails(d.IdTerrain);
             d.OffreDeTonteDetails = new OffreDeTonteBU().GetWithDetailsByIdOffreEtPositionTerrain(d.IdOffre, d.IdTerrain);
-            ViewBag.IdUtilisateur = new TerrainBU().GetById(d.TerrainDetails.IdUtilisateur);
+            ViewBag.IdUtilisateur = d.TerrainDetails.IdUtilisateur;
             if (ModelState.IsValid)
             {
                 DemandeDeReservation demandeDeReservation = new();

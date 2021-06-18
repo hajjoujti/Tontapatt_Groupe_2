@@ -30,7 +30,7 @@ namespace WebApplication.Controllers
 
             ViewBag.IsInBDD = true;
             ViewBag.IdUtilisateur = idUtilisateur;
-            return View("index");
+            return View("Index");
         }
         public IActionResult Privacy()
         {
