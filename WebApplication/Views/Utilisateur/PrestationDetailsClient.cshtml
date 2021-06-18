@@ -55,6 +55,7 @@
             {
                 <div class="infosOffre_button">
                     <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="DeclarationAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Déclaration d'une anomalie</a>
+                    <a class="infosOffre_buttonSelection btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur"><p> Pointage Journalier</p></a>
                 </div>
                 <div class="infosOffre_button">
                     <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="AnnulationPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Annulation de la Prestation en cours</a>
