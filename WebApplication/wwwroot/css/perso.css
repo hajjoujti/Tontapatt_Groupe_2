@@ -1184,18 +1184,51 @@ choixTerrainDescription_img {
 }
 
 .declarationAnomalie_infosPrestation_buttonChange {
-    height: 2rem;
-    width: 14rem;
-    margin: auto;
-    margin-top: 2rem;
-    border-radius: 5px;
-    border: 2px solid #000000;
-    text-align: center;
+    background-color: #e4685d;
+    border-radius: 4px;
+    border: 1px solid #ffffff;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 6px 15px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #b23e35;
 }
 
     .declarationAnomalie_infosPrestation_buttonChange:hover {
-        background-color: #c82626;
+        background-color: #d92114;
     }
+
+
+.declarationAnomalie_infosPrestation_btnvalid {
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #666666;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+}
+
+    .declarationAnomalie_infosPrestation_btnvalid:hover {
+        background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+        background-color: #f6f6f6;
+    }
+
+    .declarationAnomalie_infosPrestation_btnvalid:active {
+        position: relative;
+        top: 1px;
+    }
+
 
 .declarationAnomalie_form {
     margin: 2rem;
@@ -1211,7 +1244,8 @@ choixTerrainDescription_img {
 }
 
     .declarationAnomalie_form h2 {
-        font-size: 1rem;
+        font-size: 18px;
+        letter-spacing: 2px;
         margin: auto;
     }
 
