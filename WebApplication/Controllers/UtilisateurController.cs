@@ -230,5 +230,47 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.Message = "Pointage reussit";
             return View("Reussite");
         }
+
+        public IActionResult ValidationDemandeReservation(int idOffreDeTonte, int idTerrain)
+        {
+            OffreDeTonteBU buOffreDeTonte = new();
+            OffreDeTonteDetails offresDeTonteDetails = buOffreDeTonte.GetWithDetailsByIdOffreEtPositionTerrain(idOffreDeTonte, idTerrain);
+
+            ViewBag.IdUtilisateur = new TerrainBU().GetById(idTerrain).IdUtilisateur;
+            ViewBag.IdTerrain = idTerrain;
+            ViewBag.IsInBDD = true;
+
+            DemandeDeReservationViewModel demandeDeReservationViewModel = new();
+            demandeDeReservationViewModel.OffreDeTonteDetails = offresDeTonteDetails;
+
+            demandeDeReservationViewModel.TerrainDetails = new TerrainBU().GetByIdWithDetails(idTerrain);
+            return View(demandeDeReservationViewModel);
+        }
+
+        /*----------------------------- Anomalie 
+        public IActionResult DeclarationAnomalieEleveur(AnomalieDetailsViewModel a)
+        {
+            ViewBag.IsInBDD = true;
+            a.DeamandeDeReservation = new AnomalieBU().GetById(a.IdDemande);
+            a.
+
+            if (ModelState.IsValid)
+            {
+                Anomalie anomalie = new();
+                anomalie.IdDemande = a.IdDemande;
+                anomalie.IdUtilisateurClient = a.IdUtilisateurClient.Value;
+                anomalie.IdUtilisateurEleveur = a.IdUtilisateurEleveur.Value;
+                anomalie.IdTypeAnomalie = a.IdTypeAnomalie.Value;
+                anomalie.DescriptionAnomalie = a.DescriptionAnomalie.Value;
+
+                AnomalieBU bu = new AnomalieBU();
+                bu.InsererAnomalie(anomalie);
+                return View("");
+            }
+            else
+            {
+                return View("ChoixOffreDescription", d);
+            }
+    }*/
     }
 }
