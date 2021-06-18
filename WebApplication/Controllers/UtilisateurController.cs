@@ -324,7 +324,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             {
                 return View("DeclarationAnomalieClient", anomalieDetailsViewModel);
             }
-    }
+        }
 
 
         [HttpGet]
