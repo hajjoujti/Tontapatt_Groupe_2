@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 {
-    public class UtilisateurPrestationModel
+    public class UtilisateurPrestationViewModel
     {
        public List<DemandeDeReservationDetails> demandeDeReservationDetails { get; set; }
     }
