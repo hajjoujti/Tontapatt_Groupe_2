@@ -373,7 +373,6 @@ choixTerrainDescription_img {
     flex-direction: column;
     justify-content: center;
     margin: 0 !important;
-   
     place-self: center;
 }
 
@@ -612,6 +611,10 @@ choixTerrainDescription_img {
         margin-right: 1em;
     }
 
+
+.btn-prestation-details-right {
+    margin-bottom: 2em;
+}
 
 
 .infosOffre_infosNumeroReservation a {

@@ -6,9 +6,9 @@
 @{
 }
 <div class="infosOffre_main">
-    <h1 class="infosOffre_h1">Votre prestation Actuelle numéro @Model.NumeroReservation</h1>
+    <h2 class="infosOffre_h1">Votre prestation Actuelle numéro @Model.NumeroReservation</h2>
 
-    <h1 class="infosOffre_h1"> Offre : @Model.OffreDeTonteDetails.NomOffre</h1>
+    <h3 class="infosOffre_h1"> Offre : @Model.OffreDeTonteDetails.NomOffre</h3>
     <div class="infosOffre_div">
         <div class="infosOffre_infos">
             <p class="infosOffre_infosNomUtilisateur"><strong>Nom du client : <a href="#">@Model.TerrainDetails.NomUtilisateur @Model.TerrainDetails.PrenomUtilisateur</a></strong></p>
@@ -50,16 +50,9 @@
         </div>
 
         <div class="infosOffre_selection">
-            @* <div class="infosOffre_date">
-            <p>Choisissez vos dates :</p>
-            <label for="dateOffer">Date de début :</label>
-            <input type="date" name="dateOfferStart" id="dateOfferStart" min="@Model.DateDebutOff" max="@Model.DateFinOffre">
-            <label for="dateOffer">Date de fin : </label>
-            <input type="date" name="dateOfferEnd" id="dateOfferStart" min="@Model.DateDebutOffre" max="@Model.DateFinOffre">
-        </div> *@
             @if (ViewBag.Classe == 1)
             {
-                <div class="infosOffre_button">
+                <div>
                     <a class="btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Pointage Journalier</a>
                 </div>
                 <div class="infosOffre_button">
@@ -71,24 +64,13 @@
             }
             else if (ViewBag.Classe == 0)
             {
-                <div class="infosOffre_button">
+                <div>
                     <button class="btn-infos">Refuser la demande de réservation</button>
                 </div>
-                <div class="infosOffre_button">
-                     <a class="btn-infos" asp-controller="Utilisateur" asp-action="ValiderPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">validation</a>
+                <div>
+                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="ValiderPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">validation</a>
                 </div>
             }
-            @*<div class="infosOffre_button">
-                @if (Model.DateAcceptationDemande.HasValue)
-                {-->
-                    @*changer par une condition inverse = enlever le else
-                <!--}
-                else
-                {
-                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="ValiderPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">validation</a>
-                }
-                <a class="btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Pointage Journalier</a>
-            </div>*@
 
         </div>
     </div>

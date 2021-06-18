@@ -6,9 +6,9 @@
 @{
 }
 <div class="infosOffre_main">
-    <h1 class="infosOffre_h1">Votre prestation Actuelle numéro @Model.NumeroReservation</h1>
+    <h2 class="infosOffre_h1">Votre prestation Actuelle numéro @Model.NumeroReservation</h2>
 
-    <h1 class="infosOffre_h1"> Offre : @Model.OffreDeTonteDetails.NomOffre</h1>
+    <h3 class="infosOffre_h1"> Offre : @Model.OffreDeTonteDetails.NomOffre</h3>
     <div class="infosOffre_div">
         <div class="infosOffre_infos">
             <p class="infosOffre_infosNomUtilisateur"><strong>Nom de l'éleveur : <a href="#">@Model.OffreDeTonteDetails.NomUtilisateur @Model.OffreDeTonteDetails.PrenomUtilisateur</a></strong></p>
@@ -49,14 +49,14 @@
             <p class="infosOffre_infosPrix"><strong>Coût par jour par animal: </strong>@Model.OffreDeTonteDetails.CoutAnimalParJour</p>
         </div>
 
-        <div class="infosOffre_selection">
+        <div class="infosOffre_selection ">
 
             @if (ViewBag.Classe == 1)
             {
-                <div>
+                <div class="btn-prestation-details-right">
                     <a class="btn-infos" asp-controller="Utilisateur" asp-action="DeclarationAnomalieClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Déclaration d'une anomalie</a>
                 </div>
-                <div class="infosOffre_button">
+                <div class="btn-prestation-details-right">
                     <a class="btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Pointage Journalier</a>
                 </div>
             }
