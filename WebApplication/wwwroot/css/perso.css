@@ -19,7 +19,7 @@ body {
 }
 
 a {
-    text-decoration:none;
+    text-decoration: none;
 }
 
 header {
@@ -33,7 +33,6 @@ header {
     margin: 0;
     align-items: center;
     color: var(--Dark);
-    
 }
 
     header::after {
@@ -49,7 +48,6 @@ header {
 .header-right {
     display: flex;
     justify-content: flex-end;
-  
     text-decoration: none;
     margin-right: 5em;
     font-family: 'Roboto', sans-serif;
@@ -122,7 +120,7 @@ header {
 footer {
     /*display: flex;*/
     /* flex-direction: row; */
-     height: 3em; 
+    height: 3em;
     width: 100%;
     /* justify-content: center; */
     font-size: 18px;
@@ -138,7 +136,7 @@ footer {
 .main {
     height: 100%;
     width: 100%;
-    margin-bottom:6em;
+    margin-bottom: 6em;
 }
 
 
@@ -270,7 +268,7 @@ choixTerrainDescription_img {
     padding: 1em;
     background-color: var(--primary);
     border-radius: 5px;
-    position:relative;
+    position: relative;
 }
 
 .left-connexion {
@@ -354,23 +352,23 @@ choixTerrainDescription_img {
 
 /* Terrain card */
 
-.carte-ajout-terrain-lien{
+.carte-ajout-terrain-lien {
     color: var(--Dark);
     cursor: pointer;
 }
 
-.carte-ajout-terrain-lien:hover {
-    color: var(--info);
-}
+    .carte-ajout-terrain-lien:hover {
+        color: var(--info);
+    }
 
 .ajout-terrain-carte {
     flex-direction: column;
     justify-content: center;
 }
 
-.ajout-terrain-carte:hover {
-    background-color: var(--primary);
-}
+    .ajout-terrain-carte:hover {
+        background-color: var(--primary);
+    }
 
 
 .h4-liste-terrain {
@@ -590,25 +588,35 @@ choixTerrainDescription_img {
     background-color: #ffffff;
     font-family: 'Roboto';
     font-size: 15px;
-    width:50%;
+    width: 50%;
 }
 
-    .infosOffre_infos p{
+    .infosOffre_infos p {
         margin-left: 1em;
-        margin-right:1em;
+        margin-right: 1em;
     }
 
 
 
-    .infosOffre_infosNomEleveur a {
-        font-size: 1.5rem;
-        transition: color 1s;
-        color:inherit;
-    }
+.infosOffre_infosNumeroReservation a {
+    font-size: 1.5rem;
+    transition: color 1s;
+    color: inherit;
+}
 
-    .infosOffre_infosNomEleveur a:hover {
+.infosOffre_infosNumeroReservation a:hover {
+    color: #514db1;
+}
+
+.infosOffre_infosNomEleveur a {
+    font-size: 1.5rem;
+    transition: color 1s;
+    color: inherit;
+}
+
+.infosOffre_infosNomEleveur a:hover {
         color: #514db1;
-    }
+}
 
 
 .infosOffre_date {
@@ -617,7 +625,7 @@ choixTerrainDescription_img {
     justify-content: center;
     color: #ffffff;
     border: solid 2px white;
-    padding:1em;
+    padding: 1em;
 }
 
     .infosOffre_date input {
@@ -631,28 +639,28 @@ choixTerrainDescription_img {
     margin: auto;
     color: #ffffff;
     font-family: 'Roboto';
-    align-items:center;
+    align-items: center;
 }
 
-    .infosOffre_date div{
+.infosOffre_date div {
     text-align: center;
 }
 
-.infosOffre_button{
-    margin-bottom:1em;
+.infosOffre_button {
+    margin-bottom: 1em;
 }
 
-.infosOffre_button button {
-    width: 15rem;
-    height: 2rem;
-    background-color: #dddddd;
-    border-radius: 5px;
-    border: 2px solid black;
-    transition: color 0.5s;
-    margin: auto;
-    margin-top: 2rem;
-    font-size: 1.5rem;
-}
+    .infosOffre_button button {
+        width: 15rem;
+        height: 2rem;
+        background-color: #dddddd;
+        border-radius: 5px;
+        border: 2px solid black;
+        transition: color 0.5s;
+        margin: auto;
+        margin-top: 2rem;
+        font-size: 1.5rem;
+    }
 
 .infosOffre_buttonSelection {
     align-items: center;
@@ -682,11 +690,11 @@ choixTerrainDescription_img {
 
 .infosOffre_buttonChange:hover {
     background-color: var(--info);
-    color:var(--light);
+    color: var(--light);
 }
 
-.eval-demande-container i{
-    color:var(--secondary);
+.eval-demande-container i {
+    color: var(--secondary);
     margin-right: 1em;
 }
 /*/ ////////////////// CHOIX TERRAIN DESCRIPTION ////////////////// /*/
@@ -777,7 +785,7 @@ choixTerrainDescription_img {
 /*/ ///////////////////////// HOME PAGE ////////////////////////////// /*/
 
 .container-top {
-    max-height:79vh;
+    max-height: 79vh;
     height: 39em;
     background-image: url(/assets/Slide1.png);
     background-color: #d8e8c8;
@@ -802,7 +810,7 @@ choixTerrainDescription_img {
     width: 36%;
 }
 /* Feature */
-    .features {
+.features {
     width: 80%;
     margin: auto;
     text-align: center;
@@ -1049,7 +1057,7 @@ choixTerrainDescription_img {
     .button-choose-cat-prestration a {
         text-decoration: none;
         color: inherit;
-        width:100%;
+        width: 100%;
     }
 
         .button-choose-cat-prestration a:hover {
@@ -1150,9 +1158,9 @@ choixTerrainDescription_img {
     flex-direction: column;
     background: white;
     align-items: center;
-    text-align:center;
+    text-align: center;
 }
 
-.succes-body img{
-    max-height:500px;
-}
+    .succes-body img {
+        max-height: 500px;
+    }

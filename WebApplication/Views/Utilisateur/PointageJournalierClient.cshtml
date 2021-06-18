@@ -15,7 +15,10 @@
     @*@Model.DemandeDeReservationDetails.*@
     <div class="infosOffre_div">
         <div class="infosOffre_infos">
-            <p class="infosOffre_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">nom de l'eleveur</a></strong></p>
+            <p class="infosOffre_infosNumeroReservation">
+                <strong>Numéro réservervation : 
+                    <a asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande">@Model.DemandeDeReservationDetails.NumeroReservation</a>
+                </strong></p>
 
             @*tableau des pointages*@
             <table>
@@ -47,7 +50,7 @@
                 <input asp-for="@Model.PointageJournalier.HeurePrevu" type="time" min="08:00" max="20:00" value="08:00" disabled />
 
                 @*verification si eleveur a deja pointer*@
-                <a class="btn-infos" asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.IdUtilisateur">Home</a>
+                <a class="btn-infos" asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.IdUtilisateur">Acceuil</a>
             </div>
         </div>
     </div>
