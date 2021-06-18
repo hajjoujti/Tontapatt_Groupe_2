@@ -235,7 +235,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         {
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
-
+            /*function a utiliser*/
             DemandeDeReservationBU demandeDeReservationBU = new();
             demandeDeReservationBU.AccepterDemandeReservationById(idDemandeDeReservation);
             /*test de reussite*/
