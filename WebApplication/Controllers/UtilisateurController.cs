@@ -358,7 +358,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         [HttpPost]
         public IActionResult FinPrestation(FinPrestationViewModel f)
         {
-            ViewBag.IdUtilisateur = f.IdUtilisateur;
+            ViewBag.idUtilisateur = f.IdUtilisateur;
             ViewBag.IsInBDD = true;
             if (ModelState.IsValid)
             {
@@ -370,7 +370,8 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
                 evaluationPrestation.RemarqueEval = f.RemarqueEval;
                 EvaluationPrestationBU evaluationPrestationBU = new();
                 evaluationPrestationBU.InsererEvaluationPrestation(evaluationPrestation);
-                return View("Index");
+                ViewBag.Message = "Merci à la prochaine.";
+                return View("Reussite");
             }
             else
             {
