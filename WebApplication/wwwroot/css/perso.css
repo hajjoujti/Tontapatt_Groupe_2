@@ -355,15 +355,26 @@ choixTerrainDescription_img {
 .carte-ajout-terrain-lien {
     color: var(--Dark);
     cursor: pointer;
+    display: flex;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
+
+
     .carte-ajout-terrain-lien:hover {
-        color: var(--info);
+        color: var(--light);
     }
+
+
+
 
 .ajout-terrain-carte {
     flex-direction: column;
     justify-content: center;
+    margin: 0 !important;
+   
+    place-self: center;
 }
 
     .ajout-terrain-carte:hover {
@@ -387,12 +398,16 @@ choixTerrainDescription_img {
     justify-content: center;
 }
 
+.terrain-left {
+    position: relative;
+}
+
 .body-card-terrain {
     position: relative;
     margin: 2em;
     display: flex;
-    width: 462px;
     height: 176px;
+    min-width: 550px;
     border-radius: 5px;
     align-items: center;
     font-family: 'Roboto';
@@ -420,8 +435,8 @@ choixTerrainDescription_img {
     width: 50px;
     background-color: var(--light);
     position: absolute;
-    top: 6px;
-    right: 139Px;
+    top: 73px;
+    right: -23Px;
     border-radius: 50%;
     text-align: center;
     display: flex;
@@ -539,6 +554,7 @@ choixTerrainDescription_img {
 .header-liste-offres {
     display: flex;
     width: 100%;
+    padding-bottom: 3em
 }
 
     .header-liste-offres div {
@@ -604,9 +620,9 @@ choixTerrainDescription_img {
     color: inherit;
 }
 
-.infosOffre_infosNumeroReservation a:hover {
-    color: #514db1;
-}
+    .infosOffre_infosNumeroReservation a:hover {
+        color: #514db1;
+    }
 
 .infosOffre_infosNomEleveur a {
     font-size: 1.5rem;
@@ -614,9 +630,9 @@ choixTerrainDescription_img {
     color: inherit;
 }
 
-.infosOffre_infosNomEleveur a:hover {
+    .infosOffre_infosNomEleveur a:hover {
         color: #514db1;
-}
+    }
 
 
 .infosOffre_date {
@@ -1228,9 +1244,9 @@ choixTerrainDescription_img {
     border: 2px solid #000000;
 }
 
-.declarationAnomalie_ValidateButton:hover {
+    .declarationAnomalie_ValidateButton:hover {
         background-color: #135d25;
-}
+    }
 
 
 
