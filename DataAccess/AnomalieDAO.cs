@@ -15,7 +15,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"INSERT INTO anomalie
                                 (id_demande, id_utilisateur_client, id_utilisateur_eleveur, id_type_anomalie, description_anomalie, date_declenchement_anomalie)
-                                VALUES(@idDemande, @idUtilisateurClient, @idUtilisateurEleveur, @idTypeAnomalie, @descriptionAnomalie, @dateDeclenchementAnomalie)";
+                                VALUES (@idDemande, @idUtilisateurClient, @idUtilisateurEleveur, @idTypeAnomalie, @descriptionAnomalie, @dateDeclenchementAnomalie)";
 
             cmd.Parameters.Add(new MySqlParameter("@idDemande", anomalie.IdDemande));
             cmd.Parameters.Add(new MySqlParameter("@idUtilisateurClient", anomalie.IdUtilisateurClient));
