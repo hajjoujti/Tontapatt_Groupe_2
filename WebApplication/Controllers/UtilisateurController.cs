@@ -325,12 +325,15 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             }
             else
             {
-                return View("DeclarationAnomalieClient", anomalieDetailsViewModel);
+                anomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(anomalieDetailsViewModel.IdDemande);
+                anomalieDetailsViewModel.TypesAnomalie = new TypeAnomalieBU().GetAll();
+                anomalieDetailsViewModel.Anomalies = new AnomalieBU().GetAllByIdDemandeDeReservation(anomalieDetailsViewModel.IdDemande);
+                return View(anomalieDetailsViewModel);
             }
         }
 
         [HttpGet]
-        public IActionResult ValiderPrestation(int idDemandeDeReservation, int idUtilisateur)
+        public IActionResult AccepterPrestation(int idDemandeDeReservation, int idUtilisateur)
         {
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
@@ -350,6 +353,39 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View(anomalieDetailsViewModel);
+        }
+
+        [HttpGet]
+        public IActionResult AnnulationPrematuree(int idDemandeDeReservation, int idUtilisateur, int idClasse)
+        {
+            ViewBag.Classe = idClasse;
+            ViewBag.IsInBDD = true;
+            ViewBag.IdUtilisateur = idUtilisateur;
+            RaisonAnnulationPrematureeViewModel raisonAnnulationPrematureeViewModel = new();
+            raisonAnnulationPrematureeViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+            raisonAnnulationPrematureeViewModel.RaisonsAnnulationPrematuree = new RaisonAnnulationPrematureeBU().GetAll();
+
+            return View(raisonAnnulationPrematureeViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult AnnulationPrematuree(RaisonAnnulationPrematureeViewModel raisonAnnulationPrematureeViewModel)
+        {
+            ViewBag.IsInBDD = true;
+            ViewBag.IdUtilisateur = raisonAnnulationPrematureeViewModel.IdUtilisateur;
+            if (ModelState.IsValid)
+            {
+                new DemandeDeReservationBU().AnnulationPrematureeDemandeDeReservationById(raisonAnnulationPrematureeViewModel.IdDemande, raisonAnnulationPrematureeViewModel.IdRaisonAnnulPrem);
+
+                ViewBag.Message = "validation de l'annumaltion de la prestation";
+                return View("Reussite");
+            }
+            else
+            {
+                raisonAnnulationPrematureeViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(raisonAnnulationPrematureeViewModel.IdDemande);
+                raisonAnnulationPrematureeViewModel.RaisonsAnnulationPrematuree = new RaisonAnnulationPrematureeBU().GetAll();
+                return View(raisonAnnulationPrematureeViewModel);
+            }
         }
     }
 }

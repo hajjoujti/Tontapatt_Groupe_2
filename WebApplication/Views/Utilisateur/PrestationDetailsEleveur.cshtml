@@ -62,16 +62,16 @@
                     <a class="btn-infos" asp-controller="Utilisateur" asp-action="ListeAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Voir la Liste des anomalies</a>
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="AnnulationPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Annulation de la Prestation en cours</a>
+                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="AnnulationPrematuree" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Annulation de la Prestation en cours</a>
                 </div>
             }
             else if (ViewBag.Classe == 0)
             {
                 <div class="btn-prestation-details-right">
-                    <button class="btn-infos">Refuser la demande de réservation</button>
+                    <button class="btn-infos">Refuser</button>
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="ValiderPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">validation</a>
+                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="AccepterPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Accepter</a>
                 </div>
             }
 
