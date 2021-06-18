@@ -12,7 +12,7 @@
     <div class="declarationAnomalie">
         <div class="declarationAnomalie_infosPrestation">
             <h2>Récapitulatif de la prestation : </h2>
-            <p class="declarationAnomalie_infosPrestation_infosNumeroReservation"><strong>Numéro réservation : <a asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">@Model.DemandeDeReservationDetails.NumeroReservation</a></strong></p>
+            <p class="declarationAnomalie_infosPrestation_infosNumeroReservation">Numéro préstation : @Model.DemandeDeReservationDetails.NumeroReservation</strong></p>
             <p class="declarationAnomalie_infosPrestation_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">@Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur @Model.DemandeDeReservationDetails.OffreDeTonteDetails.PrenomUtilisateur</a></strong></p>
             <p class="declarationAnomalie_infosPrestation_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DemandeDeReservationDetails.DateDebutDemande.ToString("dd/MM/yyyy")</p>
             <p class="declarationAnomalie_infosPrestation_infosDateFin"><strong>Date de fin de la prestation : </strong>@Model.DemandeDeReservationDetails.DateFinDemande.ToString("dd/MM/yyyy")</p>
@@ -21,7 +21,7 @@
             <p class="declarationAnomalie_infosPrestation_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.EspeceAnimal</p>
             <p class="declarationAnomalie_infosPrestation_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.RaceAnimal</p>
             <p class="declarationAnomalie_infosPrestation_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.NombreAnimaux</p>
-            <a class="declarationAnomalie_infosPrestation_buttonChange" href="#">Revenir aux offres précédentes</a>
+            <a class="declarationAnomalie_infosPrestation_buttonChange" asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">Revenir à la préstation</a>
         </div>
         <form class="declarationAnomalie_form" method="post">
         <h2>Remplir le formulaire de déclaration d'anomalie :</h2>
