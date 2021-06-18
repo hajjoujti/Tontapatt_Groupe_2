@@ -1272,6 +1272,7 @@ choixTerrainDescription_img {
     .btn-infos:hover {
         background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
         background-color: #0061a7;
+        color:var(--light);
     }
 
     .btn-infos:active {
