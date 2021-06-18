@@ -159,7 +159,10 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
                 DemandeDeReservationBU bu = new DemandeDeReservationBU();
                 bu.InsererUneDemandeDeReservation(demandeDeReservation);
-                return View("");
+
+                ViewBag.Message = "Demande de prestation transmise ";
+
+                return View("Reussite");
             }
             else
             {
