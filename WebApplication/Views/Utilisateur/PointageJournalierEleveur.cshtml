@@ -8,7 +8,7 @@
     ViewData["Title"] = "TONTAPATT - Pointage Journalier";
     #region verification si eleveur a deja pointer
     DateTime dateDernierPointage = new();
-    DateTime heurePrevu = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0);
+    DateTime heurePrevu = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
     DateTime heureActuelle = DateTime.Now;
     bool estDansIntervalDeTemps = Math.Abs((heurePrevu - heureActuelle).TotalHours) <= 1;
     bool dejaPointer;
@@ -18,7 +18,7 @@
     }
     else
     {
-        dejaPointer = Model.ListPointagesJournalier[Model.ListPointagesJournalier.Count].HeurePointage.Date == DateTime.Today;
+        dejaPointer = Model.ListPointagesJournalier[Model.ListPointagesJournalier.Count - 1].HeurePointage.Date == DateTime.Today;
     }
     bool apresDateDebut = DateTime.Compare(Model.DemandeDeReservationDetails.DateDebutDemande, heureActuelle) < 0;
     bool disabled = true;
