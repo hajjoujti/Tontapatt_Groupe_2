@@ -247,7 +247,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(demandeDeReservationViewModel);
         }
 
-        /*----------------------------- Anomalie */
+        /*----------------------------- Anomalie 
         public IActionResult DeclarationAnomalieEleveur(AnomalieDetailsViewModel a)
         {
             ViewBag.IsInBDD = true;
@@ -271,6 +271,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             {
                 return View("ChoixOffreDescription", d);
             }
-        }
+    }*/
     }
 }

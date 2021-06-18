@@ -28,18 +28,20 @@
             <div class="declarationAnomalie_formInput">
                 <div class="declarationAnomalie_formInfos">
                     <div>
-                        <label asp-for="nomUtilisateur">Nom :</label>
-                        <input asp-for="nomUtilisateur" type="text" id="name">
+                        <label name="nomUtilisateur">Nom :</label>
+                        <input name="nomUtilisateur" type="text" id="name">
                     </div>
                     <div>
-                        <label asp-for="mailUtilisateur">Email :</label>
-                        <input asp-for="mailUtilisateur" type="email" id="mail">
+                        <label name="mailUtilisateur">Email :</label>
+                        <input name="mailUtilisateur" type="email" id="mail">
                     </div>
                     <div>
-                        <label asp-for="DescriptionAnomalie">Description de l'anomalie:</label>
-                        <textarea asp-for="DescriptionAnomalie" id="msg"></textarea>
+                        <label name="DescriptionAnomalie">Description de l'anomalie:</label>
+                        <textarea name="DescriptionAnomalie" id="msg"></textarea>
                     </div>
                 </div>
+
+                <!--@foreach (PointageJournalier p in Model.)-->
 
                 <div class="declarationAnomalie_formRaison">
                     <p>Quelle la raison de votre déclaration d'anomalie : </p>
@@ -55,10 +57,10 @@
                     </select>
                 </div>
                 <div>
-                    <input type="hidden" asp-for="IdDemande" value="@Model.OffreDeTonteDetails.IdOffre" />
-                    <input type="hidden" asp-for="IdUtilisateurClient" value="@Model.TerrainDetails.IdUtilisateur" />
-                    <input type="hidden" asp-for="IdUtilisateurEleveur" value="@Model.OffreDeTonteDetails.IdUtilisateur" />
-                    <input type="hidden" asp-for="IdTypeAnomalie" value="@Model.Anomalie.IdTypeAnomalie" />
+                    <input type="hidden" name="IdDemande" value="@Model.OffreDeTonteDetails.IdOffre" />
+                    <input type="hidden" name="IdUtilisateurClient" value="@Model.TerrainDetails.IdUtilisateur" />
+                    <input type="hidden" name="IdUtilisateurEleveur" value="@Model.OffreDeTonteDetails.IdUtilisateur" />
+                    <input type="hidden" name="IdTypeAnomalie" value="@Model.Anomalie.IdTypeAnomalie" />
                 </div>
             </div>
             <button class="declarationAnomalie_ValidateButton" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider la déclaration</button>
