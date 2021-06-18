@@ -8,7 +8,7 @@
     ViewData["Title"] = "TONTAPATT - Pointage Journalier";
     #region verification si eleveur a deja pointer
     DateTime dateDernierPointage = new();
-    DateTime heurePrevu = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
+    DateTime heurePrevu = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0);
     DateTime heureActuelle = DateTime.Now;
     bool estDansIntervalDeTemps = Math.Abs((heurePrevu - heureActuelle).TotalHours) <= 1;
     bool dejaPointer;
