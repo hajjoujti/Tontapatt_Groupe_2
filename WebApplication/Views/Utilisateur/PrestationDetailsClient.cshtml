@@ -57,6 +57,9 @@
                     <a class="btn-infos" asp-controller="Utilisateur" asp-action="DeclarationAnomalieClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Déclaration d'une anomalie</a>
                 </div>
                 <div class="btn-prestation-details-right">
+                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="ListeAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Voir la Liste des anomalies</a>
+                </div>
+                <div class="btn-prestation-details-right">
                     <a class="btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Pointage Journalier</a>
                 </div>
             }

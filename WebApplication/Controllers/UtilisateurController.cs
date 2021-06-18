@@ -347,7 +347,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         public IActionResult ListeAnomalie(int idDemandeDeReservation, int idUtilisateur)
         {
             AnomalieDetailsViewModel anomalieDetailsViewModel  = new();
-            anomalieDetailsViewModel.DemandeDeReservationDetails = bu.GetByIdWithDetails(idDemandeDeReservation);
+            anomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View(anomalieDetailsViewModel);
