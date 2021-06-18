@@ -275,5 +275,19 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
                 return View("ChoixOffreDescription", d);
             }
     }*/
+
+
+        [HttpGet]
+        public IActionResult ValiderPrestation(int idDemandeDeReservation, int idUtilisateur)
+        {
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
+            /*function a utiliser*/
+            DemandeDeReservationBU demandeDeReservationBU = new();
+            demandeDeReservationBU.AccepterDemandeReservationById(idDemandeDeReservation);
+            /*test de reussite*/
+            ViewBag.Message = "validation reussit";
+            return View("Reussite");
+        }
     }
 }

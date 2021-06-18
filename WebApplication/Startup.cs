@@ -34,7 +34,8 @@ namespace WebApplication
                         options.SlidingExpiration = true;
                     });*/
             services.AddControllersWithViews();
-            
+            services.AddApplicationInsightsTelemetry();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -78,6 +78,18 @@
                     <button>Valider la demande de réservation</button>
                 </div>
             }
+            @*<div class="infosOffre_button">
+                @if (Model.DateAcceptationDemande.HasValue)
+                {-->
+                    @*changer par une condition inverse = enlever le else
+                <!--}
+                else
+                {
+                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="ValiderPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">validation</a>
+                }
+                <a class="btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Pointage Journalier</a>
+            </div>*@
+
         </div>
     </div>
 </div>
