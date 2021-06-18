@@ -51,17 +51,14 @@
 
         <div class="infosOffre_selection">
            
-            @if (ViewBag.classe == 1)
+            @if (ViewBag.Classe == 1)
             {
                 <div class="infosOffre_button">
-                    <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="DeclarationAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Déclaration d'une anomalie</a>
-                    <a class="infosOffre_buttonSelection btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur"><p> Pointage Journalier</p></a>
-                </div>
-                <div class="infosOffre_button">
-                    <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="AnnulationPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Annulation de la Prestation en cours</a>
+                    <a class="infosOffre_buttonSelection" asp-controller="Utilisateur" asp-action="DeclarationAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Déclaration d'une anomalie</a>
+                    <a class="infosOffre_buttonSelection btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe"><p> Pointage Journalier</p></a>
                 </div>
             }
-            else if (ViewBag.classe == 0)
+            else if (ViewBag.Classe == 0)
             {
                 <div class="infosOffre_button">
                     <button>Annuler la demande de réservation</button>

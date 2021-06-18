@@ -40,7 +40,7 @@
         <div class="infosOffre_infos">
             <p class="infosOffre_infosNumeroReservation">
                 <strong>Numéro réservervation : 
-                    <a asp-controller="Utilisateur" asp-action="PrestationDetailsEleveur" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande">@Model.DemandeDeReservationDetails.NumeroReservation</a>
+                    <a asp-controller="Utilisateur" asp-action="PrestationDetailsEleveur" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">@Model.DemandeDeReservationDetails.NumeroReservation</a>
                 </strong></p>
 
             @*tableau des pointages*@

@@ -93,7 +93,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             DemandeDeReservationBU bu = new();
             UtilisateurPrestationModel prestationList = new();
             prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
-            ViewBag.classe = 0;
+            ViewBag.Classe = 0;
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View(prestationList);
@@ -106,7 +106,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             DemandeDeReservationBU bu = new();
             UtilisateurPrestationModel prestationList = new();
             prestationList.demandeDeReservationDetails = bu.GetAllEnCoursWithDetailsByIdUtilisateur(idUtilisateur);
-            ViewBag.classe = 1;
+            ViewBag.Classe = 1;
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View("ListePrestation", prestationList);
@@ -119,7 +119,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             DemandeDeReservationBU bu = new();
             UtilisateurPrestationModel prestationList = new();
             prestationList.demandeDeReservationDetails = bu.GetAllTermineesWithDetailsByIdUtilisateur(idUtilisateur);
-            ViewBag.classe = 2;
+            ViewBag.Classe = 2;
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View("ListePrestation", prestationList);
@@ -132,7 +132,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             DemandeDeReservationBU bu = new();
             UtilisateurPrestationModel prestationList = new();
             prestationList.demandeDeReservationDetails = bu.GetAllAnnuleesWithDetailsByIdUtilisateur(idUtilisateur);
-            ViewBag.classe = 3;
+            ViewBag.Classe = 3;
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View("ListePrestation", prestationList);
@@ -173,27 +173,29 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IsInBDD = true;
             DemandeDeReservationDetails demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
             ViewBag.IdUtilisateur = demandeDeReservationDetails.TerrainDetails.IdUtilisateur;
-            ViewBag.classe = idClasse;
+            ViewBag.Classe = idClasse;
 
             return View(demandeDeReservationDetails);
         }
 
         [HttpGet]
-        public IActionResult PrestationDetailsEleveur(int idDemandeDeReservation)
+        public IActionResult PrestationDetailsEleveur(int idDemandeDeReservation, int idClasse)
         {
             ViewBag.IsInBDD = true;
             DemandeDeReservationDetails demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
             ViewBag.IdUtilisateur = demandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur;
+            ViewBag.Classe = idClasse;
 
             return View(demandeDeReservationDetails);
         }
 
         [HttpGet]
-        public IActionResult PointageJournalierEleveur(int idDemandeDeReservation, int idUtilisateur)
+        public IActionResult PointageJournalierEleveur(int idDemandeDeReservation, int idUtilisateur, int idClasse)
         {
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
             ViewBag.IsInBDD = true;
+            ViewBag.Classe = idClasse;
 
             PointageJournalierDetailsViewModel pointageJournalierDetailsViewModel = new();
             pointageJournalierDetailsViewModel.ListPointagesJournalier = new PointageJournalierBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
@@ -203,11 +205,12 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         }
 
         [HttpGet]
-        public IActionResult PointageJournalierClient(int idDemandeDeReservation, int idUtilisateur)
+        public IActionResult PointageJournalierClient(int idDemandeDeReservation, int idUtilisateur, int idClasse)
         {
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
             ViewBag.IsInBDD = true;
+            ViewBag.Classe = idClasse;
 
             PointageJournalierDetailsViewModel pointageJournalierDetailsViewModel = new();
             pointageJournalierDetailsViewModel.ListPointagesJournalier = new PointageJournalierBU().GetAllByIdDemandeDeReservastion(idDemandeDeReservation);
@@ -248,7 +251,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         }
 
         /*----------------------------- Anomalie 
-        public IActionResult DeclarationAnomalieEleveur(AnomalieDetailsViewModel a)
+        public IActionResult DeclarationAnomalieEleveur(AnomalieDetailsViewModel)
         {
             ViewBag.IsInBDD = true;
             a.DeamandeDeReservation = new AnomalieBU().GetById(a.IdDemande);

@@ -12,19 +12,19 @@
     string annuler = "";
     string action = "";
 
-    if (ViewBag.classe == 0)
+    if (ViewBag.Classe == 0)
     {
         attente = "active";
     }
-    else if (ViewBag.classe == 1)
+    else if (ViewBag.Classe == 1)
     {
         encour = "active";
     }
-    else if (ViewBag.classe == 2)
+    else if (ViewBag.Classe == 2)
     {
         terminer = "active";
     }
-    else if (ViewBag.classe == 3)
+    else if (ViewBag.Classe == 3)
     {
         annuler = "active";
     }
@@ -62,7 +62,7 @@
                     <div class="footer-card-terrain">
                         <P>
                             <span class="icone-terrain">
-                                <a asp-action="@action" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@prestation.IdDemande" asp-route-idClasse="@ViewBag.classe"><i class="far fa-eye"></i></a>
+                                <a asp-action="@action" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@prestation.IdDemande" asp-route-idClasse="@ViewBag.Classe"><i class="far fa-eye"></i></a>
                             </span>
                         </P>
                     </div>
