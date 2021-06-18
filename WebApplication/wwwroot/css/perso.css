@@ -1228,9 +1228,8 @@ choixTerrainDescription_img {
     border: 2px solid #000000;
 }
 
-    .declarationAnomalie_ValidateButton:hover {
+.declarationAnomalie_ValidateButton:hover {
         background-color: #135d25;
-    }
 }
 
 

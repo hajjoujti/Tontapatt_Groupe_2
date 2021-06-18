@@ -125,10 +125,12 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
         public void AnnulerOffreDeTonteById(int idOffredeTonte, int idAnnulationOffre, DateTime dateAnnulationOffre)
         {
             MySqlCommand cmd = CreerCommand();
-            cmd.CommandText = @"UPDATE offredetonte SET
+            cmd.CommandText = @"UPDATE offredetonte o
+                                INNER JOIN demandedereservation d ON d.id_offre = o.id_offre
+                                SET
                                 id_annulation_offre = @idAnnulationOffre,
                                 date_annulation_offre = @dateAnnulationOffre
-                                WHERE id_demande = @idOffredeTonte";
+                                WHERE d.id_offre = @idOffredeTonte";
             cmd.Parameters.Add(new MySqlParameter("@idOffredeTonte", idOffredeTonte));
             cmd.Parameters.Add(new MySqlParameter("@dateAnnulationOffre", dateAnnulationOffre));
             cmd.Parameters.Add(new MySqlParameter("@idAnnulationOffre", idAnnulationOffre));

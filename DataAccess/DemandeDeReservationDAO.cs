@@ -39,7 +39,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             DemandeDeReservation demandeDeReservation = null;
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT *
-                                FROM terrain
+                                FROM demandedereservation
                                 WHERE id_demande = @idDemandeDeReservation";
             cmd.Parameters.Add(new MySqlParameter("@idDemandeDeReservation", idDemandeDeReservation));
             cmd.Connection.Open();
