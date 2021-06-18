@@ -91,7 +91,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         {
 
             DemandeDeReservationBU bu = new();
-            UtilisateurPrestationModel prestationList = new();
+            UtilisateurPrestationViewModel prestationList = new();
             prestationList.demandeDeReservationDetails = bu.GetAllEnAttenteWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.Classe = 0;
             ViewBag.IdUtilisateur = idUtilisateur;
@@ -104,7 +104,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         {
 
             DemandeDeReservationBU bu = new();
-            UtilisateurPrestationModel prestationList = new();
+            UtilisateurPrestationViewModel prestationList = new();
             prestationList.demandeDeReservationDetails = bu.GetAllEnCoursWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.Classe = 1;
             ViewBag.IdUtilisateur = idUtilisateur;
@@ -117,7 +117,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         {
 
             DemandeDeReservationBU bu = new();
-            UtilisateurPrestationModel prestationList = new();
+            UtilisateurPrestationViewModel prestationList = new();
             prestationList.demandeDeReservationDetails = bu.GetAllTermineesWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.Classe = 2;
             ViewBag.IdUtilisateur = idUtilisateur;
@@ -130,7 +130,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         {
 
             DemandeDeReservationBU bu = new();
-            UtilisateurPrestationModel prestationList = new();
+            UtilisateurPrestationViewModel prestationList = new();
             prestationList.demandeDeReservationDetails = bu.GetAllAnnuleesWithDetailsByIdUtilisateur(idUtilisateur);
             ViewBag.Classe = 3;
             ViewBag.IdUtilisateur = idUtilisateur;
@@ -343,6 +343,44 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             /*test de reussite*/
             ViewBag.Message = "validation reussit";
             return View("Reussite");
+        }
+        [HttpGet]
+        public IActionResult FinPrestation(int idDemandeDeReservation, int idUtilisateur)
+        {
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
+            FinPrestationViewModel finPrestationModel = new();
+            finPrestationModel.demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+            finPrestationModel.IdUtilisateurClient = finPrestationModel.demandeDeReservationDetails.TerrainDetails.IdUtilisateur;
+            finPrestationModel.IdUtilisateurEleveur = finPrestationModel.demandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur;
+            finPrestationModel.IdDemande = idDemandeDeReservation;
+
+            return View("FinPrestation", finPrestationModel);
+        }
+        [HttpPost]
+        public IActionResult FinPrestation(FinPrestationViewModel f)
+        {
+            ViewBag.IdUtilisateur = f.IdUtilisateur;
+            ViewBag.IsInBDD = true;
+            if (ModelState.IsValid)
+            {
+                EvaluationPrestation evaluationPrestation = new();
+                evaluationPrestation.IdDemande = f.IdDemande;
+                evaluationPrestation.IdUtilisateurClient = f.IdUtilisateurClient;
+                evaluationPrestation.IdUtilisateurEleveur = f.IdUtilisateurEleveur;
+                evaluationPrestation.NotePrestation = f.NotePrestation;
+                evaluationPrestation.RemarqueEval = f.RemarqueEval;
+                EvaluationPrestationBU evaluationPrestationBU = new();
+                evaluationPrestationBU.InsererEvaluationPrestation(evaluationPrestation);
+                return View("Index");
+            }
+            else
+            {
+
+                return View(f);
+
+            }
+
         }
 
         [HttpGet]

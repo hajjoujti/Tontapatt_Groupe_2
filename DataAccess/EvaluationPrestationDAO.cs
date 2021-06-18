@@ -15,7 +15,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"INSERT INTO evaluationprestation
                                 (id_utilisateur_client, id_demande, id_utilisateur_eleveur, note_prestation, remarque_eval)
-                                VALUES (idUtilisateurClient, @idDemande, idUtilisateurEleveur, notePrestation, remarqueEval)";
+                                VALUES (@idUtilisateurClient, @idDemande, @idUtilisateurEleveur, @notePrestation, @remarqueEval)";
 
             cmd.Parameters.Add(new MySqlParameter("@idUtilisateurClient", evaluationPrestation.IdUtilisateurClient));
             cmd.Parameters.Add(new MySqlParameter("@idDemande", evaluationPrestation.IdDemande));
