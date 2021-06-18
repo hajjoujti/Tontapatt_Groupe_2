@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@using Fr.EQL.Ai109.Tontapatt.Model
+@model AnomalieDetailsViewModel
+@{
+}
+<main class="listeAnomalie_main">
+    <h1 class="listeAnomalie_h1">Liste des anomalies</h1>
+    <div class="listeAnomalies">
+        @foreach (Anomalie anomalie in Model.Anomalies)
+        {
+            <div class="listeAnomalie">
+                <div class="listeAnomalie_infoStatus">
+                    @if (anomalie.DateFinAnomalie is null)
+                    {
+                        <div class="listeAnomalie_infoStatusEnCours">En cours</div>
+                    }
+                    else
+                    {
+                        <div class="listeAnomalie_infoStatusTermine">Terminé</div>
+                    }
+                    <div class="listeAnomalie_infoStatusDetails">
+                        <a asp-action="" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@anomalie.IdDemande" asp-route-idClasse="@ViewBag.Classe" asp-route-idUtilisateur="@ViewBag.IdUtilisateur"><i class="far fa-eye fa-3x"></i></a>
+                    </div>
+                </div>
+                <div class="listeAnomalie_infosaAnomalie">
+                    <h2>Anomalie de la prestation numero : <a asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">@Model.DemandeDeReservationDetails.NumeroReservation</a></h2>
+                    @if (Model.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur == ViewBag.IdUtilisateur)
+                    {
+                <p class="client-prestation-tag">Nom de l'éleveur : @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur NomUtilisateur </p>
+                    }
+                    else
+                    {
+                <p class="eleveur-prestation-tag">:Nom du client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur</p>
+                    }
+                    <p>Lieux de la prestation : @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain</p>
+                </div>
+            </div>
+        }
+    </div>
+</main>

@@ -23,6 +23,9 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 
         public DemandeDeReservationDetails DemandeDeReservationDetails { get; set; }
 
+        public List<Anomalie> Anomalies { get; set; }
+
+
         public List<TypeAnomalie> TypesAnomalie { get; set; }
     }
 }
