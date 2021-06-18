@@ -1,0 +1,66 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Fr.EQL.Ai109.Tontapatt.Model
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@model RaisonAnnulationPrematuree
+@{
+    ViewData["Title"] = "TONTAPATT - Annuler la prestation ";
+
+}
+<main class="AnnulationPrestation_main">
+    <h1 class="AnnulationPrestation_h1">Annuler La prestation</h1>
+    <div class="AnnulationPrestation">
+        <div class="AnnulationPrestation_infosPrestation">
+            <h2>Récapitulatif de la prestation : </h2>
+            <p class="AnnulationPrestation_NumeroPrestation"><strong>Numero de l prestation: @Model.OffreDeTonteDetails.NumeroDemande</strong></p>
+
+            <p class="AnnulationPrestation_infosPrestation_infosNomEleveur"><strong>Nom de l'éleveur : @Model.OffreDeTonteDetails.NomUtilisateur @Model.OffreDeTonteDetails.PrenomUtilisateur</strong></p>
+            <p class="AnnulationPrestation_infosPrestation_infosNomEleveur"><strong>Nom du Client : @Model.TerrainDetails.NomUtilisateur @Model.TerrainDetails.PrenomUtilisateur</strong></p>
+            <p class="AnnulationPrestation_infosPrestation_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.OffreDeTonteDetails.DateDebutOffre.ToString("MM/dd/yyyy")</p>
+            <p class="AnnulationPrestation_infosPrestation_infosDateFin"><strong>Date de fin de la prestation : </strong>@Model.OffreDeTonteDetails.DateFinOffre.ToString("MM/dd/yyyy")</p>
+            <p class="AnnulationPrestation_infosPrestation_infosNomVille"><strong>Adresse du terrain : </strong>@Model.TerrainDetails.NomVilleTerrain / @Model.TerrainDetails.CodePostalTerrain</p>
+            <p class="AnnulationPrestation_infosPrestation_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.OffreDeTonteDetails.EspeceAnimal</p>
+            <p class="AnnulationPrestation_infosPrestation_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.OffreDeTonteDetails.RaceAnimal</p>
+            <p class="AnnulationPrestation_infosPrestation_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.OffreDeTonteDetails.NombreAnimaux</p>
+            <p class="AnnulationPrestation_infosPrestation_infosPrix"><strong>Coût par jour par mouton : </strong>@Model.OffreDeTonteDetails.CoutAnimalParJour</p>
+        </div>
+        <form class="AnnulationPrestation_form" method="post">
+        <h2>Remplir le formulaire de l'annulation de votre prestation  :</h2>
+        <div class="AnnulationPrestation_formInput">
+            <div class="AnnulationPrestation_formInfos">
+                <div>
+                    <label name="nomUtilisateur">Votre Nom :</label>
+                    <input name="nomUtilisateur" type="text" id="name">
+                </div>
+                <div>
+                    <label name="mailUtilisateur">Votre mail :</label>
+                    <input name="mailUtilisateur" type="email" id="mail">
+                </div>
+            </div>
+
+            
+
+        <div class="AnnulationPrestation_formRaison">
+            <p>La raison de l'annulation : </p>
+            <select name="IdRaisonAnnulation" id="pet-select">
+                <option value="1">Le terrain est tondue</option>
+                <option value="2">Le terrain est impraticable</option>
+                <option value="3">Le terrain est dangereux pour les animaux</option>
+                <option value="4">Les animaux sont dangereux</option>
+                <option value="5">Animal raison sanitaire</option>
+
+            </select>
+        </div>
+        <div>
+            <input type="hidden" name="IdDemande" value="@Model.OffreDeTonteDetails.IdOffre" />
+            <input type="hidden" name="IdUtilisateurClient" value="@Model.TerrainDetails.IdUtilisateur" />
+            <input type="hidden" name="IdUtilisateurEleveur" value="@Model.OffreDeTonteDetails.IdUtilisateur" />
+            <input type="hidden" name="IdRaisonAnnulation" value="@Model.RaisonAnnulationPrematuree.IdRaisonAnnulation" />
+        </div>
+    </div>
+    <!-- dans l'asp - cntrolleur il va y avoir une autre vue qui montre un message d'annulation , sp-action="PrestationAnnullee -->
+            <button class="AnnulationPrestation_ValidateButton" type="submit" asp-controller="Utilisateur" asp-action="PrestationAnnullee">Valider l'annulation</button>
+        </form>
+    </div>
+</main>

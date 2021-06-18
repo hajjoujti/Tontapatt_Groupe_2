@@ -329,7 +329,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             }
         }
 
-
         [HttpGet]
         public IActionResult ValiderPrestation(int idDemandeDeReservation, int idUtilisateur)
         {
