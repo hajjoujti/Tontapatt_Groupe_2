@@ -343,7 +343,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View("Reussite");
         }
 
-        [Route("Utilisateur/listeAnomalie/{idUtilisateur:int}")]
+        [HttpGet]
         public IActionResult ListeAnomalie(int idDemandeDeReservation, int idUtilisateur)
         {
             AnomalieDetailsViewModel anomalieDetailsViewModel  = new();

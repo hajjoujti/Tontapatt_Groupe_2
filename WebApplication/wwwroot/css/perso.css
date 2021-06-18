@@ -1380,8 +1380,18 @@ choixTerrainDescription_img {
     justify-content: space-around;
 }
 
-.listeAnomalie_infoStatusNom {
+.listeAnomalie_infoStatusEnCours {
     background-color: #29b14b;
+    margin: auto;
+    width: 5rem;
+    height: 5rem;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.listeAnomalie_infoStatusTermine {
+    background-color: #a72d2d;
     margin: auto;
     width: 5rem;
     height: 5rem;
