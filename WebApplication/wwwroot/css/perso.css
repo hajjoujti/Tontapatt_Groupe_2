@@ -1121,18 +1121,28 @@ choixTerrainDescription_img {
 }
 
 .client-prestation-tag {
-    color: var(--light);
     position: absolute;
-    right: 0;
-    top: 10px;
-    background-color: var(--accept);
+    right: 10px;
+    top: 196px;
+    color: var(--Dark);
+    font-family: 'Poppins';
+    padding-left: 10px;
+    padding-right: 10px;
+    /* border: solid 1px var(--light); */
+    border-radius: 5px;
+    background-color: var(--info);
 }
 
 .eleveur-prestation-tag {
     color: var(--light);
     position: absolute;
-    right: 0;
-    top: 10px;
+    right: 10px;
+    top: 196px;
+    font-family: 'Poppins';
+    padding-left: 10px;
+    padding-right: 10px;
+    /* border: solid 1px var(--light); */
+    border-radius: 5px;
     background-color: var(--refus);
 }
 
@@ -1150,6 +1160,8 @@ choixTerrainDescription_img {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family: 'Roboto';
+    color: var(--Dark);
 }
 
 .declarationAnomalie_h1 {
@@ -1160,9 +1172,8 @@ choixTerrainDescription_img {
     width: 65%;
     height: 80%;
     margin: auto;
-    border: 2px solid #4F6367;
     border-radius: 5px;
-    box-shadow: 12px 12px 2px 1px #88CCF1;
+    box-shadow: 12px 12px 2px 1px var(--info);
     display: flex;
     flex-direction: row;
 }
@@ -1272,7 +1283,7 @@ choixTerrainDescription_img {
     .btn-infos:hover {
         background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
         background-color: #0061a7;
-        color:var(--light);
+        color: var(--light);
     }
 
     .btn-infos:active {
