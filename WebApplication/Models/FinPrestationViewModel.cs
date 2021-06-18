@@ -14,6 +14,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
         public int NotePrestation { get; set; }
         public string RemarqueEval { get; set; }
         public DemandeDeReservationDetails demandeDeReservationDetails { get; set; }
-        public int IdUtilisateur;
+        public int IdUtilisateur { get; set; }
     }
 }
