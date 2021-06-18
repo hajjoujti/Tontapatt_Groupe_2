@@ -643,8 +643,8 @@ choixTerrainDescription_img {
         display: block;
         line-height: 0;
         position: absolute;
-        top: 24px;
-        left: 7px;
+        top: 23px;
+        left: 11px;
         font-size: 33px;
     }
 
@@ -653,7 +653,7 @@ choixTerrainDescription_img {
 }
 
 .icone-terrain a {
-    box-shadow: inset 0px 1px 0px 0px #54a3f7;
+    box-shadow: inset 0px -9px 11px 0px var(--primary);
     background: linear-gradient(to bottom, var(--info) 5%, var(--info)100%);
     background-color: var(--info);
     border-radius: 3px;
@@ -1287,6 +1287,7 @@ choixTerrainDescription_img {
     .button-choose-cat-prestration:hover {
         background-color: var(--light);
         color: var(--Dark);
+        transform: translate(0px, 5px);
     }
 
     .button-choose-cat-prestration h3 {
