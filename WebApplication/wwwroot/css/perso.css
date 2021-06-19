@@ -2090,6 +2090,7 @@ choixTerrainDescription_img {
     margin: 0 1em 1em 1em;
     font-family: 'Poppins';
     cursor: pointer;
+    text-align: center;
 }
 
     .btn-light:hover {
