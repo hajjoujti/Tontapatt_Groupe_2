@@ -360,7 +360,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         [HttpPost]
         public IActionResult FinPrestation(FinPrestationViewModel f)
         {
-            ViewBag.idUtilisateur = f.IdUtilisateur;
+            ViewBag.IdUtilisateur = f.IdUtilisateur;
             ViewBag.IsInBDD = true;
             if (ModelState.IsValid)
             {

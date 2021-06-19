@@ -116,6 +116,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 FROM demandedereservation d
                                 INNER JOIN offredetonte o ON d.id_offre = o.id_offre
                                 INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
+                                INNER JOIN evaluationprestation e ON d.id_demande != e.id_demande
                                 WHERE u.id_utilisateur = @idUtilisateur
                                 AND d.date_acceptaion_demande IS NOT NULL 
                                 AND d.date_annulation_demande IS NULL 
@@ -125,6 +126,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 FROM demandedereservation d
                                 INNER JOIN terrain t ON d.id_terrain = t.id_terrain
                                 INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
+                                INNER JOIN evaluationprestation e ON d.id_demande != e.id_demande
                                 WHERE u.id_utilisateur = @idUtilisateur
                                 AND d.date_acceptaion_demande IS NOT NULL 
                                 AND d.date_annulation_demande IS NULL 
@@ -151,7 +153,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 FROM demandedereservation d
                                 INNER JOIN offredetonte o ON d.id_offre = o.id_offre
                                 INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
-                                INNER JOIN evaluationprestation e ON e.id_utilisateur_eleveur = u.id_utilisateur
+                                INNER JOIN evaluationprestation e ON d.id_demande = e.id_demande
                                 WHERE u.id_utilisateur = @idUtilisateur 
                                 AND d.date_acceptaion_demande IS NOT NULL 
                                 AND d.date_annulation_demande IS NULL 
@@ -161,7 +163,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 FROM demandedereservation d
                                 INNER JOIN terrain t ON d.id_terrain = t.id_terrain
                                 INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
-                                INNER JOIN evaluationprestation e ON e.id_utilisateur_client = u.id_utilisateur
+                                INNER JOIN evaluationprestation e ON d.id_demande = e.id_demande
                                 WHERE u.id_utilisateur = @idUtilisateur 
                                 AND d.date_acceptaion_demande IS NOT NULL 
                                 AND d.date_annulation_demande IS NULL 
