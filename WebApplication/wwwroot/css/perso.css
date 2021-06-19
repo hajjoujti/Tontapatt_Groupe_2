@@ -1,6 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
 
-:root {
+: root {
     --Dark: #13070C;
     --light: #F5F5F5;
     --primary: #4F6367;
@@ -990,7 +990,9 @@ choixTerrainDescription_img {
     color: var(--secondary);
     margin-right: 1em;
 }
+
 /*/ ////////////////// CHOIX TERRAIN DESCRIPTION ////////////////// /*/
+
 .infosTerrrain_main {
     margin: 2rem;
     margin-bottom: 10rem;
@@ -2099,3 +2101,7 @@ choixTerrainDescription_img {
         background-color: var(--Dark);
         color: var(--light);
     }
+
+.btn-disabled {
+    color: Grey;
+}
