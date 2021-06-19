@@ -593,7 +593,7 @@ choixTerrainDescription_img {
     overflow: hidden;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-    transition:transform 0.5s;
+    transition: transform 0.5s;
 }
 
     .body-card-terrain:hover {
@@ -611,6 +611,7 @@ choixTerrainDescription_img {
     transform: scale(1.2);
     width: 43%;
 }
+
 .body-card-terrain:hover .terrain-left-prestation {
     transform: scale(1.5);
     width: 43%;
@@ -681,7 +682,7 @@ choixTerrainDescription_img {
     text-decoration: none;
     border: none;
     cursor: pointer;
-    transition: background-color 1s ;
+    transition: background-color 1s;
 }
 
     .lien-carte-terrain a:hover {
@@ -877,11 +878,12 @@ choixTerrainDescription_img {
 
     .infosOffre_infos .separator-fin-prestation {
         margin: 1em 0 1em 0;
-        background-color:var(--secondary);
+        background-color: var(--secondary);
     }
 
 .btn-prestation-details-right {
-    margin-bottom: 4em;
+    margin-bottom: 2em;
+    margin-top: 2em;
     min-width: 359px;
     display: flex;
     justify-content: center;
@@ -1613,14 +1615,16 @@ choixTerrainDescription_img {
 }
 
     .succes-body img {
-        max-height: 500px;
+        max-height: 440px;
     }
 
-
-
-
+.success-footer .btn-primary {
+    margin-top: 1em;
+    margin-left: 0;
+    display: block;
+    letter-spacing:5px;
+}
 /* ------------- LISTE DES ANOMALIES --------------------*/
-
 .listeAnomalie_main {
     display: flex;
     flex-direction: column;
@@ -1833,11 +1837,9 @@ choixTerrainDescription_img {
     background: white;
     align-items: center;
     text-align: center;
+    padding-bottom: 4em;
 }
 
-    .succes-body img {
-        max-height: 500px;
-    }
 
 .AnnulationPrematuree_infosPrestation_buttonChange {
     background-color: #e4685d;
@@ -2073,6 +2075,11 @@ choixTerrainDescription_img {
     transition: opacity .3s linear;
 }
 
+.btn-primary:hover{
+    background-color:var(--info);
+    color:var(--light);
+}
+
 .btn-light {
     padding: 18px 40px;
     font-size: 17px;
@@ -2085,10 +2092,10 @@ choixTerrainDescription_img {
     min-width: 270px;
     margin: 0 1em 1em 1em;
     font-family: 'Poppins';
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.btn-light:hover{
-    background-color:var(--Dark);
-    color:var(--light);
-}
+    .btn-light:hover {
+        background-color: var(--Dark);
+        color: var(--light);
+    }
