@@ -12,7 +12,10 @@
     DateTime heureActuelle = DateTime.Now;
     bool estDansIntervalDeTemps = Math.Abs((heurePrevu - heureActuelle).TotalHours) <= 1;
     bool dejaPointer;
-    if(Model.ListPointagesJournalier.Count == 0)
+    string messageBoutonPointage;
+    string btnPointerClass;
+
+    if (Model.ListPointagesJournalier.Count == 0)
     {
         dejaPointer = false;
     }
@@ -21,14 +24,57 @@
         dejaPointer = Model.ListPointagesJournalier[Model.ListPointagesJournalier.Count - 1].HeurePointage.Date == DateTime.Today;
     }
     bool apresDateDebut = DateTime.Compare(Model.DemandeDeReservationDetails.DateDebutDemande, heureActuelle) < 0;
-    bool disabled = true;
-    if(estDansIntervalDeTemps && !dejaPointer && apresDateDebut)
+    bool troupeauInstalle = false;
+
+    if (Model.DemandeDeReservationDetails.DateInstallationTroupeau.HasValue)
     {
-        disabled = false;
+
+        troupeauInstalle = DateTime.Compare(Model.DemandeDeReservationDetails.DateInstallationTroupeau.Value, heureActuelle) < 0;
+    }
+
+    bool disabled = true;
+
+    if (estDansIntervalDeTemps == false)
+    {
+        disabled = true;
+        messageBoutonPointage = "Vous ne pouvez effectuer le pointage qu'entre 7h00 et 9h00";
+        btnPointerClass = "btn-disabled";
+    }
+    else if(dejaPointer == true)
+    {
+        disabled = true;
+        messageBoutonPointage = "Vous avez déjà pointer aujourd'hui";
+        btnPointerClass = "btn-disabled";
+    }
+    else if (apresDateDebut == false)
+    {
+        disabled = true;
+        messageBoutonPointage = "Vous ne pouvez pas pointer avant la date de debut de la prestation";
+        btnPointerClass = "btn-disabled";
+    }
+    else if (troupeauInstalle == false)
+    {
+        disabled = true;
+        messageBoutonPointage = "Vous ne pouvez pointer avant que le troupeau soit Installé";
+        btnPointerClass = "btn-disabled";
+    }
+    else if (DateTime.Compare(Model.DemandeDeReservationDetails.DateFinDemande, heureActuelle) < 0)
+    {
+        disabled = true;
+        messageBoutonPointage = "La prestation est terminée vous ne pouvez plus pointer";
+        btnPointerClass = "btn-disabled";
+    }
+    else if (Model.DemandeDeReservationDetails.DateAnnulationDemande.HasValue || Model.DemandeDeReservationDetails.DateAnnulationPrematuree.HasValue || Model.DemandeDeReservationDetails.DateRefusDemande.HasValue)
+    {
+        disabled = true;
+        messageBoutonPointage = "Vous ne pouvez pas pointer sur une prestation refusée ou annulée";
+        btnPointerClass = "btn-disabled";
     }
     else
     {
-        disabled = true;
+        disabled = false;
+        messageBoutonPointage = "Pointer";
+        btnPointerClass = "";
     }
     #endregion
 }

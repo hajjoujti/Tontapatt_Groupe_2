@@ -347,10 +347,11 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View("Reussite");
         }
         [HttpGet]
-        public IActionResult FinPrestation(int idDemandeDeReservation, int idUtilisateur)
+        public IActionResult FinPrestation(int idDemandeDeReservation, int idUtilisateur, int idClasse)
         {
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
+            ViewBag.Classe = idClasse;
             FinPrestationViewModel finPrestationViewModel = new();
             finPrestationViewModel.demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
             finPrestationViewModel.IdUtilisateurClient = finPrestationViewModel.demandeDeReservationDetails.TerrainDetails.IdUtilisateur;

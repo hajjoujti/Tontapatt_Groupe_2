@@ -9,9 +9,9 @@
 <main class="listeAnomalie_main">
     <h1 class="listeAnomalie_h1">Liste des anomalies</h1>
     <div class="listeAnomalies">
-        @if (Model.Anomalies is null)
+        @if (Model.Anomalies.Count == 0)
         {
-            <h2>Vous n'avez pas d'anomalie en cours !</h2>
+            <h2>Aucune anomalie est déclarée pour cette prestation</h2>
         }
         else
         {

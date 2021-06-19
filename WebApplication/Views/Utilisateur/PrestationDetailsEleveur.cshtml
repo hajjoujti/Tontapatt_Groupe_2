@@ -4,6 +4,83 @@
 @using Fr.EQL.Ai109.Tontapatt.Model
 @model DemandeDeReservationDetails
 @{
+    #region CONDITION BOUTON POINTAGE
+    bool btnPointageJournalier = true;
+    string messageBoutonPointageJournalier;
+    string btnPointageJournalierClass = "";
+    if(Model.DateInstallationTroupeau.HasValue && DateTime.Compare(Model.DateInstallationTroupeau.Value, DateTime.Today) < 0)
+    {
+        btnPointageJournalier = false;
+        messageBoutonPointageJournalier = "Pointage Journalier";
+        btnPointageJournalierClass = "";
+    }
+    else
+    {
+        btnPointageJournalier = true;
+        messageBoutonPointageJournalier = "Vous ne pouvez pas accéder à la liste de pointage ni pointer si le troupeau n'est pas encore installé";
+        btnPointageJournalierClass = "btn-disabled";
+    }
+    #endregion
+
+    #region CONDITION BOUTON DECLARATION ANOMALIE
+    bool btnDeclarerAnomalieDisabled = false;
+    string messageBoutonDeclarerAnomalie = "Declarer une Anomalie";
+    string btnDeclarerAnomalieClass = "";
+    #endregion
+
+    #region CONDITION BOUTON LISTE ANOMALIE
+    bool btnListeAnomalieDisabled = false;
+    string messageBoutonListeAnomalie = "Liste Anomalies";
+    string btnListeAnomalieClass = "";
+    #endregion
+
+    #region CONDITION BOUTON ANNULATION PREMATUREE
+    string btnAnnulPremClass = "";
+    bool btnAnnulPremDisabled = true;
+    string messageBoutonAnnulPrem;
+    if(DateTime.Compare(Model.DateFinDemande, DateTime.Today) < 0)
+    {
+        btnAnnulPremDisabled = true;
+        messageBoutonAnnulPrem = "Vous ne pouvez pas annuler une prestation déjà terminée";
+        btnAnnulPremClass = "btn-disabled";
+    }
+    else
+    {
+        btnAnnulPremDisabled = false;
+        messageBoutonAnnulPrem = "Annulation Prematurée";
+        btnAnnulPremClass = "";
+    }
+    #endregion
+
+    #region CONDITION BOUTON TERMIER
+    string btnTerminerClass = "";
+    bool btnTerminerDisabled = true;
+    string messageBoutonTerminer;
+    if (DateTime.Compare(Model.DateFinDemande, DateTime.Today) > 0)
+    {
+        btnTerminerDisabled = true;
+        messageBoutonTerminer = "Vous ne pouvez pas terminer la prestation avant sa date de fin";
+        btnTerminerClass = "btn-disabled";
+    }
+    else if(Model.DateAcceptationDemande is null)
+    {
+        btnTerminerDisabled = true;
+        messageBoutonTerminer = "Vous ne pouvez pas terminer une prestation si elle n'est pas acceptée";
+        btnTerminerClass = "btn-disabled";
+    }
+    else if(Model.DateInstallationTroupeau is null)
+    {
+        btnTerminerDisabled = true;
+        messageBoutonTerminer = "Le troupeau n'a pas été installé. Prestation non effectuée";
+        btnTerminerClass = "btn-disabled";
+    }
+    else
+    {
+        btnTerminerDisabled = false;
+        messageBoutonTerminer = "Terminer la Prestation";
+        btnTerminerClass = "";
+    }
+    #endregion
 }
 <div class="infosOffre_main">
     <h2 class="infosOffre_h1">Votre prestation Actuelle numéro @Model.NumeroReservation</h2>
@@ -57,19 +134,19 @@
             @if (ViewBag.Classe == 1)
             {
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Pointage Journalier</a>
+                    <input class="btn-light @btnPointageJournalierClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierEleveur", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.OffreDeTonteDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalier" />
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="DeclarationAnomalieEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Déclaration d'une anomalie</a>
+                    <input class="btn-light @btnDeclarerAnomalieClass" title="@messageBoutonDeclarerAnomalie" type="button" value="Déclarer une Anomalie" onclick="location.href='@Url.Action("DeclarationAnomalieEleveur", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.OffreDeTonteDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnDeclarerAnomalieDisabled" />
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="ListeAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Voir la Liste des anomalies</a>
+                    <input class="btn-light @btnListeAnomalieClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.OffreDeTonteDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="AnnulationPrematuree" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Annulation de la Prestation en cours</a>
+                    <input class="btn-light @btnAnnulPremClass" title="@messageBoutonAnnulPrem" type="button" value="Annulation Prematurée" onclick="location.href='@Url.Action("AnnulationPrematuree", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.OffreDeTonteDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnAnnulPremDisabled" />
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="FinPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Terminer</a>
+                    <input class="btn-light @btnTerminerClass" title="@messageBoutonTerminer" type="button" value="Terminer" onclick="location.href='@Url.Action("FinPrestation", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.OffreDeTonteDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnTerminerDisabled" />
                 </div>
             }
             else if (ViewBag.Classe == 0)
