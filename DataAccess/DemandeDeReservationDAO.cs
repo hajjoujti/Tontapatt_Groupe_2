@@ -116,7 +116,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 FROM demandedereservation d
                                 INNER JOIN offredetonte o ON d.id_offre = o.id_offre
                                 INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
-                                WHERE u.id_utilisateur = 65
+                                WHERE u.id_utilisateur = @idUtilisateur
                                 AND NOT EXISTS (SELECT e.id_demande 
                                                    FROM  evaluationprestation e
                                                    WHERE  e.id_demande = d.id_demande)
@@ -128,7 +128,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 FROM demandedereservation d
                                 INNER JOIN terrain t ON d.id_terrain = t.id_terrain
                                 INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
-                                WHERE u.id_utilisateur = 65
+                                WHERE u.id_utilisateur = @idUtilisateur
                                 AND NOT EXISTS (SELECT e.id_demande 
                                                    FROM  evaluationprestation e
                                                    WHERE  e.id_demande = d.id_demande)
