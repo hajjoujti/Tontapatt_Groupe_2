@@ -16,6 +16,7 @@ namespace Fr.EQL.Ai109.Tontapatt.Model
         public DateTime DateDeclenchementAnomalie { get; set; }
         public DateTime? DateFinAnomalie { get; set; }
         public string DescriptionAnomalie { get; set; }
+        public int IdUtilisateurDeclarant { get; set; }
 
         public Anomalie()
         {

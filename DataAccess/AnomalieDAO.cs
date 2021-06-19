@@ -14,8 +14,8 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
         {
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"INSERT INTO anomalie
-                                (id_demande, id_utilisateur_client, id_utilisateur_eleveur, id_type_anomalie, description_anomalie, date_declenchement_anomalie)
-                                VALUES (@idDemande, @idUtilisateurClient, @idUtilisateurEleveur, @idTypeAnomalie, @descriptionAnomalie, @dateDeclenchementAnomalie)";
+                                (id_demande, id_utilisateur_client, id_utilisateur_eleveur, id_type_anomalie, description_anomalie, date_declenchement_anomalie, id_utilisateur_declarant)
+                                VALUES (@idDemande, @idUtilisateurClient, @idUtilisateurEleveur, @idTypeAnomalie, @descriptionAnomalie, @dateDeclenchementAnomalie, @idUtilisateurDeclarant)";
 
             cmd.Parameters.Add(new MySqlParameter("@idDemande", anomalie.IdDemande));
             cmd.Parameters.Add(new MySqlParameter("@idUtilisateurClient", anomalie.IdUtilisateurClient));
@@ -23,6 +23,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             cmd.Parameters.Add(new MySqlParameter("@idTypeAnomalie", anomalie.IdTypeAnomalie));
             cmd.Parameters.Add(new MySqlParameter("@descriptionAnomalie", anomalie.DescriptionAnomalie));
             cmd.Parameters.Add(new MySqlParameter("@dateDeclenchementAnomalie", anomalie.DateDeclenchementAnomalie));
+            cmd.Parameters.Add(new MySqlParameter("@idUtilisateurDeclarant", anomalie.IdUtilisateurDeclarant));
 
             cmd.Connection.Open();
             cmd.ExecuteNonQuery();
@@ -106,6 +107,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             {
                 anomalie.DateFinAnomalie = dr.GetDateTime("date_fin_anomalie");
             }
+            anomalie.IdUtilisateurDeclarant = dr.GetInt32("id_utilisateur_declarant");
 
             return anomalie;
         }

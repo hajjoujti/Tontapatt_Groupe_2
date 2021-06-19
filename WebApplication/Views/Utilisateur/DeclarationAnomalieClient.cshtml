@@ -43,12 +43,13 @@
                 </div>
             </div>
 
-        <div>
-            <input type="hidden" name="IdDemande" value="@Model.DemandeDeReservationDetails.IdDemande" />
-            <input type="hidden" name="IdUtilisateurClient" value="@Model.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur" />
-            <input type="hidden" name="IdUtilisateurEleveur" value="@Model.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur" />
-            <input type="hidden" name="IdTypeAnomalie" value="@Model.IdTypeAnomalie" />
-        </div>
+            <div>
+                <input type="hidden" name="IdDemande" value="@Model.DemandeDeReservationDetails.IdDemande" />
+                <input type="hidden" name="IdUtilisateurClient" value="@Model.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur" />
+                <input type="hidden" name="IdUtilisateurEleveur" value="@Model.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur" />
+                <input type="hidden" name="IdTypeAnomalie" value="@Model.IdTypeAnomalie" />
+                <input type="hidden" name="IdUtilisateurDeclarant" value="@ViewBag.IdUtilisateur" />
+            </div>
     </div>
             <button class="declarationAnomalie_infosPrestation_btnvalid" type="submit" asp-controller="Utilisateur" asp-action="NouvelleAnomalieClient">Valider la déclaration</button>
         </form>

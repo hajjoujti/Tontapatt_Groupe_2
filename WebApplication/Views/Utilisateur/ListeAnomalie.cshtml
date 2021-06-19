@@ -28,11 +28,26 @@
                             <div class="listeAnomalie_infoStatusTermine">Terminé</div>
                         }
                         <div class="listeAnomalie_infoStatusDetails">
-                            <a asp-action="" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@anomalie.IdDemande" asp-route-idClasse="@ViewBag.Classe" asp-route-idUtilisateur="@ViewBag.IdUtilisateur"><i class="far fa-eye fa-3x"></i></a>
+                            <a asp-action="" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@anomalie.IdDemande" asp-route-idUtilisateur="@ViewBag.IdUtilisateur" asp-route-idAnomalie="@anomalie.IdAnomalie" asp-route-idClasse="@ViewBag.Classe"><i class="far fa-eye fa-3x"></i></a>
                         </div>
                     </div>
                     <div class="listeAnomalie_infosaAnomalie">
-                        <h2>Anomalie de la prestation numero : <a asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">@Model.DemandeDeReservationDetails.NumeroReservation</a></h2>
+                        @if (Model.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur == ViewBag.IdUtilisateur)
+                        {
+                            <h2>Anomalie de la prestation numero : <a asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">@Model.DemandeDeReservationDetails.NumeroReservation</a></h2>
+                        }
+                        else
+                        {
+                            <h2>Anomalie de la prestation numero : <a asp-controller="Utilisateur" asp-action="PrestationDetailsEleveur" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">@Model.DemandeDeReservationDetails.NumeroReservation</a></h2>
+                        }
+                        @if (anomalie.IdUtilisateurDeclarant == ViewBag.IdUtilisateur)
+                        {
+                            <p class="declarant-prestation-tag">Vous êtes le déclarant de cette anomalie</p>
+                        }
+                        else
+                        {
+                            <p class="declarant-prestation-tag">Vous n'êtes pas le déclarant de cette anomalie</p>
+                        }
                         @if (Model.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur == ViewBag.IdUtilisateur)
                         {
                             <p class="client-prestation-tag">Nom de l'éleveur : @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur NomUtilisateur </p>

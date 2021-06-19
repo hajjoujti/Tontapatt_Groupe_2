@@ -25,6 +25,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 
         public List<Anomalie> Anomalies { get; set; }
 
+        public int IdUtilisateurDeclarant { get; set; }
 
         public List<TypeAnomalie> TypesAnomalie { get; set; }
     }
