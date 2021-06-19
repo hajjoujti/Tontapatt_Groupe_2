@@ -57,19 +57,19 @@
             @if (ViewBag.Classe == 1)
             {
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Pointage Journalier</a>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="PointageJournalierEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Pointage Journalier</a>
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="DeclarationAnomalieEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Déclaration d'une anomalie</a>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="DeclarationAnomalieEleveur" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Déclaration d'une anomalie</a>
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="ListeAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Voir la Liste des anomalies</a>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="ListeAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Voir la Liste des anomalies</a>
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="AnnulationPrematuree" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Annulation de la Prestation en cours</a>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="AnnulationPrematuree" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Annulation de la Prestation en cours</a>
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="FinPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Terminer</a>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="FinPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Terminer</a>
                 </div>
             }
             else if (ViewBag.Classe == 0)
