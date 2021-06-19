@@ -13,8 +13,9 @@
     bool estDansIntervalDeTemps = Math.Abs((heurePrevu - heureActuelle).TotalHours) <= 1;
     bool dejaPointer;
     string messageBoutonPointage;
+    string btnPointerClass;
 
-    if(Model.ListPointagesJournalier.Count == 0)
+    if (Model.ListPointagesJournalier.Count == 0)
     {
         dejaPointer = false;
     }
@@ -37,26 +38,43 @@
     {
         disabled = true;
         messageBoutonPointage = "Vous ne pouvez effectuer le pointage qu'entre 7h00 et 9h00";
+        btnPointerClass = "btn-disabled";
     }
     else if(dejaPointer == true)
     {
         disabled = true;
         messageBoutonPointage = "Vous avez déjà pointer aujourd'hui";
+        btnPointerClass = "btn-disabled";
     }
     else if (apresDateDebut == false)
     {
         disabled = true;
-        messageBoutonPointage = "Vous ne pouvez pointer avant la date de debut de la prestation";
+        messageBoutonPointage = "Vous ne pouvez pas pointer avant la date de debut de la prestation";
+        btnPointerClass = "btn-disabled";
     }
     else if (troupeauInstalle == false)
     {
         disabled = true;
         messageBoutonPointage = "Vous ne pouvez pointer avant que le troupeau soit Installé";
+        btnPointerClass = "btn-disabled";
+    }
+    else if (DateTime.Compare(Model.DemandeDeReservationDetails.DateFinDemande, heureActuelle) < 0)
+    {
+        disabled = true;
+        messageBoutonPointage = "La prestation est terminée vous ne pouvez plus pointer";
+        btnPointerClass = "btn-disabled";
+    }
+    else if (Model.DemandeDeReservationDetails.DateAnnulationDemande.HasValue || Model.DemandeDeReservationDetails.DateAnnulationPrematuree.HasValue || Model.DemandeDeReservationDetails.DateRefusDemande.HasValue)
+    {
+        disabled = true;
+        messageBoutonPointage = "Vous ne pouvez pas pointer sur une prestation refusée ou annulée";
+        btnPointerClass = "btn-disabled";
     }
     else
     {
         disabled = false;
         messageBoutonPointage = "Pointer";
+        btnPointerClass = "";
     }
     #endregion
 }
@@ -103,7 +121,7 @@
                 <input asp-for="@Model.PointageJournalier.HeurePrevu" type="time" min="08:00" max="20:00" value="08:00" disabled />
 
 
-                    <input class="btn-infos" title="@messageBoutonPointage" type="button" value="Pointer" onclick="location.href='@Url.Action("PointageJournalier", "Utilisateur", new {idDemandeDeReservation=@ViewBag.IdDemandeDeReservation, idUtilisateur=@ViewBag.IdUtilisateur})'" disabled="@disabled" />
+                    <input class="btn-infos @btnPointerClass" title="@messageBoutonPointage" type="button" value="Pointer" onclick="location.href='@Url.Action("PointageJournalier", "Utilisateur", new {idDemandeDeReservation=@ViewBag.IdDemandeDeReservation, idUtilisateur=@ViewBag.IdUtilisateur})'" disabled="@disabled" />
 
 
                 <a class="btn-infos" asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.IdUtilisateur">Acceuil</a>

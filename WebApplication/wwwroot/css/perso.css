@@ -2104,8 +2104,9 @@ choixTerrainDescription_img {
 
 .btn-disabled {
     color: Grey;
+    opacity: 0.3;
+    cursor: not-allowed;
 }
-
 
 /*annulationOffre*/
 
