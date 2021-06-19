@@ -13,6 +13,7 @@
         <div class="infosOffre_infos">
             <p class="infosOffre_infosNomUtilisateur"><strong>Nom de l'éleveur : <a href="#">@Model.OffreDeTonteDetails.NomUtilisateur @Model.OffreDeTonteDetails.PrenomUtilisateur</a></strong></p>
             <p class="infosOffre_infosDescription"><strong>Description de l'offre' : </strong>@Model.OffreDeTonteDetails.DescriptionOffre</p>
+            <span class="separator-fin-prestation"></span>
             <p class="infosOffre_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DateDebutDemande.ToString("dd/MM/yyyy")</p>
             <p class="infosOffre_infosDateFin"><strong>Date de fin de la prestation : </strong> @Model.DateFinDemande.ToString("dd/MM/yyyy")</p>
             <p class="infosOffre_infosDateAcceptation">
@@ -41,11 +42,14 @@
                     <span>Le troupeau n'est pas encore installé</span>
                 }
             </p>
+            <span class="separator-fin-prestation"></span>
             <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.OffreDeTonteDetails.DistanceOffreDeTonteTerrain km </p>
             <p class="infosOffre_infosNomVille"><strong>Ville / Code Postal : </strong>@Model.OffreDeTonteDetails.NomVilleOfrreDeTonte. / @Model.OffreDeTonteDetails.CodePostaleOffreDeTonte</p>
+            <span class="separator-fin-prestation"></span>
             <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.OffreDeTonteDetails.EspeceAnimal</p>
             <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.OffreDeTonteDetails.RaceAnimal</p>
             <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.OffreDeTonteDetails.NombreAnimaux</p>
+            <span class="separator-fin-prestation"></span>
             <p class="infosOffre_infosPrix"><strong>Coût par jour par animal: </strong>@Model.OffreDeTonteDetails.CoutAnimalParJour</p>
         </div>
 
@@ -54,22 +58,22 @@
             @if (ViewBag.Classe == 1)
             {
                 <div class="btn-prestation-details-right">
-                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="DeclarationAnomalieClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Déclaration d'une anomalie</a>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="DeclarationAnomalieClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Déclaration d'une anomalie</a>
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="ListeAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Voir la Liste des anomalies</a>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="ListeAnomalie" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Voir la Liste des anomalies</a>
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Pointage Journalier</a>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Pointage Journalier</a>
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-infos" asp-controller="Utilisateur" asp-action="FinPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" >Terminer</a>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="FinPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" >Terminer</a>
                 </div>
             }
             else if (ViewBag.Classe == 0)
             {
                 <div>
-                    <button class="btn-infos">Annuler la demande de réservation</button>
+                    <button class="btn-light">Annuler la réservation</button>
                 </div>
             }
         </div>
