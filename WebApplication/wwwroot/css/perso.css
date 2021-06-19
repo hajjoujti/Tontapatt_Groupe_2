@@ -1302,13 +1302,16 @@ choixTerrainDescription_img {
 }
 
 .demande-presation-right {
-    color: var(--primary);
+    padding-top: 1em;
+    color: var(--light);
     text-align: CENTER;
     box-shadow: -3px 0px -5px -14px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
     align-self: center;
     order: -1;
     display: flex;
     font-family: 'Poppins';
+    background-color: var(--Dark);
+    padding-right: 1em;
 }
 
 .main-demande-Prestation {
@@ -1324,24 +1327,20 @@ choixTerrainDescription_img {
 
 .button-choose-cat-prestration {
     display: flex;
-    height: 30px;
+    background: linear-gradient( 0deg, black 90%, var(--light)188%);
     background-color: var(--secondary);
-    color: var(--primary);
-    align-items: center;
+    color: var(--light);
     cursor: pointer;
-    margin-bottom: 1em;
-    border-radius: 21px;
-    margin-left: 19px;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
-    align-self: center;
     text-shadow: 2px 8px 6px rgb(0 0 0 / 20%), 0px -5px 35px rgb(255 255 255 / 30%);
+    border-radius: 16px 13px 0px 0px;
 }
 
     .button-choose-cat-prestration:hover {
+        background: none;
         background-color: var(--light);
         color: var(--Dark);
-        transform: translate(0px, 5px);
     }
 
     .button-choose-cat-prestration h3 {
@@ -1353,24 +1352,20 @@ choixTerrainDescription_img {
         text-decoration: none;
         color: inherit;
         width: 100%;
+        padding: 0 15px 0 15px;
     }
 
         .button-choose-cat-prestration a:hover {
             color: var(--Dark);
         }
 
-    .button-choose-cat-prestration::before {
-        content: "";
-        display: block;
-        height: 5px;
-        width: 60px;
-        background: linear-gradient(45deg, var(--light)42%, transparent 66%);
-    }
 
 
 .body-button-prestaton {
     display: flex;
     font-size: 13px;
+    background: var(--Dark);
+    align-self: flex-end;
 }
 
 .demande-presation-right h2 {
@@ -1399,8 +1394,10 @@ choixTerrainDescription_img {
     color: var(--refus);
 }
 
-.active::before {
-    background: linear-gradient(45deg, var(--info)42%, transparent 66%);
+.active {
+    background: none;
+    background-color: var(--light);
+    color: var(--Dark);
 }
 
 .client-prestation-tag {
