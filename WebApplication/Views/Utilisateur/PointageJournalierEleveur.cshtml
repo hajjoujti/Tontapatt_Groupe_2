@@ -12,6 +12,8 @@
     DateTime heureActuelle = DateTime.Now;
     bool estDansIntervalDeTemps = Math.Abs((heurePrevu - heureActuelle).TotalHours) <= 1;
     bool dejaPointer;
+    string messageBoutonPointage;
+
     if(Model.ListPointagesJournalier.Count == 0)
     {
         dejaPointer = false;
@@ -21,14 +23,40 @@
         dejaPointer = Model.ListPointagesJournalier[Model.ListPointagesJournalier.Count - 1].HeurePointage.Date == DateTime.Today;
     }
     bool apresDateDebut = DateTime.Compare(Model.DemandeDeReservationDetails.DateDebutDemande, heureActuelle) < 0;
-    bool disabled = true;
-    if(estDansIntervalDeTemps && !dejaPointer && apresDateDebut)
+    bool troupeauInstalle = false;
+
+    if (Model.DemandeDeReservationDetails.DateInstallationTroupeau.HasValue)
     {
-        disabled = false;
+
+        troupeauInstalle = DateTime.Compare(Model.DemandeDeReservationDetails.DateInstallationTroupeau.Value, heureActuelle) < 0;
+    }
+
+    bool disabled = true;
+
+    if (estDansIntervalDeTemps == false)
+    {
+        disabled = true;
+        messageBoutonPointage = "Vous ne pouvez effectuer le pointage qu'entre 7h00 et 9h00";
+    }
+    else if(dejaPointer == true)
+    {
+        disabled = true;
+        messageBoutonPointage = "Vous avez déjà pointer aujourd'hui";
+    }
+    else if (apresDateDebut == false)
+    {
+        disabled = true;
+        messageBoutonPointage = "Vous ne pouvez pointer avant la date de debut de la prestation";
+    }
+    else if (troupeauInstalle == false)
+    {
+        disabled = true;
+        messageBoutonPointage = "Vous ne pouvez pointer avant que le troupeau soit Installé";
     }
     else
     {
-        disabled = true;
+        disabled = false;
+        messageBoutonPointage = "Pointer";
     }
     #endregion
 }
@@ -74,7 +102,9 @@
                 <label>Heure Prevue :</label>
                 <input asp-for="@Model.PointageJournalier.HeurePrevu" type="time" min="08:00" max="20:00" value="08:00" disabled />
 
-                <input class="btn-infos" type="button" value="Pointer" onclick="location.href='@Url.Action("PointageJournalier", "Utilisateur", new {idDemandeDeReservation=@ViewBag.IdDemandeDeReservation, idUtilisateur=@ViewBag.IdUtilisateur})'" disabled="@disabled" />
+
+                    <input class="btn-infos" title="@messageBoutonPointage" type="button" value="Pointer" onclick="location.href='@Url.Action("PointageJournalier", "Utilisateur", new {idDemandeDeReservation=@ViewBag.IdDemandeDeReservation, idUtilisateur=@ViewBag.IdUtilisateur})'" disabled="@disabled" />
+
 
                 <a class="btn-infos" asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.IdUtilisateur">Acceuil</a>
 
