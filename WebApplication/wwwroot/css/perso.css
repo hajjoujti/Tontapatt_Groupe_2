@@ -1622,7 +1622,7 @@ choixTerrainDescription_img {
     margin-top: 1em;
     margin-left: 0;
     display: block;
-    letter-spacing:5px;
+    letter-spacing: 5px;
 }
 /* ------------- LISTE DES ANOMALIES --------------------*/
 .listeAnomalie_main {
@@ -2075,10 +2075,10 @@ choixTerrainDescription_img {
     transition: opacity .3s linear;
 }
 
-.btn-primary:hover{
-    background-color:var(--info);
-    color:var(--light);
-}
+    .btn-primary:hover {
+        background-color: var(--info);
+        color: var(--light);
+    }
 
 .btn-light {
     padding: 18px 40px;
@@ -2099,3 +2099,47 @@ choixTerrainDescription_img {
         background-color: var(--Dark);
         color: var(--light);
     }
+
+
+/*annulationOffre*/
+
+.select-annulation form {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light);
+    padding: 2em;
+    border-radius: 8px;
+}
+
+.select-annulation select {
+    padding: 15px 20px;
+    font-size: 16px;
+    color: var(--Dark);
+    background: var(--secondary);
+    border: none;
+    font-weight: 700;
+    outline: none;
+    border-radius: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: opacity .3s linear;
+    font-family: 'Poppins';
+    margin: 1em;
+}
+
+.select-annulation textarea {
+    padding: 15px 20px;
+    font-size: 16px;
+    color: var(--Dark);
+    background: var(--secondary);
+    border: none;
+    font-weight: 700;
+    outline: none;
+    border-radius: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: opacity .3s linear;
+    font-family: 'Poppins';
+    margin-bottom: 1em;
+    min-height: 200px;
+}

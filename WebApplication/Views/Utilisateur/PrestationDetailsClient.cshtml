@@ -67,13 +67,13 @@
                     <a class="btn-light" asp-controller="Utilisateur" asp-action="PointageJournalierClient" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Pointage Journalier</a>
                 </div>
                 <div class="btn-prestation-details-right">
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="FinPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" >Terminer</a>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="FinPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Terminer</a>
                 </div>
             }
             else if (ViewBag.Classe == 0)
             {
                 <div>
-                    <button class="btn-light">Annuler la réservation</button>
+                    <a class="btn-light" asp-controller="Utilisateur" asp-action="AnnulationAvantAcceptation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur">Annuler la réservation</a>
                 </div>
             }
         </div>

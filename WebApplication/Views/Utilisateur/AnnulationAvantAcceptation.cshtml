@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@using Fr.EQL.Ai109.Tontapatt.Model
+@model AnnulationAvantAcceptationViewModel
+
+@{
+}
+
+<div class="main-fin-Prestation">
+
+    <div class="body-fin-prestation">
+        <div class="select-annulation">
+            <form method="post">
+
+                <select asp-for="@Model.raisonAnnulationOffre.IdAnnulationOffre">
+                    @foreach (RaisonAnnulationOffre raisonAnnulationOffre in @Model.ListRaisonAnnulationOffre)
+                    {
+                        <option value="@raisonAnnulationOffre.IdAnnulationOffre">
+                            @raisonAnnulationOffre.LibelleAnnulation
+                        </option>
+                    }
+                </select>
+                <textarea placeholder="Votre message" ></textarea>
+                <button type="submit" class="btn-primary">Valider</button>
+            </form>
+        </div>
+    </div>
+</div>

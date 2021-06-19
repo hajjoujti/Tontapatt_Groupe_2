@@ -298,7 +298,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IsInBDD = true;
             ViewBag.Classe = idClasse;
             ViewBag.IdUtilisateur = idUtilisateur;
-
             AnomalieDetailsViewModel anomalieDetailsViewModel = new();
             anomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
             anomalieDetailsViewModel.TypesAnomalie = new TypeAnomalieBU().GetAll();
@@ -393,7 +392,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         [HttpGet]
         public IActionResult ListeAnomalie(int idDemandeDeReservation, int idUtilisateur, int idClasse)
         {
-            AnomalieDetailsViewModel anomalieDetailsViewModel  = new();
+            AnomalieDetailsViewModel anomalieDetailsViewModel = new();
             anomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
             anomalieDetailsViewModel.Anomalies = new AnomalieBU().GetAllByIdDemandeDeReservation(idDemandeDeReservation);
             ViewBag.IdUtilisateur = idUtilisateur;
@@ -423,7 +422,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             if (ModelState.IsValid)
             {
                 new DemandeDeReservationBU().AnnulationPrematureeDemandeDeReservationById(raisonAnnulationPrematureeViewModel.IdDemande, raisonAnnulationPrematureeViewModel.IdRaisonAnnulPrem);
-
                 ViewBag.Message = "validation de l'annumaltion de la prestation";
                 return View("Reussite");
             }
@@ -433,6 +431,36 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
                 raisonAnnulationPrematureeViewModel.RaisonsAnnulationPrematuree = new RaisonAnnulationPrematureeBU().GetAll();
                 return View(raisonAnnulationPrematureeViewModel);
             }
+        }
+        [HttpGet]
+        public IActionResult AnnulationAvantAcceptation(int idDemandeDeReservation, int idUtilisateur)
+        {
+            RaisonAnnulationOffreBU raisonAnnulationOffreBU = new();
+            AnnulationAvantAcceptationViewModel annulationAvantAcceptationModelView = new();
+            annulationAvantAcceptationModelView.ListRaisonAnnulationOffre = raisonAnnulationOffreBU.GetAll();
+            annulationAvantAcceptationModelView.IdUtilisateur = idUtilisateur;
+            annulationAvantAcceptationModelView.IdDemandeDeReservation = idDemandeDeReservation;
+            ViewBag.IsInBDD = true;
+            return View(annulationAvantAcceptationModelView);
+        }
+
+        [HttpPost]
+        public IActionResult AnnulationAvantAcceptation(AnnulationAvantAcceptationViewModel annulationAvantAcceptationModelView)
+        {
+            DemandeDeReservationBU demandeDeReservation = new();
+            if (ModelState.IsValid)
+            {
+                int IdUtilisateur = annulationAvantAcceptationModelView.IdUtilisateur;
+                int IdDemandeDeReservation = annulationAvantAcceptationModelView.IdDemandeDeReservation;
+
+                demandeDeReservation.AnnulationDemandeDeReservationByIdAvantAcceptation(IdDemandeDeReservation, IdUtilisateur);
+                ViewBag.IsInBDD = true;
+                ViewBag.Message = "Annulation reussie";
+                ViewBag.IdUtilisateur = annulationAvantAcceptationModelView.IdUtilisateur;
+                return View("Reussite");
+
+            }
+            return View(annulationAvantAcceptationModelView);
         }
     }
 }
