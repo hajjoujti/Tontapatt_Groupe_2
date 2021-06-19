@@ -116,17 +116,23 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 FROM demandedereservation d
                                 INNER JOIN offredetonte o ON d.id_offre = o.id_offre
                                 INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
-                                WHERE u.id_utilisateur = @idUtilisateur
-                                AND d.date_acceptaion_demande IS NOT NULL 
+                                WHERE u.id_utilisateur = 65
+                                AND NOT EXISTS (SELECT e.id_demande 
+                                                   FROM  evaluationprestation e
+                                                   WHERE  e.id_demande = d.id_demande)
+                                AND d.date_acceptaion_demande IS NOT NULL
                                 AND d.date_annulation_demande IS NULL 
-                                AND d.date_refus_demande IS NULL 
+                                AND d.date_refus_demande IS NULL
                                 AND d.date_annulation_prematuree is NULL
                                 UNION SELECT d.*
                                 FROM demandedereservation d
                                 INNER JOIN terrain t ON d.id_terrain = t.id_terrain
                                 INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
-                                WHERE u.id_utilisateur = @idUtilisateur
-                                AND d.date_acceptaion_demande IS NOT NULL 
+                                WHERE u.id_utilisateur = 65
+                                AND NOT EXISTS (SELECT e.id_demande 
+                                                   FROM  evaluationprestation e
+                                                   WHERE  e.id_demande = d.id_demande)
+                                AND d.date_acceptaion_demande IS NOT NULL
                                 AND d.date_annulation_demande IS NULL 
                                 AND d.date_refus_demande IS NULL 
                                 AND d.date_annulation_prematuree is NULL";
@@ -151,7 +157,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 FROM demandedereservation d
                                 INNER JOIN offredetonte o ON d.id_offre = o.id_offre
                                 INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
-                                INNER JOIN evaluationprestation e ON e.id_utilisateur_eleveur = u.id_utilisateur
+                                INNER JOIN evaluationprestation e ON d.id_demande = e.id_demande
                                 WHERE u.id_utilisateur = @idUtilisateur 
                                 AND d.date_acceptaion_demande IS NOT NULL 
                                 AND d.date_annulation_demande IS NULL 
@@ -161,7 +167,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 FROM demandedereservation d
                                 INNER JOIN terrain t ON d.id_terrain = t.id_terrain
                                 INNER JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
-                                INNER JOIN evaluationprestation e ON e.id_utilisateur_client = u.id_utilisateur
+                                INNER JOIN evaluationprestation e ON d.id_demande = e.id_demande
                                 WHERE u.id_utilisateur = @idUtilisateur 
                                 AND d.date_acceptaion_demande IS NOT NULL 
                                 AND d.date_annulation_demande IS NULL 
@@ -258,7 +264,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
-        
+
         public void AnnulationPrematureeDemandeDeReservationById(int idDemandeDeReservation, int idRaisonAnnulationPrem, DateTime dateAnnulationPrematuree)
         {
             MySqlCommand cmd = CreerCommand();
