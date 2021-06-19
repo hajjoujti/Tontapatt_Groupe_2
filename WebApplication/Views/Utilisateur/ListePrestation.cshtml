@@ -61,8 +61,8 @@
                     <p>@prestation.DateDebutDemande.ToShortDateString() <i class="fas fa-long-arrow-alt-right"></i> @prestation.DateFinDemande.ToShortDateString() </p>
                     <div class="footer-card-terrain">
                         <P>
-                            <span class="icone-terrain">
-                                <a asp-action="@action" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@prestation.IdDemande" asp-route-idClasse="@ViewBag.Classe"><i class="far fa-eye"></i></a>
+                            <span class="lien-carte-terrain">
+                                <a asp-action="@action" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@prestation.IdDemande" asp-route-idClasse="@ViewBag.Classe"></a>
                             </span>
                         </P>
                     </div>
