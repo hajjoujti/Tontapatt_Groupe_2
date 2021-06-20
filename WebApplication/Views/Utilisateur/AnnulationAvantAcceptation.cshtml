@@ -14,15 +14,15 @@
     <div class="body-fin-prestation">
         <div class="select-annulation">
             <form method="post">
-
-                <select asp-for="@Model.raisonAnnulationOffre.IdAnnulationOffre">
-                    @foreach (RaisonAnnulationOffre raisonAnnulationOffre in @Model.ListRaisonAnnulationOffre)
-                    {
-                        <option value="@raisonAnnulationOffre.IdAnnulationOffre">
-                            @raisonAnnulationOffre.LibelleAnnulation
-                        </option>
-                    }
+                <select name="IdRaisonAnnul" id="type-annulation-avant-acceptation" asp-for="IdRaisonAnnul" required>
+                        <option value="">Choisir la raison d'annulation</option>
+                            @foreach(RaisonAnnulationDemande raisonAnnulationDemande in @Model.raisonsAnnulationDemande)
+                                {
+                                    <option value="@raisonAnnulationDemande.IdRaisonAnnul">@raisonAnnulationDemande.LibelleAnnulDemande</option>
+                                }
                 </select>
+                <input type="hidden" asp-for="IdDemandeDeReservation" value="@Model.IdDemandeDeReservation" />
+                <input type="hidden" asp-for="IdUtilisateur" value="@ViewBag.IdUtilisateur" />
                 <button type="submit" class="btn-primary">Valider</button>
             </form>
         </div>

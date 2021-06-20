@@ -10,9 +10,11 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 {
     public class AnnulationAvantAcceptationViewModel
     {
-        public List<RaisonAnnulationOffre> ListRaisonAnnulationOffre { get; set; }
-        public RaisonAnnulationOffre raisonAnnulationOffre { get; set; }
+        public List<RaisonAnnulationDemande> raisonsAnnulationDemande { get; set; }
         public int IdUtilisateur { get; set; }
+        [Required]
         public int IdDemandeDeReservation { get; set; }
+        [Required]
+        public int IdRaisonAnnul { get; set; }
     }
 }

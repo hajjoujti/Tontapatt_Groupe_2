@@ -353,9 +353,9 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IsInBDD = true;
             ViewBag.Classe = idClasse;
             FinPrestationViewModel finPrestationViewModel = new();
-            finPrestationViewModel.demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
-            finPrestationViewModel.IdUtilisateurClient = finPrestationViewModel.demandeDeReservationDetails.TerrainDetails.IdUtilisateur;
-            finPrestationViewModel.IdUtilisateurEleveur = finPrestationViewModel.demandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur;
+            finPrestationViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+            finPrestationViewModel.IdUtilisateurClient = finPrestationViewModel.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur;
+            finPrestationViewModel.IdUtilisateurEleveur = finPrestationViewModel.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur;
             finPrestationViewModel.IdDemande = idDemandeDeReservation;
 
             return View(finPrestationViewModel);
@@ -382,9 +382,9 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             }
             else
             {
-                finPrestationViewModel.demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(finPrestationViewModel.IdDemande);
-                finPrestationViewModel.IdUtilisateurClient = finPrestationViewModel.demandeDeReservationDetails.TerrainDetails.IdUtilisateur;
-                finPrestationViewModel.IdUtilisateurEleveur = finPrestationViewModel.demandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur;
+                finPrestationViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(finPrestationViewModel.IdDemande);
+                finPrestationViewModel.IdUtilisateurClient = finPrestationViewModel.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur;
+                finPrestationViewModel.IdUtilisateurEleveur = finPrestationViewModel.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur;
                 return View(finPrestationViewModel);
 
             }
@@ -435,14 +435,14 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             }
         }
         [HttpGet]
-        public IActionResult AnnulationAvantAcceptation(int idDemandeDeReservation, int idUtilisateur)
+        public IActionResult AnnulationAvantAcceptation(int idDemandeDeReservation, int idUtilisateur, int idClasse)
         {
-            RaisonAnnulationOffreBU raisonAnnulationOffreBU = new();
             AnnulationAvantAcceptationViewModel annulationAvantAcceptationModelView = new();
-            annulationAvantAcceptationModelView.ListRaisonAnnulationOffre = raisonAnnulationOffreBU.GetAll();
+            annulationAvantAcceptationModelView.raisonsAnnulationDemande = new RaisonAnnulationDemandeBU().GetAll();
             annulationAvantAcceptationModelView.IdUtilisateur = idUtilisateur;
             annulationAvantAcceptationModelView.IdDemandeDeReservation = idDemandeDeReservation;
             ViewBag.IsInBDD = true;
+            ViewBag.Classe = idClasse;
             ViewBag.IdUtilisateur = idUtilisateur;
             return View(annulationAvantAcceptationModelView);
         }
@@ -455,16 +455,14 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             DemandeDeReservationBU demandeDeReservation = new();
             if (ModelState.IsValid)
             {
-                int IdUtilisateur = annulationAvantAcceptationModelView.IdUtilisateur;
-                int IdDemandeDeReservation = annulationAvantAcceptationModelView.IdDemandeDeReservation;
-
-                demandeDeReservation.AnnulationDemandeDeReservationByIdAvantAcceptation(IdDemandeDeReservation, IdUtilisateur);
-               
+                demandeDeReservation.AnnulationDemandeDeReservationByIdAvantAcceptation(annulationAvantAcceptationModelView.IdDemandeDeReservation, annulationAvantAcceptationModelView.IdUtilisateur);
                 ViewBag.Message = "Annulation reussie";
-                
+
                 return View("Reussite");
             }
+            annulationAvantAcceptationModelView.raisonsAnnulationDemande = new RaisonAnnulationDemandeBU().GetAll();
             return View(annulationAvantAcceptationModelView);
         }
     }
+}
 }
