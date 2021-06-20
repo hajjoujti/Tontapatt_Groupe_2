@@ -18,15 +18,15 @@
         <div class="infosOffre_infos">
             <p class="infosOffre_infosNomEleveur"><strong>Nom de l'éleveur : <a href="#">@Model.OffreDeTonteDetails.NomUtilisateur @Model.OffreDeTonteDetails.PrenomUtilisateur</a></strong></p>
             <p class="infosOffre_infosDescription"><strong>Description de l'offre : </strong>@Model.OffreDeTonteDetails.DescriptionOffre</p>
-            <p class="infosOffre_infosDateDebut"><strong>Date de début de l'offre : </strong>@Model.OffreDeTonteDetails.DateDebutOffre.ToString("MM/dd/yyyy")</p>
-            <p class="infosOffre_infosDateFin"><strong>Date de fin de l'offre : </strong>@Model.OffreDeTonteDetails.DateFinOffre.ToString("MM/dd/yyyy")</p>
+            <p class="infosOffre_infosDateDebut"><strong>Date de début de l'offre : </strong>@Model.OffreDeTonteDetails.DateDebutOffre.ToString("dd/MM/yyyy")</p>
+            <p class="infosOffre_infosDateFin"><strong>Date de fin de l'offre : </strong>@Model.OffreDeTonteDetails.DateFinOffre.ToString("dd/MM/yyyy")</p>
             <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.OffreDeTonteDetails.DistanceOffreDeTonteTerrain Km</p>
             <p class="infosOffre_infosNomVille"><strong>Ville / Code Postal : </strong>@Model.OffreDeTonteDetails.NomVilleOfrreDeTonte / @Model.OffreDeTonteDetails.CodePostaleOffreDeTonte</p>
             <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.OffreDeTonteDetails.EspeceAnimal</p>
             <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.OffreDeTonteDetails.RaceAnimal</p>
             <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.OffreDeTonteDetails.NombreAnimaux</p>
             <p class="infosOffre_infosPrix"><strong>Coût par jour par mouton : </strong>@Model.OffreDeTonteDetails.CoutAnimalParJour</p>
-            <a class="infosOffre_buttonChange" href="#"><i class="fas fa-arrow-left"></i></a>
+            <a class="infosOffre_buttonChange btn-light" asp-controller="Utilisateur" asp-action="ChoixOffreRecherche" asp-route-id="@ViewBag.IdTerrain"><i class="fas fa-arrow-left"></i></a>
         </div>
 
         <form method="post" class="infosOffre_selection">
@@ -68,7 +68,7 @@
 
                 </div>
 
-                <button class="infosOffre_buttonSelection" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider cette offre</button>
+                <button class="btn-light" type="submit" asp-controller="Utilisateur" asp-action="NouvelleDemandeDeReservation">Valider</button>
         </form>
 
     </div>

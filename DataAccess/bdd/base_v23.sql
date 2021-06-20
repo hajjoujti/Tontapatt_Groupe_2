@@ -867,6 +867,9 @@ UNLOCK TABLES;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+
+SET GLOBAL log_bin_trust_function_creators = 1;
+
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `CalcDistance`( Lat1 DOUBLE, Long1 DOUBLE, Lat2 DOUBLE, Long2 DOUBLE ) RETURNS double
 BEGIN

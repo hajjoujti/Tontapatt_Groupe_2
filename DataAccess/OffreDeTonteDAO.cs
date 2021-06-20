@@ -71,10 +71,13 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 INNER JOIN villecp v ON o.id_villecp = v.id_villecp
                                 INNER JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
                                 where o.distance_maximale >= CalcDistance(@latitudeTerrain, @longitudeTerrain, v.latitude_ville, v.longitude_ville) 
-                                AND o.date_annulation_offre IS NULL;";
+                                AND o.date_annulation_offre IS NULL
+                                AND o.date_fin_offre >= @dateTimeActuel
+                                ORDER BY Distance";
 
             cmd.Parameters.Add(new MySqlParameter("@latitudeTerrain", latitudeTerrain));
             cmd.Parameters.Add(new MySqlParameter("@longitudeTerrain", longitudeTerrain));
+            cmd.Parameters.Add(new MySqlParameter("@dateTimeActuel", DateTime.Now));
 
             cmd.Connection.Open();
             MySqlDataReader dr = cmd.ExecuteReader();

@@ -442,12 +442,15 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             annulationAvantAcceptationModelView.IdUtilisateur = idUtilisateur;
             annulationAvantAcceptationModelView.IdDemandeDeReservation = idDemandeDeReservation;
             ViewBag.IsInBDD = true;
+            ViewBag.IdUtilisateur = idUtilisateur;
             return View(annulationAvantAcceptationModelView);
         }
 
         [HttpPost]
         public IActionResult AnnulationAvantAcceptation(AnnulationAvantAcceptationViewModel annulationAvantAcceptationModelView)
         {
+            ViewBag.IsInBDD = true;
+            ViewBag.IdUtilisateur = annulationAvantAcceptationModelView.IdUtilisateur;
             DemandeDeReservationBU demandeDeReservation = new();
             if (ModelState.IsValid)
             {
@@ -455,11 +458,10 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
                 int IdDemandeDeReservation = annulationAvantAcceptationModelView.IdDemandeDeReservation;
 
                 demandeDeReservation.AnnulationDemandeDeReservationByIdAvantAcceptation(IdDemandeDeReservation, IdUtilisateur);
-                ViewBag.IsInBDD = true;
+               
                 ViewBag.Message = "Annulation reussie";
-                ViewBag.IdUtilisateur = annulationAvantAcceptationModelView.IdUtilisateur;
+                
                 return View("Reussite");
-
             }
             return View(annulationAvantAcceptationModelView);
         }

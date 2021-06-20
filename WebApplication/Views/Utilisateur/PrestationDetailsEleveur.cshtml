@@ -108,11 +108,11 @@
                 <strong>Date de l'installation du tropeau : </strong>
                 @if (Model.DateInstallationTroupeau.HasValue)
                 {
-                    Model.DateInstallationTroupeau.Value.ToString("dd/MM/yyyy");
+                    @Model.DateInstallationTroupeau.Value.ToString("dd/MM/yyyy");
                 }
                 else if (!Model.DateAcceptationDemande.HasValue)
                 {
-                    <span>Le demande n'est pas encore acceptée</span>
+                    <span>La demande n'est pas encore acceptée</span>
                 }
                 else
                 {
