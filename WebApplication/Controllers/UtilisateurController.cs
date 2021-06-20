@@ -374,9 +374,10 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
                 evaluationPrestation.IdUtilisateurEleveur = finPrestationViewModel.IdUtilisateurEleveur;
                 evaluationPrestation.NotePrestation = finPrestationViewModel.NotePrestation;
                 evaluationPrestation.RemarqueEval = finPrestationViewModel.RemarqueEval;
+                evaluationPrestation.IdUtilisateurEvaluateur = finPrestationViewModel.IdUtilisateurEvaluateur;
                 EvaluationPrestationBU evaluationPrestationBU = new();
                 evaluationPrestationBU.InsererEvaluationPrestation(evaluationPrestation);
-                ViewBag.Message = "Merci à la prochaine.";
+                ViewBag.Message = "La prestation est bien terminée. Merci pour votre évaluation";
                 return View("Reussite");
             }
             else

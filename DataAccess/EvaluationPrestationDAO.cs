@@ -14,14 +14,15 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
         {
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"INSERT INTO evaluationprestation
-                                (id_utilisateur_client, id_demande, id_utilisateur_eleveur, note_prestation, remarque_eval)
-                                VALUES (@idUtilisateurClient, @idDemande, @idUtilisateurEleveur, @notePrestation, @remarqueEval)";
+                                (id_utilisateur_client, id_demande, id_utilisateur_eleveur, note_prestation, remarque_eval, id_utilisateur_evaluateur)
+                                VALUES (@idUtilisateurClient, @idDemande, @idUtilisateurEleveur, @notePrestation, @remarqueEval, @idUtilisateurEvaluateur)";
 
             cmd.Parameters.Add(new MySqlParameter("@idUtilisateurClient", evaluationPrestation.IdUtilisateurClient));
             cmd.Parameters.Add(new MySqlParameter("@idDemande", evaluationPrestation.IdDemande));
             cmd.Parameters.Add(new MySqlParameter("@idUtilisateurEleveur", evaluationPrestation.IdUtilisateurEleveur));
             cmd.Parameters.Add(new MySqlParameter("@notePrestation", evaluationPrestation.NotePrestation));
             cmd.Parameters.Add(new MySqlParameter("@remarqueEval", evaluationPrestation.RemarqueEval));
+            cmd.Parameters.Add(new MySqlParameter("@idUtilisateurEvaluateur", evaluationPrestation.IdUtilisateurEvaluateur));
 
             cmd.Connection.Open();
             cmd.ExecuteNonQuery();
@@ -91,6 +92,7 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             {
                 evaluationPrestation.RemarqueEval = dr.GetString("remarque_eval");
             }
+            evaluationPrestation.IdUtilisateurEvaluateur = dr.GetInt32("id_utilisateur_evaluateur");
 
             return evaluationPrestation;
         }
