@@ -1,6 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
 
-: root {
+:root {
     --Dark: #13070C;
     --light: #F5F5F5;
     --primary: #4F6367;
@@ -569,7 +569,7 @@ choixTerrainDescription_img {
 }
 
 .main-terrain {
-   margin-bottom:3em;
+    margin-bottom: 3em;
     display: flex;
     font-family: 'Roboto';
     flex-wrap: wrap;
@@ -747,9 +747,10 @@ choixTerrainDescription_img {
     width: 100%;
     position: relative;
     margin-bottom: 3em;
-    max-width: 650px;
+    max-width: 500px;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    padding-left: 2em;
 }
 
     .body-card-list-offre::before {
@@ -1304,15 +1305,14 @@ choixTerrainDescription_img {
 
 .demande-presation-right {
     padding-top: 1em;
-    color: var(--light);
+    color: var(--Dark);
     text-align: CENTER;
-    box-shadow: -3px 0px -5px -14px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
     align-self: center;
     order: -1;
     display: flex;
     font-family: 'Poppins';
-    background-color: var(--Dark);
     padding-right: 1em;
+    border-bottom: var(--secondary) solid 1px;
 }
 
 .main-demande-Prestation {
@@ -1328,7 +1328,7 @@ choixTerrainDescription_img {
 
 .button-choose-cat-prestration {
     display: flex;
-    background: linear-gradient( 0deg, black 90%, var(--light)188%);
+    background: linear-gradient( 0deg, var(--primary) 90%, var(--light)188%);
     background-color: var(--secondary);
     color: var(--light);
     cursor: pointer;
@@ -1336,12 +1336,15 @@ choixTerrainDescription_img {
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
     text-shadow: 2px 8px 6px rgb(0 0 0 / 20%), 0px -5px 35px rgb(255 255 255 / 30%);
     border-radius: 16px 13px 0px 0px;
+    min-width: 150px;
+    text-align: -webkit-center;
 }
 
     .button-choose-cat-prestration:hover {
         background: none;
         background-color: var(--light);
         color: var(--Dark);
+        box-shadow: 6px -7px 14px -9px #000000, 5px 5px 15px 4px rgb(0 0 0 / 0%);
     }
 
     .button-choose-cat-prestration h3 {
@@ -1365,7 +1368,6 @@ choixTerrainDescription_img {
 .body-button-prestaton {
     display: flex;
     font-size: 13px;
-    background: var(--Dark);
     align-self: flex-end;
 }
 
@@ -1385,6 +1387,8 @@ choixTerrainDescription_img {
 
 .terrain-card-prestation {
     height: auto;
+    padding: 2em;
+    min-width: 0;
 }
 
 .valid:hover {
@@ -1402,29 +1406,31 @@ choixTerrainDescription_img {
 }
 
 .client-prestation-tag {
-    position: absolute;
-    right: 10px;
-    top: 196px;
     color: var(--Dark);
+    position: absolute;
+    left: -19px;
+    top: 8px;
     font-family: 'Poppins';
-    padding-left: 10px;
-    padding-right: 10px;
-    /* border: solid 1px var(--light); */
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 5px;
     background-color: var(--info);
+    transform: rotate( -37deg );
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
 }
 
 .eleveur-prestation-tag {
     color: var(--light);
     position: absolute;
-    right: 10px;
-    top: 196px;
+    left: -19px;
+    top: 8px;
     font-family: 'Poppins';
-    padding-left: 10px;
-    padding-right: 10px;
-    /* border: solid 1px var(--light); */
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 5px;
     background-color: var(--refus);
+    transform: rotate( -37deg );
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
 }
 
 .infosOffre_infosDateInstallationTroupeau span {
