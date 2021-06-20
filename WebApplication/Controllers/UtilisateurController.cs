@@ -463,6 +463,46 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             annulationAvantAcceptationModelView.raisonsAnnulationDemande = new RaisonAnnulationDemandeBU().GetAll();
             return View(annulationAvantAcceptationModelView);
         }
-    }
+
+        [HttpGet]
+        public IActionResult AfficherEvaluationPrestation(int idDemandeDeReservation, int idUtilisateur, int idClasse)
+        {
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
+            ViewBag.Classe = idClasse;
+            EvaluationPrestationViewModel evaluationPrestationViewModel = new();
+            evaluationPrestationViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
+            evaluationPrestationViewModel.IdUtilisateurClient = evaluationPrestationViewModel.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur;
+            evaluationPrestationViewModel.IdUtilisateurEleveur = evaluationPrestationViewModel.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur;
+            evaluationPrestationViewModel.IdDemande = idDemandeDeReservation;
+            evaluationPrestationViewModel.EvaluationsPrestation = new EvaluationPrestationBU().GetAllByIdDemandeDeReservation(idDemandeDeReservation);
+            return View(evaluationPrestationViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult AfficherEvaluationPrestation(EvaluationPrestationViewModel evaluationPrestationViewModel)
+        {
+            ViewBag.IdUtilisateur = evaluationPrestationViewModel.IdUtilisateurEvaluateur;
+            ViewBag.IsInBDD = true;
+            if (ModelState.IsValid)
+            {
+                EvaluationPrestation evaluationPrestation = new();
+                evaluationPrestation.IdDemande = evaluationPrestationViewModel.IdDemande;
+                evaluationPrestation.IdUtilisateurClient = evaluationPrestationViewModel.IdUtilisateurClient;
+                evaluationPrestation.IdUtilisateurEleveur = evaluationPrestationViewModel.IdUtilisateurEleveur;
+                evaluationPrestation.IdUtilisateurEvaluateur = evaluationPrestationViewModel.IdUtilisateurEvaluateur;
+                evaluationPrestation.NotePrestation = evaluationPrestationViewModel.NotePrestation;
+                evaluationPrestation.RemarqueEval = evaluationPrestationViewModel.RemarqueEval;
+                new EvaluationPrestationBU().InsererEvaluationPrestation(evaluationPrestation);
+
+                ViewBag.Message = "Annulation reussie";
+            }
+            evaluationPrestationViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(evaluationPrestationViewModel.IdDemande);
+            evaluationPrestationViewModel.IdUtilisateurClient = evaluationPrestationViewModel.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur;
+            evaluationPrestationViewModel.IdUtilisateurEleveur = evaluationPrestationViewModel.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur;
+            evaluationPrestationViewModel.EvaluationsPrestation = new EvaluationPrestationBU().GetAllByIdDemandeDeReservation(evaluationPrestationViewModel.IdDemande);
+
+            return View(evaluationPrestationViewModel);
+        }
 }
 }

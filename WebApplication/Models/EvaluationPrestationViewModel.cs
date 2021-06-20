@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 {
-    public class FinPrestationViewModel
+    public class EvaluationPrestationViewModel
     {
         public int IdUtilisateurClient { get; set; }
         public int IdUtilisateurEleveur { get; set; }
@@ -16,5 +16,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
         public DemandeDeReservationDetails DemandeDeReservationDetails { get; set; }
         public int IdUtilisateur { get; set; }
         public int IdUtilisateurEvaluateur { get; set; }
+        public List<EvaluationPrestation> EvaluationsPrestation { get; set; }
     }
 }
