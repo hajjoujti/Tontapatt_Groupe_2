@@ -18,7 +18,7 @@
 else
 {
     <div class="h4-liste-terrain">
-        <h4>Veuillez choisir le terrain que vous voulez tondre</h4>
+        <h3>Veuillez choisir le terrain que vous voulez tondre</h3>
     </div>
     <div class="main-terrain">
         @foreach (TerrainDetails terraindetails in Model.TerrainsDetails)
@@ -53,11 +53,10 @@ else
                     </p>
                     <div class="footer-card-terrain">
                         <P>
-                            <span class="icone-terrain"><i class="far fa-flag"></i></span>
                             <!-- inclure plus tard des terrains favoris  -->
-                            <span class="icone-terrain">
+                            <span class="lien-carte-terrain">
                                 <a asp-controller="Utilisateur" asp-action="ChoixOffreRecherche" asp-route-id="@terraindetails.IdTerrain">
-                                    <i class="far fa-plus-square"></i>
+                                    
                                 </a>
                             </span>
                             <!-- a entourer d'un lien <a> pour rediriger vers la page de recherche  -->

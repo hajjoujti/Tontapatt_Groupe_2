@@ -562,15 +562,14 @@ choixTerrainDescription_img {
 
 
 .h4-liste-terrain {
-    margin: 2em 5em;
     display: flex;
-    font-family: 'Roboto';
+    font-family: 'Poppins';
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .main-terrain {
-    margin: 2em 5em;
+   margin-bottom:3em;
     display: flex;
     font-family: 'Roboto';
     flex-wrap: wrap;
@@ -597,7 +596,7 @@ choixTerrainDescription_img {
 }
 
     .body-card-terrain:hover {
-        transform: rotate3d(68, 28, -2, 11deg );
+        transform: translateX(10px);
         box-shadow: 0px 10px 29px -14px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
     }
 
@@ -2063,7 +2062,7 @@ choixTerrainDescription_img {
 .btn-primary {
     padding: 18px 40px;
     font-size: 16px;
-    color: #f1f1f1;
+    color: var(--light);
     background: var(--Dark);
     border: none;
     font-weight: 700;
@@ -2075,7 +2074,7 @@ choixTerrainDescription_img {
 }
 
     .btn-primary:hover {
-        background-color: var(--info);
+        background-color: var(--secondary);
         color: var(--light);
     }
 
