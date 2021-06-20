@@ -26,7 +26,7 @@
         <div class="header-right">
             @if (ViewBag.IsInBDD == true)
             {
-                
+
                 <p>
                     <a class="" asp-controller="Home" asp-action="Index">Acceuil</a>
                 </p>
@@ -38,6 +38,9 @@
                 </p>
                 <p>
                     <a class="" href="#APropos">A Propos</a>
+                </p>
+                <p>
+                    <a class="" asp-controller="Home" asp-action="Index">Contact</a>
                 </p>
                 <p class="icone-header">
                     <i class="far fa-user"></i>
@@ -55,6 +58,9 @@
                 <p>
                     <a class="" href="#APropos">A Propos</a>
                 </p>
+                <p>
+                    <a class="" asp-controller="Home" asp-action="Index">Contact</a>
+                </p>
                 <p class="icone-header">
                     <i class="far fa-user"></i>
                 </p>
@@ -64,6 +70,7 @@
                 <p>
                     <a class="" href="#APropos">Inscription</a>
                 </p>
+
             }
         </div>
     </header>

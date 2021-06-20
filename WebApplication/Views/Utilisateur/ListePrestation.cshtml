@@ -37,9 +37,7 @@
         @foreach (DemandeDeReservationDetails prestation in @Model.demandeDeReservationDetails)
         {
             <div class="body-card-terrain terrain-card-prestation">
-                <div class="terrain-left terrain-left-prestation">
-                    <img src="https://cdn.pixabay.com/photo/2020/11/11/21/20/lamb-5733685_960_720.jpg" alt="">
-                </div>
+                
                 <div class="terrain-right">
                     @if (prestation.TerrainDetails.IdUtilisateur == ViewBag.IdUtilisateur)
                     {
@@ -76,7 +74,7 @@
 
 
     <div class="demande-presation-right">
-        <h2>Demande de prestation</h2>
+        <h2>Demandes de prestations</h2>
         <div class="body-button-prestaton">
             
             <div class="button-choose-cat-prestration @attente">
