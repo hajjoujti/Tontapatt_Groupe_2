@@ -37,7 +37,7 @@
         @foreach (DemandeDeReservationDetails prestation in @Model.demandeDeReservationDetails)
         {
             <div class="body-card-terrain terrain-card-prestation">
-                
+
                 <div class="terrain-right">
                     @if (prestation.TerrainDetails.IdUtilisateur == ViewBag.IdUtilisateur)
                     {
@@ -76,19 +76,19 @@
     <div class="demande-presation-right">
         <h2>Demandes de prestations</h2>
         <div class="body-button-prestaton">
-            
+
             <div class="button-choose-cat-prestration @attente">
                 <a asp-controller="Utilisateur" asp-action="ListePrestation" asp-route-id="@ViewBag.IdUtilisateur"><h3>En Attente</h3></a>
             </div>
-            
+
             <div class="button-choose-cat-prestration @encour">
                 <a asp-controller="Utilisateur" asp-action="ListePrestationEncour" asp-route-id="@ViewBag.IdUtilisateur"><h3>En cours</h3></a>
             </div>
-            
+
             <div class="button-choose-cat-prestration @terminer">
                 <a asp-controller="Utilisateur" asp-action="ListePrestationTerminer" asp-route-id="@ViewBag.IdUtilisateur"><h3>Terminer</h3></a>
             </div>
-            
+
             <div class="button-choose-cat-prestration @annuler">
                 <a asp-controller="Utilisateur" asp-action="listePrestationAnnuler" asp-route-id="@ViewBag.IdUtilisateur"><h3>Annuler</h3></a>
             </div>

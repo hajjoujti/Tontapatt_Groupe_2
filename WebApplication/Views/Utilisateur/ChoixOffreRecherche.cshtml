@@ -5,7 +5,23 @@
 @using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 @model OffresDeTonteDetailsEtTerrainViewModel
 @{
+
     int nbOffreDeTonteDetails = Model.OffresDeTonteDetails.Count;
+}
+
+@section LeafletMap
+{
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin="" />
+}
+
+@section ApiMap
+{
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <script src="~/js/apiMap.js"></script>
 }
 
 @if (@nbOffreDeTonteDetails == 0)
@@ -25,18 +41,22 @@ else
                 <h3>Nombre de résultat : </h3><p> @nbOffreDeTonteDetails <!-- nombre de resultat de recherche --></p>
             </div>
         </div>
+        <div class="static-map">
+            <input type="hidden" id="longitude" value="@Model.TerrainDetails.LongitudeTerrain"/>
+            <input type="hidden" id="latitude" value="@Model.TerrainDetails.LatitudeTerrain"/>
+            <div id="mapid"></div>
+        </div>
 
         @foreach (OffreDeTonteDetails offreDeTonteDetails in Model.OffresDeTonteDetails)
         {
             <div class="body-card-list-offre">
-                <div class="img-profile-list-offre">
-                </div>
+
                 <div class="liste-offres-right">
                     <div class="liste-detail-offres-text">
                         <h3>@offreDeTonteDetails.NomUtilisateur<!-- nom de l'eleveur --></h3>
                         <p> @offreDeTonteDetails.NomOffre <!-- nom de l'offre --></p>
-                            <!-- je vais appeller l'api pour la vue a ce moment et j'aurais besoin d'object avec longitude lattitude terrain et offre -->
-                            <!-- TU PEUX UTILISER @Model.TerrainDetails.LongitudeTerrain ET @Model.TerrainDetails.LatitudeTerrain + @offreDeTonteDetails.LatitudeOffreDeTonte ET
+                        <!-- je vais appeller l'api pour la vue a ce moment et j'aurais besoin d'object avec longitude lattitude terrain et offre -->
+                        <!-- TU PEUX UTILISER @Model.TerrainDetails.LongitudeTerrain ET @Model.TerrainDetails.LatitudeTerrain + @offreDeTonteDetails.LatitudeOffreDeTonte ET
                         @offreDeTonteDetails.LongitudeOffreDetonte-->
                         <p>Distance : @offreDeTonteDetails.DistanceOffreDeTonteTerrain km<!-- distance avec l'offre --></p>
                     </div>
