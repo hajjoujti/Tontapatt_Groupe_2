@@ -37,7 +37,7 @@
                                     <label for="rating-3"></label>
                                     <input type="radio" asp-for="@Model.NotePrestation" id="rating-2" value="2">
                                     <label for="rating-2"></label>
-                                    <input type="radio" asp-for="@Model.NotePrestation" id="rating-1" value="1">
+                                    <input type="radio" asp-for="@Model.NotePrestation" id="rating-1" value="1" required>
                                     <label for="rating-1"></label>
                                     <input type="hidden" asp-for="IdDemande" value="@Model.IdDemande" />
                                     <input type="hidden" asp-for="IdUtilisateurClient" value="@Model.IdUtilisateurClient" />
@@ -182,9 +182,16 @@
                                 </div>
                             </div>
                             <textarea asp-for="RemarqueEval"class="textarea-grey"></textarea>
-                            <p>
-                                <button class="btn-infos" type="submit" asp-controller="Utilisateur" asp-action="FinPrestation"> Terminer</button>
-                            </p>
+                            @if(Model.NotePrestation != 0)
+                            {
+                                <p>
+                                    <button class="btn-infos" type="submit" asp-controller="Utilisateur" asp-action="FinPrestation"> Terminer</button>
+                                </p>
+                            }
+                            else
+                            {
+                                <p>Veuillez choisir au moin une étoile</p>
+                            }
                         </form>
                     </div>
                 </div>
