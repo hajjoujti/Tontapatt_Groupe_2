@@ -2218,11 +2218,14 @@ choixTerrainDescription_img {
     justify-content: space-between;
 }
 
-.descriptionAnomalie_statusInfos {
+.descriptionAnomalie_statusInfosEnCours {
     background-color: #29b14b;
     font-size: x-large;
 }
-
+.descriptionAnomalie_statusInfosTermine {
+    background-color: #c2432d;
+    font-size: x-large;
+}
 .descriptionAnomalie_statusFin {
     border: 1px solid black;
     border-radius: 5px;
