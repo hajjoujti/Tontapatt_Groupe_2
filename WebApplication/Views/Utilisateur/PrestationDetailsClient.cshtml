@@ -138,14 +138,26 @@
             else if(ViewBag.Classe == 2)
             {
                 <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnPointageJournalierDisabledClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierEleveur", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.OffreDeTonteDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalierDisabled" />
+                    <input class="btn-light @btnPointageJournalierDisabledClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalierDisabled" />
                 </div>
                 <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnListeAnomalieDisabledClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.OffreDeTonteDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
+                    <input class="btn-light @btnListeAnomalieDisabledClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
                 </div>
                 <div class="btn-prestation-details-right">
                     <input class="btn-light @btnTerminerDisabledClass" title="@messageBoutonTerminer" type="button" value="Evaluations" onclick="location.href='@Url.Action("AfficherEvaluationPrestation", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnTerminerDisabled" />
                 </div>
+            }
+            else if(ViewBag.Classe == 3)
+            {
+                @if (Model.DateAnnulationPrematuree.HasValue)
+                {
+                    <div class="btn-prestation-details-right">
+                        <input class="btn-light @btnPointageJournalierDisabledClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalierDisabled" />
+                    </div>
+                    <div class="btn-prestation-details-right">
+                        <input class="btn-light @btnListeAnomalieDisabledClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
+                    </div>
+                }
             }
         </div>
     </div>
