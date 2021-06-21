@@ -2398,3 +2398,61 @@ choixTerrainDescription_img {
     width: 15rem;
     height: 5rem;
 }
+
+
+/* ----------- DESCRIPTION ANOMALIE -------------- */
+
+.descriptionAnomalie_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.descriptionAnomalie_h1 {
+    align-items: center;
+    text-align: center;
+}
+
+.descriptionAnomalie {
+    background-color: #135d25;
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 12px 12px 2px 1px #88CCF1;
+    width: 60%;
+}
+
+.descriptionAnomalie_description {
+    background-color: #ffffff;
+    padding: 1rem;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    width: 60%;
+}
+
+.descriptionAnomalie_status {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.descriptionAnomalie_statusInfosEnCours {
+    background-color: #29b14b;
+    font-size: x-large;
+}
+.descriptionAnomalie_statusInfosTermine {
+    background-color: #c2432d;
+    font-size: x-large;
+}
+.descriptionAnomalie_statusFin {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: auto;
+    width: 15rem;
+    height: 5rem;
+}
