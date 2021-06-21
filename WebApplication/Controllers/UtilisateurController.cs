@@ -537,16 +537,16 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(anomalieDetailsViewModel);
         }
 
-        //[HttpGet]
-        //public IActionResult DeclarationFinAnomalie(int idDemandeDeReservation, int idAnomalie, int idUtilisateur, int idClasse)
-        //{
-        //    AnomalieDetailsViewModel anomalieDetailsViewModel = new();
-        //    anomalieDetailsViewModel.DemandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
-        //    new AnomalieBU().FinAnomalie(idAnomalie);
-        //    ViewBag.IdUtilisateur = idUtilisateur;
-        //    ViewBag.Classe = idClasse;
-        //    ViewBag.IsInBDD = true;
-        //    return View("Reussite");
-        //}
+        [HttpGet]
+        public IActionResult DeclarationFinAnomalie(int idAnomalie, int idUtilisateur, int idClasse)
+        {
+            new AnomalieBU().FinAnomalie(idAnomalie);
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.Classe = idClasse;
+            ViewBag.IsInBDD = true;
+
+            ViewBag.Message = "L'anomalie est bien terminée";
+            return View("Reussite");
+        }
     }
 }

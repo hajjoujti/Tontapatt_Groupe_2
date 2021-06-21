@@ -50,7 +50,7 @@
                             <p class="eleveur-prestation-tag">Nom du client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur</p>
                         }
                         <p>Lieux de la prestation : @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain</p>
-                        @if (Model.DateFinAnomalie is null)
+                        @if (!anomalie.DateFinAnomalie.HasValue)
                         {
                             <p> Statut de l'anomalie :  <span class="descriptionAnomalie_statusInfosEnCours">En cours</span></p>
                         }
