@@ -27,10 +27,9 @@ namespace WebApplication.Controllers
 
         public IActionResult Indexreturn(int idUtilisateur)
         {
-
-            ViewBag.IsInBDD = true;
             ViewBag.IdUtilisateur = idUtilisateur;
-            return View("Index");
+            ViewBag.IsInBDD = true;
+            return View("index");
         }
         public IActionResult Privacy()
         {

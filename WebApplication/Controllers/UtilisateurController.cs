@@ -31,8 +31,8 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             UtilisateurEtTerrainsDetailsViewModel utilisateurEtTerrainsDetailsViewModel = new();
             utilisateurEtTerrainsDetailsViewModel.TerrainsDetails = buTerrain.GetAllDetailsByIdUtilisateur(idUtilisateur);
             utilisateurEtTerrainsDetailsViewModel.Utilisateur = buUtilisateur.GetById(idUtilisateur);
-            ViewBag.IdUtilisateur = idUtilisateur;
 
+            ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             return View(utilisateurEtTerrainsDetailsViewModel);
         }
