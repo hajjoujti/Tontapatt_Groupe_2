@@ -13,8 +13,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 {
     public class UtilisateurController : Controller
     {
-        Boolean isInBDD;
-        // GET: UtilisateurController
         public ActionResult Index()
         {
             return View();

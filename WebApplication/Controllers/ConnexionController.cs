@@ -15,8 +15,6 @@ namespace Fr.EQL.Ai109.Totapatt.WebApplication.Controllers
 {
     public class ConnexionController : Controller
     {
-        Boolean isInBDD;
-
         public IActionResult Index()
         {
             return View();

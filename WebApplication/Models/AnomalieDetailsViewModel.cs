@@ -19,7 +19,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
         public int IdTypeAnomalie { get; set; }
        
         [Required]
-        public string? DescriptionAnomalie { get; set; }
+        public string DescriptionAnomalie { get; set; }
 
         public DemandeDeReservationDetails DemandeDeReservationDetails { get; set; }
 

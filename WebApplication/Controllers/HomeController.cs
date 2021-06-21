@@ -19,11 +19,20 @@ namespace WebApplication.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
+        [Route("Home/Index/{idUtilisateur:int}")]
+        public IActionResult Index(int idUtilisateur)
+        {
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
+            return View();
+        }
 
         public IActionResult Indexreturn(int idUtilisateur)
         {
@@ -31,6 +40,7 @@ namespace WebApplication.Controllers
             ViewBag.IsInBDD = true;
             return View("index");
         }
+
         public IActionResult Privacy()
         {
             return View("index");
