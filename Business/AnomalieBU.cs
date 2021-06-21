@@ -32,9 +32,9 @@ namespace Fr.EQL.Ai109.Tontapatt.Business
             return new AnomalieDAO().GetById(idAnomalie);
         }
 
-        public bool IsUneAnomalieEnCours()
+        public bool IsUneAnomalieEnCoursByIdDemandeDeReservation(int idDemandeDeReservation)
         {
-            return new AnomalieDAO().IsUneAnomalieEnCours();
+            return new AnomalieDAO().IsUneAnomalieEnCoursByIdDemandeDeReservation(idDemandeDeReservation);
         }
     }
 }

@@ -182,7 +182,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             DemandeDeReservationDetails demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
             ViewBag.IdUtilisateur = demandeDeReservationDetails.TerrainDetails.IdUtilisateur;
             ViewBag.Classe = idClasse;
-            ViewBag.IsUneAnomalieEnCours = new AnomalieBU().IsUneAnomalieEnCours();
+            ViewBag.IsUneAnomalieEnCours = new AnomalieBU().IsUneAnomalieEnCoursByIdDemandeDeReservation(idDemandeDeReservation);
 
             return View(demandeDeReservationDetails);
         }
@@ -194,7 +194,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             DemandeDeReservationDetails demandeDeReservationDetails = new DemandeDeReservationBU().GetByIdWithDetails(idDemandeDeReservation);
             ViewBag.IdUtilisateur = demandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur;
             ViewBag.Classe = idClasse;
-            ViewBag.IsUneAnomalieEnCours = new AnomalieBU().IsUneAnomalieEnCours();
+            ViewBag.IsUneAnomalieEnCours = new AnomalieBU().IsUneAnomalieEnCoursByIdDemandeDeReservation(idDemandeDeReservation);
 
             return View(demandeDeReservationDetails);
         }

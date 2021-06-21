@@ -93,12 +93,15 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             return anomalies;
         }
 
-        public bool IsUneAnomalieEnCours()
+        public bool IsUneAnomalieEnCoursByIdDemandeDeReservation(int idDemande)
         {
             MySqlCommand cmd = CreerCommand();
             cmd.CommandText = @"SELECT COUNT(*) 'NOMBRE'
                                 FROM anomalie 
-                                WHERE date_fin_anomalie IS NULL";
+                                WHERE date_fin_anomalie IS NULL
+                                AND id_demande = @idDemande";
+
+            cmd.Parameters.Add(new MySqlParameter("@idDemande", idDemande));
 
             cmd.Connection.Open();
             MySqlDataReader dr = cmd.ExecuteReader();
