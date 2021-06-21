@@ -50,7 +50,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             OffresDeTonteDetailsEtTerrainViewModel offresDeTonteDetailsEtTerrainViewModel = new();
             offresDeTonteDetailsEtTerrainViewModel.OffresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
             offresDeTonteDetailsEtTerrainViewModel.TerrainDetails = buTerrain.GetByIdWithDetails(idTerrain); ;
-
+            ViewBag.IdUtilisateur = offresDeTonteDetailsEtTerrainViewModel.TerrainDetails.IdUtilisateur;
             ViewBag.IsInBDD = true;
 
             return View(offresDeTonteDetailsEtTerrainViewModel);
