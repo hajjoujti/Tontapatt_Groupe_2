@@ -60,6 +60,8 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             OffreDeTonteBU buOffreDeTonte = new();
             OffreDeTonteDetails offresDeTonteDetails = buOffreDeTonte.GetWithDetailsByIdOffreEtPositionTerrain(idOffreDeTonte, idTerrain);
 
+
+
             ViewBag.IdUtilisateur = new TerrainBU().GetById(idTerrain).IdUtilisateur;
             ViewBag.IdTerrain = idTerrain;
             ViewBag.IsInBDD = true;
@@ -68,6 +70,10 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             demandeDeReservationViewModel.OffreDeTonteDetails = offresDeTonteDetails;
 
             demandeDeReservationViewModel.TerrainDetails = new TerrainBU().GetByIdWithDetails(idTerrain);
+            /*debut de tentative*/
+            demandeDeReservationViewModel.OffresDeTonteDetails = buOffreDeTonte.GetAllDetailsByPositionTerrain(idTerrain);
+
+            /*Fin de tentative*/
             return View(demandeDeReservationViewModel);
         }
 
@@ -78,6 +84,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             TerrainDetails terrainsDetails = buTerrain.GetByIdWithDetails(idTerrain);
             ViewBag.IdUtilisateur = terrainsDetails.IdUtilisateur;
             ViewBag.IsInBDD = true;
+
 
             return View(terrainsDetails);
         }

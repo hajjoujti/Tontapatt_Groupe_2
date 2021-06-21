@@ -852,11 +852,13 @@ choixTerrainDescription_img {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: #4F6367;
     border-radius: 5px;
-    box-shadow: 12px 12px 2px 1px #8c989b;
-    padding: 1px;
-    margin: 1em 2em 1em 2em;
+    width: 100%;
+    background-image: url(https://cdn.pixabay.com/photo/2017/01/16/19/54/ireland-1985088_960_720.jpg);
+    padding-left: 2em;
+    background-size: cover;
+    background-position: -403px -124px;
+    background-repeat: no-repeat;
 }
 
 .infosOffre_infos {
@@ -865,10 +867,12 @@ choixTerrainDescription_img {
     background-color: var(--light);
     font-family: 'Roboto';
     font-size: 15px;
-    width: 75%;
     letter-spacing: 1.5px;
     line-height: 3;
-    padding: 1em 2em 1em 2em;
+    padding: 1em 0em 1em 2em;
+    box-shadow: -18px -2px 15px -13px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
+    margin-left: 2em;
+    flex-grow: 1;
 }
 
     .infosOffre_infos p {
@@ -918,44 +922,58 @@ choixTerrainDescription_img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #ffffff;
-    border: solid 2px white;
-    padding: 1em;
+    padding: 0 1em;
+    align-items:center;
 }
 
     .infosOffre_date input {
         margin: 1rem;
+        border: 2px solid #ffffff;
+        border-radius: 5px;
+        padding: 1rem;
     }
+
+    .infosOffre_date h3 {
+        margin-block-end: 0;
+    }
+
 
 .infosOffre_selection {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: auto;
-    color: #ffffff;
     font-family: 'Roboto';
     align-items: center;
 }
 
 .infosOffre_date div {
     text-align: center;
+    padding-top: 2em;
 }
 
 .infosOffre_button {
     margin-bottom: 1em;
+    display: flex;
 }
 
     .infosOffre_button button {
         width: 15rem;
         height: 2rem;
-        background-color: #dddddd;
-        border-radius: 5px;
-        border: 2px solid black;
-        transition: color 0.5s;
-        margin: auto;
-        margin-top: 2rem;
-        font-size: 1.5rem;
+        font-size: 16px;
+        color: var(--light);
+        background: var(--primary);
+        border: none;
+        font-weight: 700;
+        outline: none;
+        border-radius: 30px;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: opacity .3s linear;
     }
+
+.infosOffre_button button:hover {
+    background-color: var(--secondary);
+    color: var(--Dark);
+}
 
 .infosOffre_buttonSelection {
     align-items: center;
@@ -2162,13 +2180,14 @@ choixTerrainDescription_img {
     height: 72vh;
     width: 100%;
 }
+
 .static-map {
     height: 72vh;
     width: 45%;
     right: 0;
     top: 236px;
     z-index: -1;
-    position:fixed;
+    position: fixed;
 }
 
 .body-card-list-offre:hover {
@@ -2179,4 +2198,90 @@ choixTerrainDescription_img {
 
 .checked {
     color: orange;
+}
+
+
+.body-card-list-offre-details {
+    display: flex;
+    background-color: #f5f5f5c7;
+    position: relative;
+    margin-bottom: 3em;
+    padding: 1em 4em 1em 3em;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
+    padding-left: 0em;
+    transition: transform 1s;
+    border-radius: 15px;
+    margin-left: 10px
+}
+
+    .body-card-list-offre-details:hover {
+        transform: translateX(-10px );
+        background-color: #4f6367b3;
+        color: var(--light);
+    }
+
+.info-offre-list {
+    width: 100%;
+}
+
+.input-date-detail {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    border-top: solid var(--secondary) 1px;
+    margin-top: 1em;
+}
+
+.list-autre-eleveur {
+    max-height: 135vh;
+    overflow: auto;
+    padding-top: 1em;
+}
+
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .list-autre-eleveur::-webkit-scrollbar {
+        display: none;
+    }
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.list-autre-eleveur {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+#moyen1 {
+    margin: 1rem;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.info-offre-input {
+    padding-top: 0 !important;
+}
+
+.info-offre-table {
+    padding: 1em;
+}
+
+    .info-offre-table td {
+        border: solid var(--primary) 1px;
+        text-align: center;
+    }
+
+.eval-demande-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title-td{
+    font-family: "Poppins";
+    font-weight:600;
+}
+
+.card-right-list-offre{
+    align-self:center;
 }

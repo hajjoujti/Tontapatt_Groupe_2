@@ -41,5 +41,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
         {
             MoyensPaiements = new MoyenPaiementBU().GetAll();
         }
+        public List<OffreDeTonteDetails> OffresDeTonteDetails { get; set; }
     }
 }
