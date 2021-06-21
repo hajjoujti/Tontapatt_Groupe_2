@@ -502,5 +502,19 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
             return View(evaluationPrestationViewModel);
         }
-}
+
+        [HttpGet]
+        public IActionResult InstallerTroupeau(int idDemandeDeReservation, int idUtilisateur, int idClasse)
+        {
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
+            ViewBag.Classe = idClasse;
+
+            new DemandeDeReservationBU().TroupeauInstalleByIdDemandeDeReservation(idDemandeDeReservation);
+            ViewBag.Message = "Troupeau installé";
+
+            return View("Reussite");
+
+        }
+    }
 }

@@ -289,9 +289,9 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
                                 date_installation_troupeau = @dateInstallationTroupeau
                                 WHERE id_demande = @idDemandeDeReservation 
                                 AND date_acceptaion_demande IS NOT NULL 
-                                AND d.date_annulation_demande IS NULL 
-                                AND d.date_refus_demande IS NULL 
-                                AND d.date_annulation_prematuree is NULL";
+                                AND date_annulation_demande IS NULL 
+                                AND date_refus_demande IS NULL 
+                                AND date_annulation_prematuree is NULL";
             cmd.Parameters.Add(new MySqlParameter("@idDemandeDeReservation", idDemandeDeReservation));
             cmd.Parameters.Add(new MySqlParameter("@dateInstallationTroupeau", dateInstallationTroupeau));
 

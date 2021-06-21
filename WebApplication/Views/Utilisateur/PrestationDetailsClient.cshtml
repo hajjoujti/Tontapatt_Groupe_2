@@ -5,62 +5,62 @@
 @model DemandeDeReservationDetails
 @{
     #region CONDITION BOUTON POINTAGE JOURNALIER
-    bool btnPointageJournalier = true;
+    bool btnPointageJournalierDisabled = true;
     string messageBoutonPointageJournalier;
-    string btnPointageJournalierClass = "";
+    string btnPointageJournalierDisabledClass = "";
     if (Model.DateInstallationTroupeau.HasValue && DateTime.Compare(Model.DateInstallationTroupeau.Value, DateTime.Today) < 0)
     {
-        btnPointageJournalier = false;
+        btnPointageJournalierDisabled = false;
         messageBoutonPointageJournalier = "Pointage Journalier";
-        btnPointageJournalierClass = "";
+        btnPointageJournalierDisabledClass = "";
     }
     else
     {
-        btnPointageJournalier = true;
+        btnPointageJournalierDisabled = true;
         messageBoutonPointageJournalier = "Vous ne pouvez pas accéder à la liste de pointage si le troupeau n'est pas encore installé";
-        btnPointageJournalierClass = "btn-disabled";
+        btnPointageJournalierDisabledClass = "btn-disabled";
     }
     #endregion
 
     #region CONDITION BOUTON DECLARATION ANOMALIE
     bool btnDeclarerAnomalieDisabled = false;
     string messageBoutonDeclarerAnomalie = "Declarer une Anomalie";
-    string btnDeclarerAnomalieClass = "";
+    string btnDeclarerAnomalieDisabledClass = "";
     #endregion
 
     #region CONDITION BOUTON DECLARATION ANOMALIE
     bool btnListeAnomalieDisabled = false;
     string messageBoutonListeAnomalie = "Liste Anomalies";
-    string btnListeAnomalieClass = "";
+    string btnListeAnomalieDisabledClass = "";
     #endregion
 
     #region CONDITION BOUTON TERMIER
-    string btnTerminerClass = "";
+    string btnTerminerDisabledClass = "";
     bool btnTerminerDisabled = true;
     string messageBoutonTerminer;
     if (DateTime.Compare(Model.DateFinDemande, DateTime.Today) > 0)
     {
         btnTerminerDisabled = true;
         messageBoutonTerminer = "Vous ne pouvez pas terminer la prestation avant sa date de fin";
-        btnTerminerClass = "btn-disabled";
+        btnTerminerDisabledClass = "btn-disabled";
     }
     else if (Model.DateAcceptationDemande is null)
     {
         btnTerminerDisabled = true;
         messageBoutonTerminer = "Vous ne pouvez pas terminer une prestation si elle n'est pas acceptée";
-        btnTerminerClass = "btn-disabled";
+        btnTerminerDisabledClass = "btn-disabled";
     }
     else if (Model.DateInstallationTroupeau is null)
     {
         btnTerminerDisabled = true;
         messageBoutonTerminer = "Le troupeau n'a pas été installé. Prestation non effectuée";
-        btnTerminerClass = "btn-disabled";
+        btnTerminerDisabledClass = "btn-disabled";
     }
     else
     {
         btnTerminerDisabled = false;
         messageBoutonTerminer = "Terminer la Prestation";
-        btnTerminerClass = "";
+        btnTerminerDisabledClass = "";
     }
     #endregion
 }
@@ -117,16 +117,16 @@
             @if (ViewBag.Classe == 1)
             {
                 <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnPointageJournalierClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalier" />
+                    <input class="btn-light @btnPointageJournalierDisabledClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalierDisabled" />
                 </div>
                 <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnDeclarerAnomalieClass" title="@messageBoutonDeclarerAnomalie" type="button" value="Déclarer une Anomalie" onclick="location.href='@Url.Action("DeclarationAnomalieClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnDeclarerAnomalieDisabled" />
+                    <input class="btn-light @btnDeclarerAnomalieDisabledClass" title="@messageBoutonDeclarerAnomalie" type="button" value="Déclarer une Anomalie" onclick="location.href='@Url.Action("DeclarationAnomalieClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnDeclarerAnomalieDisabled" />
                 </div>
                 <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnListeAnomalieClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
+                    <input class="btn-light @btnListeAnomalieDisabledClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
                 </div>
                 <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnTerminerClass" title="@messageBoutonTerminer" type="button" value="Terminer" onclick="location.href='@Url.Action("FinPrestation", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnTerminerDisabled" />
+                    <input class="btn-light @btnTerminerDisabledClass" title="@messageBoutonTerminer" type="button" value="Terminer" onclick="location.href='@Url.Action("FinPrestation", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnTerminerDisabled" />
                 </div>
             }
             else if (ViewBag.Classe == 0)
