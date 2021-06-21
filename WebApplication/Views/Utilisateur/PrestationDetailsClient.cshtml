@@ -64,92 +64,130 @@
     }
     #endregion
 }
+
+@section LeafletMap
+{
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin="" />
+}
+
+@section ApiMap
+{
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <script src="~/js/apiMap.js"></script>
+}
 <div class="infosOffre_main">
     <h2 class="infosOffre_h1">Votre prestation Actuelle numéro @Model.NumeroReservation</h2>
-
     <h3 class="infosOffre_h1"> Offre : @Model.OffreDeTonteDetails.NomOffre</h3>
-    <div class="infosOffre_div">
-        <div class="infosOffre_infos">
-            <p class="infosOffre_infosNomUtilisateur"><strong>Nom de l'éleveur : <a href="#">@Model.OffreDeTonteDetails.NomUtilisateur @Model.OffreDeTonteDetails.PrenomUtilisateur</a></strong></p>
-            <p class="infosOffre_infosDescription"><strong>Description de l'offre' : </strong>@Model.OffreDeTonteDetails.DescriptionOffre</p>
-            <span class="separator-fin-prestation"></span>
-            <p class="infosOffre_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DateDebutDemande.ToString("dd/MM/yyyy")</p>
-            <p class="infosOffre_infosDateFin"><strong>Date de fin de la prestation : </strong> @Model.DateFinDemande.ToString("dd/MM/yyyy")</p>
-            <p class="infosOffre_infosDateAcceptation">
-                <strong>Date de l'acceptation : </strong>
-                @if (Model.DateAcceptationDemande.HasValue)
-                {
-                    @Model.DateAcceptationDemande.Value.ToString("dd/MM/yyyy");
-                }
-                else
-                {
-                    <span>La demande n'est pas encore acceptée</span>
-                }
-            </p>
-            <p class="infosOffre_infosDateInstallationTroupeau">
-                <strong>Date de l'installation du tropeau : </strong>
-                @if (Model.DateInstallationTroupeau.HasValue)
-                {
-                    @Model.DateInstallationTroupeau.Value.ToString("dd/MM/yyyy");
-                }
-                else if (!Model.DateAcceptationDemande.HasValue)
-                {
-                    <span>La demande n'est pas encore acceptée</span>
-                }
-                else
-                {
-                    <span>Le troupeau n'est pas encore installé</span>
-                }
-            </p>
-            <span class="separator-fin-prestation"></span>
-            <p class="infosOffre_infosDistance"><strong>Distance : </strong>@Model.OffreDeTonteDetails.DistanceOffreDeTonteTerrain km </p>
-            <p class="infosOffre_infosNomVille"><strong>Ville / Code Postal : </strong>@Model.OffreDeTonteDetails.NomVilleOfrreDeTonte. / @Model.OffreDeTonteDetails.CodePostaleOffreDeTonte</p>
-            <span class="separator-fin-prestation"></span>
-            <p class="infosOffre_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.OffreDeTonteDetails.EspeceAnimal</p>
-            <p class="infosOffre_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.OffreDeTonteDetails.RaceAnimal</p>
-            <p class="infosOffre_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.NombreAnimaux</p>
-            <span class="separator-fin-prestation"></span>
-            <p class="infosOffre_infosPrix"><strong>Coût par jour par animal: </strong>@Model.OffreDeTonteDetails.CoutAnimalParJour</p>
+    <div class="wrap-column-presta-details">
+        <div class="map-left">
+            <input type="hidden" id="longitude" value="@Model.OffreDeTonteDetails.LongitudeOffreDetonte" />
+            <input type="hidden" id="latitude" value="@Model.OffreDeTonteDetails.LatitudeOffreDeTonte" />
+            <div id="mapid" class="map-prestation-detail-eleveur"></div>
         </div>
+        <div class="">
+            <div class="infosOffre_infos offre-prestation-right">
+                <p class="infosOffre_infosNomUtilisateur"><strong>Nom de l'éleveur : <a href="#">@Model.OffreDeTonteDetails.NomUtilisateur @Model.OffreDeTonteDetails.PrenomUtilisateur</a></strong></p>
+                <p class="infosOffre_infosDescription"><strong>Description de l'offre' : </strong>@Model.OffreDeTonteDetails.DescriptionOffre</p>
+                <span class="separator-fin-prestation"></span>
 
-        <div class="infosOffre_selection ">
+                @*faire le tableau*@
+                <table class="info-offre-table">
+                    <tr>
+                        <td class="title-td">Début</td>
+                        <td class="title-td">Fin</td>
+                        <td class="title-td">Acceptation</td>
+                        <td class="title-td">Installation</td>
+                    </tr>
 
-            @if (ViewBag.Classe == 1)
-            {
-                <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnPointageJournalierDisabledClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalierDisabled" />
-                </div>
-                <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnDeclarerAnomalieDisabledClass" title="@messageBoutonDeclarerAnomalie" type="button" value="Déclarer une Anomalie" onclick="location.href='@Url.Action("DeclarationAnomalieClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnDeclarerAnomalieDisabled" />
-                </div>
-                <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnListeAnomalieDisabledClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
-                </div>
-                <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnTerminerDisabledClass" title="@messageBoutonTerminer" type="button" value="Terminer" onclick="location.href='@Url.Action("FinPrestation", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnTerminerDisabled" />
-                </div>
-            }
-            else if (ViewBag.Classe == 0)
-            {
-                <div>
-                    <a class="btn-light" asp-controller="Utilisateur" asp-action="AnnulationAvantAcceptation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Annuler la réservation</a>
-                </div>
-            }
-            else if(ViewBag.Classe == 2)
-            {
-                <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnPointageJournalierDisabledClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalierDisabled" />
-                </div>
-                <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnListeAnomalieDisabledClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
-                </div>
-                <div class="btn-prestation-details-right">
-                    <input class="btn-light @btnTerminerDisabledClass" title="@messageBoutonTerminer" type="button" value="Evaluations" onclick="location.href='@Url.Action("AfficherEvaluationPrestation", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnTerminerDisabled" />
-                </div>
-            }
-            else if(ViewBag.Classe == 3)
-            {
-                @if (Model.DateAnnulationPrematuree.HasValue)
+                    <tr>
+                        <td>@Model.DateDebutDemande.ToString("dd/MM/yyyy")</td>
+                        <td>@Model.DateFinDemande.ToString("dd/MM/yyyy")</td>
+
+                        @if (Model.DateAcceptationDemande.HasValue)
+                        {
+                            <td>@Model.DateAcceptationDemande.Value.ToString("dd/MM/yyyy");</td>
+                        }
+                        else
+                        {
+                            <td>La demande nest pas encore acceptée</td>
+                        }
+
+                        @if (Model.DateInstallationTroupeau.HasValue)
+                        {
+                            <td>@Model.DateInstallationTroupeau.Value.ToString("dd/MM/yyyy");</td>
+                        }
+                        else if (!Model.DateAcceptationDemande.HasValue)
+                        {
+                            <td>La demande n'est pas encore acceptée</td>
+
+                        }
+                        else
+                        {
+                            <td>Le troupeau n'est pas encore installé</td>
+                        }
+                    </tr>
+                </table>
+                <span class="separator-fin-prestation"></span>
+
+
+                <table class="info-offre-table">
+                    <tr>
+                        <td class="title-td">Distance</td>
+                        <td class="title-td">Ville</td>
+                    </tr>
+                    <tr>
+                        <td>@Model.OffreDeTonteDetails.DistanceOffreDeTonteTerrain km </td>
+                        <td>@Model.OffreDeTonteDetails.NomVilleOfrreDeTonte. / @Model.OffreDeTonteDetails.CodePostaleOffreDeTonte</td>
+                    </tr>
+                </table>
+                <span class="separator-fin-prestation"></span>
+                <table class="info-offre-table">
+                    <tr>
+                        <td class="title-td">Espece </td>
+                        <td class="title-td">Race </td>
+                        <td class="title-td">Nombre</td>
+                        <td class="title-td">Cout / mouton</td>
+                    </tr>
+                    <tr>
+                        <td>@Model.OffreDeTonteDetails.EspeceAnimal</td>
+                        <td>@Model.OffreDeTonteDetails.RaceAnimal</td>
+                        <td>@Model.NombreAnimaux</td>
+                        <td>@Model.OffreDeTonteDetails.CoutAnimalParJour €</td>
+                    </tr>
+                </table>
+                <span class="separator-fin-prestation"></span>
+
+
+            </div>
+
+            <div class="infosOffre_selection selection-prestation-details">
+
+                @if (ViewBag.Classe == 1)
+                {
+                    <div class="btn-prestation-details-right">
+                        <input class="btn-light @btnPointageJournalierDisabledClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalierDisabled" />
+                    </div>
+                    <div class="btn-prestation-details-right">
+                        <input class="btn-light @btnDeclarerAnomalieDisabledClass" title="@messageBoutonDeclarerAnomalie" type="button" value="Déclarer une Anomalie" onclick="location.href='@Url.Action("DeclarationAnomalieClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnDeclarerAnomalieDisabled" />
+                    </div>
+                    <div class="btn-prestation-details-right">
+                        <input class="btn-light @btnListeAnomalieDisabledClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
+                    </div>
+                    <div class="btn-prestation-details-right">
+                        <input class="btn-light @btnTerminerDisabledClass" title="@messageBoutonTerminer" type="button" value="Terminer" onclick="location.href='@Url.Action("FinPrestation", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@Model.TerrainDetails.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnTerminerDisabled" />
+                    </div>
+                }
+                else if (ViewBag.Classe == 0)
+                {
+                    <div class="btn-prestation-details-right">
+                        <a class="btn-light" asp-controller="Utilisateur" asp-action="AnnulationAvantAcceptation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.TerrainDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Annuler la réservation</a>
+                    </div>
+                }
+                else if (ViewBag.Classe == 2)
                 {
                     <div class="btn-prestation-details-right">
                         <input class="btn-light @btnPointageJournalierDisabledClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalierDisabled" />
@@ -157,8 +195,24 @@
                     <div class="btn-prestation-details-right">
                         <input class="btn-light @btnListeAnomalieDisabledClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
                     </div>
+                    <div class="btn-prestation-details-right">
+                        <input class="btn-light @btnTerminerDisabledClass" title="@messageBoutonTerminer" type="button" value="Evaluations" onclick="location.href='@Url.Action("AfficherEvaluationPrestation", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnTerminerDisabled" />
+                    </div>
                 }
-            }
+                else if (ViewBag.Classe == 3)
+                {
+                    @if (Model.DateAnnulationPrematuree.HasValue)
+                    {
+                        <div class="btn-prestation-details-right">
+                            <input class="btn-light @btnPointageJournalierDisabledClass" title="@messageBoutonPointageJournalier" type="button" value="Pointage Journalier" onclick="location.href='@Url.Action("PointageJournalierClient", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnPointageJournalierDisabled" />
+                        </div>
+                        <div class="btn-prestation-details-right">
+                            <input class="btn-light @btnListeAnomalieDisabledClass" title="@messageBoutonListeAnomalie" type="button" value="Liste Anomalies" onclick="location.href='@Url.Action("ListeAnomalie", "Utilisateur", new {idDemandeDeReservation=@Model.IdDemande, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" disabled="@btnListeAnomalieDisabled" />
+                        </div>
+                    }
+                }
+
+            </div>
         </div>
     </div>
 </div>
