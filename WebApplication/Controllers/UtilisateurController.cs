@@ -408,6 +408,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             return View(anomalieDetailsViewModel);
         }
 
+
         [HttpGet]
         public IActionResult AnnulationPrematuree(int idDemandeDeReservation, int idUtilisateur, int idClasse)
         {
@@ -429,7 +430,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             if (ModelState.IsValid)
             {
                 new DemandeDeReservationBU().AnnulationPrematureeDemandeDeReservationById(raisonAnnulationPrematureeViewModel.IdDemande, raisonAnnulationPrematureeViewModel.IdRaisonAnnulPrem);
-                ViewBag.Message = "validation de l'annumaltion de la prestation";
+                ViewBag.Message = "validation de l'annulation de la prestation";
                 return View("Reussite");
             }
             else

@@ -1,21 +1,45 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@using Fr.EQL.Ai109.Tontapatt.Model
+@model AnomalieDetailsViewModel
 @{
 }
 <main class="descriptionAnomalie_main">
     <h1 class="descriptionAnomalie_h1">Anomalie numéro : 8934893475893</h1>
     <div class="descriptionAnomalie">
         <div class="descriptionAnomalie_description">
-            <p>Nom de l'utilisateur : henry bernard</p>
-            <p>Nom de l'autre partie : henry bernard</p>
-            <p>Date de début de l'anomalie : 09/08/21</p>
-            <p>Date de fin de l'anomalie : cette anomalie n'est pas cloturé</p>
-            <p>Description de l'anomalie : un mouton est mort</p>
-            <p>Type de l'anomalie : mouton mort</p>
-            <p>
-                Status de l'anomalie :  <span class="descriptionAnomalie_statusInfos">En cours</span>
-                <a class="descriptionAnomalie_retour" href="#">Revenir à la liste d'anomalies</a>
+            @if (Model.IdUtilisateurDeclarant == ViewBag.IdUtilisateur)
+            {
+                <p class="declarant-prestation-tag">Vous êtes le déclarant de cette anomalie</p>
+            }
+            else
+            {
+                <p class="declarant-prestation-tag">Vous n'êtes pas le déclarant de cette anomalie</p>
+            }
+            <p class="client-prestation-tag">Nom de l'éleveur : @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur NomUtilisateur </p>
+            <p class="eleveur-prestation-tag">:Nom du client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur</p>
+            <p>Date de début de l'anomalie : @Model.DateDeclenchementAnomalie</p>
+            @if (Model.DateFinAnomalie is null)
+            {
+                <p>Date de fin de l'anomalie : cette anomalie n'est pas cloturé</p>
+            }
+            else
+            {
+                <p> Date de fin de l'anomalie :  anomalie.DateFinAnomalie</p>
+            }
+            <p>Description de l'anomalie : @Model.DescriptionAnomalie</p>
+            <p>Type de l'anomalie : @Model.TypesAnomalie.</p>
+            @if (Model.DateFinAnomalie is null)
+            {
+                <p> Status de l'anomalie :  <span class="descriptionAnomalie_statusInfosEnCours">En cours</span></p>
+            }
+            else
+            {
+                <p> Status de l'anomalie :  <span class="descriptionAnomalie_statusTermine">Terminé</span></p>
+            }
+            <a class="descriptionAnomalie_retour" href="#">Revenir à la liste d'anomalies</a>
         </div>
         <button class="descriptionAnomalie_statusFin">Mettre fin à l'anomlie</button>
     </div>
