@@ -946,7 +946,6 @@ choixTerrainDescription_img {
     align-items: center;
     max-width: 100%;
     place-content:center;
-    background-color: var(--primary);
 }
 
 .infosOffre_date div {
@@ -2473,6 +2472,7 @@ choixTerrainDescription_img {
 
 .wrap-column-presta-details{
     display: flex;
+    width:100%;
 }
 
 .map-left {
@@ -2486,4 +2486,8 @@ z-index: -1;
 
 .offre-prestation-right{
     margin: 0;
+}
+
+.selection-prestation-details{
+    background-color: var(--primary);
 }
