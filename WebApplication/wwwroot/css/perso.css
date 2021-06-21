@@ -746,11 +746,13 @@ choixTerrainDescription_img {
     background-color: #f5f5f57d;
     position: relative;
     margin-bottom: 3em;
+    margin-right: 25em;
     padding: 1em 8em 1em 3em;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
     padding-left: 0em;
     transition: transform 1s;
+    width: 46%;
 }
 
     .body-card-list-offre::before {
@@ -809,8 +811,11 @@ choixTerrainDescription_img {
 
 .header-liste-offres {
     display: flex;
-    width: 100%;
-    padding-bottom: 3em
+    width: 44%;
+    padding-bottom: 3em;
+    position: fixed;
+    top: 107px;
+    right: 0;
 }
 
     .header-liste-offres div {

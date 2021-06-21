@@ -57,8 +57,13 @@ else
                         <p> @offreDeTonteDetails.NomOffre <!-- nom de l'offre --></p>
                         <!-- je vais appeller l'api pour la vue a ce moment et j'aurais besoin d'object avec longitude lattitude terrain et offre -->
                         <!-- TU PEUX UTILISER @Model.TerrainDetails.LongitudeTerrain ET @Model.TerrainDetails.LatitudeTerrain + @offreDeTonteDetails.LatitudeOffreDeTonte ET
-                        @offreDeTonteDetails.LongitudeOffreDetonte-->
+        @offreDeTonteDetails.LongitudeOffreDetonte-->
                         <p>Distance : @offreDeTonteDetails.DistanceOffreDeTonteTerrain km<!-- distance avec l'offre --></p>
+                    </div>
+                    <div class="">
+                        <p> @offreDeTonteDetails.AdresseTroupeau <!-- nom de l'offre --></p>
+                        <p alt="prix par mouton par jour"> Prix: @offreDeTonteDetails.CoutAnimalParJour €/mouton<!-- nom de l'eleveur --></p>
+                        <p>Distance max : @offreDeTonteDetails.DistanceMaximale km<!-- distance avec l'offre --></p>
                     </div>
                     <div class="lien-carte-terrain">
                         <a class="" asp-controller="Utilisateur" asp-action="ChoixOffreDescription" asp-route-idOffreDeTonte="@offreDeTonteDetails.IdOffre" asp-route-idTerrain="@Model.TerrainDetails.IdTerrain"></a>
