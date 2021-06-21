@@ -890,7 +890,7 @@ choixTerrainDescription_img {
 .btn-prestation-details-right {
     margin-bottom: 2em;
     margin-top: 2em;
-    min-width: 359px;
+    min-width: 300px;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -940,9 +940,13 @@ choixTerrainDescription_img {
 
 .infosOffre_selection {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     font-family: 'Roboto';
     align-items: center;
+    max-width: 100%;
+    place-content:center;
+    background-color: var(--primary);
 }
 
 .infosOffre_date div {
@@ -2284,4 +2288,21 @@ choixTerrainDescription_img {
 
 .card-right-list-offre{
     align-self:center;
+}
+
+.wrap-column-presta-details{
+    display: flex;
+}
+
+.map-left {
+    width: 50%;
+}
+.map-prestation-detail-eleveur{
+height: 100% !important;
+width: 107% !important;
+z-index: -1;
+}
+
+.offre-prestation-right{
+    margin: 0;
 }
