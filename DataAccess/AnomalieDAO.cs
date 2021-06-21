@@ -93,6 +93,31 @@ namespace Fr.EQL.Ai109.Tontapatt.DataAccess
             return anomalies;
         }
 
+        public bool IsUneAnomalieEnCours()
+        {
+            MySqlCommand cmd = CreerCommand();
+            cmd.CommandText = @"SELECT COUNT(*) 'NOMBRE'
+                                FROM anomalie 
+                                WHERE date_fin_anomalie IS NULL";
+
+            cmd.Connection.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            long nombreAnomalies = 0;
+            if (dr.Read())
+            {
+                nombreAnomalies = dr.GetInt64("NOMBRE");
+            }
+
+            if(nombreAnomalies == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private static Anomalie DataReaderAnomalie(MySqlDataReader dr)
         {
             Anomalie anomalie = new();

@@ -98,6 +98,12 @@
         messageBoutonTerminer = "Le troupeau n'a pas été installé. Prestation non effectuée";
         btnTerminerDisabledClass = "btn-disabled";
     }
+    else if (ViewBag.IsUneAnomalieEnCours)
+    {
+        btnTerminerDisabled = true;
+        messageBoutonTerminer = "Il faut que toutes les anomalies soit clôturées pour pouvoir terminer la prestation";
+        btnTerminerDisabledClass = "btn-disabled";
+    }
     else
     {
         btnTerminerDisabled = false;
@@ -144,6 +150,7 @@
                         <td class="title-td">Fin</td>
                         <td class="title-td">Acceptation</td>
                         <td class="title-td">Installation</td>
+                        <td class="title-td">Status</td>
                     </tr>
                     <tr>
                         <td>@Model.DateDebutDemande.ToString("dd/MM/yyyy")</td>
@@ -173,6 +180,33 @@
                         {
                             <td>Le troupeau n'est pas encore installé</td>
                         }
+                        @if(ViewBag.Classe == 1)
+                        {
+                            <td>En cours</td>
+                        }
+                        else if (ViewBag.Classe == 2)
+                        {
+                            <td>Terminée le @Model.DateFinDemande.ToString("dd/MM/yyyy")</td>
+                        }
+                        else if(ViewBag.Classe == 0)
+                        {
+                            <td>En attente</td>
+                        }
+                        else
+                        {
+                            @if (Model.DateAnnulationDemande.HasValue)
+                            {
+                                <td>Annulée le @Model.DateAnnulationDemande.Value.ToString("dd/MM/yyyy")</td>
+                            } 
+                            else if (Model.DateAnnulationPrematuree.HasValue)
+                            {
+                                <td>Annulée le @Model.DateAnnulationPrematuree.Value.ToString("dd/MM/yyyy")</td>
+                        }
+                            else if (Model.DateRefusDemande.HasValue)
+                            {
+                                <td>Refusée le @Model.DateRefusDemande.Value.ToString("dd/MM/yyyy")</td>
+                            }
+                        }
                     </tr>
 
                 </table>
@@ -198,12 +232,14 @@
                         <td class="title-td">Race </td>
                         <td class="title-td">Nombre</td>
                         <td class="title-td">Cout / mouton</td>
+                        <td class="title-td">Cout total</td>
                     </tr>
                     <tr>
                         <td>@Model.OffreDeTonteDetails.EspeceAnimal</td>
                         <td>@Model.OffreDeTonteDetails.RaceAnimal</td>
                         <td>@Model.NombreAnimaux</td>
                         <td>@Model.OffreDeTonteDetails.CoutAnimalParJour €</td>
+                        <td>@Model.CoutDemande €</td>
                     </tr>
                 </table>
             </div>
