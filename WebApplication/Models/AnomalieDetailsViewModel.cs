@@ -25,9 +25,13 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 
         public DateTime? DateDeclenchementAnomalie { get; set; }
 
+        public string TypeAnomalie { get; set; }
+
         public DemandeDeReservationDetails DemandeDeReservationDetails { get; set; }
 
         public List<Anomalie> Anomalies { get; set; }
+        
+        public Anomalie Anomalie { get; set; }
 
         public int IdUtilisateurDeclarant { get; set; }
 

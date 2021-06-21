@@ -7,7 +7,7 @@
 @{
 }
 <main class="descriptionAnomalie_main">
-    <h1 class="descriptionAnomalie_h1">Anomalie numéro : 8934893475893</h1>
+    <h1 class="descriptionAnomalie_h1">Anomalie</h1>
     <div class="descriptionAnomalie">
         <div class="descriptionAnomalie_description">
             @if (Model.IdUtilisateurDeclarant == ViewBag.IdUtilisateur)
@@ -18,20 +18,20 @@
             {
                 <p class="declarant-prestation-tag">Vous n'êtes pas le déclarant de cette anomalie</p>
             }
-            <p class="client-prestation-tag">Nom de l'éleveur : @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur NomUtilisateur </p>
-            <p class="eleveur-prestation-tag">:Nom du client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur</p>
-            <p>Date de début de l'anomalie : @Model.DateDeclenchementAnomalie</p>
-            @if (Model.DateFinAnomalie is null)
+            <p>Nom de l'éleveur : @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur NomUtilisateur </p>
+            <p>Nom du client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur</p>
+            <p>Date de début de l'anomalie : @Model.Anomalie.DateDeclenchementAnomalie</p>
+            @if (Model.Anomalie.DateFinAnomalie.HasValue)
             {
                 <p>Date de fin de l'anomalie : cette anomalie n'est pas cloturé</p>
             }
             else
             {
-                <p> Date de fin de l'anomalie :  anomalie.DateFinAnomalie</p>
+                <p> Date de fin de l'anomalie :  @Model.Anomalie.DateFinAnomalie.Value</p>
             }
-            <p>Description de l'anomalie : @Model.DescriptionAnomalie</p>
-            <p>Type de l'anomalie : @Model.TypesAnomalie.</p>
-            @if (Model.DateFinAnomalie is null)
+            <p>Description de l'anomalie : @Model.Anomalie.DescriptionAnomalie</p>
+            <p>Type de l'anomalie : @Model.Anomalie.IdTypeAnomalie</p>
+            @if (Model.Anomalie.DateFinAnomalie.HasValue)
             {
                 <p> Status de l'anomalie :  <span class="descriptionAnomalie_statusInfosEnCours">En cours</span></p>
             }
@@ -39,8 +39,8 @@
             {
                 <p> Status de l'anomalie :  <span class="descriptionAnomalie_statusTermine">Terminé</span></p>
             }
-            <a class="descriptionAnomalie_retour" href="#">Revenir à la liste d'anomalies</a>
+        <a class="descriptionAnomalie_retour" asp-action="ListeAnomalie" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@Model.Anomalie.IdDemande" asp-route-idUtilisateur="@ViewBag.IdUtilisateur" asp-route-idAnomalie="@Model.Anomalie.IdAnomalie" asp-route-idClasse="@ViewBag.Classe">Revenir à la liste d'anomalies</a>
         </div>
-        <button class="descriptionAnomalie_statusFin">Mettre fin à l'anomlie</button>
+        <button class="descriptionAnomalie_statusFin">Mettre fin à l'anomalie</button>
     </div>
 </main>
