@@ -19,16 +19,9 @@
             {
                 <div class="listeAnomalie">
                     <div class="listeAnomalie_infoStatus">
-                        @if (anomalie.DateFinAnomalie is null)
-                        {
-                            <div class="listeAnomalie_infoStatusEnCours">En cours</div>
-                        }
-                        else
-                        {
-                            <div class="listeAnomalie_infoStatusTermine">Terminé</div>
-                        }
+                        
                         <div class="listeAnomalie_infoStatusDetails">
-                            <a asp-action="" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@anomalie.IdDemande" asp-route-idUtilisateur="@ViewBag.IdUtilisateur" asp-route-idAnomalie="@anomalie.IdAnomalie" asp-route-idClasse="@ViewBag.Classe"><i class="far fa-eye fa-3x"></i></a>
+                            <a asp-action="AnomalieDescription" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@anomalie.IdDemande" asp-route-idUtilisateur="@ViewBag.IdUtilisateur" asp-route-idAnomalie="@anomalie.IdAnomalie" asp-route-idClasse="@ViewBag.Classe"><i class="far fa-eye fa-3x"></i></a>
                         </div>
                     </div>
                     <div class="listeAnomalie_infosaAnomalie">
@@ -54,9 +47,17 @@
                         }
                         else
                         {
-                            <p class="eleveur-prestation-tag">:Nom du client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur</p>
+                            <p class="eleveur-prestation-tag">Nom du client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur</p>
                         }
                         <p>Lieux de la prestation : @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain</p>
+                        @if (Model.DateFinAnomalie is null)
+                        {
+                            <p> Statut de l'anomalie :  <span class="descriptionAnomalie_statusInfosEnCours">En cours</span></p>
+                        }
+                        else
+                        {
+                            <p> Statut de l'anomalie :  <span class="descriptionAnomalie_statusTermine">Terminé</span></p>
+                        }
                     </div>
                 </div>
             }
