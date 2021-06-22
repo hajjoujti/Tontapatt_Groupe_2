@@ -1,4 +1,5 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 :root {
     --Dark: #13070C;
@@ -177,7 +178,7 @@ header {
 /* ///////////////////// STYLE FOOTER ///////////////////*/
 footer {
     background: #f1f1f1;
-    padding-bottom:1em;
+    padding-bottom: 1em;
 }
 
 .footer-container {
@@ -923,7 +924,7 @@ choixTerrainDescription_img {
     flex-direction: column;
     justify-content: center;
     padding: 0 1em;
-    align-items:center;
+    align-items: center;
 }
 
     .infosOffre_date input {
@@ -945,7 +946,7 @@ choixTerrainDescription_img {
     font-family: 'Roboto';
     align-items: center;
     max-width: 100%;
-    place-content:center;
+    place-content: center;
 }
 
 .infosOffre_date div {
@@ -973,10 +974,10 @@ choixTerrainDescription_img {
         transition: opacity .3s linear;
     }
 
-.infosOffre_button button:hover {
-    background-color: var(--secondary);
-    color: var(--Dark);
-}
+        .infosOffre_button button:hover {
+            background-color: var(--secondary);
+            color: var(--Dark);
+        }
 
 .infosOffre_buttonSelection {
     align-items: center;
@@ -1660,10 +1661,15 @@ choixTerrainDescription_img {
 
 
 .succes-body {
-    flex-direction: column;
+    flex-direction: row;
     background: white;
     align-items: center;
     text-align: center;
+    padding-bottom: 4em;
+    width: 71%;
+    position: relative;
+    height: 54vh;
+    align-items: flex-end;
 }
 
     .succes-body img {
@@ -1675,6 +1681,90 @@ choixTerrainDescription_img {
     margin-left: 0;
     display: block;
     letter-spacing: 5px;
+}
+
+.success-footer h2 {
+    position: absolute;
+    top: 38%;
+    right: -9%;
+    background-color: var(--primary);
+    width: 437px;
+    font-size: 40px;
+    font-family: 'Poppins';
+    color: var(--light);
+    text-align: left;
+    padding-left: 1em;
+}
+
+.success-footer p {
+    font-size: 24px;
+    font-family: 'Poppins';
+}
+
+.succes-span-1 {
+    position: absolute;
+    width: 198px;
+    background-color: var(--primary);
+    height: 8px;
+    top: 355px;
+    left: 1px;
+}
+
+.succes-span-2 {
+    position: absolute;
+    width: 8px;
+    background-color: var(--secondary);
+    height: 8px;
+    top: 385px;
+    left: 191px;
+}
+
+
+.succes-span-3 {
+    position: absolute;
+    width: 8px;
+    background-color: var(--secondary);
+    height: 8px;
+    top: 405px;
+    left: 191px;
+}
+
+.succes-span-4 {
+    position: absolute;
+    width: 8px;
+    background-color: var(--secondary);
+    height: 8px;
+    top: 430px;
+    left: 191px;
+}
+
+.succes-span-5 {
+    font-family: 'Pacifico', cursive;
+    font-size: 91px;
+    position: absolute;
+    top: 1px;
+    left: 782px;
+    color: var(--primary);
+}
+
+.succes-span-6 {
+    position: absolute;
+    width: 100px;
+    background-color: var(--primary);
+    height: 75vh;
+    top: -96px;
+    left: 191px;
+    z-index: -91;
+}
+
+.succes-main {
+    margin: 0;
+    font-family: 'Roboto';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 72vh;
+    place-content: center;
 }
 /* ------------- LISTE DES ANOMALIES --------------------*/
 .listeAnomalie_main {
@@ -1756,6 +1846,7 @@ choixTerrainDescription_img {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family:Roboto;
 }
 
 .AnnulationPrestation_h1 {
@@ -1775,7 +1866,50 @@ choixTerrainDescription_img {
 
 .AnnulationPrestation_infosPrestation {
     margin: 1rem;
+    display: flex;
 }
+
+    .AnnulationPrestation_infosPrestation .btn-primary {
+        padding: 0;
+        font-size: 16px;
+        color: var(--light);
+        background: var(--Dark);
+        border: none;
+        font-weight: 700;
+        outline: none;
+        border-radius: 30px;
+        /* margin-left: 20px; */
+        cursor: pointer;
+        transition: opacity .3s linear;
+        height: 39px;
+        display: flex;
+        align-items: center;
+        padding-left: 1em;
+        padding-right: 1em;
+        align-self: center;
+    }
+
+
+    .AnnulationPrestation_infosPrestation td {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+.AnnulationPrestation_formRaison select {
+    margin: 1rem;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.annulation-main {
+    align-items: center;
+}
+
+    .annulation-main h2 {
+        width: 100%;
+        text-align: center;
+    }
 
 .AnnulationPrestation_infosPrestation_buttonChange {
     height: 2rem;
@@ -1793,7 +1927,7 @@ choixTerrainDescription_img {
 
 .AnnulationPrestation_form {
     margin: 2rem;
-    width: 50%;
+    width: 40%;
     padding: 1em;
     border-radius: 5px;
     background-color: #4F6367;
@@ -1807,13 +1941,15 @@ choixTerrainDescription_img {
         font-size: 1rem;
         margin: auto;
     }
+    .AnnulationPrestation_form .btn-light {
+        max-width: 270px;
+        align-self: center;
+    }
 
-.AnnulationPrestation_formInput {
-    margin: 1rem;
-    border: 2px solid #ffffff;
-    border-radius: 5px;
-    padding: 1rem;
-}
+    .AnnulationPrestation_formInput {
+        display: flex;
+        place-content: center;
+    }
 
 .AnnulationPrestation_formInfos input, .declarationAnomalie_formInfos textarea {
     font: 1em sans-serif;
@@ -1883,16 +2019,6 @@ choixTerrainDescription_img {
         top: 1px;
     }
 
-
-.succes-body {
-    flex-direction: column;
-    background: white;
-    align-items: center;
-    text-align: center;
-    padding-bottom: 4em;
-}
-
-
 .AnnulationPrematuree_infosPrestation_buttonChange {
     background-color: #e4685d;
     border-radius: 4px;
@@ -1927,22 +2053,46 @@ choixTerrainDescription_img {
 .body-fin-prestation {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 2em;
-    background-color: var(--info);
+    background-color: var(--primary);
     border-radius: 5px;
     letter-spacing: 2px;
     line-height: 2;
     font-family: 'Poppins';
-    max-width: 1000px;
     width: 100%;
+    place-self: center;
 }
 
 * {
     box-sizing: border-box;
 }
 
+.fin-presta-span-1 {
+    position: absolute;
+    width: 100px;
+    background-color: var(--primary);
+    height: 101vh;
+    top: 102px;
+    left: 512px;
+    z-index: -91;
+    transform: skew( 313deg, 360deg );
+    animation-duration: 5s;
+    animation-name: rotate;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    box-shadow: 17px 43px 47px var(--primary);
+}
 
+@keyframes rotate {
+    from {
+        transform: skew( 313deg, 360deg );
+    }
+
+    to {
+        transform: skew( 313deg, 375deg );
+    }
+}
 
 .rating {
     display: flex;
@@ -2060,25 +2210,25 @@ choixTerrainDescription_img {
     flex-wrap: wrap;
     align-items: center;
     box-shadow: 0 4px 30px rgba(0,0,0,.05);
+    align-self: center
 }
 
 
 
 .separator {
     width: 1px;
-    height: 14em;
+    height: 25em;
     align-self: center;
-    background-color: var(--primary);
-    /* z-index: 6665; */
+    background-color: var(--light);
     border-radius: 1px;
     position: relative;
 }
 
     .separator img {
         position: absolute;
-        height: 6em;
-        top: 46px;
-        left: -48px;
+        height: 11em;
+        top: 291px;
+        left: -88px;
     }
 
 .separator-fin-prestation {
@@ -2107,6 +2257,7 @@ choixTerrainDescription_img {
 .main-fin-Prestation {
     display: flex;
     justify-content: center;
+    height: 90vh;
 }
 
 .feedback p {
@@ -2200,8 +2351,13 @@ choixTerrainDescription_img {
     transition: opacity .3s linear;
     font-family: 'Poppins';
     margin-bottom: 1em;
-    min-height: 200px;
+    min-height: 90px;
 }
+
+.feedback h2 {
+    margin: 0;
+}
+
 
 /*map*/
 #mapid {
@@ -2305,13 +2461,13 @@ choixTerrainDescription_img {
     justify-content: center;
 }
 
-.title-td{
+.title-td {
     font-family: "Poppins";
-    font-weight:600;
+    font-weight: 600;
 }
 
-.card-right-list-offre{
-    align-self:center;
+.card-right-list-offre {
+    align-self: center;
 }
 
 
@@ -2360,10 +2516,12 @@ choixTerrainDescription_img {
     background-color: #29b14b;
     font-size: x-large;
 }
+
 .descriptionAnomalie_statusInfosTermine {
     background-color: #c2432d;
     font-size: x-large;
 }
+
 .descriptionAnomalie_statusFin {
     border: 1px solid black;
     border-radius: 5px;
@@ -2473,10 +2631,12 @@ choixTerrainDescription_img {
     background-color: #29b14b;
     font-size: x-large;
 }
+
 .descriptionAnomalie_statusInfosTermine {
     background-color: #c2432d;
     font-size: x-large;
 }
+
 .descriptionAnomalie_statusFin {
     border: 1px solid black;
     border-radius: 5px;
@@ -2484,6 +2644,7 @@ choixTerrainDescription_img {
     width: 15rem;
     height: 5rem;
 }
+
 .descriptionAnomalie_retour {
     border: 1px solid black;
     border-radius: 5px;
@@ -2491,34 +2652,35 @@ choixTerrainDescription_img {
     width: 15rem;
     height: 3rem;
     background-color: #135d25;
-    color : #ffffff;
+    color: #ffffff;
 }
 
 
-.wrap-column-presta-details{
+.wrap-column-presta-details {
     display: flex;
-    width:100%;
+    width: 100%;
 }
 
 .map-left {
     width: 50%;
 }
-.map-prestation-detail-eleveur{
-height: 100% !important;
-width: 107% !important;
-z-index: -1;
+
+.map-prestation-detail-eleveur {
+    height: 100% !important;
+    width: 107% !important;
+    z-index: -1;
 }
 
-.offre-prestation-right{
+.offre-prestation-right {
     margin: 0;
 }
 
-.selection-prestation-details{
+.selection-prestation-details {
     background-color: var(--primary);
 }
 
-.main-refus-demande{
-    width:100% !important;
+.main-refus-demande {
+    width: 100% !important;
 }
 
 .body-refus-demande {
@@ -2564,10 +2726,12 @@ z-index: -1;
     cursor: pointer;
     text-align: center;
     height: 46px;
-    place-self:center;
+    place-self: center;
 }
+
 .declarationAnomalie_infosPrestation td {
     padding: 2px 10px 2px 10px;
+}
 }
 
 
