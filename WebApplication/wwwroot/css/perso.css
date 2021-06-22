@@ -1468,7 +1468,7 @@ choixTerrainDescription_img {
 /*//////////////////    DECLARATION D'ANOMALIE     //////////////////////*/
 
 .declarationAnomalie {
-    /* margin: auto; */
+    margin: auto;
     border-radius: 5px;
     box-shadow: 12px 12px 2px 1px var(--info);
     display: flex;
@@ -1481,12 +1481,9 @@ choixTerrainDescription_img {
     background-size: 2108px;
     background-color: #85a3c9;
     background-position-x: 95%;
-<<<<<<< Updated upstream
-=======
     /* margin-bottom: 8rem; */
     width: 100%;
 
->>>>>>> Stashed changes
 }
 
 .declarationAnomalie_main {
