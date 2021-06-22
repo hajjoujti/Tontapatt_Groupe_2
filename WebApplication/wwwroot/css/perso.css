@@ -2491,3 +2491,17 @@ z-index: -1;
 .selection-prestation-details{
     background-color: var(--primary);
 }
+
+.main-refus-demande{
+    width:100% !important;
+}
+
+.body-refus-demande {
+    background: none;
+    background-position: center;
+    height: 88vh;
+    width: 100vw;
+    align-content: center;
+    max-width: none;
+    background-image: url(https://cdn.pixabay.com/photo/2020/10/14/18/35/sign-post-5655110_960_720.png);
+}
