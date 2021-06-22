@@ -10,21 +10,56 @@
 }
 <main class="AnnulationPrestation_main">
     <h1 class="AnnulationPrestation_h1">Annuler La prestation</h1>
-        <div class="AnnulationPrestation">
-            <div class="AnnulationPrestation_infosPrestation">
-                <h2>Récapitulatif de la prestation : </h2>
-                <p class="AnnulationPrestation_NumeroPrestation"><strong>Numero prestation: @Model.DemandeDeReservationDetails.NumeroReservation</strong></p>
-                <p class="AnnulationPrestation_infosPrestation_infosNomEleveur"><strong>Nom du Client : @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.TerrainDetails.PrenomUtilisateur</strong></p>
-                <p class="AnnulationPrestation_infosPrestation_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DemandeDeReservationDetails.DateDebutDemande.ToString("dd/MM/yyyy")</p>
-                <p class="AnnulationPrestation_infosPrestation_infosDateFin"><strong>Date de fin de la prestation : </strong>@Model.DemandeDeReservationDetails.DateFinDemande.ToString("dd/MMyyyy")</p>
-                <p class="AnnulationPrestation_infosPrestation_infosAdresseTerrain"><strong>Adresse terrain : </strong>@Model.DemandeDeReservationDetails.TerrainDetails.AdresseTerrain</p>
-                <p class="AnnulationPrestation_infosPrestation_infosNomVille"><strong>Code polstal / Ville : </strong>@Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain</p>
-                <p class="AnnulationPrestation_infosPrestation_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.EspeceAnimal</p>
-                <p class="AnnulationPrestation_infosPrestation_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.RaceAnimal</p>
-                <p class="AnnulationPrestation_infosPrestation_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.DemandeDeReservationDetails.NombreAnimaux</p>
-                <p class="AnnulationPrestation_infosPrestation_infosPrix"><strong>Coût prestation : </strong>@Model.DemandeDeReservationDetails.CoutDemande</p>
-                <a class="AnnulationPrematuree_infosPrestation_buttonChange" asp-controller="Utilisateur" asp-action="PrestationDetailsEleveur" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">Revenir à la préstation</a>
-            </div>
+    <div class="declarationAnomalie_main annulation-main">
+        <h2>Récapitulatif de la prestation : </h2>
+        <div class="AnnulationPrestation_infosPrestation">
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Numero</td>
+                    <td class="title-td">Nom</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.NumeroReservation</td>
+                    <td>@Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.TerrainDetails.PrenomUtilisateur</td>
+                </tr>
+            </table>
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Debut</td>
+                    <td class="title-td">Fin</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.DateDebutDemande.ToString("dd/MM/yyyy")</td>
+                    <td>@Model.DemandeDeReservationDetails.DateFinDemande.ToString("dd/MM/yyyy")</td>
+                </tr>
+            </table>
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Adresse</td>
+                    <td class="title-td">Ville</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.TerrainDetails.AdresseTerrain</td>
+                    <td>@Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain</td>
+                </tr>
+            </table>
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Espece</td>
+                    <td class="title-td">Race</td>
+                    <td class="title-td">Nombre</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.EspeceAnimal</td>
+                    <td>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.RaceAnimal</td>
+                    <td>@Model.DemandeDeReservationDetails.NombreAnimaux</td>
+                </tr>
+            </table>
+
+
+            <a class="btn-primary" asp-controller="Utilisateur" asp-action="PrestationDetailsEleveur" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">Revenir à la préstation</a>
+        </div>
+        <h2 class="AnnulationPrestation_infosPrestation_infosPrix"><strong>Coût prestation : </strong>@Model.DemandeDeReservationDetails.CoutDemande €</h2>
         <form class="AnnulationPrestation_form" method="post">
             <h2>Remplir le formulaire de l'annulation de votre prestation :</h2>
             <div class="AnnulationPrestation_formInput">
@@ -32,18 +67,18 @@
                 <div class="AnnulationPrestation_formRaison">
                     <select name="IdRaisonAnnulPrem" id="type-annulation-prematuree" asp-for="IdRaisonAnnulPrem" required>
                         <option value="">Choisir la raison d'annulation</option>
-                            @foreach(RaisonAnnulationPrematuree raisonAnnulationPrematuree in @Model.RaisonsAnnulationPrematuree)
-                                {
-                                    <option value="@raisonAnnulationPrematuree.IdRaisonAnnulPrem">@raisonAnnulationPrematuree.LibelleAnnulPrem</option>
-                                }
+                        @foreach (RaisonAnnulationPrematuree raisonAnnulationPrematuree in @Model.RaisonsAnnulationPrematuree)
+                        {
+                            <option value="@raisonAnnulationPrematuree.IdRaisonAnnulPrem">@raisonAnnulationPrematuree.LibelleAnnulPrem</option>
+                        }
                     </select>
                 </div>
             </div>
             <input type="hidden" name="IdUtilisateur" value="@Model.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur" />
             <input type="hidden" name="IdDemande" value="@Model.DemandeDeReservationDetails.IdDemande" />
             <input type="hidden" name="IdClasse" value="@ViewBag.Classe" />
-                <!-- dans l'asp - cntrolleur il va y avoir une autre vue qui montre un message d'annulation , sp-action="PrestationAnnullee -->
-            <button class="AnnulationPrematuree_ValidateButton" type="submit" asp-controller="Utilisateur" asp-action="AnnulationPrematuree">Valider l'annulation</button>
+            <!-- dans l'asp - cntrolleur il va y avoir une autre vue qui montre un message d'annulation , sp-action="PrestationAnnullee -->
+            <button class="btn-light" type="submit" asp-controller="Utilisateur" asp-action="AnnulationPrematuree">Valider l'annulation</button>
         </form>
     </div>
 </main>

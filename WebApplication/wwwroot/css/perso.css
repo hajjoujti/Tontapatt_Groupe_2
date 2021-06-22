@@ -1834,6 +1834,7 @@ choixTerrainDescription_img {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family:Roboto;
 }
 
 .AnnulationPrestation_h1 {
@@ -1853,7 +1854,50 @@ choixTerrainDescription_img {
 
 .AnnulationPrestation_infosPrestation {
     margin: 1rem;
+    display: flex;
 }
+
+    .AnnulationPrestation_infosPrestation .btn-primary {
+        padding: 0;
+        font-size: 16px;
+        color: var(--light);
+        background: var(--Dark);
+        border: none;
+        font-weight: 700;
+        outline: none;
+        border-radius: 30px;
+        /* margin-left: 20px; */
+        cursor: pointer;
+        transition: opacity .3s linear;
+        height: 39px;
+        display: flex;
+        align-items: center;
+        padding-left: 1em;
+        padding-right: 1em;
+        align-self: center;
+    }
+
+
+    .AnnulationPrestation_infosPrestation td {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+.AnnulationPrestation_formRaison select {
+    margin: 1rem;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.annulation-main {
+    align-items: center;
+}
+
+    .annulation-main h2 {
+        width: 100%;
+        text-align: center;
+    }
 
 .AnnulationPrestation_infosPrestation_buttonChange {
     height: 2rem;
@@ -1871,7 +1915,7 @@ choixTerrainDescription_img {
 
 .AnnulationPrestation_form {
     margin: 2rem;
-    width: 50%;
+    width: 40%;
     padding: 1em;
     border-radius: 5px;
     background-color: #4F6367;
@@ -1885,13 +1929,15 @@ choixTerrainDescription_img {
         font-size: 1rem;
         margin: auto;
     }
+    .AnnulationPrestation_form .btn-light {
+        max-width: 270px;
+        align-self: center;
+    }
 
-.AnnulationPrestation_formInput {
-    margin: 1rem;
-    border: 2px solid #ffffff;
-    border-radius: 5px;
-    padding: 1rem;
-}
+    .AnnulationPrestation_formInput {
+        display: flex;
+        place-content: center;
+    }
 
 .AnnulationPrestation_formInfos input, .declarationAnomalie_formInfos textarea {
     font: 1em sans-serif;
@@ -2025,6 +2071,7 @@ choixTerrainDescription_img {
     animation-iteration-count: infinite;
     box-shadow: 17px 43px 47px var(--primary);
 }
+
 @keyframes rotate {
     from {
         transform: skew( 313deg, 360deg );
@@ -2034,6 +2081,7 @@ choixTerrainDescription_img {
         transform: skew( 313deg, 375deg );
     }
 }
+
 .rating {
     display: flex;
     width: 100%;
