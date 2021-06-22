@@ -42,22 +42,21 @@ else
             </div>
         </div>
         <div class="static-map">
-            <input type="hidden" id="longitude" value="@Model.TerrainDetails.LongitudeTerrain"/>
-            <input type="hidden" id="latitude" value="@Model.TerrainDetails.LatitudeTerrain"/>
+            <input type="hidden" id="longitude" value="@Model.TerrainDetails.LongitudeTerrain" />
+            <input type="hidden" id="latitude" value="@Model.TerrainDetails.LatitudeTerrain" />
             <div id="mapid"></div>
         </div>
 
         @foreach (OffreDeTonteDetails offreDeTonteDetails in Model.OffresDeTonteDetails)
         {
             <div class="body-card-list-offre">
-
                 <div class="liste-offres-right">
                     <div class="liste-detail-offres-text">
                         <h3>@offreDeTonteDetails.NomUtilisateur<!-- nom de l'eleveur --></h3>
                         <p> @offreDeTonteDetails.NomOffre <!-- nom de l'offre --></p>
                         <!-- je vais appeller l'api pour la vue a ce moment et j'aurais besoin d'object avec longitude lattitude terrain et offre -->
                         <!-- TU PEUX UTILISER @Model.TerrainDetails.LongitudeTerrain ET @Model.TerrainDetails.LatitudeTerrain + @offreDeTonteDetails.LatitudeOffreDeTonte ET
-        @offreDeTonteDetails.LongitudeOffreDetonte-->
+                        @offreDeTonteDetails.LongitudeOffreDetonte-->
                         <p>Distance : @offreDeTonteDetails.DistanceOffreDeTonteTerrain km<!-- distance avec l'offre --></p>
                     </div>
                     <div class="card-right-list-offre">
