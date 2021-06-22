@@ -10,6 +10,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
     {
         public PointageJournalier PointageJournalier { get; set; }
         public List<PointageJournalier> ListPointagesJournalier { get; set; }
-        public DemandeDeReservation DemandeDeReservationDetails { get; set; }
+        public DemandeDeReservationDetails DemandeDeReservationDetails { get; set; }
     }
 }

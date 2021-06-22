@@ -9,10 +9,88 @@
     
 }
 
+<h1 class="pointagejournalier_h1">Pointage Jounalier</h1>
+<main class="pointagejournalier-main">
+    <div class="pointagejournalier">
+            <h2>Récapitulatif de la prestation : </h2>
+        <div class="pointagejournalier_infosPrestation">
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Prestation</td>
+                    <td class="title-td">Eleveur</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.NumeroReservation</td>
+                    <td>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur</td>
+                </tr>
+            </table>
 
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Début</td>
+                    <td class="title-td">Fin</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.DateDebutDemande.ToString("dd/MM/yyyy")</td>
+                    <td>@Model.DemandeDeReservationDetails.DateFinDemande.ToString("dd/MM/yyyy")</td>
+                </tr>
+            </table>
+
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Adresse</td>
+                    <td class="title-td">Ville</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.TerrainDetails.AdresseTerrain</td>
+                    <td>@Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain</td>
+                </tr>
+            </table>
+
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Espece</td>
+                    <td class="title-td">Race</td>
+                    <td class="title-td">Nombre</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.EspeceAnimal</td>
+                    <td>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.RaceAnimal</td>
+                    <td>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.NombreAnimaux</td>
+                </tr>
+            </table>
+        </div>
+        <div class="pointagejournalier_infospointage pointagejournalier_infosPrestation">
+            
+            <input asp-for="@Model.PointageJournalier.HeurePrevu" type="time" min="08:00" max="20:00" value="08:00" disabled />
+
+            <table class="info-prestation-pointage">
+                <tr>
+                    <td class="title-td">Jour Pointage</td>
+                    <td class="title-td">Heure pointage</td>
+                </tr>
+                @foreach (PointageJournalier p in Model.ListPointagesJournalier)
+                {
+                    <tr>
+                        <td>
+                            @p.HeurePointage.ToString("dddd dd/MM/yyyy")
+                        </td>
+                        <td>
+                            @p.HeurePointage.TimeOfDay
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <a class="btn-return" asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">Revenir à la préstation</a>
+    </div>
+</main>
+
+@*
+            <a class="btn-return" asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">Revenir à la préstation</a>
 <div class="infosOffre_main">
     <h1 class="infosOffre_h1">Pointage Journalier</h1>
-    @*@Model.DemandeDeReservationDetails.*@
+    @Model.DemandeDeReservationDetails.*
     <div class="infosOffre_div">
         <div class="infosOffre_infos">
             <p class="infosOffre_infosNumeroReservation">
@@ -20,7 +98,7 @@
                     <a asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">@Model.DemandeDeReservationDetails.NumeroReservation</a>
                 </strong></p>
 
-            @*tableau des pointages*@
+            @*tableau des pointages
             <table>
                 <tr>
                     <td>
@@ -49,9 +127,9 @@
                 <label>Heure Prevue :</label>
                 <input asp-for="@Model.PointageJournalier.HeurePrevu" type="time" min="08:00" max="20:00" value="08:00" disabled />
 
-                @*verification si eleveur a deja pointer*@
+                @*verification si eleveur a deja pointer
                 <a class="btn-infos" asp-controller="Home" asp-action="Indexreturn" asp-route-idUtilisateur="@ViewBag.IdUtilisateur">Acceuil</a>
             </div>
         </div>
     </div>
-</div>
+</div>*@
