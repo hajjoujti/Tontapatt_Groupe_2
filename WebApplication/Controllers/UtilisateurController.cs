@@ -55,6 +55,26 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         }
 
         [HttpGet]
+        [Route("Utilisateur/ChoixOffreDescription/{idTerrain:int}")]
+        public IActionResult ChoixOffreDescription(int idTerrain)
+        {
+            ViewBag.IdUtilisateur = new TerrainBU().GetById(idTerrain).IdUtilisateur;
+            ViewBag.IdTerrain = idTerrain;
+            ViewBag.IsInBDD = true;
+
+            DemandeDeReservationViewModel demandeDeReservationViewModel = new();
+            demandeDeReservationViewModel.OffreDeTonteDetails = null;
+
+            demandeDeReservationViewModel.TerrainDetails = new TerrainBU().GetByIdWithDetails(idTerrain);
+            /*debut de tentative*/
+            demandeDeReservationViewModel.OffresDeTonteDetails = new OffreDeTonteBU().GetAllDetailsByPositionTerrain(idTerrain);
+
+            /*Fin de tentative*/
+            return View(demandeDeReservationViewModel);
+        }
+
+        [HttpGet]
+        [Route("Utilisateur/ChoixOffreDescription/{idOffreDeTonte:int}/{idTerrain:int}")]
         public IActionResult ChoixOffreDescription(int idOffreDeTonte, int idTerrain)
         {
             OffreDeTonteBU buOffreDeTonte = new();
