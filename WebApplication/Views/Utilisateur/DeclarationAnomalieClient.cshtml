@@ -8,9 +8,9 @@
     DateTime today = DateTime.Now;
 }
 <h1 class="declarationAnomalie_h1">Declaration d'une anomalie</h1>
-<main class="declarationAnomalie_main">
+<div class="declarationAnomalie_main">
+    <h2>Récapitulatif de la prestation : </h2>
     <div class="declarationAnomalie">
-            <h2>Récapitulatif de la prestation : </h2>
         <div class="declarationAnomalie_infosPrestation">
             <table class="info-offre-table">
                 <tr>
@@ -59,7 +59,7 @@
             </table>
 
 
-            <a class="btn-return" asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">Revenir à la préstation</a>
+            <a class="infosOffre_buttonChange btn-primary" asp-controller="Utilisateur" asp-action="PrestationDetailsClient" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe"><i class="fas fa-arrow-left"></i></a>
         </div>
         <form class="declarationAnomalie_form" method="post">
             <h2>Remplir le formulaire de déclaration d'anomalie :</h2>
@@ -91,7 +91,7 @@
                     <input type="hidden" name="IdUtilisateurDeclarant" value="@ViewBag.IdUtilisateur" />
                 </div>
             </div>
-            <button class="btn-return" type="submit" asp-controller="Utilisateur" asp-action="NouvelleAnomalieClient">Valider la déclaration</button>
+            <button class="btn-return btnsubmitanomalie" type="submit" asp-controller="Utilisateur" asp-action="NouvelleAnomalieClient">Valider la déclaration</button>
         </form>
     </div>
-</main>
+</div>
