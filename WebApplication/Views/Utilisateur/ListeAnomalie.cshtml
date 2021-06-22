@@ -18,12 +18,14 @@
             @foreach (Anomalie anomalie in Model.Anomalies)
             {
                 <div class="listeAnomalie">
+                        <a asp-action="AnomalieDescription" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@anomalie.IdDemande" asp-route-idUtilisateur="@ViewBag.IdUtilisateur" asp-route-idAnomalie="@anomalie.IdAnomalie" asp-route-idClasse="@ViewBag.Classe">
                     <div class="listeAnomalie_infoStatus">
-                        
-                        <div class="listeAnomalie_infoStatusDetails">
-                            <a asp-action="AnomalieDescription" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@anomalie.IdDemande" asp-route-idUtilisateur="@ViewBag.IdUtilisateur" asp-route-idAnomalie="@anomalie.IdAnomalie" asp-route-idClasse="@ViewBag.Classe"><i class="far fa-eye fa-3x"></i></a>
-                        </div>
+
+                            <div class="listeAnomalie_infoStatusDetails">
+                                <i class="far fa-eye fa-3x"></i>
+                            </div>
                     </div>
+                        </a>
                     <div class="listeAnomalie_infosaAnomalie">
                         @if (Model.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur == ViewBag.IdUtilisateur)
                         {
@@ -47,7 +49,7 @@
                         }
                         else
                         {
-                            <p class="eleveur-prestation-tag">Nom du client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur</p>
+                            <p class="eleveur-prestation-tag">Client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.TerrainDetails.PrenomUtilisateur</p>
                         }
                         <p>Lieux de la prestation : @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain</p>
                         @if (!anomalie.DateFinAnomalie.HasValue)

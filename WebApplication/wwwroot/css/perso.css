@@ -1468,22 +1468,23 @@ choixTerrainDescription_img {
 /*//////////////////    DECLARATION D'ANOMALIE     //////////////////////*/
 
 .declarationAnomalie {
-    margin: auto;
+    /* margin: auto; */
     border-radius: 5px;
     box-shadow: 12px 12px 2px 1px var(--info);
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     flex-wrap: wrap;
     font-family: Roboto;
     background-image: url(https://i2-prod.manchestereveningnews.co.uk/incoming/article14981061.ece/ALTERNATES/s1200/1_sheep-1822137_1920.jpg);
     background-repeat: no-repeat;
     background-size: 2108px;
-    background-color: #85a3c9;
+    /* background-color: #85a3c9; */
     background-position-x: 95%;
     /* margin-bottom: 8rem; */
     width: 100%;
-
+    align-items: center;
+    height: 82vh;
+    justify-content: center;
 }
 
 .declarationAnomalie_main {
@@ -1780,22 +1781,23 @@ choixTerrainDescription_img {
 }
 
 .listeAnomalie {
-    margin: 2rem;
-    padding: 1rem;
+    margin: 1em;
+    padding: 0em;
     display: flex;
     flex-direction: row;
     border-radius: 5px;
     box-shadow: 7px 12px 30px 25px #00000038;
     width: 32%;
-    font-family:Roboto;
+    font-family: Roboto;
+    font-size: 13px;
+    margin-right:2em;
 }
 
 .listeAnomalie_infoStatus {
-    width: 8rem;
-    margin: auto;
+    width: 5em;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
 }
 
 .listeAnomalie_infoStatusEnCours {
@@ -1818,17 +1820,40 @@ choixTerrainDescription_img {
     text-align: center;
 }
 
-.listeAnomalie_infoStatusDetails {
-    margin: auto;
-    margin-top: 2rem;
+.listeAnomalie a {
+    color: var(--secondary);
+    cursor: pointer;
+    align-self:center;
 }
+    .listeAnomalie a:hover {
+        color: var(--info);
+        cursor: pointer;
+    }
 
+.listeAnomalie_infoStatus:hover {
+    color: var(--info);
+    cursor: pointer;
+}
 .listeAnomalie_infosaAnomalie {
     background-color: #ffffff;
     padding: 1rem;
-    border: 2px solid #ffffff;
     border-radius: 5px;
+    flex-grow: 1;
+    position: relative;
 }
+    .listeAnomalie_infosaAnomalie .eleveur-prestation-tag {
+        color: var(--light);
+        position: absolute;
+        left: 143px;
+        top: 161px;
+        font-family: 'Poppins';
+        padding-left: 244px;
+        padding-right: 20px;
+        border-radius: 5px;
+        background-color: var(--primary);
+        transform: none;
+        box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
+    }
 
 /* ------------- Annulation prematuree --------------------*/
 
@@ -1836,7 +1861,7 @@ choixTerrainDescription_img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family:Roboto;
+    font-family: Roboto;
 }
 
 .AnnulationPrestation_h1 {
@@ -1931,15 +1956,16 @@ choixTerrainDescription_img {
         font-size: 1rem;
         margin: auto;
     }
+
     .AnnulationPrestation_form .btn-light {
         max-width: 270px;
         align-self: center;
     }
 
-    .AnnulationPrestation_formInput {
-        display: flex;
-        place-content: center;
-    }
+.AnnulationPrestation_formInput {
+    display: flex;
+    place-content: center;
+}
 
 .AnnulationPrestation_formInfos input, .declarationAnomalie_formInfos textarea {
     font: 1em sans-serif;
@@ -2503,7 +2529,7 @@ choixTerrainDescription_img {
 }
 
 .descriptionAnomalie_statusInfosEnCours {
-    background-color: #29b14b;
+    background-color: #97fe485c;
     font-size: x-large;
 }
 
@@ -2618,9 +2644,11 @@ choixTerrainDescription_img {
 }
 
 .descriptionAnomalie_statusInfosEnCours {
-    background-color: #29b14b;
+    background-color: #97fe485c;
     font-size: x-large;
 }
+
+
 
 .descriptionAnomalie_statusInfosTermine {
     background-color: #c2432d;
