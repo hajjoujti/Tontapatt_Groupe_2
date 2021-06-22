@@ -1,6 +1,8 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using System;
+@using System.Globalization;
 @using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
 @using Fr.EQL.Ai109.Tontapatt.Model
 @model PointageJournalierDetailsViewModel
@@ -73,7 +75,7 @@
                 {
                     <tr>
                         <td>
-                            @p.HeurePointage.ToString("dddd dd/MM/yyyy")
+                            @p.HeurePointage.ToString("dddd dd/MM/yyyy", CultureInfo.CreateSpecificCulture("fr-FR"))
                         </td>
                         <td>
                             @p.HeurePointage.TimeOfDay
