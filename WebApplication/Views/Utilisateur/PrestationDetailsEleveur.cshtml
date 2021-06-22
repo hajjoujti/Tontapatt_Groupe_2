@@ -158,7 +158,7 @@
 
                         @if (Model.DateAcceptationDemande.HasValue)
                         {
-                            <td>@Model.DateAcceptationDemande.Value.ToString("dd/MM/yyyy");</td>
+                            <td>@Model.DateAcceptationDemande.Value.ToString("dd/MM/yyyy")</td>
 
                         }
                         else
@@ -169,7 +169,7 @@
 
                         @if (Model.DateInstallationTroupeau.HasValue)
                         {
-                            <td>@Model.DateInstallationTroupeau.Value.ToString("dd/MM/yyyy");</td>
+                            <td>@Model.DateInstallationTroupeau.Value.ToString("dd/MM/yyyy")</td>
                         }
                         else if (!Model.DateAcceptationDemande.HasValue)
                         {
@@ -269,7 +269,7 @@
                 else if (ViewBag.Classe == 0)
                 {
                     <div class="btn-prestation-details-right">
-                        <button class="btn-light">Refuser</button>
+                        <a class="btn-light" asp-controller="Utilisateur" asp-action="RefuserDemandeDePrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Refuser</a>
                     </div>
                     <div class="btn-prestation-details-right">
                         <a class="btn-light" asp-controller="Utilisateur" asp-action="AccepterPrestation" asp-route-idDemandeDeReservation="@Model.IdDemande" asp-route-idUtilisateur="@Model.OffreDeTonteDetails.IdUtilisateur">Accepter</a>

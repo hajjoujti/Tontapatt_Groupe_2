@@ -8,7 +8,7 @@
     ViewData["Title"] = "TONTAPATT - Pointage Journalier";
     #region verification si eleveur a deja pointer
     DateTime dateDernierPointage = new();
-    DateTime heurePrevu = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0);
+    DateTime heurePrevu = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 0, 0);
     DateTime heureActuelle = DateTime.Now;
     bool estDansIntervalDeTemps = Math.Abs((heurePrevu - heureActuelle).TotalHours) <= 1;
     bool dejaPointer;
@@ -51,7 +51,7 @@
         messageBoutonPointage = "Vous ne pouvez pas pointer avant la date de debut de la prestation";
         btnPointerClass = "btn-disabled";
     }
-    else if (DateTime.Compare(Model.DemandeDeReservationDetails.DateFinDemande, heureActuelle) < 0)
+    else if (DateTime.Compare(Model.DemandeDeReservationDetails.DateFinDemande, heureActuelle.Date) < 0)
     {
         disabled = true;
         messageBoutonPointage = "La prestation est terminée vous ne pouvez plus pointer";

@@ -2115,7 +2115,7 @@ choixTerrainDescription_img {
     border: none;
     font-weight: 400;
     outline: none;
-    border-radius: 30px;
+    border-radius: 30px !important;
     min-width: 270px;
     margin: 0 1em 1em 1em;
     font-family: 'Poppins';

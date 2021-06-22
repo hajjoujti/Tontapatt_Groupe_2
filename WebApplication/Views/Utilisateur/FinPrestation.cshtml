@@ -182,16 +182,9 @@
                                 </div>
                             </div>
                             <textarea asp-for="RemarqueEval"class="textarea-grey"></textarea>
-                            @if(Model.NotePrestation != 0)
-                            {
                                 <p>
                                     <button class="btn-infos" type="submit" asp-controller="Utilisateur" asp-action="FinPrestation"> Terminer</button>
                                 </p>
-                            }
-                            else
-                            {
-                                <p>Veuillez choisir au moin une étoile</p>
-                            }
                         </form>
                     </div>
                 </div>

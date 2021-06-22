@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using Fr.EQL.Ai109.Tontapatt.WebApplication.Models
+@using Fr.EQL.Ai109.Tontapatt.Model
+@model RefusDemandeDePrestationViewModel
+
+@{
+}
+
+<div class="main-fin-Prestation">
+
+    <div class="body-fin-prestation">
+        <div class="select-annulation">
+            <form method="post">
+                <select name="IdMotifRefus" id="type-refus-demande" asp-for="IdMotifRefus" required>
+                        <option value="">Choisir la raison d'annulation</option>
+                            @foreach(RaisonRefusDemande raisonRefusDemande in @Model.RaisonsRefusDemande)
+                                {
+                                    <option value="@raisonRefusDemande.IdMotifRefus">@raisonRefusDemande.LibelleRefus</option>
+                                }
+                </select>
+                <input type="hidden" asp-for="IdDemandeDeReservation" value="@Model.IdDemandeDeReservation" />
+                <input type="hidden" asp-for="IdUtilisateur" value="@ViewBag.IdUtilisateur" />
+                <button type="submit" class="btn-primary">Valider</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -463,7 +463,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             DemandeDeReservationBU demandeDeReservation = new();
             if (ModelState.IsValid)
             {
-                demandeDeReservation.AnnulationDemandeDeReservationByIdAvantAcceptation(annulationAvantAcceptationModelView.IdDemandeDeReservation, annulationAvantAcceptationModelView.IdUtilisateur);
+                demandeDeReservation.AnnulationDemandeDeReservationByIdAvantAcceptation(annulationAvantAcceptationModelView.IdDemandeDeReservation, annulationAvantAcceptationModelView.IdRaisonAnnul);
                 ViewBag.Message = "Annulation reussie";
 
                 return View("Reussite");
@@ -549,6 +549,37 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
             ViewBag.Message = "L'anomalie est bien terminée";
             return View("Reussite");
+        }
+
+        [HttpGet]
+        public IActionResult RefuserDemandeDePrestation(int idDemandeDeReservation, int idUtilisateur, int idClasse)
+        {
+            RefusDemandeDePrestationViewModel refusDemandeDePrestationViewModel = new();
+            refusDemandeDePrestationViewModel.RaisonsRefusDemande = new RaisonRefusDemandeBU().GetAll();
+            refusDemandeDePrestationViewModel.IdDemandeDeReservation = idDemandeDeReservation;
+
+            ViewBag.IdUtilisateur = idUtilisateur;
+            ViewBag.IsInBDD = true;
+            ViewBag.Classe = idClasse;
+
+            return View(refusDemandeDePrestationViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult RefuserDemandeDePrestation(RefusDemandeDePrestationViewModel refusDemandeDePrestationViewModel)
+        {
+            ViewBag.IdUtilisateur = refusDemandeDePrestationViewModel.IdUtilisateur;
+            ViewBag.IsInBDD = true;
+            if (ModelState.IsValid)
+            {
+                new DemandeDeReservationBU().RefuserDemandeDeReservation(refusDemandeDePrestationViewModel.IdDemandeDeReservation, refusDemandeDePrestationViewModel.IdMotifRefus);
+
+                ViewBag.Message = "L'anomalie est bien refusée";
+                return View("Reussite");
+            }
+            refusDemandeDePrestationViewModel.RaisonsRefusDemande = new RaisonRefusDemandeBU().GetAll();
+
+            return View(refusDemandeDePrestationViewModel);
         }
     }
 }
