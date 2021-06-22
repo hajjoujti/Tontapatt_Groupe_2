@@ -177,7 +177,7 @@ header {
 /* ///////////////////// STYLE FOOTER ///////////////////*/
 footer {
     background: #f1f1f1;
-    padding-bottom:1em;
+    padding-bottom: 1em;
 }
 
 .footer-container {
@@ -923,7 +923,7 @@ choixTerrainDescription_img {
     flex-direction: column;
     justify-content: center;
     padding: 0 1em;
-    align-items:center;
+    align-items: center;
 }
 
     .infosOffre_date input {
@@ -945,7 +945,7 @@ choixTerrainDescription_img {
     font-family: 'Roboto';
     align-items: center;
     max-width: 100%;
-    place-content:center;
+    place-content: center;
 }
 
 .infosOffre_date div {
@@ -973,10 +973,10 @@ choixTerrainDescription_img {
         transition: opacity .3s linear;
     }
 
-.infosOffre_button button:hover {
-    background-color: var(--secondary);
-    color: var(--Dark);
-}
+        .infosOffre_button button:hover {
+            background-color: var(--secondary);
+            color: var(--Dark);
+        }
 
 .infosOffre_buttonSelection {
     align-items: center;
@@ -1648,10 +1648,14 @@ choixTerrainDescription_img {
 
 
 .succes-body {
-    flex-direction: column;
+    flex-direction: row;
     background: white;
     align-items: center;
     text-align: center;
+    padding-bottom: 4em;
+    width: 71%;
+    background-color: beige;
+    justify-content: space-around;
 }
 
     .succes-body img {
@@ -1870,16 +1874,6 @@ choixTerrainDescription_img {
         position: relative;
         top: 1px;
     }
-
-
-.succes-body {
-    flex-direction: column;
-    background: white;
-    align-items: center;
-    text-align: center;
-    padding-bottom: 4em;
-}
-
 
 .AnnulationPrematuree_infosPrestation_buttonChange {
     background-color: #e4685d;
@@ -2293,13 +2287,13 @@ choixTerrainDescription_img {
     justify-content: center;
 }
 
-.title-td{
+.title-td {
     font-family: "Poppins";
-    font-weight:600;
+    font-weight: 600;
 }
 
-.card-right-list-offre{
-    align-self:center;
+.card-right-list-offre {
+    align-self: center;
 }
 
 
@@ -2348,10 +2342,12 @@ choixTerrainDescription_img {
     background-color: #29b14b;
     font-size: x-large;
 }
+
 .descriptionAnomalie_statusInfosTermine {
     background-color: #c2432d;
     font-size: x-large;
 }
+
 .descriptionAnomalie_statusFin {
     border: 1px solid black;
     border-radius: 5px;
@@ -2461,10 +2457,12 @@ choixTerrainDescription_img {
     background-color: #29b14b;
     font-size: x-large;
 }
+
 .descriptionAnomalie_statusInfosTermine {
     background-color: #c2432d;
     font-size: x-large;
 }
+
 .descriptionAnomalie_statusFin {
     border: 1px solid black;
     border-radius: 5px;
@@ -2472,6 +2470,7 @@ choixTerrainDescription_img {
     width: 15rem;
     height: 5rem;
 }
+
 .descriptionAnomalie_retour {
     border: 1px solid black;
     border-radius: 5px;
@@ -2479,34 +2478,35 @@ choixTerrainDescription_img {
     width: 15rem;
     height: 3rem;
     background-color: #135d25;
-    color : #ffffff;
+    color: #ffffff;
 }
 
 
-.wrap-column-presta-details{
+.wrap-column-presta-details {
     display: flex;
-    width:100%;
+    width: 100%;
 }
 
 .map-left {
     width: 50%;
 }
-.map-prestation-detail-eleveur{
-height: 100% !important;
-width: 107% !important;
-z-index: -1;
+
+.map-prestation-detail-eleveur {
+    height: 100% !important;
+    width: 107% !important;
+    z-index: -1;
 }
 
-.offre-prestation-right{
+.offre-prestation-right {
     margin: 0;
 }
 
-.selection-prestation-details{
+.selection-prestation-details {
     background-color: var(--primary);
 }
 
-.main-refus-demande{
-    width:100% !important;
+.main-refus-demande {
+    width: 100% !important;
 }
 
 .body-refus-demande {
@@ -2552,8 +2552,9 @@ z-index: -1;
     cursor: pointer;
     text-align: center;
     height: 46px;
-    place-self:center;
+    place-self: center;
 }
+
 .declarationAnomalie_infosPrestation td {
     padding: 2px 10px 2px 10px;
 }
