@@ -7,51 +7,90 @@
 @{
     DateTime today = DateTime.Now;
 }
-    <h1 class="declarationAnomalie_h1">Declaration d'une anomalie</h1>
+<h1 class="declarationAnomalie_h1">Declaration d'une anomalie</h1>
 <main class="declarationAnomalie_main">
     <div class="declarationAnomalie">
+        <h2>Récapitulatif de la prestation : </h2>
         <div class="declarationAnomalie_infosPrestation">
-            <h2>Récapitulatif de la prestation : </h2>
-            <p class="declarationAnomalie_infosPrestation_infosNumeroReservation"><strong>Numéro préstation : @Model.DemandeDeReservationDetails.NumeroReservation</strong></p>
-            <p class="declarationAnomalie_infosPrestation_infosNomClient"><strong>Nom du Client : <a href="#">@Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.TerrainDetails.PrenomUtilisateur</a></strong></p>
-            <p class="declarationAnomalie_infosPrestation_infosDateDebut"><strong>Date de début de la prestation : </strong>@Model.DemandeDeReservationDetails.DateDebutDemande.ToString("dd/MM/yyyy")</p>
-            <p class="declarationAnomalie_infosPrestation_infosDateFin"><strong>Date de fin de la prestation : </strong>@Model.DemandeDeReservationDetails.DateFinDemande.ToString("dd/MM/yyyy")</p>
-            <p class="declarationAnomalie_infosPrestation_infosAdresseTerrain"><strong>Adresse terrain : </strong>@Model.DemandeDeReservationDetails.TerrainDetails.AdresseTerrain</p>
-            <p class="declarationAnomalie_infosPrestation_infosNomVille"><strong>Code polstal / Ville : </strong>@Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain</p>
-            <p class="declarationAnomalie_infosPrestation_infosEspeceAnimal"><strong>Espece d'animal : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.EspeceAnimal</p>
-            <p class="declarationAnomalie_infosPrestation_infosRaceAnimal"><strong>Race d'animal : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.RaceAnimal</p>
-            <p class="declarationAnomalie_infosPrestation_infosNombreAnimal"><strong>Nombres d'animaux : </strong>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.NombreAnimaux</p>
-            <a class="declarationAnomalie_infosPrestation_buttonChange" asp-controller="Utilisateur" asp-action="PrestationDetailsEleveur" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">Revenir à la préstation</a>
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Prestation</td>
+                    <td class="title-td">Eleveur</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.NumeroReservation</td>
+                    <td>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur</td>
+                </tr>
+            </table>
+
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Début</td>
+                    <td class="title-td">Fin</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.DateDebutDemande.ToString("dd/MM/yyyy")</td>
+                    <td>@Model.DemandeDeReservationDetails.DateFinDemande.ToString("dd/MM/yyyy")</td>
+                </tr>
+            </table>
+
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Adresse</td>
+                    <td class="title-td">Ville</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.TerrainDetails.AdresseTerrain</td>
+                    <td>@Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain</td>
+                </tr>
+            </table>
+
+            <table class="info-offre-table">
+                <tr>
+                    <td class="title-td">Espece</td>
+                    <td class="title-td">Race</td>
+                    <td class="title-td">Nombre</td>
+                </tr>
+                <tr>
+                    <td>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.EspeceAnimal</td>
+                    <td>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.RaceAnimal</td>
+                    <td>@Model.DemandeDeReservationDetails.OffreDeTonteDetails.NombreAnimaux</td>
+                </tr>
+            </table>
+
+            <a class="btn-return" asp-controller="Utilisateur" asp-action="PrestationDetailsEleveur" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">Revenir à la préstation</a>
         </div>
         <form class="declarationAnomalie_form" method="post">
-        <h2>Remplir le formulaire de déclaration d'anomalie :</h2>
-        <div class="declarationAnomalie_formInput">
-            <div class="declarationAnomalie_formInfos">
+            <h2>Remplir le formulaire de déclaration d'anomalie :</h2>
+            <div class="">
+                <div class="declarationAnomalie_formInfos">
 
-                <div class="declarationAnomalie_formRaison">
-                    <select name="IdTypeAnomalie" id="type-anomalie" asp-for="IdTypeAnomalie" required>
-                        <option value="">Choisir le type d'anomalie</option>
-                            @foreach(TypeAnomalie typeAnomalie in @Model.TypesAnomalie)
+                    <div class="declarationAnomalie_formRaison">
+                        <select name="IdTypeAnomalie" id="type-anomalie" asp-for="IdTypeAnomalie" required>
+                            <option value="">Choisir le type d'anomalie</option>
+                            @foreach (TypeAnomalie typeAnomalie in @Model.TypesAnomalie)
                             {
                                 <option value="@typeAnomalie.IdTypeAnomalie">@typeAnomalie.TypeAnomalieString</option>
                             }
-                    </select>
+                        </select>
+                    </div>
+                    <div>
+                        <p>
+                            <label name="DescriptionAnomalie">Description de l'anomalie:</label>
+                        </p>
+                        <textarea name="DescriptionAnomalie" id="msg" class="textarea-grey"></textarea>
+                    </div>
                 </div>
+
                 <div>
-                    <label name="DescriptionAnomalie">Description de l'anomalie:</label>
-                    <textarea name="DescriptionAnomalie" id="msg"></textarea>
+                    <input type="hidden" name="IdDemande" value="@Model.DemandeDeReservationDetails.IdDemande" />
+                    <input type="hidden" name="IdUtilisateurClient" value="@Model.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur" />
+                    <input type="hidden" name="IdUtilisateurEleveur" value="@Model.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur" />
+                    <input type="hidden" name="IdTypeAnomalie" value="@Model.IdTypeAnomalie" />
+                    <input type="hidden" name="IdUtilisateurDeclarant" value="@ViewBag.IdUtilisateur" />
                 </div>
             </div>
-
-        <div>
-            <input type="hidden" name="IdDemande" value="@Model.DemandeDeReservationDetails.IdDemande" />
-            <input type="hidden" name="IdUtilisateurClient" value="@Model.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur" />
-            <input type="hidden" name="IdUtilisateurEleveur" value="@Model.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur" />
-            <input type="hidden" name="IdTypeAnomalie" value="@Model.IdTypeAnomalie" />
-            <input type="hidden" name="IdUtilisateurDeclarant" value="@ViewBag.IdUtilisateur" />
-        </div>
-    </div>
-            <button class="declarationAnomalie_infosPrestation_btnvalid" type="submit" asp-controller="Utilisateur" asp-action="NouvelleAnomalieEleveur">Valider la déclaration</button>
+            <button class="btn-return" type="submit" asp-controller="Utilisateur" asp-action="NouvelleAnomalieEleveur">Valider la déclaration</button>
         </form>
     </div>
 </main>
