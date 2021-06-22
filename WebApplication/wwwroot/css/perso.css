@@ -1,5 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 :root {
     --Dark: #13070C;
     --light: #F5F5F5;
@@ -1723,7 +1724,6 @@ choixTerrainDescription_img {
     height: 8px;
     top: 430px;
     left: 191px;
-
 }
 
 .succes-span-5 {
@@ -1995,23 +1995,45 @@ choixTerrainDescription_img {
 .body-fin-prestation {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 2em;
-    background-color: var(--info);
+    background-color: var(--primary);
     border-radius: 5px;
     letter-spacing: 2px;
     line-height: 2;
     font-family: 'Poppins';
-    max-width: 1000px;
     width: 100%;
+    place-self: center;
 }
 
 * {
     box-sizing: border-box;
 }
 
+.fin-presta-span-1 {
+    position: absolute;
+    width: 100px;
+    background-color: var(--primary);
+    height: 101vh;
+    top: 102px;
+    left: 512px;
+    z-index: -91;
+    transform: skew( 313deg, 360deg );
+    animation-duration: 5s;
+    animation-name: rotate;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    box-shadow: 17px 43px 47px var(--primary);
+}
+@keyframes rotate {
+    from {
+        transform: skew( 313deg, 360deg );
+    }
 
-
+    to {
+        transform: skew( 313deg, 375deg );
+    }
+}
 .rating {
     display: flex;
     width: 100%;
@@ -2128,24 +2150,25 @@ choixTerrainDescription_img {
     flex-wrap: wrap;
     align-items: center;
     box-shadow: 0 4px 30px rgba(0,0,0,.05);
+    align-self: center
 }
 
 
 
 .separator {
     width: 1px;
-    height: 14em;
+    height: 25em;
     align-self: center;
-    background-color: var(--primary);
+    background-color: var(--light);
     border-radius: 1px;
     position: relative;
 }
 
     .separator img {
         position: absolute;
-        height: 6em;
-        top: 46px;
-        left: -48px;
+        height: 11em;
+        top: 291px;
+        left: -88px;
     }
 
 .separator-fin-prestation {
@@ -2174,6 +2197,7 @@ choixTerrainDescription_img {
 .main-fin-Prestation {
     display: flex;
     justify-content: center;
+    height: 90vh;
 }
 
 .feedback p {
@@ -2267,8 +2291,13 @@ choixTerrainDescription_img {
     transition: opacity .3s linear;
     font-family: 'Poppins';
     margin-bottom: 1em;
-    min-height: 200px;
+    min-height: 90px;
 }
+
+.feedback h2 {
+    margin: 0;
+}
+
 
 /*map*/
 #mapid {
