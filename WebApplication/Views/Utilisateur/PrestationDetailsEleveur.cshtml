@@ -202,7 +202,7 @@
                             }
                             else if (Model.DateAnnulationPrematuree.HasValue)
                             {
-                                <td>Annulée le @Model.DateAnnulationPrematuree.Value.ToString("dd/MM/yyyy")</td>
+                                <td>Annulée prématurement le @Model.DateAnnulationPrematuree.Value.ToString("dd/MM/yyyy")</td>
                             }
                             else if (Model.DateRefusDemande.HasValue)
                             {
@@ -222,7 +222,7 @@
                     </tr>
                     <tr>
                         <td>@Model.OffreDeTonteDetails.DistanceOffreDeTonteTerrain km </td>
-                        <td>@Model.OffreDeTonteDetails.NomVilleOfrreDeTonte. / @Model.OffreDeTonteDetails.CodePostaleOffreDeTonte</td>
+                        <td>@Model.TerrainDetails.NomVilleTerrain, @Model.TerrainDetails.CodePostalTerrain</td>
                     </tr>
                 </table>
 
