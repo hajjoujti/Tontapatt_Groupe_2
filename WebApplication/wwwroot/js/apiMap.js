@@ -40,7 +40,5 @@ if (!latitudeOffre || !latitudeOffre) {
     var cities = L.layerGroup([littleton, denver]).addTo(mymap);
 }
 
-
-
 /*placer la vue*/
 mymap.panTo([latitude, longitude]);
