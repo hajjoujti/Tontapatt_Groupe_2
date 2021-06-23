@@ -39,14 +39,17 @@
             {
                 <p> Status de l'anomalie :  <span class="descriptionAnomalie_statusTermine">Terminé</span></p>
             }
-        <a class="descriptionAnomalie_retour" asp-action="ListeAnomalie" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@Model.Anomalie.IdDemande" asp-route-idUtilisateur="@ViewBag.IdUtilisateur" asp-route-idAnomalie="@Model.Anomalie.IdAnomalie" asp-route-idClasse="@ViewBag.Classe">Revenir à la liste d'anomalies</a>
+            <div>
+
+        <a class="btn-primary" asp-action="ListeAnomalie" asp-controller="Utilisateur" asp-route-idDemandeDeReservation="@Model.Anomalie.IdDemande" asp-route-idUtilisateur="@ViewBag.IdUtilisateur" asp-route-idAnomalie="@Model.Anomalie.IdAnomalie" asp-route-idClasse="@ViewBag.Classe">Revenir à la liste d'anomalies</a>
+            </div>
         </div>
             @if (!Model.Anomalie.DateFinAnomalie.HasValue)
             {
                 @if(Model.Anomalie.IdUtilisateurDeclarant != ViewBag.IdUtilisateur)
                 {
                     <div class="descriptionAnomalie_statusFin">
-                        <input class="btn-light" title="Mettre fin à l'anomalie" type="button" value="Terminer L'Anomalie" onclick="location.href='@Url.Action("DeclarationFinAnomalie", "Utilisateur", new {idAnomalie=@Model.Anomalie.IdAnomalie, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" />
+                        <input class="btn-primary" title="Mettre fin à l'anomalie" type="button" value="Terminer L'Anomalie" onclick="location.href='@Url.Action("DeclarationFinAnomalie", "Utilisateur", new {idAnomalie=@Model.Anomalie.IdAnomalie, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.Classe})'" />
                     </div>
                  }
                 else

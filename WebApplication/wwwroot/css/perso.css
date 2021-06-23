@@ -1790,7 +1790,7 @@ choixTerrainDescription_img {
     width: 32%;
     font-family: Roboto;
     font-size: 13px;
-    margin-right:2em;
+    margin-right: 2em;
 }
 
 .listeAnomalie_infoStatus {
@@ -1823,8 +1823,9 @@ choixTerrainDescription_img {
 .listeAnomalie a {
     color: var(--secondary);
     cursor: pointer;
-    align-self:center;
+    align-self: center;
 }
+
     .listeAnomalie a:hover {
         color: var(--info);
         cursor: pointer;
@@ -1834,6 +1835,7 @@ choixTerrainDescription_img {
     color: var(--info);
     cursor: pointer;
 }
+
 .listeAnomalie_infosaAnomalie {
     background-color: #ffffff;
     padding: 1rem;
@@ -1841,6 +1843,7 @@ choixTerrainDescription_img {
     flex-grow: 1;
     position: relative;
 }
+
     .listeAnomalie_infosaAnomalie .eleveur-prestation-tag {
         color: var(--light);
         position: absolute;
@@ -2538,13 +2541,6 @@ choixTerrainDescription_img {
     font-size: x-large;
 }
 
-.descriptionAnomalie_statusFin {
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: auto;
-    width: 15rem;
-    height: 5rem;
-}
 
 
 /* ----------- DESCRIPTION ANOMALIE -------------- */
@@ -2593,13 +2589,6 @@ choixTerrainDescription_img {
     font-size: x-large;
 }
 
-.descriptionAnomalie_statusFin {
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: auto;
-    width: 15rem;
-    height: 5rem;
-}
 
 
 /* ----------- DESCRIPTION ANOMALIE -------------- */
@@ -2609,6 +2598,7 @@ choixTerrainDescription_img {
     flex-direction: column;
     justify-content: center;
     margin-bottom: 5rem;
+    height: 80vh;
 }
 
 .descriptionAnomalie_h1 {
@@ -2617,15 +2607,21 @@ choixTerrainDescription_img {
 }
 
 .descriptionAnomalie {
-    background-color: #135d25;
-    margin: auto;
-    padding: 1rem;
+    background: none;
+    padding: 1em;
     display: flex;
     flex-direction: row;
-    border: 2px solid black;
     border-radius: 5px;
-    box-shadow: 12px 12px 2px 1px #88CCF1;
+    box-shadow: 3px 40px 64px -7px var(--Dark);
     width: 60%;
+    border: none;
+    font-family: 'Poppins';
+    letter-spacing: 1px;
+    line-height: 28px;
+}
+
+.descriptionAnomalie_description .btn-primary {
+    margin-top: 2em;
 }
 
 .descriptionAnomalie_description {
@@ -2634,6 +2630,9 @@ choixTerrainDescription_img {
     border: 2px solid #ffffff;
     border-radius: 5px;
     width: 60%;
+    display: flex;
+    flex-direction: column;
+    white-space: pre-line;
 }
 
 .descriptionAnomalie_status {
@@ -2656,11 +2655,16 @@ choixTerrainDescription_img {
 }
 
 .descriptionAnomalie_statusFin {
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: auto;
-    width: 15rem;
-    height: 5rem;
+    display:flex;
+}
+.descriptionAnomalie_statusFin .btn-light {
+    margin-left: 6em;
+    border: 1px solid;
+    height: 20px;
+    display: flex;
+    align-self: center;
+    padding: 2em 2em 1em 3em;
+    flex-direction: column-reverse;
 }
 
 .descriptionAnomalie_retour {
