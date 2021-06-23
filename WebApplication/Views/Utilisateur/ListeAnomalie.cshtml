@@ -45,11 +45,11 @@
                         }
                         @if (Model.DemandeDeReservationDetails.TerrainDetails.IdUtilisateur == ViewBag.IdUtilisateur)
                         {
-                            <p class="client-prestation-tag">Nom de l'éleveur : @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur NomUtilisateur </p>
+                            <p class="eleveur-prestation-tag tag-client">Nom de l'éleveur : @Model.DemandeDeReservationDetails.OffreDeTonteDetails.NomUtilisateur  </p>
                         }
                         else
                         {
-                            <p class="eleveur-prestation-tag">Client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.TerrainDetails.PrenomUtilisateur</p>
+                            <p class="eleveur-prestation-tag ">Client :  @Model.DemandeDeReservationDetails.TerrainDetails.NomUtilisateur @Model.DemandeDeReservationDetails.TerrainDetails.PrenomUtilisateur</p>
                         }
                         <p>Lieux de la prestation : @Model.DemandeDeReservationDetails.TerrainDetails.NomVilleTerrain / @Model.DemandeDeReservationDetails.TerrainDetails.CodePostalTerrain</p>
                         @if (!anomalie.DateFinAnomalie.HasValue)

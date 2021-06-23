@@ -1787,7 +1787,7 @@ choixTerrainDescription_img {
     flex-direction: row;
     border-radius: 5px;
     box-shadow: 7px 12px 30px 25px #00000038;
-    width: 32%;
+    width: 614px;
     font-family: Roboto;
     font-size: 13px;
     margin-right: 2em;
@@ -1858,8 +1858,10 @@ choixTerrainDescription_img {
         box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgb(0 0 0 / 0%);
     }
 
+.tag-client {
+    padding-left: 225px !important;
+}
 /* ------------- Annulation prematuree --------------------*/
-
 .AnnulationPrestation_main {
     display: flex;
     flex-direction: column;
@@ -2497,6 +2499,7 @@ choixTerrainDescription_img {
     flex-direction: column;
     justify-content: center;
     margin-bottom: 5rem;
+    margin-top: 2em;
 }
 
 .descriptionAnomalie_h1 {
@@ -2655,17 +2658,18 @@ choixTerrainDescription_img {
 }
 
 .descriptionAnomalie_statusFin {
-    display:flex;
-}
-.descriptionAnomalie_statusFin .btn-light {
-    margin-left: 6em;
-    border: 1px solid;
-    height: 20px;
     display: flex;
-    align-self: center;
-    padding: 2em 2em 1em 3em;
-    flex-direction: column-reverse;
 }
+
+    .descriptionAnomalie_statusFin .btn-light, .descriptionAnomalie_statusFin .btn-primary {
+        margin-left: 3em;
+        border: 1px solid;
+        height: 20px;
+        display: flex;
+        align-self: center;
+        padding: 2em 2em 1em 3em;
+        flex-direction: column-reverse;
+    }
 
 .descriptionAnomalie_retour {
     border: 1px solid black;
