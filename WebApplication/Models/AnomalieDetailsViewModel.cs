@@ -36,5 +36,6 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Models
         public int IdUtilisateurDeclarant { get; set; }
 
         public List<TypeAnomalie> TypesAnomalie { get; set; }
+        public int IdClasse { get; set; }
     }
 }

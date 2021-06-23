@@ -10,7 +10,7 @@
     ViewData["Title"] = "TONTAPATT - Pointage Journalier";
     #region verification si eleveur a deja pointer
     DateTime dateDernierPointage = new();
-    DateTime heurePrevu = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 0, 0);
+    DateTime heurePrevu = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, 0, 0);
     DateTime heureActuelle = DateTime.Now;
     bool estDansIntervalDeTemps = Math.Abs((heurePrevu - heureActuelle).TotalHours) <= 1;
     bool dejaPointer;
@@ -157,7 +157,7 @@
             </table>
         </div>
         <a class="btn-return" asp-controller="Utilisateur" asp-action="PrestationDetailsEleveur" asp-route-idDemandeDeReservation="@Model.DemandeDeReservationDetails.IdDemande" asp-route-idClasse="@ViewBag.Classe">Revenir à la préstation</a>
-        <input class="btn-return @btnPointerClass" type="button" value="Pointer" title="@messageBoutonPointage" onclick="location.href='@Url.Action("PointageJournalier", "Utilisateur", new {idDemandeDeReservation=@ViewBag.IdDemandeDeReservation, idUtilisateur=@ViewBag.IdUtilisateur})'" disabled="@disabled" />
+        <input class="btn-return @btnPointerClass" type="button" value="Pointer" title="@messageBoutonPointage" onclick="location.href='@Url.Action("PointageJournalier", "Utilisateur", new {idDemandeDeReservation=@ViewBag.IdDemandeDeReservation, idUtilisateur=@ViewBag.IdUtilisateur, idClasse=@ViewBag.IdClasse})'" disabled="@disabled" />
     </div>
 </main>
 

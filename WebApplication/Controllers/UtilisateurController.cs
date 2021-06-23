@@ -250,18 +250,18 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         }
 
         [HttpGet]
-        public IActionResult PointageJournalier(int idDemandeDeReservation, int idUtilisateur)
+        public IActionResult PointageJournalier(int idDemandeDeReservation, int idUtilisateur, int idClasse)
         {
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
             ViewBag.IsInBDD = true;
-
+            ViewBag.Classe = idClasse;
 
             PointageJournalierBU pointageJournalierBU = new();
             pointageJournalierBU.InsererPointageJournalier(idDemandeDeReservation);
             /*test de reussite*/
             ViewBag.Message = "Pointage reussit";
-            return View("Reussite");
+            return View("ReussiteRetourPrestationEleveur");
         }
 
         public IActionResult ValidationDemandeReservation(int idOffreDeTonte, int idTerrain)
@@ -299,6 +299,8 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         {
             ViewBag.IsInBDD = true;
             ViewBag.IdUtilisateur = anomalieDetailsViewModel.IdUtilisateurEleveur;
+            ViewBag.Classe = anomalieDetailsViewModel.IdClasse;
+            ViewBag.IdDemandeDeReservation = anomalieDetailsViewModel.IdDemande;
             if (ModelState.IsValid)
             {
                 Anomalie anomalie = new();
@@ -311,7 +313,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
 
                 new AnomalieBU().InsererAnomalie(anomalie);
                 ViewBag.Message = "L'anomalie est déclarée";
-                return View("Reussite");
+                return View("ReussiteRetourPrestationEleveur");
             }
             else
             {
@@ -337,6 +339,8 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
         {
             ViewBag.IsInBDD = true;
             ViewBag.IdUtilisateur = anomalieDetailsViewModel.IdUtilisateurClient;
+            ViewBag.Classe = anomalieDetailsViewModel.IdClasse;
+            ViewBag.IdDemandeDeReservation = anomalieDetailsViewModel.IdDemande;
             if (ModelState.IsValid)
             {
                 Anomalie anomalie = new();
@@ -350,7 +354,7 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
                 new AnomalieBU().InsererAnomalie(anomalie);
 
                 ViewBag.Message = "L'anomalie est déclarée";
-                return View("Reussite");
+                return View("ReussiteRetourPrestationClient");
             }
             else
             {
@@ -539,11 +543,12 @@ namespace Fr.EQL.Ai109.Tontapatt.WebApplication.Controllers
             ViewBag.IdUtilisateur = idUtilisateur;
             ViewBag.IsInBDD = true;
             ViewBag.Classe = idClasse;
+            ViewBag.IdDemandeDeReservation = idDemandeDeReservation;
 
             new DemandeDeReservationBU().TroupeauInstalleByIdDemandeDeReservation(idDemandeDeReservation);
             ViewBag.Message = "Troupeau installé";
 
-            return View("Reussite");
+            return View("ReussiteRetourPrestationEleveur");
 
         }
 

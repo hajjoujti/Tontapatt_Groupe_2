@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div class="infosOffre_main succes-main">
+
+    <div class="infosOffre_div succes-body">
+        <div class="success-add">
+            <img src="~/images/sheep-succes.png"/>
+        </div>
+
+        <div class="success-footer">
+            <h2>Felicitation</h2>
+            <p>@ViewBag.Message</p>
+            <a class="btn-primary"  asp-controller="Utilisateur" asp-action="PrestationDetailsEleveur" asp-route-idDemandeDeReservation="@ViewBag.IdDemandeDeReservation" asp-route-idUtilisateur="@ViewBag.IdUtilisateur" asp-route-idClasse="@ViewBag.Classe">Retouner à la prestation</a>
+            <span class="succes-span-1"></span>
+            <span class="succes-span-2"></span>
+            <span class="succes-span-3"></span>
+            <span class="succes-span-4"></span>
+            <span class="succes-span-5">Tontapatt</span>
+            <span class="succes-span-6"></span>
+            <span class="succes-span-7"></span>
+        </div>
+    </div>
+</div>

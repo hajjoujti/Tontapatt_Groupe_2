@@ -32,7 +32,7 @@
     bool btnPointageJournalierDisabled = true;
     string messageBoutonPointageJournalier;
     string btnPointageJournalierDisabledClass = "";
-    if (Model.DateInstallationTroupeau.HasValue && DateTime.Compare(Model.DateInstallationTroupeau.Value, DateTime.Today) < 0)
+    if (Model.DateInstallationTroupeau.HasValue && DateTime.Compare(Model.DateInstallationTroupeau.Value.Date, DateTime.Today) <= 0)
     {
         btnPointageJournalierDisabled = false;
         messageBoutonPointageJournalier = "Pointage Journalier";
@@ -62,7 +62,7 @@
     string btnAnnulPremDisabledClass = "";
     bool btnAnnulPremDisabled = true;
     string messageBoutonAnnulPrem;
-    if (DateTime.Compare(Model.DateFinDemande, DateTime.Today) < 0)
+    if (DateTime.Compare(Model.DateFinDemande.Date, DateTime.Today) < 0)
     {
         btnAnnulPremDisabled = true;
         messageBoutonAnnulPrem = "Vous ne pouvez pas annuler une prestation déjà terminée";
@@ -80,7 +80,7 @@
     string btnTerminerDisabledClass = "";
     bool btnTerminerDisabled = true;
     string messageBoutonTerminer;
-    if (DateTime.Compare(Model.DateFinDemande, DateTime.Today) > 0)
+    if (DateTime.Compare(Model.DateFinDemande.Date, DateTime.Today) > 0)
     {
         btnTerminerDisabled = true;
         messageBoutonTerminer = "Vous ne pouvez pas terminer la prestation avant sa date de fin";
@@ -142,7 +142,7 @@
         </div>
         <div class="">
             <div class="infosOffre_infos offre-prestation-right">
-                <p class="infosOffre_infosNomUtilisateur"><strong>Nom du client : <a href="#">@Model.TerrainDetails.NomUtilisateur @Model.TerrainDetails.PrenomUtilisateur</a></strong></p>
+                <p class="infosOffre_infosNomUtilisateur"><strong>Nom du client : @Model.TerrainDetails.NomUtilisateur @Model.TerrainDetails.PrenomUtilisateur</strong></p>
                 <p class="infosOffre_infosDescription"><strong>Description du Terrain: </strong>@Model.TerrainDetails.DescriptionTerrain</p>
                 <span class="separator-fin-prestation"></span>
 

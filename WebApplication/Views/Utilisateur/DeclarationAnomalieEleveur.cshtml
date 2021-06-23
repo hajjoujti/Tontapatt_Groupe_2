@@ -88,6 +88,7 @@
                     <input type="hidden" name="IdUtilisateurEleveur" value="@Model.DemandeDeReservationDetails.OffreDeTonteDetails.IdUtilisateur" />
                     <input type="hidden" name="IdTypeAnomalie" value="@Model.IdTypeAnomalie" />
                     <input type="hidden" name="IdUtilisateurDeclarant" value="@ViewBag.IdUtilisateur" />
+                    <input type="hidden" name="IdClasse" value="@ViewBag.Classe" />
                 </div>
             </div>
             <button class="btn-return" type="submit" asp-controller="Utilisateur" asp-action="NouvelleAnomalieEleveur">Valider la déclaration</button>

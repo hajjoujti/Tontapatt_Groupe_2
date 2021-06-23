@@ -8,7 +8,7 @@
     bool btnPointageJournalierDisabled = true;
     string messageBoutonPointageJournalier;
     string btnPointageJournalierDisabledClass = "";
-    if (Model.DateInstallationTroupeau.HasValue && DateTime.Compare(Model.DateInstallationTroupeau.Value, DateTime.Today) < 0)
+    if (Model.DateInstallationTroupeau.HasValue && DateTime.Compare(Model.DateInstallationTroupeau.Value.Date, DateTime.Today) <= 0)
     {
         btnPointageJournalierDisabled = false;
         messageBoutonPointageJournalier = "Pointage Journalier";
@@ -38,7 +38,7 @@
     string btnTerminerDisabledClass = "";
     bool btnTerminerDisabled = true;
     string messageBoutonTerminer;
-    if (DateTime.Compare(Model.DateFinDemande, DateTime.Today) > 0)
+    if (DateTime.Compare(Model.DateFinDemande.Date, DateTime.Today) > 0)
     {
         btnTerminerDisabled = true;
         messageBoutonTerminer = "Vous ne pouvez pas terminer la prestation avant sa date de fin";
